@@ -24,7 +24,7 @@ let localList = $computed({
   get() {
     if (searchKey) {
       return props.list.filter((item: Article) => {
-        //把搜索内容，分词之后，判断是否有这个词，比单纯遍历包含体验更好
+
         return searchKey
           .toLowerCase()
           .split(' ')
@@ -49,12 +49,12 @@ function dragstart(item: T) {
 const dragenter = throttle((e, item: T) => {
   // console.log('dragenter', 'item.id', item.id, 'dragItem.id', dragItem.id)
   e.preventDefault()
-  // 避免源对象触发自身的dragenter事件
+
   if (dragItem.id && dragItem.id !== item.id) {
     let rIndex = props.list.findIndex(v => v.id === dragItem.id)
     let rIndex2 = props.list.findIndex(v => v.id === item.id)
     // console.log('dragenter', 'item-Index', rIndex2, 'dragItem.index', rIndex)
-    //这里不能直接用localList splice。不知道为什么会导致有筛选的情况下，多动无法变换位置
+
     let temp = cloneDeep(props.list)
     temp.splice(rIndex, 1)
     temp.splice(rIndex2, 0, cloneDeep(dragItem))
@@ -80,7 +80,7 @@ function delItem(item: T) {
   let rIndex = props.list.findIndex(v => v.id === item.id)
   if (rIndex > -1) {
     localList.splice(rIndex, 1)
-    //触发set
+
     localList = localList
   }
 }
@@ -139,7 +139,7 @@ defineExpose({ scrollBottom })
 </template>
 
 <style scoped lang="scss">
-.drag-move, /* 对移动中的元素应用的过渡 */
+.drag-move, 
 .drag-enter-active,
 .drag-leave-active {
   transition: all 0.5s ease;
@@ -151,8 +151,7 @@ defineExpose({ scrollBottom })
   transform: translateX(50rem);
 }
 
-/* 确保将离开的元素从布局流中删除
-  以便能够正确地计算移动的动画。 */
+
 .drag-leave-active {
   position: absolute;
 }

@@ -20,28 +20,28 @@
 <!--const { setTheme } = useTheme()-->
 
 <!--let lastAudioFileIdList = []-->
-<!--let isInitializing = true // 标记是否正在初始化-->
+
 <!--watch(store.$state, (n: BaseState) => {-->
-<!--  // 如果正在初始化，不保存数据，避免覆盖-->
+
 <!--  if (isInitializing) return-->
 <!--  let data = shakeCommonDict(n)-->
 <!--  set(SAVE_DICT_KEY.key, JSON.stringify({ val: data, version: SAVE_DICT_KEY.version }))-->
 
-<!--  //筛选自定义和收藏-->
+
 <!--  let bookList = data.article.bookList.filter(v => v.custom || [DictId.articleCollect].includes(v.id))-->
 <!--  let audioFileIdList = []-->
 <!--  bookList.forEach(v => {-->
-<!--    //筛选 audioFileId 字体有值的-->
+
 <!--    v.articles-->
 <!--      .filter(s => !s.audioSrc && s.audioFileId)-->
 <!--      .forEach(a => {-->
-<!--        //所有 id 存起来，下次直接判断字符串是否相等，因为这个watch会频繁调用-->
+
 <!--        audioFileIdList.push(a.audioFileId)-->
 <!--      })-->
 <!--  })-->
 <!--  if (audioFileIdList.toString() !== lastAudioFileIdList.toString()) {-->
 <!--    let result = []-->
-<!--    //删除未使用到的文件-->
+
 <!--    get(LOCAL_FILE_KEY).then((fileList: Array<{ id: string; file: Blob }>) => {-->
 <!--      if (fileList && fileList.length > 0) {-->
 <!--        audioFileIdList.forEach(a => {-->
@@ -68,12 +68,12 @@
 <!--)-->
 
 <!--async function init() {-->
-<!--  isInitializing = true // 开始初始化-->
+
 <!--  await userStore.init()-->
 <!--  await store.init()-->
 <!--  await settingStore.init()-->
 <!--  store.load = true-->
-<!--  isInitializing = false // 初始化完成，允许保存数据-->
+
 
 <!--  setTheme(settingStore.theme)-->
 
@@ -89,7 +89,7 @@
 
 <!--onMounted(init)-->
 
-<!--//迁移数据-->
+
 <!--let showTransfer = $ref(false)-->
 <!--onMounted(() => {-->
 <!--  if (new URLSearchParams(window.location.search).get('from_old_site') === '1' && location.origin === Origin) {-->
@@ -105,7 +105,7 @@
 <!--// watch(() => route.path, (to, from) => {-->
 <!--//   return transitionName = ''-->
 <!--// console.log('watch', to, from)-->
-<!--// //footer下面的5个按钮，对跳不要用动画-->
+
 <!--// let noAnimation = [-->
 <!--//   '/pc/practice',-->
 <!--//   '/pc/dict',-->

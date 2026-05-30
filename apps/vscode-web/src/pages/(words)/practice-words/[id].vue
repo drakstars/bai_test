@@ -73,7 +73,7 @@ let isComplete = $ref(false)
 let loading = $ref(false)
 let settling = $ref(false)
 let timer = $ref<any>(-1)
-/** 仅用于 visibilitychange 内 fetch：与 `!document.hidden` 一致 */
+
 let isFocus = true
 const IDLE_MS = 3 * 60 * 1000
 let lastKeyActivity = Date.now()
@@ -84,7 +84,7 @@ let taskWords = $ref<TaskWords>({
 
 if (import.meta.client) {
 }
-//watch 实例列表，用于本地代码修改hrm后，导致重复watch
+
 let watchRefList = []
 
 function getDefaultPracticeData(origin?: Partial<PracticeData>, val?: Partial<PracticeData>): PracticeData {
@@ -143,17 +143,17 @@ function handleResumeTimer() {
 }
 
 async function loadDict() {
-  // console.log('load好了开始加载')
+
   let dict = getDefaultDict()
   let dictId = route.params.id
   if (dictId) {
-    //先在自己的词典列表里面找，如果没有再在资源列表里面找
+
     dict = store.word.bookList.find(v => v.id === dictId)
     let r = await fetch(resourceWrap(DICT_LIST.WORD.ALL))
     let dict_list = await r.json()
     if (!dict) dict = dict_list.flat().find(v => v.id === dictId) as Dict
     if (dict && dict.id) {
-      //如果是不是自定义词典，就请求数据
+
       if (!dict.custom) dict = await _getDictDataByUrl(dict)
       if (!dict.words.length) {
         router.push('/words')
@@ -183,7 +183,7 @@ const onvisibilitychange = async () => {
   if (isFocus) {
     bumpPracticeTimerActivity()
     if (statStore.timerPaused && statStore.timerPauseReason === 'auto_visibility') {
-      //特意延迟提示用户，让用户看到，免得用户焦虑，以为没暂停
+
       setTimeout(() => {
         statStore.resumeTimer()
         Toast.success('已自动恢复计时')
@@ -192,14 +192,14 @@ const onvisibilitychange = async () => {
     if (runtimeStore.globalLoading) return
     runtimeStore.globalLoading = true
     try {
-      //todo 这里如果另一台机器学完了，这里的d可能为空
+
       const d = await wordPersistence.fetch()
       if (d) {
         taskWords = Object.assign(taskWords, d.taskWords)
         data = Object.assign(data, d.practiceData)
         statStore.$patch(d.statStoreData)
-        // 恢复缓存后，若计时状态为"未暂停"，需重新开启一个新片段
-        // 因为上次保存到现在有时间间隔，不能续在旧片段上
+
+
         if (!statStore.timerPaused) {
           const now = Date.now()
           statStore.segments.push([now, now])
@@ -214,7 +214,7 @@ const onvisibilitychange = async () => {
 }
 
 onMounted(async () => {
-  //如果是从单词学习主页过来的，就直接使用；否则等待加载
+
   if (runtimeStore.routeData) {
     await initData(null, true)
   } else {
@@ -241,7 +241,7 @@ onUnmounted(() => {
 watchOnce(
   () => data.words.length,
   (newVal, oldVal) => {
-    //如果是从无值变有值，代表是开始
+
     if (!oldVal && newVal) {
       _nextTick(async () => {
         const Shepherd = await loadJsLib('Shepherd', LIB_JS_URL.SHEPHERD)
@@ -280,7 +280,7 @@ let allWords: Word[] = []
 let isIniting = ref(true)
 async function initData(initVal?: TaskWords, init: boolean = false) {
   isIniting.value = true
-  //只有初始化时，才读取缓存（本地 + 可选 Supabase）
+
   if (init) {
     let d = runtimeStore.routeData
     if (!d) {
@@ -296,11 +296,11 @@ async function initData(initVal?: TaskWords, init: boolean = false) {
     }
     console.log('initData')
     taskWords = Object.assign(taskWords, d.taskWords)
-    //这里直接赋值的话，provide后的inject获取不到最新值
+
     data = getDefaultPracticeData(data, d.practiceData)
     statStore.$patch(d.statStoreData)
-    // 恢复缓存后，若计时状态为"未暂停"，需重新开启一个新片段
-    // 因为上次保存到现在有时间间隔，不能续在旧片段上
+
+
     if (!statStore.timerPaused) {
       const now = Date.now()
       statStore.segments.push([now, now])
@@ -308,7 +308,7 @@ async function initData(initVal?: TaskWords, init: boolean = false) {
   } else {
     console.log('initData')
     // taskWords = initVal
-    //不能直接赋值，会导致 inject 的数据为默认值
+
     taskWords = Object.assign(taskWords, initVal)
 
     if (settingStore.wordPracticeMode === WordPracticeMode.Shuffle) {
@@ -359,12 +359,12 @@ async function initData(initVal?: TaskWords, init: boolean = false) {
     statStore.wrong = 0
     statStore.spend = 0
     statStore.segments = []
-    statStore.resumeTimer() // 同时 push 第一条片段 [now, now]
+    statStore.resumeTimer()
     watchStage(statStore.stage)
     watchPracticeType(settingStore.wordPracticeType)
   }
 
-  // 初始化 Question
+
   let dictId: any = route.params.id
   let d = store.word.bookList.find(v => v.id === dictId)
   if (!d) d = store.sdict
@@ -398,8 +398,8 @@ const nextWord: Word = $computed(() => {
   return data.words?.[data.index + 1] ?? undefined
 })
 
-//因为有时要从缓存里面读数据，这时的状态、进度保持原样，所以只能惰性监听，所以没缓存时主动调用一个，以更新为符合当前进度的状态、模式
-//比如，每个阶段都有错误复习这个流程，当正在错词复习时，如果执行state监听，就可能恢复成stage默认的配置项（模式、dictation、translate）
+
+
 function watchStage(n: WordPracticeStage) {
   switch (n) {
     case WordPracticeStage.DictationNewWord:
@@ -448,18 +448,18 @@ function watchPracticeType(n: WordPracticeType) {
 const groupSize = 7
 
 function wordLoop() {
-  // 学习模式
+
   if (settingStore.wordPracticeType === WordPracticeType.FollowWrite) {
     data.index++
-    // 到达一个组末尾，就切换到拼写模式
+
     if (data.index % groupSize === 0) {
       settingStore.wordPracticeType = WordPracticeType.Spell
-      data.index -= groupSize // 回到刚学单词开头
+      data.index -= groupSize
     }
   } else {
-    // 拼写模式
+
     data.index++
-    // 拼写走完一组，切回跟写模式
+
     if (data.index % groupSize === 0) {
       settingStore.wordPracticeType = WordPracticeType.FollowWrite
     }
@@ -467,7 +467,7 @@ function wordLoop() {
 }
 
 function nextStage(originList: Word[], log: string = '', toast: boolean = false) {
-  //每次都判断，因为每次都可能新增已掌握的单词
+
   let list = originList.filter(v => !checkWordIsNeedNext(v))
   console.log(log)
   statStore.stage = statStore.nextStage
@@ -476,7 +476,7 @@ function nextStage(originList: Word[], log: string = '', toast: boolean = false)
     data.index = 0
   } else {
     console.log(log + ':无单词略过')
-    // 清空列表并重置索引，避免 next(false) 再次进入「最后一个词」分支导致死循环
+
     data.words = []
     data.index = 0
     next(false)
@@ -492,28 +492,28 @@ async function complete() {
     runtimeStore.globalLoading = true
     clearInterval(timer)
 
-    //如果 shuffle 数组不为空，就说明是复习，不用修改 lastLearnIndex
+
     if (settingStore.wordPracticeMode !== WordPracticeMode.Shuffle) {
       store.sdict.lastLearnIndex = store.sdict.lastLearnIndex + statStore.newWordNumber
-      // 检查已忽略的单词数量，是否全部完成
+
       let ignoreList = [store.allIgnoreWords, store.knownWords][settingStore.ignoreSimpleWord ? 0 : 1]
-      // 忽略单词数
+
       const ignoreCount = ignoreList.filter(word =>
         store.sdict.words.slice(store.sdict.lastLearnIndex).some(w => w.word.toLowerCase() === word)
       ).length
-      // 如果lastLearnIndex已经超过可学单词数，则判定完成
+
       if (store.sdict.lastLearnIndex + ignoreCount >= store.sdict.length) {
         store.sdict.complete = true
         store.sdict.lastLearnIndex = store.sdict.length
       }
     }
 
-    // 结算前先将最后一条片段的 end 定格为当前时刻（segments 已是最新，无需临时快照）
+
     if (!statStore.timerPaused && statStore.segments.length > 0) {
       statStore.segments[statStore.segments.length - 1][1] = Date.now()
     }
 
-    // 按自然日对 segments 分组，每天生成一条 Statistics 记录
+
     // dayKey -> { firstStart, totalSpend, daySegments }
     type DayGroup = { firstStart: number; totalSpend: number; daySegments: [number, number][] }
     const dayMap = new Map<string, DayGroup>()
@@ -532,7 +532,7 @@ async function complete() {
 
     const dayKeys = [...dayMap.keys()]
     if (dayKeys.length <= 1) {
-      // 单天或无 segments 兜底：行为与原有逻辑完全一致
+
       const statistics = {
         spend: statStore.spend,
         startDate: statStore.startDate,
@@ -545,7 +545,7 @@ async function complete() {
       }
       store.sdict.statistics.push(statistics)
     } else {
-      // 跨天练习：按天拆分，每天一条记录，total/new/review/wrong 共享（因为无法拆分到各天）
+
       const baseInfo = {
         total: statStore.total,
         wrong: statStore.wrong,
@@ -570,7 +570,7 @@ async function complete() {
       if (rating !== undefined) {
         setWordCard(rating, word)
       } else {
-        // 则根据错误次数生成评级
+
         setWordCard(getGradeByWrongTimes(wrongTimes), word, wrongTimes)
       }
     }
@@ -612,8 +612,8 @@ function next(isTyping: boolean = true, ignoreLoop = false) {
   let temp = word.word.toLowerCase()
   let preTimes = data.wrongTimesMap[temp] ?? 0
 
-  // 优化：为了加快流程，将一次拼写成功的单词移出错词列表，后续不再安排重复练习
-  // 如果在拼写阶段，一次拼写成功，并且之前有错误记录的。将单词从错词列表里面移除
+
+
   if (settingStore.wordPracticeType === WordPracticeType.Spell && data.wrongTimes === 0 && preTimes) {
     let rIndex = data.wrongWords.findIndex(v => v.word.toLowerCase() === temp)
     if (rIndex >= 0) {
@@ -644,13 +644,13 @@ function next(isTyping: boolean = true, ignoreLoop = false) {
       data.index++
     }
   } else {
-    // 无词或已是最后一个词：走阶段推进/完成逻辑（nextStage 空列表时会把 words 清空，需一并处理）
+
     if (data.words.length === 0 || data.index === data.words.length - 1) {
-      // 有词时才做「回到最后一组」等依赖当前词的处理；无词时直接走错词/阶段逻辑
+
       if (data.words.length) {
         if ((statStore.stage === WordPracticeStage.FollowWriteNewWord || data.isTypingWrongWord) && !ignoreLoop) {
           if (settingStore.wordPracticeType !== WordPracticeType.Spell) {
-            //回到最后一组的开始位置
+
             data.index = Math.floor(data.index / groupSize) * groupSize
             emitter.emit(EventKey.resetWord)
             settingStore.wordPracticeType = WordPracticeType.Spell
@@ -718,12 +718,12 @@ function next(isTyping: boolean = true, ignoreLoop = false) {
     }
   }
 
-  // 仅在有当前词列表时再检查是否需跳过当前词，避免 words 被清空后用默认 word 误触发 next
+
   if (data.words.length > 0 && checkWordIsNeedNext(word)) next(false, ignoreLoop)
 }
 
-//检查单词是否跳过
-//如果单词是已掌握的/或者主动跳过的，则略过
+
+
 function checkWordIsNeedNext(word: Word) {
   if (!word.word) return false
   let rIndex = data.excludeWords.findIndex(v => v === word.word)
@@ -737,7 +737,7 @@ function skipStep() {
 }
 
 function addExcludeWord() {
-  //标记模式时，用户认识的单词加入到排除里面，后续不再复习
+
   let rIndex = data.excludeWords.findIndex(v => v === word.word)
   if (rIndex < 0) {
     data.excludeWords.push(word.word)
@@ -745,15 +745,15 @@ function addExcludeWord() {
 }
 
 function onWordKnow() {
-  //"我认识“强制更新了Good，因为点”已掌握“才会设置Easy
+
   data.ratingMap[word.word.toLowerCase()] = Rating.Good
   addExcludeWord()
 }
 
 function onTypeWrong() {
   data.wrongTimes++
-  //这里的代码暂时不能移动，因为要实时把错词加入到列表里面，从而更新toolbar里面的错词数
-  //todo 后续可以优化
+
+
   let temp = word.word.toLowerCase()
   if (!data.allWrongWords.find(v => v === temp)) {
     data.allWrongWords.push(temp)
@@ -773,7 +773,7 @@ function onTypeWrong() {
   savePracticeData('wrong')
 }
 
-//设置单词卡片
+
 function setWordCard(rating: number, wordStr = word.word, times?: number) {
   let card = store.fsrsData[wordStr]
   if (!card) {
@@ -782,7 +782,7 @@ function setWordCard(rating: number, wordStr = word.word, times?: number) {
   card = nextCard(card, rating)
   store.fsrsData[wordStr] = card
   // console.log(
-  //   `更新卡片: 单词：${wordStr}, 模式：${WordPracticeType[settingStore.wordPracticeType]}, 评分: ${Rating[rating]}, 次数：${times}, 卡片: `,
+
   //   card,
   //   cloneDeep(store.fsrsData)
   // )
@@ -795,14 +795,14 @@ async function savePracticeDataIns(where?) {
     statStore.stage === stages[0] &&
     settingStore.wordPracticeType === WordPracticeType.FollowWrite
   ) {
-    //未开始练习
+
     return
   }
   if (isComplete) return
   // console.log('savePracticeData', where)
   if (runtimeStore.globalLoading) return
   runtimeStore.globalLoading = true
-  // 若计时未暂停，将最后一条片段的 end 更新为当前时刻，确保保存内容最新
+
   if (!statStore.timerPaused && statStore.segments.length > 0) {
     statStore.segments[statStore.segments.length - 1][1] = Date.now()
   }
@@ -835,13 +835,13 @@ function repeat() {
   wordPersistence.clear()
   let temp = cloneDeep(taskWords)
   let ignoreSet = [store.allIgnoreWordsSet, store.knownWordsSet][settingStore.ignoreSimpleWord ? 0 : 1]
-  //随机练习单独处理
+
   if (settingStore.wordPracticeMode === WordPracticeMode.Shuffle) {
     temp.review = shuffle(temp.review.filter(v => !ignoreSet.has(v.word)))
   } else {
-    //将学习进度减回去
+
     store.sdict.lastLearnIndex = store.sdict.lastLearnIndex - statStore.newWordNumber
-    //排除已掌握单词
+
     temp.new = temp.new.filter(v => !ignoreSet.has(v.word))
     temp.review = temp.review.filter(v => !ignoreSet.has(v.word))
   }
@@ -896,20 +896,20 @@ async function continueStudy() {
   wordPersistence.clear()
   let temp = cloneDeep(taskWords)
   let ignoreList = [store.allIgnoreWords, store.knownWords][settingStore.ignoreSimpleWord ? 0 : 1]
-  //随机练习单独处理
+
   if (settingStore.wordPracticeMode === WordPracticeMode.Shuffle) {
     temp.review = shuffle(store.sdict.words.filter(v => !ignoreList.includes(v.word))).slice(
       0,
       runtimeStore.routeData.total ?? temp.review.length
     )
   } else {
-    //这里判断是否显示结算弹框，如果显示了结算弹框的话，就不用加进度了
+
     if (!isComplete) {
       console.log('没学完，强行跳过')
       store.sdict.lastLearnIndex = store.sdict.lastLearnIndex + statStore.newWordNumber
-      // 忽略单词数
+
       const ignoreCount = ignoreList.filter(word => store.sdict.words.some(w => w.word.toLowerCase() === word)).length
-      // 如果lastLearnIndex已经超过可学单词数，则判定完成
+
       if (store.sdict.lastLearnIndex + ignoreCount >= store.sdict.length) {
         store.sdict.complete = true
         store.sdict.lastLearnIndex = store.sdict.length
@@ -964,7 +964,7 @@ watch(isIniting, n => {
       watch(() => statStore.stage, watchStage),
       watch(() => settingStore.wordPracticeType, watchPracticeType),
       watch(() => data.index, savePracticeData),
-      // 监听 statStore.spend，每过10秒自动保存数据
+
       watch(
         () => statStore.spend,
         curr => {
@@ -1008,7 +1008,7 @@ useEvents([
   [EventKey.onTyping, handleResumeTimer],
   [EventKey.repeatStudy, repeat],
   [EventKey.continueStudy, continueStudy],
-  //当默写时，执行 show 会标记为错误，并更新卡片
+
   [ShortcutKey.ShowWord, throttle(show, 300)],
   [ShortcutKey.Previous, prev],
   [ShortcutKey.Next, throttle(() => next(false), 300)],

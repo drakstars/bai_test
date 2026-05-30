@@ -66,10 +66,10 @@ defineProps<{
     padding: 1rem;
     box-sizing: border-box;
 
-    // 当面板未显示时，禁用指针事件
+
     pointer-events: none;
 
-    // 只有当面板显示时才添加背景蒙版并启用指针事件
+
     &.has-panel {
       background: rgba(0, 0, 0, 0.5);
       pointer-events: auto;
@@ -77,7 +77,7 @@ defineProps<{
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .wrap {
     height: calc(100vh - 6rem);
@@ -104,7 +104,7 @@ defineProps<{
   }
 }
 
-// 超小屏幕适配
+
 @media (max-width: 480px) {
   .wrap {
     height: calc(100vh - 5rem);

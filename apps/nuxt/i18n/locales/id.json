@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "Belajar bahasa Inggris, satu ketukan setiap waktu, alat latihan sumber terbuka",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "Mulai latihan kata",
 	"start_article_practice": "Mulai latihan artikel",
 	"home_word_practice": "Latihan kata",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "Kode QR Grup WeChat",
 	"github_project": "Proyek GitHub",
 	"ie_not_supported": "Browser IE tidak didukung",
-	"ie_use_modern_browser": "Type Words dibangun dengan teknologi modern, silakan gunakan Chrome, Edge, Firefox atau browser modern lainnya",
+	"ie_use_modern_browser": "Quiz Words dibangun dengan teknologi modern, silakan gunakan Chrome, Edge, Firefox atau browser modern lainnya",
 	"download_chrome": "Unduh Chrome",
 	"i_understand": "Saya mengerti",
 	"ignore_case": "Abaikan huruf besar/kecil",
@@ -472,7 +472,7 @@
 	"qa1_q2": "Proyek ini adalah open source, Anda dapat men-deploy sendiri.",
 	"qa2_a": "Tidak dapat mengetik, keyboard tidak merespons?",
 	"qa3_a": "Di mana datanya? Bagaimana cara menggunakan di beberapa komputer/perangkat?",
-	"qa3_q1": "Semua data pengguna disimpan di browser lokal. Jika Anda perlu menggunakan Type Words di perangkat atau browser yang berbeda, Anda perlu mengekspor dan mengimpor data secara manual.",
+	"qa3_q1": "Semua data pengguna disimpan di browser lokal. Jika Anda perlu menggunakan Quiz Words di perangkat atau browser yang berbeda, Anda perlu mengekspor dan mengimpor data secara manual.",
 	"qa3_q2": "Pengaturan -> Pengaturan Data -> Ekspor data di komputer asli -> Kirim ke komputer baru melalui software sosial -> Impor di komputer baru",
 	"qa3_q3": "Sistem akun sedang dalam pengembangan.",
 	"qa4_a": "Situs web merencanakan terlalu banyak kata secara otomatis, bagaimana cara mengubahnya?",

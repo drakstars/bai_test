@@ -73,7 +73,7 @@ const startExam = () => {
 
 const onAnswered = res => {
   console.log('Answered:', res)
-  // 可收集中间过程（非必须）
+
 }
 
 const submitAll = () => {

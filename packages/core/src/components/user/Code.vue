@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<IProps>(), {
   size: 'large',
 })
 
-// 发送验证码
+
 async function sendVerificationCode() {
   let res = props.validateField()
   if (res) {

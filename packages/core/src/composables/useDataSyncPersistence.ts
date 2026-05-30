@@ -199,11 +199,11 @@ async function compareResultByType(
     if (remoteMeta.data_version == null) {
       return CompareResult.NoRemote
     } else {
-      //如果本地没数据，但远程有版本号，则远程新
+
       return CompareResult.RemoteNewer
     }
   }
-  //如果本地没有更新日期，那必定是刚更新版本，updated_at和sb 一起上线，这里特殊处理即可
+
   if (!localMeta?.updated_at) return CompareResult.LocalNewer
   const currentVersion = getDataVersion(type)
   return shouldFetchRemote(localMeta.updated_at, remoteMeta.updated_at, remoteMeta.data_version, currentVersion)
@@ -372,7 +372,7 @@ export function useDataSyncPersistence() {
     return null
   }
 
-  // 同步数据，远程新则拉取（默认），本地新则推送（默认）
+
   async function syncData(
     localData: Partial<Record<SyncDataType, SaveData | null>>,
     options?: SaveLocalAndSyncOptions
@@ -420,10 +420,10 @@ export function useDataSyncPersistence() {
 
   async function saveLocalAndSync(type: SyncDataType, data: unknown, options?: SaveLocalAndSyncOptions) {
     try {
-      //先取出本地数据的meta值，以用后续与云端数据比较
+
       const localMeta = await getLocalPersistMeta(type)
       // console.log('saveLocalAndSync-localMeta', localMeta)
-      //先保存，再同步
+
       const updated_at = new Date().toISOString()
       await persistLocalState(type, data, updated_at)
 
@@ -435,13 +435,13 @@ export function useDataSyncPersistence() {
       // console.log('saveLocalAndSync-remoteMetaMap', remoteMetaMap.get(type))
       const compareResult = await compareResultByType(type, remoteMetaMap, localMeta)
       console.log('saveLocalAndSync-compareResult', CompareResult[compareResult], type)
-      //如果云端数据较新并允许拉取，则拉取云端数据，之后不再上传本地数据
+
       if (compareResult === CompareResult.RemoteNewer && options?.pullWhenRemoteNewer !== false) {
         const remoteData = await fetchServerDatas([type], options?.client)
         if (remoteData?.length) {
           await applyRemoteDataByType(type, remoteData[0], store, settingStore)
         }
-        //防止后端数据为空，本地强制上传了
+
         return
       }
       const data_version = getDataVersion(type)
@@ -581,7 +581,7 @@ export function useDataSyncPersistence() {
       dict: { val: d1 },
       [PRACTICE_WORD_CACHE.key]: null,
       [PRACTICE_ARTICLE_CACHE.key]: null,
-      // @deprecated 大版本5废弃
+
       [APP_VERSION.key]: null,
     }
     store.setState(d)

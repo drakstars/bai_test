@@ -12,7 +12,7 @@ dayjs.extend(utc)
 const baseStore = useBaseStore()
 let type = $ref('today')
 
-// 将 fsrsData 转换为数组
+
 const fsrsList = computed(() => {
   return Object.entries(baseStore.fsrsData)
     .filter(([word, card]) => {
@@ -28,11 +28,11 @@ const fsrsList = computed(() => {
 
 <template>
   <div class="p-4 box-border h-screen flex flex-col">
-    <Header title="学习记录" />
+    <Header :title="$t('learning_record')" />
     <div class="flex justify-end items-center mb-4">
-      <span class="mr-4">共 {{ fsrsList.length }} 条记录</span>
-      <BaseButton :type="type === 'today' ? 'primary' : 'info'" @click="type = 'today'">今日学习</BaseButton>
-      <BaseButton :type="type === 'all' ? 'primary' : 'info'" @click="type = 'all'">所有记录</BaseButton>
+      <span class="mr-4">{{ $t('fsrs_total_records', { count: fsrsList.length }) }}</span>
+      <BaseButton :type="type === 'today' ? 'primary' : 'info'" @click="type = 'today'">{{ $t('fsrs_today_study') }}</BaseButton>
+      <BaseButton :type="type === 'all' ? 'primary' : 'info'" @click="type = 'all'">{{ $t('fsrs_all_records') }}</BaseButton>
     </div>
 
     <FsrsRecordsTable :rows="fsrsList" />

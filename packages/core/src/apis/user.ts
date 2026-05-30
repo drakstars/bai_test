@@ -2,7 +2,7 @@ import http from '../utils/http.ts'
 
 import {CodeType} from '../types';
 
-// 用户登录接口
+
 export interface LoginParams {
   account?: string
   password?: string
@@ -30,7 +30,7 @@ export interface User {
 }
 
 
-// 用户注册接口
+
 export interface RegisterParams {
   account: string
   password: string
@@ -48,20 +48,20 @@ export interface RegisterResponse {
   }
 }
 
-// 发送验证码接口
+
 export interface SendCodeParams {
   val: string
   type: CodeType
 }
 
-// 重置密码接口
+
 export interface ResetPasswordParams {
   account: string
   code: string
   newPassword: string
 }
 
-// 微信登录接口
+
 export interface WechatLoginParams {
   code: string
   state?: string
@@ -91,27 +91,27 @@ export function refreshToken() {
   return http<{ token: string }>('user/refreshToken', null, null, 'post')
 }
 
-// 获取用户信息
+
 export function getUserInfo() {
   return http<User>('user/userInfo', null, null, 'get')
 }
 
-// 设置密码
+
 export function setPassword(data) {
   return http('user/setPassword', data, null, 'post')
 }
 
-// 修改邮箱
+
 export function changeEmailApi(data) {
   return http('user/changeEmail', data, null, 'post')
 }
 
-// 修改手机号
+
 export function changePhoneApi(data) {
   return http('user/changePhone', data, null, 'post')
 }
 
-// 修改用户信息
+
 export function updateUserInfoApi(data) {
   return http('user/updateUserInfo', data, null, 'post')
 }

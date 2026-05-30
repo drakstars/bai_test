@@ -70,7 +70,7 @@ const list = $computed(() => {
       t.push({type: 'word-end', val: props.word.word.slice(props.word.input.length)})
     }
   } else {
-    //word-end这个class用于光标定位，光标会定位到第一个word-end的位置
+
     t.push({type: 'word-end', val: props.word.word})
   }
   return t

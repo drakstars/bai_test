@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<ModalProps>(), {
   keyboard: true,
 })
 
-//在Message.confirm里面，因为是一个新的vue实例，所有没有i18n，只能靠外面传
+
 const localeT = $computed(() => {
   if (props.t) return props.t
   const { t: i18nT } = useI18n()
@@ -61,7 +61,7 @@ async function close() {
       return
     }
   }
-  //记录停留时间，避免时间太短，弹框闪烁
+
   let stayTime = Date.now() - openTime
   let closeTime = 300
   if (stayTime < 500) {

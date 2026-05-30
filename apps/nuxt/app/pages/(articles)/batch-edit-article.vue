@@ -47,8 +47,8 @@ function checkDataChange() {
       ) {
 
         return MessageBox.confirm(
-          '检测到数据有变动，是否保存？',
-          '提示',
+          t('data_changed_save_confirm'),
+          t('notice'),
           async () => {
             let r = await editArticleRef.save('save')
             if (r) resolve(true)
@@ -61,8 +61,8 @@ function checkDataChange() {
     } else {
       if (editArticle.title.trim() && editArticle.text.trim()) {
         return MessageBox.confirm(
-          '检测到数据有变动，是否保存？',
-          '提示',
+          t('data_changed_save_confirm'),
+          t('notice'),
           async () => {
             let r = await editArticleRef.save('save')
             if (r) resolve(true)
@@ -93,7 +93,7 @@ function saveArticle(val: Article): boolean {
   } else {
     let has = runtimeStore.editDict.articles.find((item: Article) => item.title === val.title)
     if (has) {
-      Toast.error('已存在同名文章！')
+      Toast.error(t('article_already_exists'))
       return false
     }
     val.id = nanoid(6)
@@ -103,8 +103,8 @@ function saveArticle(val: Article): boolean {
     })
   }
   article = cloneDeep(val)
-  //TODO 保存完成后滚动到对应位置
-  Toast.success('保存成功！')
+
+  Toast.success(t('save_success'))
   syncBookInMyStudyList()
   return true
 }
@@ -170,8 +170,8 @@ function importData(e: any) {
 
       if (repeat.length) {
         MessageBox.confirm(
-          '文章"' + repeat.map(v => v.title).join(', ') + '" 已存在，是否覆盖原有文章？',
-          '检测到重复文章',
+          t('article_exists_overwrite_confirm', { title: repeat.map(v => v.title).join(', ') }),
+          t('duplicate_article_detected'),
           () => {
             repeat.map(v => {
               runtimeStore.editDict.articles[v.index] = v
@@ -184,16 +184,16 @@ function importData(e: any) {
             e.target.value = ''
             importLoading = false
             syncBookInMyStudyList()
-            Toast.success('导入成功！')
+            Toast.success(t('import_success'))
           },
           {t}
         )
       } else {
         syncBookInMyStudyList()
-        Toast.success('导入成功！')
+        Toast.success(t('import_success'))
       }
     } else {
-      Toast.success('导入失败！原因：没有数据')
+      Toast.error(t('import_failed_empty'))
     }
     e.target.value = ''
     importLoading = false
@@ -209,7 +209,7 @@ async function exportData(val: { type: string; data?: Article }) {
   let filename = ''
   if (type === 'item') {
     if (!data.id) {
-      return Toast.error('请选择文章')
+      return Toast.error(t('please_select_article'))
     }
     list = [data]
     filename = runtimeStore.editDict.name + `-${data.title}`
@@ -230,7 +230,7 @@ async function exportData(val: { type: string; data?: Article }) {
   wb.Sheets['Sheet1'] = XLSX.utils.json_to_sheet(sheetData)
   wb.SheetNames = ['Sheet1']
   XLSX.writeFile(wb, `${filename}.xlsx`)
-  Toast.success(filename + ' 导出成功！')
+  Toast.success(t('export_success', { name: filename }))
   showExport = false
   exportLoading = false
 }
@@ -266,31 +266,31 @@ function updateList(e) {
           </div>
         </template>
       </List>
-      <div class="add" v-if="!article.title">正在添加新文章...</div>
+      <div class="add" v-if="!article.title">{{ $t('adding_new_article') }}</div>
       <div class="footer">
         <UploadButton
           @change="importData"
           :loading="importLoading"
           accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
         >
-          导入
+          {{ $t('import') }}
         </UploadButton>
         <div class="export" style="position: relative" @click.stop="null">
-          <BaseButton @click="showExport = true">导出</BaseButton>
+          <BaseButton @click="showExport = true">{{ $t('export') }}</BaseButton>
           <MiniDialog v-model="showExport" style="width: 8rem; bottom: calc(100% + 1rem); top: unset">
-            <div class="mini-row-title">导出选项</div>
+            <div class="mini-row-title">{{ $t('export_options') }}</div>
             <div class="flex">
-              <BaseButton :loading="exportLoading" @click="exportData({ type: 'all' })">全部</BaseButton>
+              <BaseButton :loading="exportLoading" @click="exportData({ type: 'all' })">{{ $t('all') }}</BaseButton>
               <BaseButton
                 :loading="exportLoading"
                 :disabled="!article.id"
                 @click="exportData({ type: 'item', data: article })"
-                >当前
+                >{{ $t('current') }}
               </BaseButton>
             </div>
           </MiniDialog>
         </div>
-        <BaseButton @click="add">新增</BaseButton>
+        <BaseButton @click="add">{{ $t('add') }}</BaseButton>
       </div>
     </div>
 

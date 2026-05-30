@@ -32,7 +32,7 @@ interface Category {
   subcategories?: Subcategory[]
 }
 
-// 资源分类
+
 const categories = ref<Category[]>([
   {
     id: 'new-concept',
@@ -212,10 +212,10 @@ const categories = ref<Category[]>([
             link: 'https://pan.quark.cn/s/30777ceba5b9',
           },
           // {
-          //   name: '实用英语语法',
-          //   author: '张道真',
-          //   features: '国内经典语法教材，内容详实全面，例句丰富，适合作为工具书查阅',
-          //   suitable: '需要权威参考书的学生或教师',
+
+
+
+
           //   difficulty: '',
           //   link: 'https://pan.baidu.com/s/xxx',
           // },
@@ -275,8 +275,8 @@ const categories = ref<Category[]>([
       },
       // {
       //   name: 'BBC Learning English',
-      //   description: 'BBC官方英语学习资源，涵盖多方面内容',
-      //   difficulty: '中高级',
+
+
       //   link: 'https://pan.baidu.com/s/xxx',
       // },
       {
@@ -295,10 +295,10 @@ const categories = ref<Category[]>([
   },
 ])
 
-// 当前选中的分类
+
 const selectedCategory = ref('all')
 
-// 筛选后的资源
+
 const filteredResources = computed(() => {
   if (selectedCategory.value === 'all') {
     return categories.value
@@ -306,7 +306,7 @@ const filteredResources = computed(() => {
   return categories.value.filter(cat => cat.id === selectedCategory.value)
 })
 
-// 跳转到网盘链接
+
 const openLink = (url: string) => {
   window.open(url, '_blank')
 }
@@ -315,7 +315,7 @@ const openLink = (url: string) => {
 <template>
   <BasePage>
     <div class="flex flex-col items-center justify-center px-4 py-8">
-      <!-- 页面标题 -->
+      
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold mb-4">{{ $t('resource_sharing') }}</h1>
         <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -323,7 +323,7 @@ const openLink = (url: string) => {
         </p>
       </div>
 
-      <!-- 分类筛选 -->
+      
       <div class="card-white flex flex-wrap justify-center gap-2 mb-8 p-4">
         <BaseButton :type="selectedCategory === 'all' ? 'primary' : 'info'" @click="selectedCategory = 'all'">
           {{ $t('all_resources') }}
@@ -338,7 +338,7 @@ const openLink = (url: string) => {
         </BaseButton>
       </div>
 
-      <!-- 资源列表 -->
+      
       <div class="w-full">
         <div v-for="category in filteredResources" :key="category.id" class="mb-12">
           <div class="text-center mb-6">
@@ -348,7 +348,7 @@ const openLink = (url: string) => {
             </p>
           </div>
 
-          <!-- 如果有子分类，显示子分类 -->
+          
           <template v-if="category.subcategories">
             <div v-for="subcategory in category.subcategories" :key="subcategory.name" class="mb-10">
               <div class="text-center mb-4">
@@ -371,7 +371,7 @@ const openLink = (url: string) => {
             </div>
           </template>
 
-          <!-- 如果没有子分类，直接显示资源 -->
+          
           <template v-else>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               <ResourceCard
@@ -385,7 +385,7 @@ const openLink = (url: string) => {
         </div>
       </div>
 
-      <!-- 页面底部 -->
+      
       <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
         <div class="card-white">
           <div class="text-xl font-bold mb-4">温馨提示</div>

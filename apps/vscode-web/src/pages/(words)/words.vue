@@ -88,15 +88,13 @@ function resetCacheData() {
   wordPersistence.clear()
 }
 
-/**
- * 清空练习缓存前，将进行中的统计数据落库到 store.sdict.statistics，避免学习记录丢失
- */
+
 function saveStatBeforeClear() {
   if (!isSaveData) return
   flushStatToStore(practiceData.statStoreData)
 }
 
-// runtimeStore.globalLoading练习界面，退出时会调用一个保存，可能会卡住。当调用完成再init
+
 watch(
   [() => store.load, () => runtimeStore.globalLoading],
   ([a, b]) => {
@@ -135,7 +133,7 @@ watch(
 
 async function onvisibilitychange() {
   if (!document.hidden) {
-    //当页面可见时，检查是否需要从远程拉取数据
+
     const d = await wordPersistence.fetch()
     if (d) {
       practiceData = d
@@ -198,7 +196,7 @@ function startPractice(practiceMode: WordPracticeMode, resetCache: boolean = fal
       complete: store.sdict.complete,
       wordPracticeMode: settingStore.wordPracticeMode,
     })
-    //把是否是第一次设置为false
+
     if (settingStore.first) settingStore.first = false
     nav(WordPracticeModeUrlMap[practiceMode] + '/' + store.sdict.id, {}, practiceData)
   } else {
@@ -236,10 +234,7 @@ const cacheSpendMs = $computed(() => practiceData.statStoreData?.spend ?? 0)
 
 const todayDateKey = $computed(() => dayjs().format('YYYY-MM-DD'))
 
-/**
- * 缓存记录中每一天对应的学习毫秒数 Map<'YYYY-MM-DD', spendMs>
- * 有 segments 时按片段精确分组，否则退回到 startDate + spend 整体归一天
- */
+
 const cacheDaySpendMap = $computed((): Map<string, number> => {
   const st = practiceData.statStoreData
   const map = new Map<string, number>()
@@ -250,7 +245,7 @@ const cacheDaySpendMap = $computed((): Map<string, number> => {
       map.set(key, (map.get(key) ?? 0) + (segEnd - segStart))
     }
   } else {
-    // 老数据 / 无 segments：全部归到 startDate 那天
+
     map.set(dayjs(st.startDate).format('YYYY-MM-DD'), st.spend)
   }
   console.log('map',map,practiceData.statStoreData)
@@ -265,14 +260,14 @@ const calendarHighlightDates = $computed(() => {
   for (const s of allWordStatistics) {
     set.add(dayjs(s.startDate).format('YYYY-MM-DD'))
   }
-  // 把缓存记录中所有出现过的天都高亮（支持跨天）
+
   for (const key of cacheDaySpendMap.keys()) {
     set.add(key)
   }
   return [...set]
 })
 
-/** 已落库统计总毫秒（全 bookList） */
+
 const persistedTotalMs = $computed(() => total(allWordStatistics, 'spend'))
 
 const totalSpend = $computed(() => {
@@ -293,7 +288,7 @@ const todayTotalSpend = $computed(() => {
 
 const totalDay = $computed(() => {
   const set = new Set(allWordStatistics.map(v => dayjs(v.startDate).format('YYYY-MM-DD')))
-  // 把缓存记录中所有出现过的天都计入（支持跨天）
+
   for (const key of cacheDaySpendMap.keys()) {
     set.add(key)
   }
@@ -319,20 +314,20 @@ function onSelectCalendarDate(dateKey: string) {
     }
   }
   const st = practiceData.statStoreData
-  // 缓存记录跨天时，只要该天在 cacheDaySpendMap 中有记录就展示
+
   if (st?.spend && cacheDaySpendMap.has(dateKey)) {
     const daySpend = cacheDaySpendMap.get(dateKey)!
     const cacheKeys = [...cacheDaySpendMap.keys()]
     const keyIdx = cacheKeys.indexOf(dateKey)
     const isMultiDay = cacheKeys.length > 1
-    // 推算该天在整次练习中的角色（练习未结束，最后一天标为"学习中"而非"学习结束"）
+
     let sessionRole: StudyDayRow['sessionRole']
     if (!isMultiDay) {
       sessionRole = 'single'
     } else if (keyIdx === 0) {
       sessionRole = 'start'
     } else if (keyIdx === cacheKeys.length - 1) {
-      sessionRole = 'middle' // 最后一天仍在进行中，用 middle 表示
+      sessionRole = 'middle'
     } else {
       sessionRole = 'middle'
     }
@@ -443,7 +438,7 @@ async function onShufflePracticeSettingOk(total) {
     {},
     {
       ...practiceData,
-      total, //用于再来一组时，随机出正确的长度，因为练习中可能会点击已掌握，导致重学一遍之后长度变少，如果再来一组，此时长度就不正确
+      total,
     }
   )
 }

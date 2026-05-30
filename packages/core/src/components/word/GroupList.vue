@@ -9,13 +9,13 @@ const isVisible = ref(false)
 const scrollContainer = ref<HTMLElement | null>(null)
 const itemRefs = ref<(HTMLElement | null)[]>([])
 
-// 计算每个组的词数
+
 const getGroupWordCount = (groupIndex: number) => {
   const totalLength = store.sdict.length
   const perDay = store.sdict.perDayStudyNumber
   const totalGroups = store.groupLength
 
-  // 如果是最后一组且不能被整除，则显示余数
+
   if (groupIndex === totalGroups && totalLength % perDay !== 0) {
     return totalLength % perDay
   }
@@ -30,23 +30,23 @@ const handleMouseLeave = () => {
   isVisible.value = false
 }
 
-// 当弹框显示时，自动滚动到选中的item
+
 watch(isVisible, async newVal => {
   if (newVal) {
-    // 等待DOM更新和过渡动画开始
+
     await nextTick()
-    // 再等待一小段时间确保元素已渲染
-    const currentIndex = store.currentGroup - 1 // currentGroup是1-based，数组是0-based
+
+    const currentIndex = store.currentGroup - 1
     const targetItem = itemRefs.value[currentIndex]
     const container = scrollContainer.value
 
     if (targetItem && container) {
-      // 计算目标item相对于容器的位置
+
       const itemTop = targetItem.offsetTop
       const itemHeight = targetItem.offsetHeight
       const containerHeight = container.clientHeight
 
-      // 滚动到目标item，使其居中显示
+
       container.scrollTo({
         top: itemTop - containerHeight / 2 + itemHeight / 2,
       })

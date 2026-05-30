@@ -51,7 +51,7 @@ let progress = $ref(0)
 let failCount = $ref(0)
 let resultRef = $ref<HTMLDivElement>()
 const TranslateEngineOptions = [
-  // {value: 'youdao', label: '有道'},
+
   { value: 'baidu', label: '百度' },
 ]
 
@@ -93,12 +93,12 @@ function apply(isHandle: boolean = true) {
   failCount = genArticleSectionData(editArticle)
 }
 
-//分句原文
+
 function splitText() {
   editArticle.text = splitEnArticle2(editArticle.text)
 }
 
-//分句翻译
+
 function splitTranslateText() {
   editArticle.textTranslate = splitCNArticle2(editArticle.textTranslate.trim())
 }
@@ -114,9 +114,9 @@ async function startNetworkTranslate() {
   editArticle.titleTranslate = ''
   editArticle.textTranslate = ''
   apply()
-  //注意！！！
-  //这里需要用异步，因为watch了article.networkTranslate，改变networkTranslate了之后，会重新设置article.sections
-  //导致getNetworkTranslate里面拿到的article.sections是废弃的值
+
+
+
   setTimeout(async () => {
     await getNetworkTranslate(editArticle, TranslateEngine.Baidu, false, (v: number) => {
       progress = v
@@ -169,7 +169,7 @@ function save(option: 'save' | 'saveAndNext') {
     let d = cloneDeep(editArticle)
     if (!d.id) d.id = nanoid(6)
     delete d.sections
-    //这个console.json方法特意将array压缩了，而不压缩其他，方便可视化复制到文章的json里面去
+
     copy(console.json(d, 2))
     // copy(JSON.stringify(d, null, 2))
     emit(option as any, editArticle)
@@ -177,10 +177,10 @@ function save(option: 'save' | 'saveAndNext') {
   })
 }
 
-//不知道为什么直接用editArticle，取到是空的默认值
+
 defineExpose({ save, getEditArticle: () => cloneDeep(editArticle) })
 
-// 处理音频文件上传
+
 async function handleAudioChange(e: any) {
   let uploadFile = e.target?.files?.[0]
   if (!uploadFile) return
@@ -188,27 +188,27 @@ async function handleAudioChange(e: any) {
     id: nanoid(),
     file: uploadFile,
   }
-  //把文件存到indexDB
+
   await update(LOCAL_FILE_KEY, val => {
     if (val) val.push(data)
     else val = [data]
     return val
   })
-  //保存id，后续从indexDb里读文件来使用
+
   editArticle.audioFileId = data.id
   editArticle.audioSrc = ''
-  // 重置input，确保即使选择同一个文件也能触发change事件
+
   e.target.value = ''
   Toast.success($t('audio_added_success'))
 }
 
-// 处理LRC文件上传
+
 function handleChange(e: any) {
-  // 获取上传的文件
+
   let uploadFile = e.target?.files?.[0]
   if (!uploadFile) return
 
-  // 读取文件内容
+
   let reader = new FileReader()
   reader.readAsText(uploadFile, 'UTF-8')
   reader.onload = function (e) {
@@ -243,7 +243,7 @@ function handleChange(e: any) {
     }
   }
 
-  // 重置input，确保即使选择同一个文件也能触发change事件
+
   e.target.value = ''
 }
 
@@ -801,7 +801,7 @@ function minusStartTime(val: Sentence) {
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -820,11 +820,11 @@ function minusStartTime(val: Sentence) {
         font-size: 1.2rem;
       }
 
-      // 表单元素优化
+
       .base-input,
       .base-textarea {
         width: 100%;
-        font-size: 16px; // 防止iOS自动缩放
+        font-size: 16px;
       }
 
       .base-textarea {
@@ -832,7 +832,7 @@ function minusStartTime(val: Sentence) {
         max-height: 30vh;
       }
 
-      // 按钮组优化
+
       .flex.gap-2 {
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -844,7 +844,7 @@ function minusStartTime(val: Sentence) {
         }
       }
 
-      // 文章翻译区域优化
+
       .article-translate {
         .section {
           margin-bottom: 1rem;
@@ -877,7 +877,7 @@ function minusStartTime(val: Sentence) {
         }
       }
 
-      // 选项区域优化
+
       .options {
         flex-direction: column;
         align-items: flex-start;

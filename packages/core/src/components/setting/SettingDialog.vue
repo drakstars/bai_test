@@ -11,7 +11,7 @@ const Dialog = defineAsyncComponent(() => import('@typewords/base/Dialog'))
 
 const props = defineProps<{
   type: 'article' | 'word'
-  /** 外部传入时直接打开到指定 tab（3 = 音效设置） */
+  
   initialTab?: number
 }>()
 
@@ -24,7 +24,7 @@ let show = $ref(false)
 
 useDisableEventListener(() => show)
 
-/** 供外部调用：打开弹框并跳转到音效设置 tab */
+
 function openSoundTab() {
   tabIndex = 3
   show = true
@@ -53,7 +53,7 @@ defineExpose({ openSoundTab })
             </div>
             <div class="tab" :class="tabIndex === 3 && 'active'" @click="tabIndex = 3">
               <IconClarityVolumeUpLine width="20" />
-              <span>音效设置</span>
+              <span>{{ $t('sound_settings') || 'Cài đặt âm thanh' }}</span>
             </div>
           </div>
         </div>

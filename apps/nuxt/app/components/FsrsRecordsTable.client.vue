@@ -24,7 +24,7 @@ defineProps<{
   rows: FsrsRow[]
 }>()
 
-// 标记挂在 app 上：模块级变量在 HMR/重载时会丢，但 app 不变，避免重复 use() 导致重复注册
+
 const FSRS_VXE_INSTALLED = '__fsrsVxeTableInstalled' as const
 
 const instance = getCurrentInstance()
@@ -38,6 +38,11 @@ if (instance) {
 
 function formatDate(v: string | Date | null | undefined) {
   return v ? dayjs(v).format('YYYY-MM-DD HH:mm') : '-'
+}
+
+function getStateKey(state: number) {
+  const keys = ['fsrs_state_new', 'fsrs_state_learning', 'fsrs_state_review', 'fsrs_state_relearning']
+  return keys[state] || ''
 }
 </script>
 
@@ -60,29 +65,29 @@ function formatDate(v: string | Date | null | undefined) {
         },
       }"
     >
-      <vxe-column field="word" title="单词" min-width="120" fixed="left" sortable />
-      <vxe-column field="last_review" title="最近复习日期" min-width="160" sortable>
+      <vxe-column field="word" :title="$t('fsrs_word')" min-width="120" fixed="left" sortable />
+      <vxe-column field="last_review" :title="$t('fsrs_last_review')" min-width="160" sortable>
         <template #default="{ row }">
           {{ formatDate(row.last_review as string | Date | null | undefined) }}
         </template>
       </vxe-column>
-      <vxe-column field="due" title="下次复习日期" min-width="160" sortable>
+      <vxe-column field="due" :title="$t('fsrs_due')" min-width="160" sortable>
         <template #default="{ row }">
           {{ formatDate(row.due as string | Date | null | undefined) }}
         </template>
       </vxe-column>
-      <vxe-column field="state" title="状态" min-width="100">
+      <vxe-column field="state" :title="$t('fsrs_state')" min-width="100">
         <template #default="{ row }">
-          {{ State[row.state as number] }}
+          {{ $t(getStateKey(row.state as number)) }}
         </template>
       </vxe-column>
-      <vxe-column field="stability" title="记忆稳定性" min-width="100" sortable />
-      <vxe-column field="difficulty" title="难度" min-width="80" sortable />
-      <!--      <vxe-column field="elapsed_days" title="经过天数" min-width="90" sortable/>-->
-      <vxe-column field="scheduled_days" title="计划间隔" min-width="90" sortable />
-      <!--      <vxe-column field="learning_steps" title="学习步骤" min-width="90" />-->
-      <vxe-column field="reps" title="复习次数" min-width="90" sortable />
-      <vxe-column field="lapses" title="遗忘次数" min-width="90" sortable />
+      <vxe-column field="stability" :title="$t('fsrs_stability')" min-width="100" sortable />
+      <vxe-column field="difficulty" :title="$t('fsrs_difficulty')" min-width="80" sortable />
+      
+      <vxe-column field="scheduled_days" :title="$t('fsrs_scheduled_days')" min-width="90" sortable />
+      
+      <vxe-column field="reps" :title="$t('fsrs_reps')" min-width="90" sortable />
+      <vxe-column field="lapses" :title="$t('fsrs_lapses')" min-width="90" sortable />
     </vxe-table>
   </div>
 </template>

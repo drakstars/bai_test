@@ -23,7 +23,7 @@ const props = defineProps({
     type: String,
     default: () => ''
   },
-  //改变index，是否使用动画
+
   changeActiveIndexUseAnim: {
     type: Boolean,
     default: true

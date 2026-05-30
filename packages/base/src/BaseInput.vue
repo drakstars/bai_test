@@ -36,7 +36,7 @@ let focus = $ref(false)
 let inputEl = $ref<HTMLDivElement>()
 const passwordVisible = ref(false)
 
-//当聚焦时，禁用输入监听
+
 watch(
   () => focus,
   (n: any) => {

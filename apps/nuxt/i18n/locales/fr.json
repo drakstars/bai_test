@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "Apprenez l'anglais, une frappe à la fois, outil de pratique open source",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "Commencer la pratique des mots",
 	"start_article_practice": "Commencer la pratique des articles",
 	"home_word_practice": "Pratique des mots",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "Code QR du groupe WeChat",
 	"github_project": "Projet GitHub",
 	"ie_not_supported": "Le navigateur IE n'est pas pris en charge",
-	"ie_use_modern_browser": "Type Words est construit avec une technologie moderne, veuillez utiliser Chrome, Edge, Firefox ou d'autres navigateurs modernes",
+	"ie_use_modern_browser": "Quiz Words est construit avec une technologie moderne, veuillez utiliser Chrome, Edge, Firefox ou d'autres navigateurs modernes",
 	"download_chrome": "Télécharger Chrome",
 	"i_understand": "Je comprends",
 	"ignore_case": "Ignorer la casse",
@@ -472,7 +472,7 @@
 	"qa1_q2": "Le projet est open source, vous pouvez le déployer vous-même.",
 	"qa2_a": "Impossible de taper, le clavier ne répond pas ?",
 	"qa3_a": "Où sont les données ? Comment utiliser sur plusieurs ordinateurs/appareils ?",
-	"qa3_q1": "Toutes les données utilisateur sont enregistrées dans le navigateur local. Si vous devez utiliser Type Words sur différents appareils ou navigateurs, vous devez exporter et importer les données manuellement.",
+	"qa3_q1": "Toutes les données utilisateur sont enregistrées dans le navigateur local. Si vous devez utiliser Quiz Words sur différents appareils ou navigateurs, vous devez exporter et importer les données manuellement.",
 	"qa3_q2": "Paramètres -> Paramètres des données -> Exporter les données sur l'ordinateur d'origine -> Envoyer au nouvel ordinateur via un logiciel social -> Importer sur le nouvel ordinateur",
 	"qa3_q3": "Le système de compte est en cours de développement.",
 	"qa4_a": "Le site planifie automatiquement trop de mots, comment modifier ?",

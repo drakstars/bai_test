@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "Aprenda inglês, uma tecla de cada vez, ferramenta de prática de código aberto",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "Iniciar prática de palavras",
 	"start_article_practice": "Iniciar prática de artigos",
 	"home_word_practice": "Prática de palavras",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "Código QR do grupo WeChat",
 	"github_project": "Projeto GitHub",
 	"ie_not_supported": "O navegador IE não é suportado",
-	"ie_use_modern_browser": "Type Words é construído com tecnologia moderna, use Chrome, Edge, Firefox ou outros navegadores modernos",
+	"ie_use_modern_browser": "Quiz Words é construído com tecnologia moderna, use Chrome, Edge, Firefox ou outros navegadores modernos",
 	"download_chrome": "Baixar Chrome",
 	"i_understand": "Entendi",
 	"ignore_case": "Ignorar maiúsculas",
@@ -472,7 +472,7 @@
 	"qa1_q2": "O projeto é de código aberto, você pode implantá-lo você mesmo.",
 	"qa2_a": "Não consegue digitar, teclado não responde?",
 	"qa3_a": "Onde estão os dados? Como usar em vários computadores/dispositivos?",
-	"qa3_q1": "Todos os dados do usuário são salvos no navegador local. Se você precisar usar o Type Words em diferentes dispositivos ou navegadores, precisará exportar e importar dados manualmente.",
+	"qa3_q1": "Todos os dados do usuário são salvos no navegador local. Se você precisar usar o Quiz Words em diferentes dispositivos ou navegadores, precisará exportar e importar dados manualmente.",
 	"qa3_q2": "Configurações -> Configurações de dados -> Exportar dados no computador original -> Enviar para o novo computador via software social -> Importar no novo computador",
 	"qa3_q3": "O sistema de contas está em desenvolvimento.",
 	"qa4_a": "O site planeja muitas palavras automaticamente, como modificar?",

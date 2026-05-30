@@ -15,20 +15,20 @@ watch(model, visible => {
 })
 
 async function onBackup() {
-  await exportData('已自动备份数据', 'TypeWords数据备份.zip')
+  await exportData('Đã tự động sao lưu dữ liệu', 'TypeWords-backup.zip')
   backupTriggered = true
 }
 </script>
 
 <template>
-  <Dialog v-model="model" title="数据备份">
+  <Dialog v-model="model" title="Sao lưu dữ liệu">
     <div class="flex flex-col gap-3 p-4 w-100">
       <div>
-        进行下一步操作前，请先点击<span class="text-red font-bold"> 数据备份 </span>按钮备份当前数据，避免误操作导致数据无法恢复
+        Trước khi thực hiện bước tiếp theo, vui lòng nhấn nút<span class="text-red font-bold"> Sao lưu dữ liệu </span>để lưu dữ liệu hiện tại, tránh mất dữ liệu do thao tác nhầm
       </div>
 
       <div class="flex justify-end mt-4">
-        <BaseButton :loading="backupLoading" @click="onBackup">数据备份</BaseButton>
+        <BaseButton :loading="backupLoading" @click="onBackup">Sao lưu dữ liệu</BaseButton>
         <slot :disabled="!backupTriggered && !IS_DEV"></slot>
       </div>
     </div>

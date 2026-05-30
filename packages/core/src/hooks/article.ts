@@ -9,10 +9,10 @@ import { nanoid } from 'nanoid'
 import { DictId } from '../config/env'
 
 function parseSentence(sentence: string) {
-  // 先统一一些常见的“智能引号” -> 直引号，避免匹配问题
+
   sentence = sentence
-    .replace(/[\u2018\u2019\u201A\u201B]/g, "'") // 各种单引号 → '
-    .replace(/[\u201C\u201D\u201E\u201F]/g, '"') // 各种双引号 → "
+    .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u201F]/g, '"')
 
   const len = sentence.length
   const tokens = []
@@ -21,7 +21,7 @@ function parseSentence(sentence: string) {
   while (i < len) {
     const ch = sentence[i]
 
-    // 跳过空白（但不把空白作为 token）
+
     if (/\s/.test(ch)) {
       i++
       continue
@@ -29,7 +29,7 @@ function parseSentence(sentence: string) {
 
     const rest = sentence.slice(i)
 
-    // 1) 货币 + 数字（$1,000.50 或 ¥200 或 €100.5）
+
     let m = rest.match(/^[\$¥€£]\d{1,3}(?:,\d{3})*(?:\.\d+)?%?/)
     if (m) {
       tokens.push({ word: m[0], start: i, end: i + m[0].length, type: PracticeArticleWordType.Number })
@@ -37,7 +37,7 @@ function parseSentence(sentence: string) {
       continue
     }
 
-    // 2) 数字/小数/百分比（100% 3.14 1,000.00）
+
     m = rest.match(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?%?/)
     if (m) {
       tokens.push({ word: m[0], start: i, end: i + m[0].length, type: PracticeArticleWordType.Number })
@@ -45,7 +45,7 @@ function parseSentence(sentence: string) {
       continue
     }
 
-    // 3) 带点缩写或多段缩写（U.S. U.S.A. e.g. i.e. Ph.D.）
+
     m = rest.match(/^[A-Za-z]+(?:\.[A-Za-z]+)+\.?/)
     if (m) {
       tokens.push({ word: m[0], start: i, end: i + m[0].length, type: PracticeArticleWordType.Word })
@@ -53,7 +53,7 @@ function parseSentence(sentence: string) {
       continue
     }
 
-    // 4) 单词（包含撇号/连字符，如 it's, o'clock, we'll, mother-in-law）
+
     m = rest.match(/^[A-Za-z0-9]+(?:[\'\-][A-Za-z0-9]+)*/)
     if (m) {
       tokens.push({ word: m[0], start: i, end: i + m[0].length, type: PracticeArticleWordType.Word })
@@ -61,20 +61,20 @@ function parseSentence(sentence: string) {
       continue
     }
 
-    // 5) 其它可视符号（标点）——单字符处理（连续标点会被循环拆为单字符）
-    //    包括：.,!?;:"'()-[]{}<>/\\@#%^&*~`等非单词非空白字符
+
+
     if (/[^\w\s]/.test(ch)) {
       tokens.push({ word: ch, start: i, end: i + 1, type: PracticeArticleWordType.Symbol })
       i += 1
       continue
     }
 
-    // 6) 回退方案：把当前字符当作一个 token（防止意外丢失）
+
     tokens.push({ word: ch, start: i, end: i + 1, type: PracticeArticleWordType.Symbol })
     i += 1
   }
 
-  // 计算 nextSpace：查看当前 token 的 end 到下一个 token 的 start 之间是否含空白
+
   const result = tokens.map((t, idx) => {
     const next = tokens[idx + 1]
     const between = next ? sentence.slice(t.end, next.start) : sentence.slice(t.end)
@@ -85,7 +85,7 @@ function parseSentence(sentence: string) {
   return result
 }
 
-//生成文章段落数据
+
 export function genArticleSectionData(article: Article): number {
   let text = article.text.trim()
   let sections: Sentence[][] = []
@@ -101,9 +101,9 @@ export function genArticleSectionData(article: Article): number {
         .filter(Boolean)
         .map((item, i, arr) => {
           item = item.trim()
-          //如果没有空格，导致修改一行一行的数据时，汇总时全没有空格了，库无法正常断句
-          //所以要保证最后一个是空格，但防止用户打N个空格，就去掉再加上一个空格，只需要一个即可
-          //2025/10/1:最后一句不需要空格
+
+
+
           if (i < arr.length - 1) item += ' '
           let sentence: Sentence = cloneDeep({
             text: item,
@@ -139,7 +139,7 @@ export function genArticleSectionData(article: Article): number {
         }
       } catch (e) {
         failCount++
-        // console.log('没有对应的翻译', sentence.text)
+
       }
     }
   }
@@ -304,14 +304,14 @@ export function splitEnArticle2(text: string): string {
 
 export function splitCNArticle2(text: string): string {
   if (!text && false) {
-    // text = "飞机误点了，侦探们在机场等了整整一上午。他们正期待从南非来的一个装着钻石的贵重包裹。数小时以前，有人向警方报告，说有人企图偷走这些钻石。当飞机到达时，一些侦探等候在主楼内，另一些侦探则守候在停机坪上。有两个人把包裹拿下飞机，进了海关。这时两个侦探把住门口，另外两个侦探打开了包裹。令他们吃惊的是，那珍贵的包裹里面装的全是石头和沙子！"
-    //     text = `那是个星期天，而在星期天我是从来不早起的，有时我要一直躺到吃午饭的时候。上个星期天，我起得很晚。我望望窗外，外面一片昏暗。“鬼天气！”我想，“又下雨了。”正在这时，电话铃响了。是我姑母露西打来的。“我刚下火车，”她说，“我这就来看你。”
-    // “但我还在吃早饭，”我说。
-    // “你在干什么？”她问道。
-    // “我正在吃早饭，”我又说了一遍。
-    // “天啊，”她说，“你总是起得这么晚吗？现在已经1点钟了！”`
-    //     text = `上星期我去看戏。我的座位很好，戏很有意思，但我却无法欣赏。一青年男子与一青年女子坐在我的身后，大声地说着话。我非常生气，因为我听不见演员在说什么。我回过头去怒视着那一男一女，他们却毫不理会。最后，我忍不住了，又一次回过头去，生气地说：“我一个字也听不见了！”
-    // “不关你的事，”那男的毫不客气地说，“这是私人间的谈话！”`
+
+
+
+
+
+
+
+
   }
   const segmenterJa = new Intl.Segmenter('zh-CN', { granularity: 'sentence' })
 
@@ -325,8 +325,8 @@ export function splitCNArticle2(text: string): string {
       Array.from(segments).map(sentenceRow => {
         let row = sentenceRow.segment
         if (row) {
-          //这个库总是会把反引号给断句到上一行末尾
-          //而 sentence-splitter 这个库总是会把反引号给断句到下一行开头
+
+
           if (row[row.length - 1] === '“') {
             row = row.substring(0, row.length - 1)
             ss += row + '\n' + '“'
@@ -378,7 +378,7 @@ export function usePlaySentenceAudio() {
   }
 }
 
-//todo 考虑与syncDictInMyStudyList、changeDict方法合并
+
 export function syncBookInMyStudyList(study = false) {
   _nextTick(() => {
     const base = useBaseStore()

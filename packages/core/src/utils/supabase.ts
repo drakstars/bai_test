@@ -53,7 +53,7 @@ export class Supabase {
   static supabaseKey = ''
   static errorCount = 0
 
-  /** 是否允许执行同步：仅当 config 存在、url/key 有值且 status === 'success' 时返回 true */
+  
   static check(): boolean {
     const c = getConfig()
     if (!c?.url || !c?.key) return false
@@ -71,7 +71,7 @@ export class Supabase {
     localStorage.removeItem(SUPABASE_CONFIG_KEY)
   }
 
-  /** 拿到客户端；仅根据 url/key 建连，不依赖 status（供设置页保存配置时验表使用） */
+  
   static getInstance(): ReturnType<typeof createClient> {
     if (!Supabase.instance) {
       const c = getConfig()
@@ -118,7 +118,7 @@ export class Supabase {
   static setStatus(status: SupabaseStatus, statusMessage?: string): void {
     if (status === 'error') {
       // debugger
-      //如果是请求错误，则可重试3次再报错，因为会有很多误判
+
       if ('TypeError: Failed to fetch' === statusMessage && this.errorCount < 3) {
         this.errorCount++
         return

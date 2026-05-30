@@ -9,7 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const user = ref<User | null>(null)
   const isLogin = ref<boolean>(false)
 
-  // 设置token
+
   const setToken = (newToken: string) => {
     isLogin.value = true
     AppEnv.TOKEN = newToken
@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', () => {
     localStorage.setItem('token', newToken)
   }
 
-  // 清除token
+
   const clearToken = () => {
     AppEnv.IS_LOGIN = AppEnv.CAN_REQUEST = false
     AppEnv.TOKEN = ''
@@ -27,21 +27,21 @@ export const useUserStore = defineStore('user', () => {
     user.value = null
   }
 
-  // 设置用户信息
+
   const setUser = (userInfo: User) => {
     user.value = userInfo
     isLogin.value = true
   }
 
-  // 登出
+
   function logout() {
     clearToken()
     Toast.success('已退出登录')
-    //这行会引起hrm失效
+
     // router.push('/')
   }
 
-  // 获取用户信息
+
   async function fetchUserInfo() {
     if (!AppEnv.CAN_REQUEST) return false
     try {
@@ -57,7 +57,7 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  // 初始化用户状态
+
   async function init() {
     const success = await fetchUserInfo()
     if (!success) {

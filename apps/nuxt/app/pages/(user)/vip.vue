@@ -72,8 +72,8 @@ const plans: Plan[] = $computed(() => {
 const paymentMethods = [
   // {
   //   id: 'wechat',
-  //   name: '微信支付',
-  //   description: '使用微信支付'
+
+
   // },
   {
     id: 'alipay',
@@ -251,13 +251,13 @@ async function handlePayment() {
   if (res.success) {
     _nextTick(() => {
       const iframe = document.getElementById('payFrame')
-      // 强制重置为 about:blank，让 document 可写
+
       iframe.src = 'about:blank'
       iframe.onload = () => {
         const doc = iframe.contentWindow.document
         doc.open()
-        doc.write(res.data.result) // 写入 form
-        doc.close() // form 会自动提交
+        doc.write(res.data.result)
+        doc.close()
       }
       startLoop = true
     })

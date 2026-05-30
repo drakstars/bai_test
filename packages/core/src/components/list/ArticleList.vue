@@ -23,7 +23,7 @@ const emit = defineEmits<{
 let searchKey = $ref('')
 let localList = $computed(() => {
   if (searchKey) {
-    //把搜索内容，分词之后，判断是否有这个词，比单纯遍历包含体验更好
+
     let t = searchKey.toLowerCase()
     let strings = t.split(' ').filter(v => v)
     let res = props.list.filter((item: Article) => {
@@ -33,7 +33,7 @@ let localList = $computed(() => {
     })
     try {
       let d = Number(t)
-      //如果是纯数字，把那一条加进去
+
       if (!isNaN(d)) {
         if (d - 1 < props.list.length) {
           res.push(props.list[d - 1])
@@ -41,13 +41,13 @@ let localList = $computed(() => {
       }
     } catch (err) {}
     return res.sort((a: Article, b: Article) => {
-      //使完整包含的条目更靠前
+
       const aMatch = a.title.toLowerCase().includes(t)
       const bMatch = b.title.toLowerCase().includes(t)
 
-      if (aMatch && !bMatch) return -1 // a 靠前
-      if (!aMatch && bMatch) return 1 // b 靠前
-      return 0 // 都匹配或都不匹配，保持原顺序
+      if (aMatch && !bMatch) return -1
+      if (!aMatch && bMatch) return 1
+      return 0
     })
   } else {
     return props.list
@@ -104,7 +104,7 @@ defineExpose({ scrollToBottom, scrollToItem })
               <IconFluentStar16Regular v-if="!isArticleCollect(item)" />
               <IconFluentStar16Filled v-else />
             </BaseIcon>
-            <!--            <BaseIcon title="可播放音频" v-if="item.audioSrc || item.audioFileId" noBg>-->
+            
             <!--              <IconBxVolumeFull class="opacity-100! color-gray" />-->
             <!--            </BaseIcon>-->
           </div>

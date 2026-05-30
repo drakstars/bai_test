@@ -24,18 +24,18 @@ export class TranslateError extends Error {
   }
 }
 
-/** 统一的查询结果的数据结构 */
+
 export interface TranslateResult {
   engine: string;
   text: string;
   from: Language;
   to: Language;
-  /** 原文 */
+  
   origin: {
     paragraphs: string[];
     tts?: string;
   };
-  /** 译文 */
+  
   trans: {
     paragraphs: string[];
     tts?: string;

@@ -55,7 +55,7 @@ const stages = $computed(() => {
   if ([WordPracticeMode.Shuffle, WordPracticeMode.Free].includes(settingStore.wordPracticeMode)) {
     return [DEFAULT_BAR]
   } else {
-    // 阶段映射：将 WordPracticeStage 映射到 stageIndex 和 childIndex
+
     const stageMap: Partial<Record<WordPracticeStage, { stageIndex: number; childIndex: number }>> = {
       [WordPracticeStage.FollowWriteNewWord]: { stageIndex: 0, childIndex: 0 },
       [WordPracticeStage.IdentifyNewWord]: { stageIndex: 0, childIndex: 0 },
@@ -67,7 +67,7 @@ const stages = $computed(() => {
     }
 
     // console.log('statStore.stage',statStore.stage)
-    // 获取当前阶段的配置
+
     const currentStageConfig = stageMap[statStore.stage]
     if (!currentStageConfig) {
       return [DEFAULT_BAR]
@@ -95,18 +95,18 @@ const stages = $computed(() => {
         },
       ]
 
-      // 设置已完成阶段的百分比和比例
+
       for (let i = 0; i < stageIndex; i++) {
         stages[i].percentage = 100
         stages[i].ratio = 49
       }
 
-      // 设置当前激活的阶段
+
       stages[stageIndex].active = true
       stages[stageIndex].percentage = (practiceData.index / practiceData.words.length) * 100
       return stages
     } else {
-      // 阶段配置：定义每个阶段组的基础信息
+
       const stageConfigs = [
         {
           name: '新词',
@@ -128,7 +128,7 @@ const stages = $computed(() => {
         },
       ]
 
-      // 初始化 stages
+
       const stages = stageConfigs.map(config => ({
         name: config.name,
         percentage: 0,
@@ -142,25 +142,25 @@ const stages = $computed(() => {
         })),
       }))
 
-      // 设置已完成阶段的百分比和比例
+
       for (let i = 0; i < stageIndex; i++) {
         stages[i].percentage = 100
         stages[i].ratio = 30
       }
 
-      // 设置当前激活的阶段
+
       stages[stageIndex].ratio = 70
       stages[stageIndex].active = true
 
-      // 根据类型设置子阶段的进度
+
       const currentStageChildren = stages[stageIndex].children
 
       if (childIndex === 0) {
-        // 跟写/自测：只激活第一个子阶段
+
         currentStageChildren[0].active = true
         currentStageChildren[0].percentage = currentProgress
       } else if (childIndex === 1) {
-        // 听写：第一个完成，第三个未开始，第二个进行中
+
         currentStageChildren[0].active = false
         currentStageChildren[1].active = true
         currentStageChildren[2].active = false
@@ -168,7 +168,7 @@ const stages = $computed(() => {
         currentStageChildren[1].percentage = currentProgress
         currentStageChildren[2].percentage = 0
       } else if (childIndex === 2) {
-        // 默写：前两个完成，第三个进行中
+
         currentStageChildren[0].active = false
         currentStageChildren[1].active = false
         currentStageChildren[2].active = true
@@ -303,7 +303,7 @@ const stages = $computed(() => {
   flex-shrink: 0;
   width: var(--toolbar-width);
   position: relative;
-  z-index: 20; // 提高z-index确保在最上方
+  z-index: 20;
 
   &.hide {
     margin-bottom: -6rem;
@@ -340,7 +340,7 @@ const stages = $computed(() => {
     box-sizing: border-box;
     position: fixed;
     bottom: 1rem;
-    z-index: 1; // 确保进度条也在最上方
+    z-index: 1;
   }
 
   .arrow {
@@ -360,7 +360,7 @@ const stages = $computed(() => {
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .footer {
     width: 100%;
@@ -390,7 +390,7 @@ const stages = $computed(() => {
         }
       }
 
-      // 移动端按钮组调整 - 改为网格布局
+
       .flex.gap-2 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -422,7 +422,7 @@ const stages = $computed(() => {
   }
 }
 
-// 超小屏幕适配
+
 @media (max-width: 480px) {
   .footer {
     .bottom {
@@ -444,7 +444,7 @@ const stages = $computed(() => {
             font-size: 0.6rem;
           }
 
-          // 隐藏部分统计信息，只保留关键数据
+
           &:nth-child(n + 3) {
             display: none;
           }

@@ -3,11 +3,11 @@ const bookList = require('../public/list/article.json')
 const dictList = require('../public/list/word.json')
 
 async function pushUrls() {
-  // 配置区：改成你的
-  const site = "https://typewords.cc"; // 必须和百度站长平台注册的域名一致
-  const token = ""; // 在百度站长平台获取
 
-  // 读取 urls.txt，每行一个 URL
+  const site = "https://typewords.cc";
+  const token = "";
+
+
   let urls = bookList.flat().map(book => {
     return site + '/practice-articles/' + book.id
   }).concat(dictList.flat().map(book => {

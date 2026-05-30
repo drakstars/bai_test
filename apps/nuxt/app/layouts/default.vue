@@ -14,7 +14,7 @@ import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import { useInit } from '@typewords/core/composables/useInit.ts'
 import { useI18n } from 'vue-i18n'
 import { Supabase } from '@typewords/core/utils/supabase.ts'
-import MiniProgram from '@/components/MiniProgram.vue'
+
 
 const router = useRouter()
 const { toggleTheme, getTheme, setTheme } = useTheme()
@@ -30,7 +30,7 @@ function toggleExpand(n: boolean) {
 
 watch(() => settingStore.sideExpand, toggleExpand)
 
-//迁移数据
+
 let showTransfer = $ref(false)
 
 watch(
@@ -53,7 +53,7 @@ const { locales, setLocale } = useI18n()
 const route = useRoute()
 
 const showIcon = $computed(() => {
-  return ['/words', '/articles', '/setting', '/help', '/doc', '/feedback'].includes(route.path)
+  return ['/words', '/setting'].includes(route.path)
 })
 
 onMounted(() => {
@@ -72,7 +72,7 @@ onMounted(() => {
 
 <template>
   <div class="layout anim">
-    <!--    第一个aside 占位用-->
+    
     <div class="aside space"></div>
     <div class="aside anim fixed">
       <div class="top" :class="!expand && 'hidden-span'">
@@ -81,8 +81,8 @@ onMounted(() => {
           <IconFluentTextUnderlineDouble20Regular />
           <span>{{ $t('words') }}</span>
         </NuxtLink>
-        <NuxtLink id="article" to="/articles" class="row">
-          <IconFluentBookLetter20Regular />
+        <NuxtLink to="/articles" class="row">
+          <IconFluentBook20Regular />
           <span>{{ $t('articles') }}</span>
         </NuxtLink>
         <NuxtLink to="/setting" class="row">
@@ -94,21 +94,9 @@ onMounted(() => {
             v-if="runtimeStore.isNew || runtimeStore.isError"
           ></div>
         </NuxtLink>
-        <NuxtLink to="/feedback" class="row">
-          <IconFluentCommentEdit20Regular />
-          <span>{{ $t('feedback') }}</span>
-        </NuxtLink>
-        <NuxtLink to="/doc" class="row">
-          <IconFluentDocument20Regular />
-          <span>{{ $t('document') }}</span>
-        </NuxtLink>
-        <NuxtLink to="/help" class="row">
-          <IconFluentQuestionCircle20Regular />
-          <span>{{ $t('help') }}</span>
-        </NuxtLink>
         <!--        <div class="row" @click="router.push('/user')">-->
         <!--          <IconFluentPerson20Regular/>-->
-        <!--          <span >用户</span>-->
+        
         <!--        </div>-->
       </div>
       <div class="bottom flex justify-evenly">
@@ -119,24 +107,24 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- 移动端顶部菜单栏 -->
+    
     <div class="mobile-top-nav" :class="{ collapsed: settingStore.mobileNavCollapsed }">
       <div class="nav-items">
         <div class="nav-item" @click="router.push('/')" :class="{ active: route.path === '/' }">
           <IconFluentHome20Regular />
-          <span>主页</span>
+          <span>Trang chủ</span>
         </div>
         <div class="nav-item" @click="router.push('/words')" :class="{ active: route.path?.includes('/words') }">
           <IconFluentTextUnderlineDouble20Regular />
-          <span>单词</span>
+          <span>Từ vựng</span>
         </div>
         <div class="nav-item" @click="router.push('/articles')" :class="{ active: route.path?.includes('/articles') }">
-          <IconFluentBookLetter20Regular />
-          <span>文章</span>
+          <IconFluentBook20Regular />
+          <span>Bài viết</span>
         </div>
         <div class="nav-item" @click="router.push('/setting')" :class="{ active: route.path === '/setting' }">
           <IconFluentSettings20Regular />
-          <span>设置</span>
+          <span>Cài đặt</span>
           <div class="red-point" v-if="runtimeStore.isNew || runtimeStore.isError"></div>
         </div>
       </div>
@@ -156,13 +144,13 @@ onMounted(() => {
         @click="router.push('/setting?index=6 ')"
         v-if="runtimeStore.isError"
       >
-        <ToastComponent type="error" :duration="0" :shadow="false" :showClose="false" message="同步失败" />
+        <ToastComponent type="error" :duration="0" :shadow="false" :showClose="false" message="Đồng bộ thất bại" />
       </div>
       <!--      <slot></slot>-->
       <router-view></router-view>
 
       <div class="absolute right-4 top-4 flex z-1 gap-2" v-if="showIcon">
-        <MiniProgram v-if="settingStore.load && !settingStore.first" />
+
 
         <div class="relative group">
           <BaseIcon>
@@ -231,7 +219,7 @@ onMounted(() => {
   }
 }
 
-// 移动端顶部菜单栏
+
 .mobile-top-nav {
   position: fixed;
   top: 0;
@@ -329,13 +317,13 @@ onMounted(() => {
 }
 
 .main-content {
-  // 移动端时为主内容区域添加顶部内边距，避免被顶部菜单遮挡
+
   @media (max-width: 768px) {
     padding-top: 4rem;
   }
 }
 
-// 移动端隐藏左侧菜单栏
+
 @media (max-width: 768px) {
   .aside {
     display: none;
@@ -351,7 +339,7 @@ onMounted(() => {
   }
 }
 
-// 桌面端隐藏移动端顶部菜单栏
+
 @media (min-width: 769px) {
   .mobile-top-nav {
     display: none;

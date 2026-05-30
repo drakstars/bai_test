@@ -63,7 +63,7 @@ watch(() => props.groupByTag, () => {
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .flex.items-center {
     flex-direction: column;
@@ -92,7 +92,7 @@ watch(() => props.groupByTag, () => {
   }
 }
 
-// 超小屏幕适配
+
 @media (max-width: 480px) {
   .flex.items-center {
     .category {

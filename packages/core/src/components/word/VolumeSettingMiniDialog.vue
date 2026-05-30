@@ -8,7 +8,7 @@ import { emitter, EventKey } from '../../utils/eventBus'
 
 const settingStore = useSettingStore()
 let timer = 0
-//停止切换事件，因为hover到select时会跳出mini-dialog
+
 let selectIsOpen = false
 let show = $ref(false)
 
@@ -34,14 +34,14 @@ function toggle(val: boolean) {
 }
 
 function selectToggle(e: boolean) {
-  //这里要延时设置，因为关闭的时候，如果太早设置了false了，useWindowClick的事件就会把弹框关闭
+
   setTimeout(() => (selectIsOpen = e))
 }
 
 function eventCheck(e) {
   const isSelfOrChild = e.currentTarget.contains(e.target)
   if (isSelfOrChild) {
-    //如果下拉框打开的情况就不拦截
+
     if (selectIsOpen) return
     e.stopPropagation()
   }
@@ -54,32 +54,32 @@ function eventCheck(e) {
       <IconClarityVolumeUpLine />
     </BaseIcon>
     <MiniDialog width="18rem" @mouseenter="toggle(true)" @mouseleave="toggle(false)" v-model="show">
-      <div class="mini-row-title">音效设置</div>
+      <div class="mini-row-title">Cài đặt âm thanh</div>
       <div class="mini-row">
-        <label class="item-title">单词自动发音</label>
+        <label class="item-title">Tự động phát âm từ</label>
         <div class="wrapper">
-          <Switch v-model="settingStore.wordSound" inline-prompt active-text="开" inactive-text="关" />
+          <Switch v-model="settingStore.wordSound" inline-prompt active-text="Bật" inactive-text="Tắt" />
         </div>
       </div>
       <div class="mini-row">
-        <label class="item-title">单词发音口音</label>
+        <label class="item-title">Giọng phát âm</label>
         <div class="wrapper">
-          <Select v-model="settingStore.soundType" @toggle="selectToggle" placeholder="请选择" size="small">
-            <Option label="美音" value="us" />
-            <Option label="英音" value="uk" />
+          <Select v-model="settingStore.soundType" @toggle="selectToggle" placeholder="Chọn..." size="small">
+            <Option label="Mỹ (US)" value="us" />
+            <Option label="Anh (UK)" value="uk" />
           </Select>
         </div>
       </div>
       <div class="mini-row">
-        <label class="item-title">按键音</label>
+        <label class="item-title">Tiếng phím</label>
         <div class="wrapper">
-          <Switch v-model="settingStore.keyboardSound" inline-prompt active-text="开" inactive-text="关" />
+          <Switch v-model="settingStore.keyboardSound" inline-prompt active-text="Bật" inactive-text="Tắt" />
         </div>
       </div>
       <div class="mini-row">
-        <label class="item-title">按键音效</label>
+        <label class="item-title">Hiệu ứng tiếng phím</label>
         <div class="wrapper">
-          <Select v-model="settingStore.keyboardSoundFile" @toggle="selectToggle" placeholder="请选择" size="small">
+          <Select v-model="settingStore.keyboardSoundFile" @toggle="selectToggle" placeholder="Chọn..." size="small">
             <Option v-for="item in SoundFileOptions" :key="item.value" :label="item.label" :value="item.value">
               <div class="el-option-row">
                 <span>{{ item.label }}</span>
@@ -90,9 +90,9 @@ function eventCheck(e) {
         </div>
       </div>
       <div class="mini-row">
-        <label class="item-title">效果音</label>
+        <label class="item-title">Hiệu ứng khác</label>
         <div class="wrapper">
-          <Switch v-model="settingStore.effectSound" inline-prompt active-text="开" inactive-text="关" />
+          <Switch v-model="settingStore.effectSound" inline-prompt active-text="Bật" inactive-text="Tắt" />
         </div>
       </div>
     </MiniDialog>

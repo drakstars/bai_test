@@ -26,13 +26,7 @@ export function getSentenceAllText(article: Article) {
     .join('\n\n')
 }
 
-/***
- * @desc
- * @param article 文章实体
- * @param translateEngine 翻译引擎
- * @param allShow 是否翻译完所有之后才显示
- * @param progressCb 进度回调
- * */
+
 export async function getNetworkTranslate(
   article: Article,
   translateEngine: TranslateEngine,
@@ -69,7 +63,7 @@ export async function getNetworkTranslate(
           const cb = () => {
             sentence.translate = r.trans.paragraphs[0]
             if (!allShow) {
-              //一次显示所有，顺序会乱
+
               article.textTranslate += sentence.translate + '\n'
             }
           }

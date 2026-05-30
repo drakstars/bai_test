@@ -1,6 +1,6 @@
 <template>
   <div class="input-number inline-center select-none anim" :class="{ 'is-disabled': disabled }">
-    <!-- 减号 -->
+    
     <button
         class="btn minus-btn inline-center cursor-pointer anim border-none outline-none w-8 h-8"
         type="button"
@@ -12,7 +12,7 @@
     >-
     </button>
 
-    <!-- 输入框 -->
+    
     <input
         ref="inputRef"
         class="flex-1 h-8 px-2 text-center border-none outline-none bg-transparent input-inner w-14"
@@ -25,7 +25,7 @@
         @blur="onBlur"
     />
 
-    <!-- 加号 -->
+    
     <button
         class="btn plus-btn inline-center cursor-pointer anim border-none outline-none w-8 h-8"
         type="button"

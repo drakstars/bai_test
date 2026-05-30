@@ -47,23 +47,23 @@ const router = VueRouter.createRouter({
   },
 })
 
-// 路由守卫
+
 router.beforeEach(async (to: any, from: any) => {
   return true
 
   // const userStore = useAuthStore()
   //
-  // // 公共路由，不需要登录验证
+
   // const publicRoutes = ['/login', '/wechat/callback', '/user-agreement', '/privacy-policy']
   //
-  // // 如果目标路由是公共路由，直接放行
+
   // if (publicRoutes.includes(to.path)) {
   //   return true
   // }
   //
-  // // 如果用户未登录，跳转到登录页
+
   // if (!userStore.isLoggedIn) {
-  //   // 尝试初始化认证状态
+
   //   const isInitialized = await userStore.initAuth()
   //   if (!isInitialized) {
   //     return {path: '/login', query: {redirect: to.fullPath}}
@@ -75,7 +75,7 @@ router.beforeEach(async (to: any, from: any) => {
   // console.log('beforeEach-from',from.path)
   // const runtimeStore = useRuntimeStore()
   //
-  // //footer下面的5个按钮，对跳不要用动画
+
   // let noAnimation = [
   //   '/pc/practice',
   //   '/pc/dict',
@@ -96,21 +96,21 @@ router.beforeEach(async (to: any, from: any) => {
   //     let def = to.matched[0].components.default
   //     let toComponentName = def.name ?? def.__name
   //     runtimeStore.updateExcludeRoutes({type: 'remove', value: toComponentName})
-  //     // console.log('删除', toComponentName)
-  //     // console.log('前进')
-  //     // console.log('删除', toComponentName)
+
+
+
   //   }
   // } else {
   //   if (from.matched && from.matched.length) {
   //     let def = from.matched[0].components.default
   //     let fromComponentName = def.name ?? def.__name
   //     runtimeStore.updateExcludeRoutes({type: 'add', value: fromComponentName})
-  //     // console.log('添加', fromComponentName)
-  //     // console.log('后退')
+
+
   //   }
   // }
   // ...
-  // 返回 false 以取消导航
+
   // return true
 })
 

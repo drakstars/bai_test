@@ -1,6 +1,6 @@
 import { offset } from '@floating-ui/dom'
 import { WordPracticeMode, WordPracticeStage } from '../types'
-//这里合并导入，打包会报错
+
 import { ShortcutKey } from '../types/enum.ts'
 
 export const GITHUB = 'https://github.com/zyronon/TypeWords'
@@ -8,7 +8,7 @@ export const Host = 'typewords.cc'
 export const Old_Host = '2study.top'
 export const EMAIL = 'zyronon@163.com'
 export const Origin = `https://${Host}`
-export const APP_NAME = 'Type Words'
+export const APP_NAME = 'Quiz Words'
 
 const common = {
   word_dict_list_version: 1,
@@ -17,8 +17,8 @@ const map = {
   DEV: {
     API: 'http://localhost/',
     // RESOURCE_URL: 'https://dicts.2study.top/',
-    // RESOURCE_URL: '/',
-    RESOURCE_URL: 'https://files.typewords.cc/',
+    RESOURCE_URL: '/',
+    // RESOURCE_URL: 'https://files.typewords.cc/',
     LIBS_URL: 'https://libs.typewords.cc/',
   },
 }
@@ -47,21 +47,21 @@ export const RESOURCE_PATH = ENV.API + 'static'
 
 export const DICT_LIST = {
   WORD: {
-    ALL: ENV.RESOURCE_URL + `/list/word.json`,
-    RECOMMENDED: ENV.RESOURCE_URL + `/list/recommend_word.json`,
+    ALL: ENV.RESOURCE_URL + `list/word.json`,
+    RECOMMENDED: ENV.RESOURCE_URL + `list/recommend_word.json`,
   },
   ARTICLE: {
-    ALL: ENV.RESOURCE_URL + `/list/article.json`,
-    RECOMMENDED: ENV.RESOURCE_URL + `/list/recommend_article.json`,
+    ALL: ENV.RESOURCE_URL + `list/article.json`,
+    RECOMMENDED: ENV.RESOURCE_URL + `list/recommend_article.json`,
   },
 }
 
 export const SoundFileOptions = [
-  { value: '机械键盘', label: '机械键盘' },
-  { value: '机械键盘1', label: '机械键盘1' },
-  { value: '机械键盘2', label: '机械键盘2' },
-  { value: '老式机械键盘', label: '老式机械键盘' },
-  { value: '笔记本键盘', label: '笔记本键盘' },
+  { value: '机械键盘', label: 'Bàn phím cơ' },
+  { value: '机械键盘1', label: 'Bàn phím cơ 1' },
+  { value: '机械键盘2', label: 'Bàn phím cơ 2' },
+  { value: '老式机械键盘', label: 'Bàn phím cơ cổ điển' },
+  { value: '笔记本键盘', label: 'Bàn phím laptop' },
 ]
 export const APP_VERSION = {
   key: 'type-words-app-version',
@@ -76,7 +76,7 @@ export const SAVE_SETTING_KEY = {
   version: 22,
 }
 
-//5版本，不再单独保存 app version字段
+
 export const EXPORT_DATA_KEY = {
   key: 'typing-word-export',
   version: 5,
@@ -103,10 +103,10 @@ export const TourConfig = {
 
 export const IS_DEV = import.meta.env.MODE === 'development'
 export const LIB_JS_URL = {
-  SHEPHERD: `${ENV.RESOURCE_URL}/libs/Shepherd.14.5.1.mjs.js`,
-  SNAPDOM: `${ENV.RESOURCE_URL}/libs/snapdom.min.js`,
-  JSZIP: `${ENV.RESOURCE_URL}/libs/jszip.min.js`,
-  XLSX: `${ENV.RESOURCE_URL}/libs/xlsx.full.min.js`,
+  SHEPHERD: `${ENV.RESOURCE_URL}libs/Shepherd.14.5.1.mjs.js`,
+  SNAPDOM: `${ENV.RESOURCE_URL}libs/snapdom.min.js`,
+  JSZIP: `${ENV.RESOURCE_URL}libs/jszip.min.js`,
+  XLSX: `${ENV.RESOURCE_URL}libs/xlsx.full.min.js`,
 }
 export const PronunciationApi = 'https://dict.youdao.com/dictvoice?audio='
 export const DefaultShortcutKeyMap = {
@@ -179,27 +179,27 @@ export const WordPracticeModeStageMap: Record<WordPracticeMode, WordPracticeStag
   [WordPracticeMode.ReviewWordsTest]: null,
 }
 export const WordPracticeStageNameMap: Record<WordPracticeStage, string> = {
-  [WordPracticeStage.FollowWriteNewWord]: '跟写新词',
-  [WordPracticeStage.IdentifyNewWord]: '自测新词',
-  [WordPracticeStage.ListenNewWord]: '听写新词',
-  [WordPracticeStage.DictationNewWord]: '默写新词',
-  [WordPracticeStage.FollowWriteReview]: '跟写旧词',
-  [WordPracticeStage.IdentifyReview]: '自测旧词',
-  [WordPracticeStage.ListenReview]: '听写旧词',
-  [WordPracticeStage.DictationReview]: '默写旧词',
-  [WordPracticeStage.Complete]: '完成学习',
-  [WordPracticeStage.Shuffle]: '随机复习',
+  [WordPracticeStage.FollowWriteNewWord]: 'Gõ theo từ mới',
+  [WordPracticeStage.IdentifyNewWord]: 'Tự kiểm tra từ mới',
+  [WordPracticeStage.ListenNewWord]: 'Nghe viết từ mới',
+  [WordPracticeStage.DictationNewWord]: 'Chính tả từ mới',
+  [WordPracticeStage.FollowWriteReview]: 'Gõ theo từ cũ',
+  [WordPracticeStage.IdentifyReview]: 'Tự kiểm tra từ cũ',
+  [WordPracticeStage.ListenReview]: 'Nghe viết từ cũ',
+  [WordPracticeStage.DictationReview]: 'Chính tả từ cũ',
+  [WordPracticeStage.Complete]: 'Hoàn thành học tập',
+  [WordPracticeStage.Shuffle]: 'Ôn tập ngẫu nhiên',
 }
 export const WordPracticeModeNameMap: Record<WordPracticeMode, string> = {
-  [WordPracticeMode.System]: '学习',
-  [WordPracticeMode.Free]: '自由练习',
-  [WordPracticeMode.IdentifyOnly]: '自测',
-  [WordPracticeMode.DictationOnly]: '默写',
-  [WordPracticeMode.ListenOnly]: '听写',
-  [WordPracticeMode.Shuffle]: '随机复习',
-  [WordPracticeMode.Review]: '复习',
-  [WordPracticeMode.ShuffleWordsTest]: '随机单词测试',
-  [WordPracticeMode.ReviewWordsTest]: '单词测试',
+  [WordPracticeMode.System]: 'Học tập',
+  [WordPracticeMode.Free]: 'Luyện tập tự do',
+  [WordPracticeMode.IdentifyOnly]: 'Tự kiểm tra',
+  [WordPracticeMode.DictationOnly]: 'Chính tả',
+  [WordPracticeMode.ListenOnly]: 'Nghe viết',
+  [WordPracticeMode.Shuffle]: 'Ôn tập ngẫu nhiên',
+  [WordPracticeMode.Review]: 'Ôn tập',
+  [WordPracticeMode.ShuffleWordsTest]: 'Kiểm tra từ ngẫu nhiên',
+  [WordPracticeMode.ReviewWordsTest]: 'Kiểm tra từ vựng',
 }
 export const WordPracticeModeUrlMap: Record<WordPracticeMode, string> = {
   [WordPracticeMode.System]: '/practice-words',

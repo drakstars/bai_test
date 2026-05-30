@@ -48,17 +48,17 @@ const props = defineProps({
 
 const emit = defineEmits(['answered'])
 
-// 将选项打乱并映射回原始下标
+
 const originalOptions = props.options
 const shuffledOptions = ref([])
-const answerMap = ref([]) // 映射 shuffled[i] 对应原始 index（用于判分）
+const answerMap = ref([])
 
 const isMultiple = computed(() => props.correctAnswer.length > 1)
 const userSelection = ref(isMultiple.value ? [] : '')
 const isSubmitted = ref(false)
 const isCorrect = ref(null)
 
-// 初始化打乱选项
+
 const initOptions = () => {
   const indices = originalOptions.map((_, i) => i)
   const shuffledIndices = props.randomize ? shuffle(indices) : indices
@@ -118,7 +118,7 @@ const noChoseClass = computed(() => {
   return !selected && 'bg-red-400'
 })
 
-// 父组件调用此方法统一评分
+
 defineExpose({
   submit,
   getResult: () => {
@@ -146,19 +146,19 @@ const calculateLayout = () => {
   const totalWidth = widths.reduce((sum, w) => sum + w, 0)
   // console.log(widths,totalWidth)
 
-  // 如果任意选项宽度超过容器一半
+
   if (widths.some(w => w > containerWidth / 2)) {
     layoutClass.value = 'grid-cols-1'
     return
   }
 
-  // 如果所有选项都可以在一行内放下
+
   if (totalWidth + 80 * (widths.length - 1) <= containerWidth) {
     layoutClass.value = 'grid-cols-4'
     return
   }
 
-  // 否则 2 列
+
   layoutClass.value = 'grid-cols-2'
 }
 

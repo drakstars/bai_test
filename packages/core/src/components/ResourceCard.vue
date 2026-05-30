@@ -8,7 +8,7 @@ defineProps<{
 
 const emit = defineEmits(['openLink'])
 
-// 根据难度获取对应的样式类
+
 const getDifficultyClass = (difficulty: string) => {
   switch (difficulty) {
     case '入门':

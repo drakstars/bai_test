@@ -10,7 +10,7 @@ interface IProps {
   showCheckbox?: boolean
   checked?: boolean
   showProgress?: boolean
-  isUser?: boolean //是否是用户的词典
+  isUser?: boolean
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -40,7 +40,7 @@ const coverSrc = $computed(() => {
   <div :id="item?.id" v-if="!isAdd">
     <div class="book overflow-hidden relative">
       <img class="absolute top-0 left-0 w-full object-cover" v-if="item?.cover" :src="coverSrc" alt="" />
-      <div class="text-base mt-1" v-else>{{ item?.name }}</div>
+      <div class="text-base mt-1" v-else>{{ $t(item?.name) }}</div>
       <div class="absolute bottom-4 right-3 z-1" :class="item?.cover && 'color-white'">
         <div>{{ studyProgress }}{{ item?.length }}{{ quantifier }}</div>
       </div>
@@ -59,10 +59,10 @@ const coverSrc = $computed(() => {
         class="absolute left-3 bottom-3 z-2"
       />
       <div class="custom z-1" v-if="item.custom">{{ $t('custom') }}</div>
-      <!--      <div class="custom bg-red! color-white z-1" v-else-if="item.update">更新中</div>-->
-      <!--      <div class="sync bg-red! color-white z-1" v-if="!item.sync && isUser && !showCheckbox">未同步</div>-->
+      
+      
     </div>
-    <div class="text-base mt-1" v-if="item?.cover">{{ item?.name }}</div>
+    <div class="text-base mt-1" v-if="item?.cover">{{ $t(item?.name) }}</div>
   </div>
   <div v-else class="book" id="no-book">
     <div class="h-full center text-2xl">

@@ -37,7 +37,7 @@ onMounted(() => {
     const regex = /<a href="([^"]+)">([^<]+)<\/a>/g
     let match
     while ((match = regex.exec(response.data)) !== null) {
-      // match[1] 是文件链接，match[2] 是文件名
+
       list.push({ url: match[1], filename: match[2] })
     }
   })

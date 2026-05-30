@@ -30,8 +30,10 @@ import { usePracticeArticlePersistence } from '@typewords/core/composables/usePr
 dayjs.extend(isoWeek)
 dayjs.extend(isBetween)
 
+const { t } = useI18n()
+
 useHead({
-  title: APP_NAME + ' 文章',
+  title: APP_NAME + ' ' + t('articles'),
 })
 
 const { nav } = useNav()
@@ -55,7 +57,7 @@ watch(
 
 async function onvisibilitychange() {
   if (!document.hidden) {
-    //当页面可见时，检查是否需要从远程拉取数据
+
     const d = await articlePersistence.load()
     if (d) {
       isSaveData = true
@@ -100,14 +102,14 @@ watch(
         })
         tour.addStep({
           id: 'step7',
-          text: '点击这里选择一本书籍开始学习，步骤前面选词典相同，让我们跳过中间步骤，直接开始练习吧',
+          text: t('tour_step7_text'),
           attachTo: {
             element: '#no-book',
             on: 'bottom',
           },
           buttons: [
             {
-              text: `下一步（7/${TourConfig.total}）`,
+              text: t('tour_next_step_7', { total: TourConfig.total }),
               action() {
                 tour.next()
                 nav('/practice-articles/article_nce2', { guide: 1 })
@@ -132,7 +134,7 @@ function startStudy() {
   // return
   if (base.sbook.id) {
     if (!base.sbook.articles.length) {
-      return Toast.warning('没有文章可学习！')
+      return Toast.warning(t('no_articles_to_learn'))
     }
     window.umami?.track('startStudyArticle', {
       name: base.sbook.name,
@@ -143,7 +145,7 @@ function startStudy() {
     nav('/practice-articles/' + store.sbook.id)
   } else {
     window.umami?.track('no-book')
-    Toast.warning('请先选择一本书籍')
+    Toast.warning(t('please_select_book'))
   }
 }
 
@@ -164,7 +166,7 @@ function handleBatchDel() {
     }
   })
   selectIds = []
-  Toast.success('删除成功！')
+  Toast.success(t('delete_success'))
 }
 
 function toggleSelect(item) {
@@ -210,20 +212,20 @@ const totalDay = $computed(() => {
 const weekList = $computed(() => {
   const list = Array(7).fill(false)
 
-  // 获取本周的起止时间
-  const startOfWeek = dayjs().startOf('isoWeek') // 周一
-  const endOfWeek = dayjs().endOf('isoWeek') // 周日
+
+  const startOfWeek = dayjs().startOf('isoWeek')
+  const endOfWeek = dayjs().endOf('isoWeek')
 
   store.sbook.statistics?.forEach(item => {
     const date = dayjs(item.startDate)
     if (date.isBetween(startOfWeek, endOfWeek, null, '[]')) {
       let idx = date.day()
-      // dayjs().day() 0=周日, 1=周一, ..., 6=周六
-      // 需要转换为 0=周一, ..., 6=周日
+
+
       if (idx === 0) {
-        idx = 6 // 周日放到最后
+        idx = 6
       } else {
-        idx = idx - 1 // 其余前移一位
+        idx = idx - 1
       }
       list[idx] = true
     }
@@ -242,9 +244,9 @@ onMounted(() => {
 <template>
   <BasePage>
     <div class="my-30 text-2xl text-red" v-if="isOldHost">
-      已启用新域名
+      {{ $t('new_domain_enabled') }}
       <a class="mr-4" :href="`${Origin}/words?from_old_site=1`">{{ Origin }}</a
-      >当前 2study.top 域名将在不久后停止使用
+      >{{ $t('old_domain_discontinue_notice') }}
     </div>
 
     <div class="card flex flex-col md:flex-row justify-between gap-space p-4 md:p-6">
@@ -252,7 +254,7 @@ onMounted(() => {
         <Book
           v-if="base.sbook.id"
           :is-add="false"
-          quantifier="篇"
+          :quantifier="$t('articles_count')"
           :item="base.sbook"
           :show-progress="false"
           @click="goBookDetail(base.sbook)"
@@ -303,7 +305,7 @@ onMounted(() => {
             class="w-full md:w-auto"
             size="large"
             :percentage="base.currentBookProgress"
-            :format="() => `${base.sbook?.lastLearnIndex || 0}/${base.sbook?.length || 0}篇`"
+            :format="() => `${base.sbook?.lastLearnIndex || 0}/${base.sbook?.length || 0} ${$t('articles_count')}`"
             :show-text="true"
           ></Progress>
 
@@ -321,7 +323,7 @@ onMounted(() => {
       <div class="flex justify-between">
         <div class="title">{{ $t('my_books') }}</div>
         <div class="flex gap-4 items-center">
-          <PopConfirm title="确认删除所有选中书籍？" @confirm="handleBatchDel" v-if="selectIds.length">
+          <PopConfirm :title="$t('confirm_delete_selected')" @confirm="handleBatchDel" v-if="selectIds.length">
             <BaseIcon class="del" :title="$t('delete')">
               <DeleteIcon />
             </BaseIcon>
@@ -348,7 +350,7 @@ onMounted(() => {
         <Book
           :is-add="false"
           :is-user="true"
-          quantifier="篇"
+          :quantifier="$t('articles_count')"
           :item="item"
           :checked="selectIds.includes(item.id)"
           @check="() => toggleSelect(item)"
@@ -371,7 +373,7 @@ onMounted(() => {
       <div class="flex gap-4 flex-wrap mt-4">
         <Book
           :is-add="false"
-          quantifier="篇"
+          :quantifier="$t('articles_count')"
           :item="item as any"
           v-for="(item, j) in recommendBookList"
           @click="goBookDetail(item as any)"

@@ -4,7 +4,7 @@ import * as XLSX from 'xlsx';
 import * as path from 'path';
 import Vinyl from 'vinyl';
 
-// 支持的语言列表
+
 const LANGUAGES = ['en', 'zh', 'id', 'tw', 'th', 'ru', 'vi', 'es', 'pt', 'ja', 'uk', 'ko', 'de', 'fr'];
 
 function excel2i18n() {
@@ -16,13 +16,13 @@ function excel2i18n() {
     const workbook = XLSX.read(file.contents);
     const excelData = XLSX.utils.sheet_to_json(workbook.Sheets['Sheet1']);
 
-    // 为每种语言创建一个翻译对象
+
     const translations = {};
     LANGUAGES.forEach(lang => {
       translations[lang] = {};
     });
 
-    // 解析 Excel 数据
+
     excelData.forEach(row => {
       let parsedRow = {};
       for (const key in row) {
@@ -34,7 +34,7 @@ function excel2i18n() {
         }
       }
 
-      // 将每种语言的翻译添加到对应的对象中
+
       if (parsedRow.key) {
         LANGUAGES.forEach(lang => {
           if (parsedRow[lang]) {
@@ -44,7 +44,7 @@ function excel2i18n() {
       }
     });
 
-    // 为每种语言生成一个 JSON 文件
+
     LANGUAGES.forEach(lang => {
       if (Object.keys(translations[lang]).length > 0) {
         const langFile = new Vinyl({
@@ -62,7 +62,7 @@ function excel2i18n() {
   return stream;
 }
 
-// 将翻译好的 excel 写入多个语言 JSON 文件
+
 function i18nWrite() {
   return src(['../nuxt/i18n/i18n.xlsx'], { encoding: false })
     .pipe(excel2i18n())

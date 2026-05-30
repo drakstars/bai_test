@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<IProps>(), {
   word: '',
 })
 
-// 计算属性：将句子中的目标单词高亮显示
+
 const highlightedText = computed(() => {
   if (!props.text || !props.word) {
     return props.text
@@ -26,11 +26,11 @@ const highlightedText = computed(() => {
     .join(' ')
   const wrap = (match: string) => `<span class="${classNames}">${match}</span>`
 
-  // 合并单词本体和常见变形匹配，避免漏判。
+
   return getWordRegexes(props.word).reduce((result, regex) => result.replace(regex, wrap), props.text)
 })
 
-// 转义正则表达式特殊字符
+
 function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }

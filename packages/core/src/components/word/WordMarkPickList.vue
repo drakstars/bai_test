@@ -23,12 +23,12 @@ const paintMode = ref<PaintMode>('know')
 const marks = reactive<Record<number, PaintMode>>({})
 
 const modeLabels: Record<PaintMode, string> = {
-  know: '我认识',
-  unknown: '不认识',
-  mastered: '已掌握',
+  know: 'Tôi biết',
+  unknown: 'Chưa biết',
+  mastered: 'Đã thuộc',
 }
 
-/** 与当前顶部模式同色则取消标记，否则设为当前模式。 */
+
 function onWordClick(index: number) {
   if (index < 0 || index >= props.words.length) return
   if (marks[index] === paintMode.value) {
@@ -78,7 +78,7 @@ function onComplete() {
 <template>
   <div class="word-mark-pick-list text-xl flex flex-col gap-3 w-full pt-10">
     <div class="flex flex-wrap gap-2 items-center">
-      <div>标记分类:</div>
+      <div>Phân loại:</div>
       <button
         v-for="mode in ['know', 'unknown', 'mastered'] as const"
         :key="mode"
@@ -91,13 +91,13 @@ function onComplete() {
       </button>
     </div>
     <div>
-      说明：点词标记，重复点击取消；切换分类继续标记。未标记与“不认识”将进入后续练习。
+      Hướng dẫn: Nhấn vào từ để đánh dấu, nhấn lại để bỏ đánh dấu. Từ chưa đánh dấu và "Chưa biết" sẽ vào bài luyện tiếp theo.
     </div>
     <div class="text-sm color-[var(--color-font-3)]">
-      小提示：如果认识的多，建议切换为“不认识”进行标记；反之，切换为“我认识”进行标记
+      Gợi ý: Nếu biết nhiều, chọn “Chưa biết” để đánh dấu; ngược lại chọn “Tôi biết”
     </div>
 
-    <div class="word-grid" role="list" aria-label="单词列表">
+    <div class="word-grid" role="list" aria-label="Danh sách từ vựng">
       <div
         v-for="(item, index) in words"
         :key="index"
@@ -111,7 +111,7 @@ function onComplete() {
     </div>
 
     <div class="center pt-1">
-      <BaseButton type="primary" size="large" @click="onComplete">标记完成</BaseButton>
+      <BaseButton type="primary" size="large" @click="onComplete">Đã đánh dấu xong</BaseButton>
     </div>
   </div>
 </template>

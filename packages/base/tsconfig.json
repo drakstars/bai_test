@@ -30,7 +30,7 @@
       "vite/client",
       "unplugin-vue-macros/macros-global",
       "unplugin-vue-components/types"
-      // 让 TS 识别自动导入组件
+
     ],
     "baseUrl": "src",
     "paths": {

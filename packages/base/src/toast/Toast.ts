@@ -12,7 +12,7 @@ interface ToastContainer {
 let toastContainers: ToastContainer[] = []
 let toastIdCounter = 0
 
-// 创建Toast容器
+
 const createToastContainer = (): HTMLElement => {
   const container = document.createElement('div')
   container.className = 'toast-container'
@@ -27,21 +27,21 @@ const createToastContainer = (): HTMLElement => {
   return container
 }
 
-// 更新所有Toast的位置
+
 const updateToastPositions = () => {
   toastContainers.forEach((toastContainer, index) => {
-    const offset = index * 70 // 每个Toast之间的间距，从80px减少到50px
+    const offset = index * 70
     toastContainer.offset = offset
     toastContainer.container.style.marginTop = `${offset}px`
   })
 }
 
-// 移除Toast容器
+
 const removeToastContainer = (id: string) => {
   const index = toastContainers.findIndex(container => container.id === id)
   if (index > -1) {
     const container = toastContainers[index]
-    // 延迟销毁，等待动画完成
+
     setTimeout(() => {
       render(null, container!.container)
       container!.container.remove()
@@ -50,7 +50,7 @@ const removeToastContainer = (id: string) => {
         toastContainers.splice(currentIndex, 1)
         updateToastPositions()
       }
-    }, 300) // 等待动画完成（0.3秒）
+    }, 300)
   }
 }
 
@@ -58,11 +58,11 @@ const Toast: ToastService = (options: ToastOptions | string): ToastInstance => {
   const toastOptions = typeof options === 'string' ? { message: options } : options
   const id = `toast-${++toastIdCounter}`
 
-  // 创建Toast容器
+
   const container = createToastContainer()
   document.body.appendChild(container)
 
-  // 创建VNode
+
   const vnode = createVNode(ToastComponent, {
     ...toastOptions,
     onClose: () => {
@@ -70,17 +70,17 @@ const Toast: ToastService = (options: ToastOptions | string): ToastInstance => {
     },
   })
 
-  // 渲染到容器
+
   render(vnode, container)
 
-  // 创建实例
+
   const instance: ToastInstance = {
     close: () => {
       vnode.component?.exposed?.close?.()
     },
   }
 
-  // 添加到容器列表
+
   const toastContainer: ToastContainer = {
     id,
     container,
@@ -94,7 +94,7 @@ const Toast: ToastService = (options: ToastOptions | string): ToastInstance => {
   return instance
 }
 
-// 添加类型方法
+
 Toast.success = (message: string, options?: Omit<ToastOptions, 'message' | 'type'>) => {
   return Toast({ message, type: 'success', ...options })
 }
@@ -111,7 +111,7 @@ Toast.error = (message: string, options?: Omit<ToastOptions, 'message' | 'type'>
   return Toast({ message, type: 'error', ...options })
 }
 
-// 关闭所有消息
+
 Toast.closeAll = () => {
   toastContainers.forEach(container => container.instance.close())
   toastContainers = []

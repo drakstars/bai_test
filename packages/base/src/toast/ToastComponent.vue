@@ -80,10 +80,10 @@ const handleAction = () => {
 
 const close = () => {
   visible.value = false
-  // 延迟发出close事件，等待动画完成
+
   setTimeout(() => {
     emit('close')
-  }, 300) // 等待动画完成（0.3秒）
+  }, 300)
 }
 
 onMounted(() => {
@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
   clearTimer()
 })
 
-// 暴露方法给父组件
+
 defineExpose({
   close,
   show: () => {
@@ -141,7 +141,7 @@ defineExpose({
   }
 }
 
-// 深色模式支持
+
 html.dark {
   .message {
     background: var(--color-second);

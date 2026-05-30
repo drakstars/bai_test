@@ -63,7 +63,7 @@ let wordIndex = $ref(0)
 let stringIndex = $ref(0)
 let input = $ref('')
 let wrong = $ref('')
-//是否是输入空格
+
 let isSpace = $ref(false)
 let isEnd = $ref(false)
 let hoverIndex = $ref({
@@ -165,7 +165,7 @@ async function init() {
     sentenceIndex = 0
     wordIndex = 0
     stringIndex = 0
-    //todo 这在直接修改不太合理
+
     props.article.sections.map(v => {
       v.map(w => {
         w.words.map(s => {
@@ -186,21 +186,21 @@ async function init() {
 function checkCursorPosition(a = sectionIndex, b = sentenceIndex, c = wordIndex) {
   // console.log('checkCursorPosition')
   _nextTick(() => {
-    // 选中目标元素
+
     const currentWord = document.querySelector(
       `.section:nth-of-type(${a + 1}) .sentence:nth-of-type(${b + 1}) .word:nth-of-type(${c + 1})`
     )
     if (currentWord) {
-      // 在 currentWord 内找 .word-end
+
       const end = currentWord.querySelector('.word-end')
       if (end) {
-        // 获取 articleWrapper 的位置
+
         const articleRect = articleWrapperRef.getBoundingClientRect()
         const endRect = end.getBoundingClientRect()
-        // 判断元素是否在视口内
+
         const isInViewport = endRect.top >= 0 && endRect.top <= window.innerHeight
         if (isInViewport) {
-          // 如果在视口内且位置大于屏幕的0.7高度，就滚动屏幕的1/3
+
           if (endRect.y > window.innerHeight * 0.7) {
             window.scrollTo({
               top: document.documentElement.scrollTop + window.innerHeight * 0.3,
@@ -208,13 +208,13 @@ function checkCursorPosition(a = sectionIndex, b = sentenceIndex, c = wordIndex)
             })
           }
         } else {
-          // 如果不在视口内，滚动到屏幕中间
+
           window.scrollTo({
             top: document.documentElement.scrollTop + endRect.top - window.innerHeight / 2,
             behavior: 'smooth',
           })
         }
-        // 计算相对位置
+
         cursor = {
           top: endRect.top - articleRect.top,
           left: endRect.left - articleRect.left,
@@ -313,7 +313,7 @@ const isNameWord = () => {
 }
 
 let isTyping = false
-//专用锁，因为这个方法父级要调用
+
 let lock = false
 
 function nextSentence() {
@@ -322,12 +322,12 @@ function nextSentence() {
   lock = true
   let currentSection = props.article.sections[sectionIndex]
   let currentSentence = currentSection[sentenceIndex]
-  //这里把未输入的单词补全，因为删除时会用到input
+
   currentSentence.words.forEach((word, i) => {
     word.input = word.input + word.word.slice(word.input?.length ?? 0)
   })
 
-  //todo 计得把略过的单词加上统计里面去
+
   // if (!store.allIgnoreWords.includes(currentWord.word.toLowerCase()) && currentWord.type === PracticeArticleWordType.Word) {
   //   statisticsStore.inputNumber++
   // }
@@ -364,11 +364,11 @@ const next = () => {
   let currentSentence = currentSection[sentenceIndex]
   let currentWord: ArticleWord = currentSentence.words[wordIndex]
 
-  // 检查下一个单词是否存在
+
   if (wordIndex + 1 < currentSentence.words.length) {
     wordIndex++
     currentWord = currentSentence.words[wordIndex]
-    //这里把未输入的单词补全，因为删除时会用到input
+
     currentSentence.words.slice(0, wordIndex).forEach((word, i) => {
       word.input = word.input + word.word.slice(word.input?.length ?? 0)
     })
@@ -403,7 +403,7 @@ function onTyping(e: KeyboardEvent) {
       if (e.code === 'Space') {
         next()
       } else {
-        // 如果在第一个单词的最后一位上， 不按空格的直接输入下一个字母的话
+
         next()
         isTyping = false
         onTyping(e)
@@ -441,7 +441,7 @@ function onTyping(e: KeyboardEvent) {
       input += letter
       currentWord.input = input
       stringIndex++
-      //单词输入完毕
+
       if (!currentWord.word[stringIndex]) {
         input = ''
         if (currentWord.nextSpace) {
@@ -454,7 +454,7 @@ function onTyping(e: KeyboardEvent) {
     playKeyboardAudio()
     e.preventDefault()
   } catch (e) {
-    //todo 上报
+
     articlePersistence.clear()
     init()
   } finally {
@@ -527,7 +527,7 @@ function hideSentence() {
 function jump(i, j, w, sentence?) {
   sectionIndex = i
   sentenceIndex = j
-  //todo 这里有可能是符号，要处理下
+
   wordIndex = w
   stringIndex = 0
   input = wrong = ''
@@ -579,11 +579,11 @@ function onContextMenu(e: MouseEvent, sentence: Sentence, i, j, w) {
           let word = props.article.sections[i][j].words[w]
           let text = word.word
           let doc = nlp(text)
-          // 优先判断是不是动词
+
           if (doc.verbs().found) {
             text = doc.verbs().toInfinitive().text()
           }
-          // 如果是名词（复数 → 单数）
+
           if (doc.nouns().found) {
             text = doc.nouns().toSingular().text()
           }
@@ -985,7 +985,7 @@ $article-lh: 2.4;
   display: none;
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .typing-article {
     max-width: 100%;

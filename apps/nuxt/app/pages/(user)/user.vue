@@ -36,9 +36,9 @@ onMounted(() => {
   userStore.fetchUserInfo()
 })
 
-// 修改手机号
-// 修改手机号
-// 修改手机号
+
+
+
 let changePhoneFormRef = $ref<FormInstance>()
 let defaultFrom = { oldCode: '', phone: '', code: '', pwd: '' }
 let changePhoneForm = $ref(cloneDeep(defaultFrom))
@@ -87,9 +87,9 @@ function changePhone() {
   })
 }
 
-// 修改用户名
-// 修改用户名
-// 修改用户名
+
+
+
 let changeUsernameFormRef = $ref<FormInstance>()
 let changeUsernameForm = $ref({ username: '' })
 let changeUsernameFormRules = {
@@ -124,9 +124,9 @@ function changeUsername() {
   })
 }
 
-// 修改邮箱
-// 修改邮箱
-// 修改邮箱
+
+
+
 let changeEmailFormRef = $ref<FormInstance>()
 
 let changeEmailForm = $ref({
@@ -178,9 +178,9 @@ function changeEmail() {
   })
 }
 
-// 修改密码
-// 修改密码
-// 修改密码
+
+
+
 let changePwdFormRef = $ref<FormInstance>()
 const defaultChangePwdForm = {
   oldPwd: '',
@@ -276,7 +276,7 @@ function onFileChange(e) {
       <div class="card-white flex-1 flex flex-col gap-2 px-6">
         <h1 class="text-2xl font-bold mt-0">帐户</h1>
 
-        <!--        用户名-->
+        
         <div class="item">
           <div class="flex-1">
             <div class="mb-2">用户名</div>
@@ -313,7 +313,7 @@ function onFileChange(e) {
         </div>
         <div class="line"></div>
 
-        <!--        手机号-->
+        
         <div class="item">
           <div class="flex-1">
             <div class="mb-2">手机号</div>
@@ -482,11 +482,11 @@ function onFileChange(e) {
         </div>
         <!--        <div class="line"></div>-->
 
-        <!--        同步进度-->
+        
         <div class="item cp relative">
           <div class="flex-1">
             <div class="">同步进度</div>
-            <!--            <div class="text-xs mt-2">在此输入密码</div>-->
+            
           </div>
           <IconFluentChevronLeft28Filled class="rotate-180" />
           <input
@@ -498,7 +498,7 @@ function onFileChange(e) {
         </div>
         <div class="line"></div>
 
-        <!--        去github issue-->
+        
         <div class="item cp" @click="jump2Feedback()">
           <div class="flex-1">给 {{ APP_NAME }} 提交意见</div>
           <IconFluentChevronLeft28Filled class="rotate-180" />

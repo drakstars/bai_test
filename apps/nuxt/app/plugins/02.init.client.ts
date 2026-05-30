@@ -4,18 +4,8 @@ import { ENV } from '@typewords/core/config/env.ts'
 import { withAppBaseURL } from '@typewords/core/utils/base-url'
 
 export default defineNuxtPlugin(async nuxtApp => {
-  if (
-    !location.href.includes('localhost') &&
-    !location.href.includes('192.168') &&
-    !location.href.includes('172.16') &&
-    !location.href.includes('10.0')
-  ) {
-    ;(function () {
-      var t = document.createElement('script')
-      t.src = ENV.LIBS_URL + 't.js?t=' + Date.now()
-      document.head.appendChild(t)
-    })()
-  }
+  // Remove dynamic external tracking script injection
+
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -42,9 +32,9 @@ export default defineNuxtPlugin(async nuxtApp => {
       space
     )
       .replace(/"__ARRAY__(\[.*?\])"/g, (_, arr) => arr)
-      // 专门处理 nameList，将其压缩成一行
+
       .replace(/"nameList": \[\s*([^\]]+)\s*\]/g, (match, content) => {
-        // 移除数组内部的换行和多余空格，但保留字符串间的空格
+
         const compressed = content.replace(/\s*\n\s*/g, ' ').trim()
         return `"nameList": [${compressed}]`
       })

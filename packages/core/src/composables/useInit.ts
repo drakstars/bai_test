@@ -18,7 +18,7 @@ export function useInit() {
   const runtimeStore = useRuntimeStore()
   // const userStore = useUserStore()
   const dataSync = useDataSyncPersistence()
-  let initializing = false // 标记是否正在初始化
+  let initializing = false
   let focus = true
   let fetching = false
   let fetching2 = false
@@ -28,12 +28,12 @@ export function useInit() {
     focus = !document.hidden
     if (focus) {
       try {
-        //当激活时，要先获取数据，以保证本地是最新的，以免本地老数据上传到后端覆盖新数据
+
         if (restoreFetching) return
         restoreFetching = true
         await dataSync.syncData(
           { [SyncDataType.dict]: null, [SyncDataType.setting]: null },
-          //只拉不推送
+
           { pushWhenLocalNewer: false }
         )
       } finally {
@@ -46,13 +46,13 @@ export function useInit() {
     document.removeEventListener('visibilitychange', onvisibilitychange)
   })
 
-  //init 有可能重复执行，因为从老网站导了数据之后需要 init
+
   async function init() {
     if (initializing) return
     initializing = true
     console.time('init')
 
-    //先清理副作用，避免重复监听
+
     unsub?.()
     unsub2?.()
     document.removeEventListener('visibilitychange', onvisibilitychange)
@@ -70,11 +70,11 @@ export function useInit() {
     settingStore.load = true
     store.load = true
     console.timeEnd('init')
-    initializing = false // 初始化完成，允许保存数据
+    initializing = false
 
-    //等数据全部准备好，再开启监听，避免循环保存-同步
+
     document.addEventListener('visibilitychange', onvisibilitychange)
-    //用 $subscribe 替代 watch
+
     unsub = store.$subscribe(
       debounce(async (mutation, data: BaseState) => {
         if (fetching || !focus || runtimeStore.globalLoading || restoreFetching) return
@@ -122,7 +122,7 @@ export function useInit() {
     runtimeStore.isError = Supabase.getStatus().status === 'error'
     window.umami?.track('host', { host: window.location.host })
 
-    // 静默后台录制用户操作，数据保存到 IndexedDB
+
     // startRrwebRecording().catch(console.error)
   }
 

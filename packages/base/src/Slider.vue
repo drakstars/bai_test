@@ -8,7 +8,7 @@ const props = defineProps<{
   step?: number;
   disabled?: boolean;
   showText?: boolean;
-  showValue?: boolean;  // 是否显示当前值
+  showValue?: boolean;
   unit?: string
 }>();
 
@@ -31,19 +31,19 @@ watch(() => props.modelValue, (val) => {
 
 const valueToPercent = (value: number) => ((value - min) / (max - min)) * 100;
 
-// 计算一个数字的小数位数
+
 function countDecimals(value: number) {
   if (Math.floor(value) === value) return 0;
   const str = value.toString();
   if (str.indexOf('e-') >= 0) {
-    // 科学计数法处理
+
     const [, trail] = str.split('e-');
     return parseInt(trail, 10);
   }
   return str.split('.')[1]?.length || 0;
 }
 
-// 对数值按步长对齐，并控制精度，避免浮点误差
+
 function alignToStep(value: number, step: number) {
   const decimals = countDecimals(step);
   return Number((Math.round(value / step) * step).toFixed(decimals));

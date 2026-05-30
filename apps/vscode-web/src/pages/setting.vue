@@ -82,12 +82,12 @@ const disabledDefaultKeyboardEvent = $computed(() => {
   return editShortcutKey && tabIndex === 7
 })
 
-// 监听编辑快捷键状态变化，自动聚焦输入框
+
 watch(
   () => editShortcutKey,
   newVal => {
     if (newVal) {
-      // 使用nextTick确保DOM已更新
+
       nextTick(() => {
         focusShortcutInput()
       })
@@ -98,7 +98,7 @@ watch(
 useEventListener('keydown', (e: KeyboardEvent) => {
   if (!disabledDefaultKeyboardEvent) return
 
-  // 确保阻止浏览器默认行为
+
   e.preventDefault()
   e.stopPropagation()
 
@@ -109,14 +109,14 @@ useEventListener('keydown', (e: KeyboardEvent) => {
 
   // if (shortcutKey[shortcutKey.length-1] === '+') {
   //   settingStore.shortcutKeyMap[editShortcutKey] = DefaultShortcutKeyMap[editShortcutKey]
-  //   return ElMessage.warning('设备失败！')
+
   // }
 
   if (editShortcutKey) {
     if (shortcutKey === 'Delete') {
       settingStore.shortcutKeyMap[editShortcutKey] = ''
     } else {
-      // 忽略单独的修饰键
+
       if (
         shortcutKey === 'Ctrl+' ||
         shortcutKey === 'Alt+' ||
@@ -140,21 +140,21 @@ useEventListener('keydown', (e: KeyboardEvent) => {
 })
 
 function handleInputBlur() {
-  // 输入框失焦时结束编辑状态
+
   editShortcutKey = ''
 }
 
 function focusShortcutInput() {
-  // 找到当前正在编辑的快捷键输入框
+
   const inputElements = document.querySelectorAll('.set-key input')
   if (inputElements && inputElements.length > 0) {
-    // 聚焦第一个找到的输入框
+
     const inputElement = inputElements[0] as HTMLInputElement
     inputElement.focus()
   }
 }
 
-// 快捷键中文名称映射
+
 function getShortcutKeyName(key: string): string {
   const shortcutKeyNameMap = {
     ShowWord: '显示单词',
@@ -209,7 +209,7 @@ async function importJson(str: string) {
       dict: {},
       [PRACTICE_WORD_CACHE.key]: null,
       [PRACTICE_ARTICLE_CACHE.key]: null,
-      // @deprecated 大版本5废弃
+
       [APP_VERSION.key]: null,
     },
   }
@@ -219,13 +219,13 @@ async function importJson(str: string) {
     let data = obj.val
     data.dict.val = await checkAndUpgradeSaveDict(data.dict)
     data.setting.val = await checkAndUpgradeSaveSetting(data.setting)
-    //老版本兼容逻辑
+
     if (obj.version === 4) {
       if (!isEmpty(data?.[APP_VERSION.key])) {
         data.setting.val.webAppVersion = data?.[APP_VERSION.key]
       }
     }
-    //需在调同步方法前面，同步方法可能报错
+
     let hasRemote = Supabase.check()
     runtimeStore.globalLoading = true
     const pushOk = await dataSyncPersistence.forcePushLocalDataToRemote(data)
@@ -364,7 +364,7 @@ async function restoreHistoryData() {
     data.dict.val = await checkAndUpgradeSaveDict(data.dict)
     data.setting.val = await checkAndUpgradeSaveSetting(data.setting)
 
-    //需在调同步方法前面，同步方法可能报错
+
     let hasRemote = Supabase.check()
     runtimeStore.globalLoading = true
     const pushOk = await dataSyncPersistence.forcePushLocalDataToRemote(data)
@@ -447,7 +447,7 @@ let sbStatus = $ref(Supabase.getStatus())
 watch(
   () => tabIndex,
   () => {
-    if (tabIndex === 5) sbStatus = Supabase.getStatus()
+    if (tabIndex === 3 || tabIndex === 4) sbStatus = Supabase.getStatus()
   }
 )
 
@@ -456,17 +456,17 @@ let sbFormRules = {
   key: [{ required: true, message: '请输入  Supabase  Key', trigger: 'blur' }],
 }
 
-//能否使用同步数据功能,如果有自定义的文章里面有音频，则不可以
+
 const canSyncToServe = $computed(() => {
-  //筛选自定义和收藏
+
   let bookList = store.article.bookList.filter(v => v.custom || [DictId.articleCollect].includes(v.id))
   let audioFileIdList = []
   bookList.forEach(v => {
-    //筛选 audioFileId 字体有值的
+
     v.articles
       .filter(s => !s.audioSrc && s.audioFileId)
       .forEach(a => {
-        //所有 id 存起来，下次直接判断字符串是否相等，因为这个watch会频繁调用
+
         audioFileIdList.push(a.audioFileId)
       })
   })
@@ -479,14 +479,14 @@ async function doSaveSbConfig() {
   configLoading = true
   tempSbInstance = createClient(sbForm?.url, sbForm?.key)
   try {
-    // 检测 typewords_data 表是否存在
+
     const { data: existingData, error: checkError } = await tempSbInstance.from('typewords_data').select('type')
     if (checkError) {
       Supabase.setStatus('error', checkError?.message ?? '表不存在')
       sbStatus = Supabase.getStatus()
       Toast.error('表不存在')
     } else {
-      // 表已存在，检测是否需要插入默认数据
+
       const rows = (existingData ?? []) as { type: string }[]
       const existingTypes = rows.map(d => d.type)
       const defaultData = [
@@ -559,27 +559,23 @@ function removeSbConfig() {
               <span>{{ $t('general_settings') }}</span>
             </div>
             <div class="tab" :class="tabIndex === 1 && 'active'" @click="tabIndex = 1">
-              <IconFluentBot20Regular />
-              <span>{{ $t('fsrs_settings') }}</span>
-            </div>
-            <div class="tab" :class="tabIndex === 2 && 'active'" @click="tabIndex = 2">
               <IconFluentTextUnderlineDouble20Regular />
               <span>{{ $t('word_settings') }}</span>
             </div>
-            <div class="tab" :class="tabIndex === 3 && 'active'" @click="tabIndex = 3">
+            <div class="tab" :class="tabIndex === 2 && 'active'" @click="tabIndex = 2">
               <IconFluentBookLetter20Regular />
               <span>{{ $t('article_settings') }}</span>
             </div>
-            <div class="tab" :class="tabIndex === 5 && 'active'" @click="tabIndex = 5">
+            <div class="tab" :class="tabIndex === 3 && 'active'" @click="tabIndex = 3">
               <IconFluentDatabasePerson20Regular />
               <span>{{ $t('data_management') }}</span>
             </div>
             <div
               class="tab"
-              :class="tabIndex === 6 && 'active'"
+              :class="tabIndex === 4 && 'active'"
               @click="
                 () => {
-                  tabIndex = 6
+                  tabIndex = 4
                   runtimeStore.isNew = false
                   settingStore.webAppVersion = APP_VERSION.version
                 }
@@ -589,40 +585,16 @@ function removeSbConfig() {
               <span>数据同步</span>
               <div class="red-point" v-if="runtimeStore.isError || runtimeStore.isNew"></div>
             </div>
-            <div class="tab" :class="tabIndex === 7 && 'active'" @click="tabIndex = 7">
-              <IconFluentKeyboardLayoutFloat20Regular />
-              <span>{{ $t('shortcut_settings') }}</span>
-            </div>
-            <div
-              class="tab"
-              :class="tabIndex === 8 && 'active'"
-              @click="
-                () => {
-                  tabIndex = 8
-                  // runtimeStore.isNew = false
-                  // settingStore.webAppVersion = APP_VERSION.version
-                }
-              "
-            >
-              <IconFluentTextBulletListSquare20Regular />
-              <span>{{ $t('update_log') }}</span>
-              <!--              <div class="red-point" v-if="runtimeStore.isNew"></div>-->
-            </div>
-            <div class="tab" :class="tabIndex === 9 && 'active'" @click="tabIndex = 9">
-              <IconFluentPerson20Regular />
-              <span>{{ $t('about') }}</span>
-            </div>
           </div>
         </div>
         <div class="col-line"></div>
         <div class="flex-1 overflow-y-auto overflow-x-hidden pr-4 content">
           <CommonSetting v-if="tabIndex === 0" />
-          <FsrsSetting v-if="tabIndex === 1" />
-          <WordSetting v-if="tabIndex === 2" />
-          <ArticleSetting v-if="tabIndex === 3" />
+          <WordSetting v-if="tabIndex === 1" />
+          <ArticleSetting v-if="tabIndex === 2" />
 
-          <div v-if="tabIndex === 5">
-            <!--            导出数据-->
+          <div v-if="tabIndex === 3">
+            
             <SettingItem
               title="导出数据"
               :desc="`${$t('data_saved_locally')}。如果您需要在不同的设备、浏览器上使用 ${APP_NAME}，
@@ -633,7 +605,7 @@ function removeSbConfig() {
             <div class="text-gray text-sm">💾 导出的ZIP文件包含所有学习数据，可在其他设备上导入恢复</div>
             <div class="line my-3"></div>
 
-            <!--            导入数据-->
+            
             <SettingItem title="导入数据">
               <BaseButton @click="openGate('import')" :loading="importLoading">{{
                 $t('import_data_restore')
@@ -641,7 +613,7 @@ function removeSbConfig() {
             </SettingItem>
             <div>请注意，导入数据将<b class="text-red"> 完全覆盖 </b>当前所有数据，请谨慎操作。</div>
 
-            <!--            新网站同步-->
+            
             <template v-if="isNewHost">
               <div class="line my-3"></div>
               <SettingItem title="迁移 2study.top 网站数据">
@@ -660,8 +632,8 @@ function removeSbConfig() {
             </div>
           </div>
 
-          <div v-if="tabIndex === 6">
-            <!--          Supabase 设置  -->
+          <div v-if="tabIndex === 4">
+            
             <SettingItem title="Supabase 配置" desc="网站不会上传您的 url 和 key，只保存在浏览器本地(Local storage)">
               <div v-if="sbStatus.status !== 'idle'" class="mt-2 text-sm">
                 <span v-if="sbStatus.status === 'success'" class="text-green"
@@ -711,52 +683,6 @@ function removeSbConfig() {
                 <div class="text-red">检测到自定义文章里面有自定义音频，无法使用同步功能</div>
               </div>
             </div>
-          </div>
-
-          <div class="body" v-if="tabIndex === 7">
-            <div class="row">
-              <label class="main-title">{{ $t('function') }}</label>
-              <div class="wrapper">{{ $t('shortcut_key') }}</div>
-            </div>
-            <div class="scroll">
-              <div class="row" v-for="item of Object.entries(settingStore.shortcutKeyMap)">
-                <label class="item-title">{{ getShortcutKeyName(item[0]) }}</label>
-                <div class="wrapper" @click="editShortcutKey = item[0]">
-                  <div class="set-key" v-if="editShortcutKey === item[0]">
-                    <input
-                      ref="shortcutInput"
-                      :value="item[1] ? item[1] : $t('no_shortcut_set')"
-                      readonly
-                      type="text"
-                      @blur="handleInputBlur"
-                    />
-                    <span @click.stop="editShortcutKey = ''"
-                      >{{ $t('press_key_to_set') }}，<span class="text-red!">{{
-                        $t('click_here_when_done')
-                      }}</span></span
-                    >
-                  </div>
-                  <div v-else>
-                    <div v-if="item[1]">{{ item[1] }}</div>
-                    <span v-else>{{ $t('no_shortcut_set') }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <label class="item-title"></label>
-              <div class="wrapper">
-                <BaseButton @click="resetShortcutKeyMap">{{ $t('restore_default') }}</BaseButton>
-              </div>
-            </div>
-          </div>
-
-          <!--          日志-->
-          <Log v-if="tabIndex === 8" />
-
-          <div v-if="tabIndex === 9" class="center flex-col">
-            <About />
-            <div class="text-md color-gray mt-10">Build {{ gitLastCommitHash }}</div>
           </div>
         </div>
       </div>

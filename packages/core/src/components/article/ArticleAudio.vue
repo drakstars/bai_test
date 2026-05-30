@@ -43,7 +43,7 @@ const setAudioRefValue = (key: string, value: any) => {
         break
     }
   } else {
-    // 如果audioRef还未初始化，先存起来，等初始化后再设置 => watch监听instance变化
+
     pendingUpdates.value[key] = value
   }
 }
@@ -66,7 +66,7 @@ watch(
   { immediate: true }
 )
 
-// 监听instance变化，设置之前pending的值
+
 watch(
   () => instance,
   newVal => {
@@ -78,7 +78,7 @@ watch(
   { immediate: true }
 )
 
-//转发一遍，这里Proxy的默认值不能为{}，可能是vue做了什么
+
 defineExpose(
   new Proxy(
     {

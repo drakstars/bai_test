@@ -11,7 +11,7 @@
       class="w-full px-3 py-2 border border-gray-300 rounded-md outline-none resize-none transition-colors duration-200 box-border"
       @input="handleInput"
     />
-    <!-- 字数统计 -->
+    
     <span
       v-if="showWordLimit && maxlength"
       class="absolute bottom-1 right-2 text-xs text-gray-400 select-none"
@@ -44,12 +44,12 @@ watch(
 
 const textareaRef = ref<HTMLTextAreaElement>()
 
-// 样式（用于控制高度）
+
 const textareaStyle = computed(() => {
   return props.autosize ? { height: 'auto' } : {}
 })
 
-// 输入处理
+
 const handleInput = (e: Event) => {
   const val = (e.target as HTMLTextAreaElement).value
   innerValue.value = val
@@ -57,7 +57,7 @@ const handleInput = (e: Event) => {
   if (props.autosize) nextTick(resizeTextarea)
 }
 
-// 自动调整高度
+
 const resizeTextarea = () => {
   if (!textareaRef.value) return
   const el = textareaRef.value
@@ -67,13 +67,13 @@ const resizeTextarea = () => {
 
   if (typeof props.autosize === 'object') {
     const { minRows, maxRows } = props.autosize
-    const lineHeight = 24 // 行高约等于 24px
+    const lineHeight = 24
     if (minRows) height = Math.max(height, minRows * lineHeight)
     if (maxRows) {
       const maxHeight = maxRows * lineHeight
       if (height > maxHeight) {
         height = maxHeight
-        overflow = 'auto' // 超出时允许滚动
+        overflow = 'auto'
       }
     }
   }

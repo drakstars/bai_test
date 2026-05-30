@@ -21,7 +21,7 @@ export interface BaseState {
   }
   dictListVersion: number
   fsrsData: Record<string, Card>
-  _ignoreWatch: boolean //忽略监听，避免重复保存和上传
+  _ignoreWatch: boolean
 }
 
 export const getDefaultBaseState = (): BaseState => ({
@@ -133,7 +133,7 @@ export const useBaseStore = defineStore('base', {
       return Math.ceil(this.sdict.length / this.sdict.perDayStudyNumber)
     },
     currentGroup(): number {
-      //当能除尽时，应该加1
+
       let s = this.sdict.lastLearnIndex % this.sdict.perDayStudyNumber
       let d = this.sdict.lastLearnIndex / this.sdict.perDayStudyNumber
       return Math.floor(s === 0 ? d + 1 : d)
@@ -168,7 +168,7 @@ export const useBaseStore = defineStore('base', {
         book.articles = shallowReactive(book.articles)
         book.statistics = shallowReactive(book.statistics)
       })
-      //必须先 reset, 只 $patch 无法将 state 恢复到默认值
+
       this.$reset()
       console.time('$patch')
       if (IS_DEV) {
@@ -193,10 +193,10 @@ export const useBaseStore = defineStore('base', {
             if (AppEnv.CAN_REQUEST) {
               let res = await myDictList()
               if (res.success) {
-                //只保留未同步的
+
                 result.val.word.bookList = result.val.word.bookList.filter(v => !v.sync)
                 result.val.article.bookList = result.val.article.bookList.filter(v => !v.sync)
-                //这里看看是否要 shallowReactive
+
                 Object.assign(result.val, res.data)
               }
             }
@@ -211,7 +211,7 @@ export const useBaseStore = defineStore('base', {
         }
       })
     },
-    //改变词典
+
     async changeDict(val: Dict) {
       if (AppEnv.CAN_REQUEST) {
         let r = await add2MyDict({
@@ -223,7 +223,7 @@ export const useBaseStore = defineStore('base', {
         if (!r.success) return Toast.error(r.msg)
         else val.userDictId = r.data
       }
-      //把其他的词典的单词数据都删掉，全保存在内存里太卡了
+
       this.word.bookList.slice(3).map(v => {
         if (!v.custom) {
           v.words = shallowReactive([])
@@ -245,7 +245,7 @@ export const useBaseStore = defineStore('base', {
         this.word.studyIndex = this.word.bookList.length - 1
       }
     },
-    //改变书籍
+
     async changeBook(val: Dict) {
       if (AppEnv.CAN_REQUEST) {
         let r = await add2MyDict({
@@ -258,7 +258,7 @@ export const useBaseStore = defineStore('base', {
           return Toast.error(r.msg)
         }
       }
-      //把其他的书籍里面的文章数据都删掉，全保存在内存里太卡了
+
       this.article.bookList.slice(1).map(v => {
         if (!v.custom) {
           v.articles = shallowReactive([])
@@ -267,7 +267,7 @@ export const useBaseStore = defineStore('base', {
       let rIndex = this.article.bookList.findIndex((v: Dict) => v.id === val.id)
       if (rIndex > -1) {
         this.article.studyIndex = rIndex
-        //不要整个等于，不然统计没了
+
         // this.article.bookList[this.article.studyIndex] = getDefaultDict(val)
         this.article.bookList[this.article.studyIndex].articles = shallowReactive(val.articles)
         this.article.bookList[this.article.studyIndex].cover = val.cover

@@ -35,10 +35,10 @@ import { withAppBaseURL } from './base-url'
 dayjs.extend(duration)
 
 export function no() {
-  Toast.warning('未现实')
+  Toast.warning('Chưa được hỗ trợ')
 }
 
-//检测多余字段;防止人为删除数据，导致数据不完整报错
+
 function checkRiskKey(origin: object, target: object) {
   for (const [key, value] of Object.entries(origin)) {
     // @ts-ignore
@@ -88,11 +88,11 @@ export async function checkAndUpgradeSaveDict(val: any) {
         })
         return defaultState
       } else {
-        // 版本不匹配时，尽量保留数据而不是直接返回默认状态
+
         console.warn(`数据版本不匹配: 当前版本 ${version}, 期望版本 ${SAVE_DICT_KEY.version}，尝试保留数据`)
         try {
           checkRiskKey(defaultState, state)
-          // 尝试保留 bookList 数据
+
           if (state.word && state.word.bookList && Array.isArray(state.word.bookList)) {
             defaultState.word.bookList = state.word.bookList.map((v: any) => {
               return getDefaultDict(checkRiskKey(getDefaultDict(), v))
@@ -123,7 +123,7 @@ export async function checkAndUpgradeSaveDict(val: any) {
   return defaultState
 }
 
-// 带版本、时间，用于同步时附带，这样不用再保存到本地一次
+
 export async function parseJsonStr(val: any, cb: any): Promise<SaveData> {
   let result: SaveData = JSON.parse(val)
   result.val = await cb(result)
@@ -149,20 +149,20 @@ export async function checkAndUpgradeSaveSetting(val: any) {
       state.load = false
       // debugger
       let version = Number(data.version)
-      //为了保持永远是最新的快捷键选项列表，但保留住用户的自定义设置，去掉无效的快捷键选项
-      //例: 2版本，可能有快捷键A。3版本没有了
+
+
       checkRiskKey(defaultState.shortcutKeyMap, state.shortcutKeyMap)
 
       let updateLocalData = false
-      //移除单独保存的 app version字段，转移到 settingStore的webAppVersion里面
+
       if (version <= 17) {
         defaultState.webAppVersion = (await get(APP_VERSION.key)) ?? APP_VERSION.version
         updateLocalData = true
       }
-      //3/20晚上10点25推的代码，这个地方出了一个bug，ShortcutKey没导入，导致抛异常后返回了默认值，所有的用户的setting都变成默认值了。
-      //在这里读取之前的快照，如果存在则从里面读取setting的firstTime，
-      //判断是否与当前值相等，不相等则取快照的值并将本地的update_at更新，以免被远程覆盖
-      // 修复19版本未导入变量，导致抛错所有用户setting变默认值的bug
+
+
+
+
       if (version === 19) {
         try {
           const snapshotCutoffTime = new Date('2026-03-20T22:25:00+08:00').getTime()
@@ -192,15 +192,15 @@ export async function checkAndUpgradeSaveSetting(val: any) {
         }
       }
 
-      //修复快捷键下一个单词和跳过单词重复了
+
       if (version <= 20) {
         defaultState.shortcutKeyMap[ShortcutKey.Next] = DefaultShortcutKeyMap[ShortcutKey.Next]
         updateLocalData = true
       }
 
-      //合并单独的快速自测选项到新的合并选项中
+
       if (version <= 21) {
-        //如果用户之前是快速自测
+
         if (state.quickIdentify) state.identifyMethod = IdentifyMethod.QuickIdentify
         updateLocalData = true
       }
@@ -220,7 +220,7 @@ export async function checkAndUpgradeSaveSetting(val: any) {
   return defaultState
 }
 
-//筛选未自定义的词典，未自定义的词典不需要保存单词，用的时候再下载
+
 export function shakeCommonDict(n: BaseState): BaseState {
   let data: BaseState = cloneDeep(n)
   data.word.bookList.map((v: Dict) => {
@@ -230,7 +230,7 @@ export function shakeCommonDict(n: BaseState): BaseState {
     if (!v.custom && ![DictId.articleCollect].includes(v.id)) v.articles = []
     else {
       v.articles.map(a => {
-        //运行时再生成
+
         a.sections = []
       })
     }
@@ -272,16 +272,43 @@ export function msToHourMinute(ms: number, en: boolean = false) {
   const totalMinutes = Math.floor(d.asMinutes())
   const hours = Math.floor(totalMinutes / 60)
   const minutes = totalMinutes % 60
-  if (hours) return `${hours}${en ? 'h' : '小时'}${minutes}${en ? 'm' : '分钟'}`
-  if (minutes) return `${minutes}${en ? 'm' : '分钟'}`
-  return `${Math.floor(d.asSeconds())}秒`
+  
+  let hUnit = '小时'
+  let mUnit = '分钟'
+  let sUnit = '秒'
+  
+  if (import.meta.client) {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      hUnit = ' giờ '
+      mUnit = ' phút'
+      sUnit = ' giây'
+    } else if (en || htmlLang.startsWith('en')) {
+      hUnit = 'h '
+      mUnit = 'm'
+      sUnit = 's'
+    }
+  }
+
+  if (hours) return `${hours}${hUnit}${minutes}${mUnit}`
+  if (minutes) return `${minutes}${mUnit}`
+  return `${Math.floor(d.asSeconds())}${sUnit}`
 }
 
 export function msToMinute(ms: number, en: boolean = false) {
-  return `${Math.floor(dayjs.duration(ms).asMinutes())}${en ? 'm' : '分钟'}`
+  let mUnit = '分钟'
+  if (import.meta.client) {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      mUnit = ' phút'
+    } else if (en || htmlLang.startsWith('en')) {
+      mUnit = 'm'
+    }
+  }
+  return `${Math.floor(dayjs.duration(ms).asMinutes())}${mUnit}`
 }
 
-//获取完成天数
+
 export function _getAccomplishDays(total: number, dayNumber: number) {
   let r = Math.ceil(total / dayNumber)
   if (r) {
@@ -290,7 +317,7 @@ export function _getAccomplishDays(total: number, dayNumber: number) {
   return '-'
 }
 
-//获取完成日期
+
 export function _getAccomplishDate(total: number, dayNumber: number) {
   if (dayNumber <= 0) return '-'
   let d = _getAccomplishDays(total, dayNumber)
@@ -300,7 +327,7 @@ export function _getAccomplishDate(total: number, dayNumber: number) {
     .format('YYYY-MM-DD')
 }
 
-//获取学习进度
+
 export function _getStudyProgress(index: number, total: number): number {
   //@ts-ignore
   return Number(((index / total) * 100).toFixed())
@@ -322,10 +349,10 @@ export function _parseLRC(lrc: string): { start: number; end: number; text: stri
   for (let i = 0; i < lines.length; i++) {
     let match = lines[i].match(regex)
     if (match) {
-      let start = parseFloat(match[1]) * 60 + parseFloat(match[2]) // 转换成秒
+      let start = parseFloat(match[1]) * 60 + parseFloat(match[2])
       let text = match[3].trim()
 
-      // 计算结束时间（下一个时间戳）
+
       let nextMatch = lines[i + 1] ? lines[i + 1].match(regex) : null
       let end = nextMatch ? parseFloat(nextMatch[1]) * 60 + parseFloat(nextMatch[2]) : null
 
@@ -357,7 +384,7 @@ export async function _getDictDataByUrl(val: DictResource, type: DictType = Dict
   return getDefaultDict()
 }
 
-//从字符串里面转换为Word格式
+
 export function convertToWord(raw: any) {
   const safeString = str => (typeof str === 'string' ? str.trim() : '')
   const safeSplit = (str, sep) => (safeString(str) ? safeString(str).split(sep).filter(Boolean) : [])
@@ -369,10 +396,10 @@ export function convertToWord(raw: any) {
       let pos = safeString(match[1])
       let cn = safeString(match[2])
 
-      // 如果 pos 不是常规词性（不以字母开头），例如 "【名】"
+
       if (!/^[a-zA-Z]+\.?$/.test(pos)) {
-        cn = safeString(line) // 整行放到 cn
-        pos = '' // pos 置空
+        cn = safeString(line)
+        pos = ''
       }
 
       return { pos, cn }
@@ -470,10 +497,10 @@ export function cloneDeep<T>(val: T): T {
 }
 
 export function shuffle<T>(array: T[]): T[] {
-  const result = array.slice() // 复制数组，避免修改原数组
+  const result = array.slice()
   for (let i = result.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1)) // 生成 0 ~ i 的随机索引
-    ;[result[i], result[j]] = [result[j], result[i]] // 交换元素
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[result[i], result[j]] = [result[j], result[i]]
   }
   return result
 }
@@ -515,22 +542,22 @@ export function groupBy<T extends Record<string, any>>(array: T[], key: string) 
   }, {})
 }
 
-//随机取N个
+
 export function getRandomN(arr: any[], n: number) {
   const copy = [...arr]
   for (let i = copy.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[copy[i], copy[j]] = [copy[j], copy[i]] // 交换
+    ;[copy[i], copy[j]] = [copy[j], copy[i]]
   }
   return copy.slice(0, n)
 }
 
-//数组分成N份
+
 export function splitIntoN(arr: any[], n: number) {
   const result = []
   const len = arr.length
-  const base = Math.floor(len / n) // 每份至少这么多
-  let extra = len % n // 前几份多 1 个
+  const base = Math.floor(len / n)
+  let extra = len % n
 
   let index = 0
   for (let i = 0; i < n; i++) {
@@ -547,16 +574,16 @@ export async function loadJsLib(key: string, url: string) {
   if (window[key]) return window[key]
   return new Promise((resolve, reject) => {
     const script = document.createElement('script')
-    // 判断是否是 .mjs 文件，如果是，则使用 type="module"
+
     if (url.includes('.mjs')) {
-      script.type = 'module' // 需要加上 type="module"
+      script.type = 'module'
       script.src = url
       script.onload = async () => {
         try {
-          // 使用动态 import 加载模块
-          const module = await import(url) // 动态导入 .mjs 模块
+
+          const module = await import(url)
           // @ts-ignore
-          window[key] = module.default || module // 将模块挂到 window 对象
+          window[key] = module.default || module
           // @ts-ignore
           resolve(window[key])
         } catch (err: any) {
@@ -564,7 +591,7 @@ export async function loadJsLib(key: string, url: string) {
         }
       }
     } else {
-      // 如果是非 .mjs 文件，直接按原方式加载
+
       script.src = url
       // @ts-ignore
       script.onload = () => resolve(window[key])
@@ -610,7 +637,7 @@ export function jump2Feedback() {
 export function isIOS() {
   //@ts-ignore
   const userAgent = navigator.userAgent || navigator.vendor || window.opera
-  // 判断是否包含 iPhone、iPad 或 iPod
+
   //@ts-ignore
   return /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream
 }
@@ -630,11 +657,7 @@ export function compareTimestamps(localTs: string | undefined, remoteTs: string 
   return CompareResult.Equal
 }
 
-/**
- * 是否应拉取远程（唯一入口）：先看版本，再看时间戳。
- * 1. 无版本号 → 视为旧，不拉。
- * 2. 有版本号：版本大的是新；相等则比时间戳，remote_newer 才拉。
- */
+
 export function shouldFetchRemote(
   localUpdatedAt: string | undefined,
   remoteUpdatedAt: string | undefined,

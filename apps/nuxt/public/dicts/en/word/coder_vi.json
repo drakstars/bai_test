@@ -1,0 +1,4110 @@
+[
+  {
+    "custom": false,
+    "id": 0,
+    "word": "variable",
+    "phonetic0": "/ˈveəriəbl/",
+    "phonetic1": "/ˈveəriəbl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "biến, biến số (vùng lưu trữ dữ liệu có thể thay đổi)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Define a variable to store the user's name.",
+        "cn": "Ví dụ: Define a variable to store the user's name."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 1,
+    "word": "function",
+    "phonetic0": "/ˈfʌŋkʃn/",
+    "phonetic1": "/ˈfʌŋkʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàm, phương thức (khối mã thực hiện nhiệm vụ cụ thể)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "This function calculates the total price of items.",
+        "cn": "Ví dụ: This function calculates the total price of items."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 2,
+    "word": "array",
+    "phonetic0": "/əˈreɪ/",
+    "phonetic1": "/əˈreɪ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "mảng (danh sách các phần tử cùng kiểu dữ liệu)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "An array can hold multiple values under a single name.",
+        "cn": "Ví dụ: An array can hold multiple values under a single name."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 3,
+    "word": "string",
+    "phonetic0": "/strɪŋ/",
+    "phonetic1": "/strɪŋ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chuỗi ký tự (dữ liệu dạng văn bản)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You can concatenate two strings using the plus operator.",
+        "cn": "Ví dụ: You can concatenate two strings using the plus operator."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 4,
+    "word": "object",
+    "phonetic0": "/ˈɒbdʒɪkt/",
+    "phonetic1": "/ˈɒbdʒɪkt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đối tượng (thành phần chứa thuộc tính và phương thức)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "An object in JavaScript represents a collection of key-value pairs.",
+        "cn": "Ví dụ: An object in JavaScript represents a collection of key-value pairs."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 5,
+    "word": "class",
+    "phonetic0": "/klɑːs/",
+    "phonetic1": "/klɑːs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lớp (khuôn mẫu để tạo ra các đối tượng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The Car class defines the properties and behaviors of a car.",
+        "cn": "Ví dụ: The Car class defines the properties and behaviors of a car."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 6,
+    "word": "compiler",
+    "phonetic0": "/kəmˈpaɪlə(r)/",
+    "phonetic1": "/kəmˈpaɪlə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "trình biên dịch (chuyển mã nguồn thành mã máy)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The compiler reported three syntax errors in your code.",
+        "cn": "Ví dụ: The compiler reported three syntax errors in your code."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 7,
+    "word": "debugger",
+    "phonetic0": "/ˌdiːˈbʌɡə(r)/",
+    "phonetic1": "/ˌdiːˈbʌɡə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "trình gỡ lỗi (công cụ tìm lỗi trong chương trình)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Use a debugger to step through the program execution.",
+        "cn": "Ví dụ: Use a debugger to step through the program execution."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 8,
+    "word": "database",
+    "phonetic0": "/ˈdeɪtəbeɪs/",
+    "phonetic1": "/ˈdeɪtəbeɪs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cơ sở dữ liệu (nơi lưu trữ dữ liệu có hệ thống)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The user accounts are stored in a MySQL database.",
+        "cn": "Ví dụ: The user accounts are stored in a MySQL database."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 9,
+    "word": "query",
+    "phonetic0": "/ˈkweəri/",
+    "phonetic1": "/ˈkweəri/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "truy vấn, hỏi (yêu cầu lấy dữ liệu từ database)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Write a SQL query to fetch all active users.",
+        "cn": "Ví dụ: Write a SQL query to fetch all active users."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 10,
+    "word": "server",
+    "phonetic0": "/ˈsɜːvə(r)/",
+    "phonetic1": "/ˈsɜːvə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "máy chủ (cung cấp dịch vụ và tài nguyên cho client)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The application server is running on port 8080.",
+        "cn": "Ví dụ: The application server is running on port 8080."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 11,
+    "word": "client",
+    "phonetic0": "/ˈklaɪənt/",
+    "phonetic1": "/ˈklaɪənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "máy khách (yêu cầu dịch vụ từ máy chủ)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The client sends a GET request to download the file.",
+        "cn": "Ví dụ: The client sends a GET request to download the file."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 12,
+    "word": "protocol",
+    "phonetic0": "/ˈprəʊtəkɒl/",
+    "phonetic1": "/ˈprəʊtəkɒl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giao thức (quy tắc truyền thông tin giữa các máy tính)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "HTTPS is a secure communication protocol.",
+        "cn": "Ví dụ: HTTPS is a secure communication protocol."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 13,
+    "word": "encryption",
+    "phonetic0": "/ɪnˈkrɪpʃn/",
+    "phonetic1": "/ɪnˈkrɪpʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự mã hóa (bảo mật thông tin bằng cách biến đổi dữ liệu)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Data encryption prevents unauthorized access during transfer.",
+        "cn": "Ví dụ: Data encryption prevents unauthorized access during transfer."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 14,
+    "word": "algorithm",
+    "phonetic0": "/ˈælɡərɪðəm/",
+    "phonetic1": "/ˈælɡərɪðəm/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "thuật toán (các bước giải quyết một vấn đề)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "This sorting algorithm has a time complexity of O(n log n).",
+        "cn": "Ví dụ: This sorting algorithm has a time complexity of O(n log n)."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 15,
+    "word": "exception",
+    "phonetic0": "/ɪkˈsepʃn/",
+    "phonetic1": "/ɪkˈsepʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "ngoại lệ, lỗi xảy ra khi chương trình đang chạy"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The program threw a null pointer exception and crashed.",
+        "cn": "Ví dụ: The program threw a null pointer exception and crashed."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 16,
+    "word": "interface",
+    "phonetic0": "/ˈɪntəfeɪs/",
+    "phonetic1": "/ˈɪntəfeɪs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giao diện (bề mặt tương tác hoặc khuôn mẫu code)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The user interface should be simple and intuitive.",
+        "cn": "Ví dụ: The user interface should be simple and intuitive."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 17,
+    "word": "inheritance",
+    "phonetic0": "/ɪnˈherɪtəns/",
+    "phonetic1": "/ɪnˈherɪtəns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự kế thừa (lớp con sử dụng lại thuộc tính lớp cha)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Inheritance helps reduce code duplication in OOP.",
+        "cn": "Ví dụ: Inheritance helps reduce code duplication in OOP."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 18,
+    "word": "polymorphism",
+    "phonetic0": "/ˌpɒliˈmɔːfɪzəm/",
+    "phonetic1": "/ˌpɒliˈmɔːfɪzəm/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tính đa hình (khả năng thực hiện nhiều dạng khác nhau)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Polymorphism allows a method to behave differently in subclasses.",
+        "cn": "Ví dụ: Polymorphism allows a method to behave differently in subclasses."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 19,
+    "word": "encapsulation",
+    "phonetic0": "/ɪnˌkæpsjʊˈleɪʃn/",
+    "phonetic1": "/ɪnˌkæpsjʊˈleɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tính đóng gói (che giấu chi tiết cài đặt bên trong)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Encapsulation restricts direct access to some of the object's components.",
+        "cn": "Ví dụ: Encapsulation restricts direct access to some of the object's components."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 20,
+    "word": "abstraction",
+    "phonetic0": "/æbˈstrækʃn/",
+    "phonetic1": "/æbˈstrækʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tính trừu tượng (tập trung vào cốt lõi, bỏ qua chi tiết)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Abstraction helps hide complex logic behind simple APIs.",
+        "cn": "Ví dụ: Abstraction helps hide complex logic behind simple APIs."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 21,
+    "word": "constant",
+    "phonetic0": "/ˈkɒnstənt/",
+    "phonetic1": "/ˈkɒnstənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hằng số (giá trị không thay đổi trong suốt chương trình)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Pi is a mathematical constant used in circles.",
+        "cn": "Ví dụ: Pi is a mathematical constant used in circles."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 22,
+    "word": "loop",
+    "phonetic0": "/luːp/",
+    "phonetic1": "/luːp/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "vòng lặp (lặp đi lặp lại một khối lệnh)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Use a for loop to iterate through the array elements.",
+        "cn": "Ví dụ: Use a for loop to iterate through the array elements."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 23,
+    "word": "condition",
+    "phonetic0": "/kənˈdɪʃn/",
+    "phonetic1": "/kənˈdɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "điều kiện (mệnh đề để đưa ra quyết định rẽ nhánh)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The if statement checks if the condition is true.",
+        "cn": "Ví dụ: The if statement checks if the condition is true."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 24,
+    "word": "operator",
+    "phonetic0": "/ˈɒpəreɪtə(r)/",
+    "phonetic1": "/ˈɒpəreɪtə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "toán tử (ký hiệu thực hiện phép toán như +, -, *)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The assignment operator copies a value into a variable.",
+        "cn": "Ví dụ: The assignment operator copies a value into a variable."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 25,
+    "word": "expression",
+    "phonetic0": "/ɪkˈspreʃn/",
+    "phonetic1": "/ɪkˈspreʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "biểu thức (kết hợp biến, giá trị để tính ra kết quả)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Evaluate the mathematical expression before printing it.",
+        "cn": "Ví dụ: Evaluate the mathematical expression before printing it."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 26,
+    "word": "return",
+    "phonetic0": "/rɪˈtɜːn/",
+    "phonetic1": "/rɪˈtɜːn/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "trả về (trả giá trị từ một hàm về nơi gọi)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Make sure to return the correct calculation result.",
+        "cn": "Ví dụ: Make sure to return the correct calculation result."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 27,
+    "word": "state",
+    "phonetic0": "/steɪt/",
+    "phonetic1": "/steɪt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "trạng thái (dữ liệu hiện tại của ứng dụng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "State management is crucial in modern web applications.",
+        "cn": "Ví dụ: State management is crucial in modern web applications."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 28,
+    "word": "event",
+    "phonetic0": "/ɪˈvent/",
+    "phonetic1": "/ɪˈvent/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự kiện (hành động như click chuột, gõ phím)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The button click event triggers the login function.",
+        "cn": "Ví dụ: The button click event triggers the login function."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 29,
+    "word": "callback",
+    "phonetic0": "/ˈkɔːlbæk/",
+    "phonetic1": "/ˈkɔːlbæk/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàm gọi lại (hàm được truyền làm tham số cho hàm khác)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Pass a callback function to handle the async response.",
+        "cn": "Ví dụ: Pass a callback function to handle the async response."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 30,
+    "word": "promise",
+    "phonetic0": "/ˈprɒmɪs/",
+    "phonetic1": "/ˈprɒmɪs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lời hứa (đại diện cho kết quả của tác vụ bất đồng bộ)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A promise can be in a pending, fulfilled, or rejected state.",
+        "cn": "Ví dụ: A promise can be in a pending, fulfilled, or rejected state."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 31,
+    "word": "async",
+    "phonetic0": "/əˈsɪŋk/",
+    "phonetic1": "/əˈsɪŋk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "bất đồng bộ (không chặn luồng chính khi xử lý)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Fetch data using async functions to keep the UI responsive.",
+        "cn": "Ví dụ: Fetch data using async functions to keep the UI responsive."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 32,
+    "word": "await",
+    "phonetic0": "/əˈweɪt/",
+    "phonetic1": "/əˈweɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "đợi (dừng lệnh cho đến khi tác vụ bất đồng bộ hoàn thành)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Wait for the API response by using the await keyword.",
+        "cn": "Ví dụ: Wait for the API response by using the await keyword."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 33,
+    "word": "error",
+    "phonetic0": "/ˈerə(r)/",
+    "phonetic1": "/ˈerə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lỗi (sai sót trong cú pháp hoặc logic chương trình)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Fix the compilation error before running the application.",
+        "cn": "Ví dụ: Fix the compilation error before running the application."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 34,
+    "word": "deploy",
+    "phonetic0": "/dɪˈplɔɪ/",
+    "phonetic1": "/dɪˈplɔɪ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "triển khai (đưa ứng dụng lên môi trường thực tế)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We are ready to deploy the website to production.",
+        "cn": "Ví dụ: We are ready to deploy the website to production."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 35,
+    "word": "release",
+    "phonetic0": "/rɪˈliːs/",
+    "phonetic1": "/rɪˈliːs/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "phát hành (ra mắt bản nâng cấp mới của phần mềm)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The latest release contains several security patches.",
+        "cn": "Ví dụ: The latest release contains several security patches."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 36,
+    "word": "version",
+    "phonetic0": "/ˈvɜːʃn/",
+    "phonetic1": "/ˈvɜːʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phiên bản (chỉ số đánh dấu sự thay đổi phần mềm)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Make sure you are using the latest version of Node.js.",
+        "cn": "Ví dụ: Make sure you are using the latest version of Node.js."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 37,
+    "word": "repository",
+    "phonetic0": "/rɪˈpɒzətri/",
+    "phonetic1": "/rɪˈpɒzətri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kho lưu trữ (nơi chứa toàn bộ mã nguồn dự án)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Clone the git repository to your local computer.",
+        "cn": "Ví dụ: Clone the git repository to your local computer."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 38,
+    "word": "branch",
+    "phonetic0": "/brɑːntʃ/",
+    "phonetic1": "/brɑːntʃ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nhánh (luồng phát triển mã độc lập trong git)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Create a new branch for implementing the registration feature.",
+        "cn": "Ví dụ: Create a new branch for implementing the registration feature."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 39,
+    "word": "commit",
+    "phonetic0": "/kəˈmɪt/",
+    "phonetic1": "/kəˈmɪt/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "cam kết (lưu lại các thay đổi vào lịch sử mã nguồn)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Write a clear commit message describing your changes.",
+        "cn": "Ví dụ: Write a clear commit message describing your changes."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 40,
+    "word": "merge",
+    "phonetic0": "/mɜːdʒ/",
+    "phonetic1": "/mɜːdʒ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "gộp, hòa trộn (hợp nhất các nhánh mã lại với nhau)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Merge the feature branch into the main development branch.",
+        "cn": "Ví dụ: Merge the feature branch into the main development branch."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 41,
+    "word": "conflict",
+    "phonetic0": "/ˈkɒnflɪkt/",
+    "phonetic1": "/ˈkɒnflɪkt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "xung đột (lỗi xảy ra khi hai thay đổi mã chồng chéo)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Resolve the git merge conflict before pushing your code.",
+        "cn": "Ví dụ: Resolve the git merge conflict before pushing your code."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 42,
+    "word": "request",
+    "phonetic0": "/rɪˈkwest/",
+    "phonetic1": "/rɪˈkwest/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "yêu cầu (client gửi yêu cầu dữ liệu lên server)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The server responded to the HTTP request with status 200.",
+        "cn": "Ví dụ: The server responded to the HTTP request with status 200."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 43,
+    "word": "response",
+    "phonetic0": "/rɪˈspɒns/",
+    "phonetic1": "/rɪˈspɒns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phản hồi (dữ liệu server trả về cho client)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The API response contains a list of products in JSON format.",
+        "cn": "Ví dụ: The API response contains a list of products in JSON format."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 44,
+    "word": "header",
+    "phonetic0": "/ˈhedə(r)/",
+    "phonetic1": "/ˈhedə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tiêu đề (chứa metadata trong yêu cầu mạng hoặc file)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Include the authentication token in the request header.",
+        "cn": "Ví dụ: Include the authentication token in the request header."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 45,
+    "word": "body",
+    "phonetic0": "/ˈbɒdi/",
+    "phonetic1": "/ˈbɒdi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "thân, phần chứa dữ liệu chính của thông điệp mạng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The post data is sent in the body of the HTTP request.",
+        "cn": "Ví dụ: The post data is sent in the body of the HTTP request."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 46,
+    "word": "method",
+    "phonetic0": "/ˈmeθəd/",
+    "phonetic1": "/ˈmeθəd/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phương thức (hành động của đối tượng hoặc loại request)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "GET and POST are the most common HTTP methods.",
+        "cn": "Ví dụ: GET and POST are the most common HTTP methods."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 47,
+    "word": "route",
+    "phonetic0": "/ruːt/",
+    "phonetic1": "/ruːt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đường dẫn định tuyến trong ứng dụng hoặc mạng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Define a route to handle requests for the profile page.",
+        "cn": "Ví dụ: Define a route to handle requests for the profile page."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 48,
+    "word": "path",
+    "phonetic0": "/pɑːθ/",
+    "phonetic1": "/pɑːθ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đường dẫn đến tệp hoặc thư mục trong hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Provide the absolute path to the configuration file.",
+        "cn": "Ví dụ: Provide the absolute path to the configuration file."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 49,
+    "word": "directory",
+    "phonetic0": "/dəˈrektəri/",
+    "phonetic1": "/dəˈrektəri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "thư mục (nơi chứa các tệp tin)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Create a new directory named static in the public folder.",
+        "cn": "Ví dụ: Create a new directory named static in the public folder."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 50,
+    "word": "file",
+    "phonetic0": "/faɪl/",
+    "phonetic1": "/faɪl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tệp tin, tập tin lưu trữ thông tin"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Read the contents of the configuration file.",
+        "cn": "Ví dụ: Read the contents of the configuration file."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 51,
+    "word": "stream",
+    "phonetic0": "/striːm/",
+    "phonetic1": "/striːm/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "luồng dữ liệu (truyền dữ liệu liên tục theo từng phần)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Video streaming requires high bandwidth.",
+        "cn": "Ví dụ: Video streaming requires high bandwidth."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 52,
+    "word": "buffer",
+    "phonetic0": "/ˈbʌfə(r)/",
+    "phonetic1": "/ˈbʌfə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "bộ đệm (vùng lưu trữ tạm thời dữ liệu đang truyền)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The data is loaded into a buffer before being processed.",
+        "cn": "Ví dụ: The data is loaded into a buffer before being processed."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 53,
+    "word": "cache",
+    "phonetic0": "/kæʃ/",
+    "phonetic1": "/kæʃ/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "bộ nhớ đệm (lưu tạm dữ liệu để truy cập nhanh hơn)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Clear the browser cache to see the updated styles.",
+        "cn": "Ví dụ: Clear the browser cache to see the updated styles."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 54,
+    "word": "session",
+    "phonetic0": "/ˈseʃn/",
+    "phonetic1": "/ˈseʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phiên làm việc (khoảng thời gian người dùng tương tác)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The user session expires after 30 minutes of inactivity.",
+        "cn": "Ví dụ: The user session expires after 30 minutes of inactivity."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 55,
+    "word": "cookie",
+    "phonetic0": "/ˈkʊki/",
+    "phonetic1": "/ˈkʊki/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tệp nhỏ lưu trữ thông tin duyệt web trên client"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Cookies are used to store login states on websites.",
+        "cn": "Ví dụ: Cookies are used to store login states on websites."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 56,
+    "word": "token",
+    "phonetic0": "/ˈtəʊkən/",
+    "phonetic1": "/ˈtəʊkən/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "mã thông báo (chuỗi ký tự dùng để xác thực quyền)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The JWT token is valid for 24 hours.",
+        "cn": "Ví dụ: The JWT token is valid for 24 hours."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 57,
+    "word": "auth",
+    "phonetic0": "/ɔːθ/",
+    "phonetic1": "/ɔːθ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "xác thực và phân quyền truy cập hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Implement authorization to protect admin routes.",
+        "cn": "Ví dụ: Implement authorization to protect admin routes."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 58,
+    "word": "permission",
+    "phonetic0": "/pəˈmɪʃn/",
+    "phonetic1": "/pəˈmɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "quyền hạn, sự cho phép thực hiện hành động"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You do not have permission to delete this resource.",
+        "cn": "Ví dụ: You do not have permission to delete this resource."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 59,
+    "word": "access",
+    "phonetic0": "/ˈækses/",
+    "phonetic1": "/ˈækses/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "truy cập, kết nối đến tài nguyên"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Direct access to the database is disabled for security.",
+        "cn": "Ví dụ: Direct access to the database is disabled for security."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 60,
+    "word": "admin",
+    "phonetic0": "/ˈædmɪn/",
+    "phonetic1": "/ˈædmɪn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "quản trị viên (người có quyền cao nhất trong hệ thống)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The admin dashboard displays website statistics.",
+        "cn": "Ví dụ: The admin dashboard displays website statistics."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 61,
+    "word": "user",
+    "phonetic0": "/ˈjuːzə(r)/",
+    "phonetic1": "/ˈjuːzə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "người dùng, người sử dụng hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The application has over one million active users.",
+        "cn": "Ví dụ: The application has over one million active users."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 62,
+    "word": "profile",
+    "phonetic0": "/ˈprəʊfaɪl/",
+    "phonetic1": "/ˈprəʊfaɪl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hồ sơ người dùng (chứa thông tin cá nhân)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Update your profile picture in the settings tab.",
+        "cn": "Ví dụ: Update your profile picture in the settings tab."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 63,
+    "word": "setting",
+    "phonetic0": "/ˈsetɪŋ/",
+    "phonetic1": "/ˈsetɪŋ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cài đặt, cấu hình cho hệ thống hoặc ứng dụng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Change the language setting in the preferences panel.",
+        "cn": "Ví dụ: Change the language setting in the preferences panel."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 64,
+    "word": "config",
+    "phonetic0": "/kənˈfɪɡ/",
+    "phonetic1": "/kənˈfɪɡ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cấu hình (các thông số thiết lập ứng dụng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Keep database credentials in a separate config file.",
+        "cn": "Ví dụ: Keep database credentials in a separate config file."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 65,
+    "word": "log",
+    "phonetic0": "/lɒɡ/",
+    "phonetic1": "/lɒɡ/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "nhật ký (ghi lại hoạt động và lỗi của hệ thống)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Check the server log to debug connection issues.",
+        "cn": "Ví dụ: Check the server log to debug connection issues."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 66,
+    "word": "test",
+    "phonetic0": "/test/",
+    "phonetic1": "/test/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "kiểm thử, kiểm tra chất lượng phần mềm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Write unit tests to verify individual functions.",
+        "cn": "Ví dụ: Write unit tests to verify individual functions."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 67,
+    "word": "mock",
+    "phonetic0": "/mɒk/",
+    "phonetic1": "/mɒk/",
+    "trans": [
+      {
+        "pos": "v./adj.",
+        "cn": "giả lập dữ liệu phục vụ kiểm thử"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Mock the API response to test frontend components offline.",
+        "cn": "Ví dụ: Mock the API response to test frontend components offline."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 68,
+    "word": "framework",
+    "phonetic0": "/ˈfreɪmwɜːk/",
+    "phonetic1": "/ˈfreɪmwɜːk/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "khung phần mềm, thư viện khung hỗ trợ phát triển"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "React is a popular frontend framework.",
+        "cn": "Ví dụ: React is a popular frontend framework."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 69,
+    "word": "library",
+    "phonetic0": "/ˈlaɪbrəri/",
+    "phonetic1": "/ˈlaɪbrəri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "thư viện mã nguồn (chứa hàm viết sẵn để sử dụng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Lodash is a utility library for JavaScript.",
+        "cn": "Ví dụ: Lodash is a utility library for JavaScript."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 70,
+    "word": "package",
+    "phonetic0": "/ˈpækɪdʒ/",
+    "phonetic1": "/ˈpækɪdʒ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "gói phần mềm (chứa thư viện và các tệp cấu hình)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Install the npm package using the command line.",
+        "cn": "Ví dụ: Install the npm package using the command line."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 71,
+    "word": "module",
+    "phonetic0": "/ˈmɒdjuːl/",
+    "phonetic1": "/ˈmɒdjuːl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "mô-đun (thành phần mã nguồn độc lập dễ tái sử dụng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Export the class as a module to use it in other files.",
+        "cn": "Ví dụ: Export the class as a module to use it in other files."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 72,
+    "word": "dependency",
+    "phonetic0": "/dɪˈpendənsi/",
+    "phonetic1": "/dɪˈpendənsi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự phụ thuộc (thư viện bên ngoài mà ứng dụng cần)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Add the new dependency to your package.json file.",
+        "cn": "Ví dụ: Add the new dependency to your package.json file."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 73,
+    "word": "install",
+    "phonetic0": "/ɪnˈstɔːl/",
+    "phonetic1": "/ɪnˈstɔːl/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "cài đặt ứng dụng hoặc thư viện vào máy"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Follow the instructions to install the software.",
+        "cn": "Ví dụ: Follow the instructions to install the software."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 74,
+    "word": "update",
+    "phonetic0": "/ˌʌpˈdeɪt/",
+    "phonetic1": "/ˌʌpˈdeɪt/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "cập nhật (sửa đổi hoặc nâng cấp nhỏ)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Please update your browser to the latest version.",
+        "cn": "Ví dụ: Please update your browser to the latest version."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 75,
+    "word": "upgrade",
+    "phonetic0": "/ˌʌpˈɡreɪd/",
+    "phonetic1": "/ˌʌpˈɡreɪd/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "nâng cấp (cải tiến đáng kể hiệu năng hoặc tính năng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We decided to upgrade our hosting plan to handle more traffic.",
+        "cn": "Ví dụ: We decided to upgrade our hosting plan to handle more traffic."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 76,
+    "word": "bug",
+    "phonetic0": "/bʌɡ/",
+    "phonetic1": "/bʌɡ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lỗi phần mềm (gây ra hành vi sai lệch không mong muốn)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Submit a bug report if you find any issues.",
+        "cn": "Ví dụ: Submit a bug report if you find any issues."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 77,
+    "word": "feature",
+    "phonetic0": "/ˈfiːtʃə(r)/",
+    "phonetic1": "/ˈfiːtʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tính năng (chức năng cụ thể phục vụ người dùng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The dark mode feature is highly requested by users.",
+        "cn": "Ví dụ: The dark mode feature is highly requested by users."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 78,
+    "word": "requirement",
+    "phonetic0": "/rɪˈkwaɪəmənt/",
+    "phonetic1": "/rɪˈkwaɪəmənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "yêu cầu (mong muốn của khách hàng về sản phẩm)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Read the software requirements before starting development.",
+        "cn": "Ví dụ: Read the software requirements before starting development."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 79,
+    "word": "design",
+    "phonetic0": "/dɪˈzaɪn/",
+    "phonetic1": "/dɪˈzaɪn/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "thiết kế giao diện hoặc kiến trúc hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The system design must be scalable and secure.",
+        "cn": "Ví dụ: The system design must be scalable and secure."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 80,
+    "word": "pattern",
+    "phonetic0": "/ˈpætən/",
+    "phonetic1": "/ˈpætən/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "mẫu thiết kế (giải pháp chuẩn cho vấn đề phổ biến)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Design patterns provide templates for writing clean code.",
+        "cn": "Ví dụ: Design patterns provide templates for writing clean code."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 81,
+    "word": "architecture",
+    "phonetic0": "/ˈɑːkɪtektʃə(r)/",
+    "phonetic1": "/ˈɑːkɪtektʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kiến trúc hệ thống phần mềm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Microservices architecture divides the app into small services.",
+        "cn": "Ví dụ: Microservices architecture divides the app into small services."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 82,
+    "word": "infrastructure",
+    "phonetic0": "/ˈɪnfrəstrʌktʃə(r)/",
+    "phonetic1": "/ˈɪnfrəstrʌktʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hạ tầng kỹ thuật (mạng, máy chủ, phần cứng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Cloud infrastructure provides resources on demand.",
+        "cn": "Ví dụ: Cloud infrastructure provides resources on demand."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 83,
+    "word": "cloud",
+    "phonetic0": "/klaʊd/",
+    "phonetic1": "/klaʊd/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "điện toán đám mây (cung cấp dịch vụ qua internet)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Deploy the app to a cloud platform like AWS or Vercel.",
+        "cn": "Ví dụ: Deploy the app to a cloud platform like AWS or Vercel."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 84,
+    "word": "host",
+    "phonetic0": "/həʊst/",
+    "phonetic1": "/həʊst/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "máy chủ lưu trữ ứng dụng hoặc trang web"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We need a reliable service to host our website.",
+        "cn": "Ví dụ: We need a reliable service to host our website."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 85,
+    "word": "domain",
+    "phonetic0": "/dəʊˈmeɪn/",
+    "phonetic1": "/dəʊˈmeɪn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tên miền (địa chỉ dễ nhớ của trang web trên internet)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Register a custom domain name for your portfolio.",
+        "cn": "Ví dụ: Register a custom domain name for your portfolio."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 86,
+    "word": "dns",
+    "phonetic0": "/ˌdiː en ˈes/",
+    "phonetic1": "/ˌdiː en ˈes/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hệ thống phân giải tên miền thành địa chỉ IP"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "DNS translates domain names into IP addresses.",
+        "cn": "Ví dụ: DNS translates domain names into IP addresses."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 87,
+    "word": "ip",
+    "phonetic0": "/ˌaɪ ˈpiː/",
+    "phonetic1": "/ˌaɪ ˈpiː/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giao thức internet hoặc địa chỉ IP của thiết bị"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Every device on the network has a unique IP address.",
+        "cn": "Ví dụ: Every device on the network has a unique IP address."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 88,
+    "word": "port",
+    "phonetic0": "/pɔːt/",
+    "phonetic1": "/pɔːt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cổng logic để phân biệt luồng dữ liệu mạng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The web server listens on port 80 by default.",
+        "cn": "Ví dụ: The web server listens on port 80 by default."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 89,
+    "word": "socket",
+    "phonetic0": "/ˈsɒkɪt/",
+    "phonetic1": "/ˈsɒkɪt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "điểm đầu cuối kết nối giao tiếp mạng giữa hai máy"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "WebSockets enable real-time communication between server and client.",
+        "cn": "Ví dụ: WebSockets enable real-time communication between server and client."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 90,
+    "word": "connection",
+    "phonetic0": "/kəˈnekʃn/",
+    "phonetic1": "/kəˈnekʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kết nối thiết lập giữa các máy tính"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The database connection was lost due to network issues.",
+        "cn": "Ví dụ: The database connection was lost due to network issues."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 91,
+    "word": "latency",
+    "phonetic0": "/ˈleɪtənsi/",
+    "phonetic1": "/ˈleɪtənsi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "độ trễ (thời gian phản hồi dữ liệu trong mạng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A low latency connection is important for online gaming.",
+        "cn": "Ví dụ: A low latency connection is important for online gaming."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 92,
+    "word": "bandwidth",
+    "phonetic0": "/ˈbændwɪdθ/",
+    "phonetic1": "/ˈbændwɪdθ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "băng thông (lượng dữ liệu tối đa truyền qua mạng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Streaming 4K video consumes a lot of bandwidth.",
+        "cn": "Ví dụ: Streaming 4K video consumes a lot of bandwidth."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 93,
+    "word": "throughput",
+    "phonetic0": "/ˈθruːpʊt/",
+    "phonetic1": "/ˈθruːpʊt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lượng dữ liệu thực tế truyền đi thành công"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Measure the throughput of the network interface.",
+        "cn": "Ví dụ: Measure the throughput of the network interface."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 94,
+    "word": "load",
+    "phonetic0": "/ləʊd/",
+    "phonetic1": "/ləʊd/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "tải trọng, áp lực làm việc trên hệ thống máy chủ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Load balancing distributes traffic across servers.",
+        "cn": "Ví dụ: Load balancing distributes traffic across servers."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 95,
+    "word": "stress",
+    "phonetic0": "/stres/",
+    "phonetic1": "/stres/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kiểm thử khả năng chịu đựng giới hạn của hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Run a stress test to find the maximum concurrent users.",
+        "cn": "Ví dụ: Run a stress test to find the maximum concurrent users."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 96,
+    "word": "perf",
+    "phonetic0": "/pəˈfɔːməns/",
+    "phonetic1": "/pəˈfɔːməns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hiệu năng (tốc độ và mức độ sử dụng tài nguyên)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Performance optimization makes the site load faster.",
+        "cn": "Ví dụ: Performance optimization makes the site load faster."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 97,
+    "word": "scaling",
+    "phonetic0": "/ˈskeɪlɪŋ/",
+    "phonetic1": "/ˈskeɪlɪŋ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự mở rộng quy mô hệ thống máy chủ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Horizontal scaling adds more machines to the cluster.",
+        "cn": "Ví dụ: Horizontal scaling adds more machines to the cluster."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 98,
+    "word": "horizontal",
+    "phonetic0": "/ˌhɒrɪˈzɒntl/",
+    "phonetic1": "/ˌhɒrɪˈzɒntl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "theo chiều ngang (thêm nhiều máy chủ chạy song song)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Horizontal database scaling is challenging.",
+        "cn": "Ví dụ: Horizontal database scaling is challenging."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 99,
+    "word": "vertical",
+    "phonetic0": "/ˈvɜːtɪkl/",
+    "phonetic1": "/ˈvɜːtɪkl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "theo chiều dọc (nâng cấp phần cứng của máy chủ hiện tại)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Vertical scaling is limited by hardware capacity.",
+        "cn": "Ví dụ: Vertical scaling is limited by hardware capacity."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 100,
+    "word": "cluster",
+    "phonetic0": "/ˈklʌstə(r)/",
+    "phonetic1": "/ˈklʌstə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cụm máy chủ (nhiều máy phối hợp hoạt động như một)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The Kubernetes cluster manages containerized apps.",
+        "cn": "Ví dụ: The Kubernetes cluster manages containerized apps."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 101,
+    "word": "node",
+    "phonetic0": "/nəʊd/",
+    "phonetic1": "/nəʊd/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "một máy tính vật lý hoặc máy ảo trong cụm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Add a new node to the database cluster.",
+        "cn": "Ví dụ: Add a new node to the database cluster."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 102,
+    "word": "registry",
+    "phonetic0": "/ˈredʒɪstri/",
+    "phonetic1": "/ˈredʒɪstri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nơi đăng ký thông tin hoặc lưu trữ hình ảnh ứng dụng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Push the Docker image to a private container registry.",
+        "cn": "Ví dụ: Push the Docker image to a private container registry."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 103,
+    "word": "container",
+    "phonetic0": "/kənˈteɪnə(r)/",
+    "phonetic1": "/kənˈteɪnə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "thùng chứa ảo đóng gói ứng dụng và thư viện chạy độc lập"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Docker containers share the host operating system kernel.",
+        "cn": "Ví dụ: Docker containers share the host operating system kernel."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 104,
+    "word": "virtual",
+    "phonetic0": "/ˈvɜːtʃuəl/",
+    "phonetic1": "/ˈvɜːtʃuəl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "ảo (được tạo lập bằng phần mềm giả lập phần cứng)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Virtual machines run completely isolated operating systems.",
+        "cn": "Ví dụ: Virtual machines run completely isolated operating systems."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 105,
+    "word": "stack",
+    "phonetic0": "/stæk/",
+    "phonetic1": "/stæk/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "ngăn xếp (cấu trúc dữ liệu vào sau ra trước)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A stack uses the Last-In-First-Out (LIFO) principle.",
+        "cn": "Ví dụ: A stack uses the Last-In-First-Out (LIFO) principle."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 106,
+    "word": "queue",
+    "phonetic0": "/kjuː/",
+    "phonetic1": "/kjuː/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàng đợi (cấu trúc dữ liệu vào trước ra trước)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A queue uses the First-In-First-Out (FIFO) principle.",
+        "cn": "Ví dụ: A queue uses the First-In-First-Out (FIFO) principle."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 107,
+    "word": "tree",
+    "phonetic0": "/triː/",
+    "phonetic1": "/triː/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cây dữ liệu (cấu trúc phân cấp có nút gốc và các con)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "DOM elements are structured in a tree hierarchy.",
+        "cn": "Ví dụ: DOM elements are structured in a tree hierarchy."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 108,
+    "word": "graph",
+    "phonetic0": "/ɡrɑːf/",
+    "phonetic1": "/ɡrɑːf/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đồ thị dữ liệu (các đỉnh kết nối với nhau bằng các cạnh)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Social networks are modeled using graph structures.",
+        "cn": "Ví dụ: Social networks are modeled using graph structures."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 109,
+    "word": "hash",
+    "phonetic0": "/hæʃ/",
+    "phonetic1": "/hæʃ/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "băm dữ liệu thành chuỗi ký tự có độ dài cố định"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Password hashing is essential for database security.",
+        "cn": "Ví dụ: Password hashing is essential for database security."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 110,
+    "word": "map",
+    "phonetic0": "/mæp/",
+    "phonetic1": "/mæp/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "bản đồ ánh xạ khóa-giá trị, hoặc ánh xạ phần tử"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Map keys must be unique in the dictionary.",
+        "cn": "Ví dụ: Map keys must be unique in the dictionary."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 111,
+    "word": "set",
+    "phonetic0": "/set/",
+    "phonetic1": "/set/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "tập hợp chứa các giá trị độc nhất không trùng lặp"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A set is useful for removing duplicate values from an array.",
+        "cn": "Ví dụ: A set is useful for removing duplicate values from an array."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 112,
+    "word": "list",
+    "phonetic0": "/lɪst/",
+    "phonetic1": "/lɪst/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "danh sách chứa các phần tử tuần tự"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Create a list of all active database connections.",
+        "cn": "Ví dụ: Create a list of all active database connections."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 113,
+    "word": "table",
+    "phonetic0": "/ˈteɪbl/",
+    "phonetic1": "/ˈteɪbl/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "bảng lưu trữ dữ liệu dạng hàng và cột"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Create a table with primary and foreign keys.",
+        "cn": "Ví dụ: Create a table with primary and foreign keys."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 114,
+    "word": "column",
+    "phonetic0": "/ˈkɒləm/",
+    "phonetic1": "/ˈkɒləm/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cột dữ liệu biểu thị một trường thông tin"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The users table has a column for email addresses.",
+        "cn": "Ví dụ: The users table has a column for email addresses."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 115,
+    "word": "row",
+    "phonetic0": "/rəʊ/",
+    "phonetic1": "/rəʊ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "dòng dữ liệu chứa một bản ghi cụ thể"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Each row in the table represents a unique customer.",
+        "cn": "Ví dụ: Each row in the table represents a unique customer."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 116,
+    "word": "key",
+    "phonetic0": "/kiː/",
+    "phonetic1": "/kiː/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "khóa (dùng để xác định hoặc liên kết dữ liệu)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A primary key uniquely identifies a row in a table.",
+        "cn": "Ví dụ: A primary key uniquely identifies a row in a table."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 117,
+    "word": "schema",
+    "phonetic0": "/ˈskiːmə/",
+    "phonetic1": "/ˈskiːmə/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lược đồ thiết kế cơ cấu lưu trữ dữ liệu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The database schema defines tables and relationships.",
+        "cn": "Ví dụ: The database schema defines tables and relationships."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 118,
+    "word": "migration",
+    "phonetic0": "/maɪˈɡreɪʃn/",
+    "phonetic1": "/maɪˈɡreɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự di chuyển dữ liệu hoặc cập nhật lược đồ database"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Run migrations to update the database tables.",
+        "cn": "Ví dụ: Run migrations to update the database tables."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 119,
+    "word": "backup",
+    "phonetic0": "/ˈbækʌp/",
+    "phonetic1": "/ˈbækʌp/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "sao lưu dữ liệu đề phòng mất mát"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Perform daily database backups to prevent data loss.",
+        "cn": "Ví dụ: Perform daily database backups to prevent data loss."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 120,
+    "word": "restore",
+    "phonetic0": "/rɪˈstɔː(r)/",
+    "phonetic1": "/rɪˈstɔː(r)/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "khôi phục dữ liệu từ bản sao lưu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Restore the database backup to recover the deleted files.",
+        "cn": "Ví dụ: Restore the database backup to recover the deleted files."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 121,
+    "word": "format",
+    "phonetic0": "/ˈfɔːmæt/",
+    "phonetic1": "/ˈfɔːmæt/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "định dạng (cách sắp xếp dữ liệu hoặc làm sạch code)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The JSON format is widely used for API data transfer.",
+        "cn": "Ví dụ: The JSON format is widely used for API data transfer."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 122,
+    "word": "parse",
+    "phonetic0": "/pɑːz/",
+    "phonetic1": "/pɑːz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "phân tích cú pháp (chuyển đổi định dạng dữ liệu)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Parse the JSON string to access its properties in JS.",
+        "cn": "Ví dụ: Parse the JSON string to access its properties in JS."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 123,
+    "word": "stringify",
+    "phonetic0": "/ˈstrɪŋɪfaɪ/",
+    "phonetic1": "/ˈstrɪŋɪfaɪ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "chuyển đối tượng thành chuỗi ký tự"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Stringify the object before sending it to the server.",
+        "cn": "Ví dụ: Stringify the object before sending it to the server."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 124,
+    "word": "serialize",
+    "phonetic0": "/ˈsɪəriəlaɪz/",
+    "phonetic1": "/ˈsɪəriəlaɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "tuần tự hóa dữ liệu để truyền tải hoặc lưu trữ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Serialization converts complex objects into byte streams.",
+        "cn": "Ví dụ: Serialization converts complex objects into byte streams."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 125,
+    "word": "compress",
+    "phonetic0": "/kəmˈpres/",
+    "phonetic1": "/kəmˈpres/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "nén tệp tin hoặc dữ liệu để giảm dung lượng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Compress the assets to improve page load speed.",
+        "cn": "Ví dụ: Compress the assets to improve page load speed."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 126,
+    "word": "decompress",
+    "phonetic0": "/ˌdiːkəmˈpres/",
+    "phonetic1": "/ˌdiːkəmˈpres/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "giải nén dữ liệu đã nén"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Decompress the zip file to extract the application data.",
+        "cn": "Ví dụ: Decompress the zip file to extract the application data."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 127,
+    "word": "zip",
+    "phonetic0": "/zɪp/",
+    "phonetic1": "/zɪp/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "nén tệp thành định dạng zip"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Zip the build folder and send it to the client.",
+        "cn": "Ví dụ: Zip the build folder and send it to the client."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 128,
+    "word": "binary",
+    "phonetic0": "/ˈbaɪnəri/",
+    "phonetic1": "/ˈbaɪnəri/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "nhị phân (hệ cơ số 2 chỉ gồm 0 và 1)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Computers process data in binary format.",
+        "cn": "Ví dụ: Computers process data in binary format."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 129,
+    "word": "decimal",
+    "phonetic0": "/ˈdesɪml/",
+    "phonetic1": "/ˈdesɪml/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "thập phân (hệ cơ số 10 thường dùng hàng ngày)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Decimal system uses digits from 0 to 9.",
+        "cn": "Ví dụ: Decimal system uses digits from 0 to 9."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 130,
+    "word": "hexadecimal",
+    "phonetic0": "/ˌheksəˈdesɪml/",
+    "phonetic1": "/ˌheksəˈdesɪml/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "thập lục phân (hệ cơ số 16 dùng trong màu sắc/địa chỉ)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Colors are often represented in hexadecimal values in CSS.",
+        "cn": "Ví dụ: Colors are often represented in hexadecimal values in CSS."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 131,
+    "word": "bit",
+    "phonetic0": "/bɪt/",
+    "phonetic1": "/bɪt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đơn vị dữ liệu nhị phân nhỏ nhất (0 hoặc 1)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A byte consists of eight bits.",
+        "cn": "Ví dụ: A byte consists of eight bits."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 132,
+    "word": "byte",
+    "phonetic0": "/baɪt/",
+    "phonetic1": "/baɪt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đơn vị đo dung lượng bộ nhớ (gồm 8 bit)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "File sizes are usually measured in bytes, kilobytes, or megabytes.",
+        "cn": "Ví dụ: File sizes are usually measured in bytes, kilobytes, or megabytes."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 133,
+    "word": "character",
+    "phonetic0": "/ˈkærəktə(r)/",
+    "phonetic1": "/ˈkærəktə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "ký tự biểu thị một chữ cái, số hoặc ký hiệu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A space is also counted as a character in strings.",
+        "cn": "Ví dụ: A space is also counted as a character in strings."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 134,
+    "word": "unicode",
+    "phonetic0": "/ˈjuːnɪkəʊd/",
+    "phonetic1": "/ˈjuːnɪkəʊd/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "bảng mã chuẩn quốc tế biểu diễn toàn bộ ký tự thế giới"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Unicode ensures characters display correctly across systems.",
+        "cn": "Ví dụ: Unicode ensures characters display correctly across systems."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 135,
+    "word": "regex",
+    "phonetic0": "/ˈredʒeks/",
+    "phonetic1": "/ˈredʒeks/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "biểu thức chính quy (dùng để tìm kiếm khớp chuỗi phức tạp)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Use a regex to validate the user's email format.",
+        "cn": "Ví dụ: Use a regex to validate the user's email format."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 136,
+    "word": "syntax",
+    "phonetic0": "/ˈsɪntæks/",
+    "phonetic1": "/ˈsɪntæks/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cú pháp (các quy tắc cấu trúc câu lệnh hợp lệ)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A syntax error will prevent the code from compiling.",
+        "cn": "Ví dụ: A syntax error will prevent the code from compiling."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 137,
+    "word": "semantic",
+    "phonetic0": "/sɪˈmæntɪk/",
+    "phonetic1": "/sɪˈmæntɪk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "ngữ nghĩa (ý nghĩa logic của mã nguồn hoặc thẻ HTML)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Using semantic HTML elements improves accessibility and SEO.",
+        "cn": "Ví dụ: Using semantic HTML elements improves accessibility and SEO."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 138,
+    "word": "statement",
+    "phonetic0": "/ˈsteɪtmənt/",
+    "phonetic1": "/ˈsteɪtmənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "câu lệnh đơn trong chương trình"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Each programming statement ends with a semicolon in C++.",
+        "cn": "Ví dụ: Each programming statement ends with a semicolon in C++."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 139,
+    "word": "block",
+    "phonetic0": "/blɒk/",
+    "phonetic1": "/blɒk/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "khối lệnh nằm trong cặp dấu ngoặc nhọn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Variables declared inside a block have block scope.",
+        "cn": "Ví dụ: Variables declared inside a block have block scope."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 140,
+    "word": "scope",
+    "phonetic0": "/skəʊp/",
+    "phonetic1": "/skəʊp/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phạm vi hoạt động và truy cập của một biến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Global scope variables can be accessed from anywhere.",
+        "cn": "Ví dụ: Global scope variables can be accessed from anywhere."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 141,
+    "word": "closure",
+    "phonetic0": "/ˈkləʊʒə(r)/",
+    "phonetic1": "/ˈkləʊʒə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàm bao đóng (hàm ghi nhớ phạm vi bao quanh nó)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Closures are useful for data encapsulation in JS.",
+        "cn": "Ví dụ: Closures are useful for data encapsulation in JS."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 142,
+    "word": "recursion",
+    "phonetic0": "/rɪˈkɜːʃn/",
+    "phonetic1": "/rɪˈkɜːʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự đệ quy (hàm tự gọi lại chính nó)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A recursion function must have a base case to stop.",
+        "cn": "Ví dụ: A recursion function must have a base case to stop."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 143,
+    "word": "iteration",
+    "phonetic0": "/ˌɪtəˈreɪʃn/",
+    "phonetic1": "/ˌɪtəˈreɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự lặp lại một tiến trình hay chu kỳ lặp"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The next iteration of the loop processes the second item.",
+        "cn": "Ví dụ: The next iteration of the loop processes the second item."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 144,
+    "word": "index",
+    "phonetic0": "/ˈɪndeks/",
+    "phonetic1": "/ˈɪndeks/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chỉ mục (số thứ tự định vị phần tử trong mảng, từ 0)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Access the first element of the array at index 0.",
+        "cn": "Ví dụ: Access the first element of the array at index 0."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 145,
+    "word": "offset",
+    "phonetic0": "/ˈɒfset/",
+    "phonetic1": "/ˈɒfset/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "khoảng cách lệch so với một điểm mốc cố định"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The offset value determines where the reading starts.",
+        "cn": "Ví dụ: The offset value determines where the reading starts."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 146,
+    "word": "size",
+    "phonetic0": "/saɪz/",
+    "phonetic1": "/saɪz/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kích thước dung lượng hoặc số lượng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Check the image file size before uploading.",
+        "cn": "Ví dụ: Check the image file size before uploading."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 147,
+    "word": "length",
+    "phonetic0": "/leŋkθ/",
+    "phonetic1": "/leŋkθ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "độ dài (số ký tự hoặc số phần tử)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The array length changes when you push new items.",
+        "cn": "Ví dụ: The array length changes when you push new items."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 148,
+    "word": "capacity",
+    "phonetic0": "/kəˈpæsəti/",
+    "phonetic1": "/kəˈpæsəti/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sức chứa tối đa của cấu trúc dữ liệu hoặc bộ nhớ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The queue has reached its maximum capacity.",
+        "cn": "Ví dụ: The queue has reached its maximum capacity."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 149,
+    "word": "limit",
+    "phonetic0": "/ˈlɪmɪt/",
+    "phonetic1": "/ˈlɪmɪt/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "giới hạn số lượng hoặc phạm vi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Limit the number of database connections to ten.",
+        "cn": "Ví dụ: Limit the number of database connections to ten."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 150,
+    "word": "overflow",
+    "phonetic0": "/ˌəʊvəˈfləʊ/",
+    "phonetic1": "/ˌəʊvəˈfləʊ/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "sự tràn bộ đệm hoặc tràn dữ liệu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Stack overflow occurs when call stack limit is exceeded.",
+        "cn": "Ví dụ: Stack overflow occurs when call stack limit is exceeded."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 151,
+    "word": "null",
+    "phonetic0": "/nʌl/",
+    "phonetic1": "/nʌl/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "giá trị rỗng (đại diện cho sự không tồn tại giá trị)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The function returns null if no user is found.",
+        "cn": "Ví dụ: The function returns null if no user is found."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 152,
+    "word": "undefined",
+    "phonetic0": "/ˌʌndɪˈfaɪnd/",
+    "phonetic1": "/ˌʌndɪˈfaɪnd/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "chưa được định nghĩa (biến chưa được gán giá trị)"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "In JavaScript, a declared but unassigned variable is undefined.",
+        "cn": "Ví dụ: In JavaScript, a declared but unassigned variable is undefined."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 153,
+    "word": "void",
+    "phonetic0": "/vɔɪd/",
+    "phonetic1": "/vɔɪd/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "kiểu không trả về giá trị của hàm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Functions that perform actions without output return void.",
+        "cn": "Ví dụ: Functions that perform actions without output return void."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 154,
+    "word": "boolean",
+    "phonetic0": "/ˈbuːliən/",
+    "phonetic1": "/ˈbuːliən/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "kiểu dữ liệu logic chỉ nhận true hoặc false"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The boolean flag determines if the modal is visible.",
+        "cn": "Ví dụ: The boolean flag determines if the modal is visible."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 155,
+    "word": "integer",
+    "phonetic0": "/ˈɪntɪdʒə(r)/",
+    "phonetic1": "/ˈɪntɪdʒə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kiểu số nguyên không có phần thập phân"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Integers can be positive, negative, or zero.",
+        "cn": "Ví dụ: Integers can be positive, negative, or zero."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 156,
+    "word": "float",
+    "phonetic0": "/fləʊt/",
+    "phonetic1": "/fləʊt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "kiểu số thực dấu phẩy động có phần thập phân"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A float value is used for precise measurements.",
+        "cn": "Ví dụ: A float value is used for precise measurements."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 157,
+    "word": "precision",
+    "phonetic0": "/prɪˈsɪʒn/",
+    "phonetic1": "/prɪˈsɪʒn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "độ chính xác số thập phân của phép tính"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Double precision floats provide higher accuracy.",
+        "cn": "Ví dụ: Double precision floats provide higher accuracy."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]

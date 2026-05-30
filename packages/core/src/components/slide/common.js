@@ -129,7 +129,7 @@ export function getSlideDistance(state, type = SlideType.HORIZONTAL) {
       return p
     }, 0)
   } else {
-    //TODO 这里需要改的和上面一样，不然不能显示半屏的div
+
     return -state.localIndex * state.wrapper.height
   }
 }

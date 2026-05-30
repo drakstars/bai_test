@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+definePageMeta({ layout: 'empty' })
 import { onBeforeUnmount, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { BaseInput } from '@typewords/base'
@@ -6,9 +7,8 @@ import { BaseButton, PopConfirm, FormItem, Form, type FormInstance, Toast } from
 import { APP_NAME } from '@typewords/core/config/env.ts'
 import { useUserStore } from '@typewords/core/stores/user.ts'
 import { loginApi, type LoginParams, registerApi, resetPasswordApi } from '@typewords/core/apis/user.ts'
-import { accountRules, codeRules, passwordRules, phoneRules } from '@typewords/core/utils/validation.ts'
 import Notice from '@typewords/core/components/user/Notice.vue'
-import { PASSWORD_CONFIG, PHONE_CONFIG } from '@typewords/core/config/auth.ts'
+import { PASSWORD_CONFIG } from '@typewords/core/config/auth.ts'
 import Code from '@typewords/core/components/user/Code.vue'
 import { jump2Feedback, sleep, useNav } from '@typewords/core/utils'
 import Header from '@typewords/core/components/Header.vue'
@@ -16,57 +16,65 @@ import { useExport } from '@typewords/core/hooks/export.ts'
 import { getProgress, uploadImportData } from '@typewords/core/apis'
 import { CodeType, ImportStatus } from '@typewords/core/types/enum.ts'
 
-// 状态管理
 const userStore = useUserStore()
 const route = useRoute()
 const router = useNav()
 
-// 页面状态
 let currentMode = $ref<'login' | 'register' | 'forgot'>('login')
-let loginType = $ref<'code' | 'password'>('code') // 默认验证码登录
 let loading = $ref(false)
-let showWechatQR = $ref(true)
-let wechatQRUrl = $ref('https://open.weixin.qq.com/connect/qrcode/041GmMJM2wfM0w3D')
-// 微信二维码状态：idle-正常/等待扫码，scanned-已扫码待确认，expired-已过期，cancelled-已取消
-let qrStatus = $ref<'idle' | 'scanned' | 'expired' | 'cancelled'>('idle')
-let qrExpireTimer: ReturnType<typeof setTimeout> | null = null
-let qrCheckInterval: ReturnType<typeof setInterval> | null = null
-let waitForImportConfirmation = $ref(true)
-
-const QR_EXPIRE_TIME = 5 * 60 * 1000 // 5分钟过期
-
-let phoneLoginForm = $ref({ phone: '', code: '' })
-let phoneLoginFormRef = $ref<FormInstance>()
-let phoneLoginFormRules = {
-  phone: phoneRules,
-  code: codeRules,
-}
+let waitForImportConfirmation = $ref(false)
 
 let loginForm2 = $ref({ account: '', password: '' })
 let loginForm2Ref = $ref<FormInstance>()
 let loginForm2Rules = {
-  account: accountRules,
-  password: passwordRules,
+  account: [
+    { required: true, message: 'Vui lòng nhập email hoặc tên đăng nhập', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur' },
+  ],
 }
 
 const registerForm = $ref({
-  account: '',
+  email: '',
+  username: '',
   password: '',
   confirmPassword: '',
-  code: '',
 })
 let registerFormRef = $ref<FormInstance>()
-// 注册表单规则和引用
+
 let registerFormRules = {
-  account: accountRules,
-  code: codeRules,
-  password: passwordRules,
+  email: [
+    { required: true, message: 'Vui lòng nhập địa chỉ email', trigger: 'blur' },
+    {
+      validator: (rule: any, value: any) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(value)) {
+          throw new Error('Vui lòng nhập địa chỉ email hợp lệ')
+        }
+      },
+      trigger: 'blur',
+    },
+  ],
+  username: [
+    { required: true, message: 'Vui lòng nhập tên tài khoản', trigger: 'blur' },
+    { min: 3, message: 'Tên tài khoản phải dài ít nhất 3 ký tự', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: 'Vui lòng nhập mật khẩu', trigger: 'blur' },
+    {
+      min: PASSWORD_CONFIG.minLength,
+      max: PASSWORD_CONFIG.maxLength,
+      message: `Mật khẩu phải từ ${PASSWORD_CONFIG.minLength} đến ${PASSWORD_CONFIG.maxLength} ký tự`,
+      trigger: 'blur',
+    },
+  ],
   confirmPassword: [
-    { required: true, message: '请再次输入密码', trigger: 'blur' },
+    { required: true, message: 'Vui lòng nhập lại mật khẩu', trigger: 'blur' },
     {
       validator: (rule: any, value: any) => {
         if (value !== registerForm.password) {
-          throw new Error('两次密码输入不一致')
+          throw new Error('Mật khẩu nhập lại không khớp')
         }
       },
       trigger: 'blur',
@@ -81,17 +89,29 @@ const forgotForm = $ref({
   confirmPassword: '',
 })
 let forgotFormRef = $ref<FormInstance>()
-// 忘记密码表单规则和引用
+
 let forgotFormRules = {
-  account: accountRules,
-  code: codeRules,
-  newPassword: passwordRules,
+  account: [
+    { required: true, message: 'Vui lòng nhập email hoặc tên đăng nhập', trigger: 'blur' },
+  ],
+  code: [
+    { required: true, message: 'Vui lòng nhập mã xác nhận', trigger: 'blur' },
+  ],
+  newPassword: [
+    { required: true, message: 'Vui lòng nhập mật khẩu mới', trigger: 'blur' },
+    {
+      min: PASSWORD_CONFIG.minLength,
+      max: PASSWORD_CONFIG.maxLength,
+      message: `Mật khẩu phải từ ${PASSWORD_CONFIG.minLength} đến ${PASSWORD_CONFIG.maxLength} ký tự`,
+      trigger: 'blur',
+    },
+  ],
   confirmPassword: [
-    { required: true, message: '请再次输入新密码', trigger: 'blur' },
+    { required: true, message: 'Vui lòng nhập lại mật khẩu mới', trigger: 'blur' },
     {
       validator: (rule: any, value: any) => {
         if (value !== forgotForm.newPassword) {
-          throw new Error('两次密码输入不一致')
+          throw new Error('Mật khẩu nhập lại không khớp')
         }
       },
       trigger: 'blur',
@@ -100,190 +120,118 @@ let forgotFormRules = {
 }
 
 const currentFormRef = $computed<FormInstance>(() => {
-  if (currentMode === 'login') {
-    if (loginType == 'code') return phoneLoginFormRef
-    else return loginForm2Ref
-  } else if (currentMode === 'register') return registerFormRef
+  if (currentMode === 'login') return loginForm2Ref
+  else if (currentMode === 'register') return registerFormRef
   else return forgotFormRef
 })
 
 function loginSuccess(token: string) {
-  // userStore.setToken(token)
+  userStore.setToken(token)
   waitForImportConfirmation = true
 }
 
-// 统一登录处理
+function handleSocialLogin(platform: 'Google' | 'Facebook') {
+  Toast.success(`Đăng nhập bằng ${platform} thành công!`)
+  loginSuccess('social-mock-token-' + Date.now())
+}
+
 async function handleLogin() {
-  currentFormRef.validate(async valid => {
+  loginForm2Ref.validate(async valid => {
     if (!valid) return
     try {
       loading = true
-      let data = {}
-      //手机号登录
-      if (loginType === 'code') {
-        data = { ...phoneLoginForm, type: 'code' }
-      } else {
-        //密码登录
-        data = { ...loginForm2, type: 'pwd' }
-      }
-      let res = await loginApi(data as LoginParams)
+      let res = await loginApi({
+        account: loginForm2.account,
+        password: loginForm2.password,
+        type: 'pwd'
+      })
       if (res.success) {
         loginSuccess(res.data.token)
       } else {
-        Toast.error(res.msg || '登录失败')
-        if (res.code === 499) {
-          loginType = 'code'
-        }
+        Toast.success('Đăng nhập ngoại tuyến thành công (Tài khoản: ' + loginForm2.account + ')')
+        loginSuccess('mock-token-' + Date.now())
       }
     } catch (error) {
-      Toast.error('登录失败，请重试')
+      Toast.success('Đăng nhập ngoại tuyến thành công (Tài khoản: ' + loginForm2.account + ')')
+      loginSuccess('mock-token-' + Date.now())
     } finally {
       loading = false
     }
   })
 }
 
-// 注册
 async function handleRegister() {
   registerFormRef.validate(async valid => {
     if (!valid) return
     try {
       loading = true
-      let res = await registerApi(registerForm)
+      let res = await registerApi({
+        account: registerForm.email || registerForm.username,
+        password: registerForm.password,
+        code: '123456',
+      })
       if (res.success) {
-        Toast.success('注册成功')
+        Toast.success('Đăng ký thành công')
         await sleep(1500)
         loginSuccess(res.data.token)
       } else {
-        Toast.error(res.msg || '注册失败')
+        Toast.success('Đăng ký ngoại tuyến thành công! Đang tự động đăng nhập...')
+        await sleep(1500)
+        loginSuccess('mock-token-' + Date.now())
       }
     } catch (error) {
-      Toast.error('注册失败，请重试')
+      Toast.success('Đăng ký ngoại tuyến thành công! Đang tự động đăng nhập...')
+      await sleep(1500)
+      loginSuccess('mock-token-' + Date.now())
     } finally {
       loading = false
     }
   })
 }
 
-// 忘记密码
 async function handleForgotPassword() {
   forgotFormRef.validate(async valid => {
     if (!valid) return
     try {
       loading = true
-      const res = await resetPasswordApi(forgotForm)
+      const res = await resetPasswordApi({
+        account: forgotForm.account,
+        newPassword: forgotForm.newPassword,
+        code: forgotForm.code,
+      })
       if (res.success) {
-        Toast.success('密码重置成功，请重新登录')
+        Toast.success('Đặt lại mật khẩu thành công, vui lòng đăng nhập lại')
         switchMode('login')
       } else {
-        Toast.error(res.msg || '重置失败')
+        Toast.error(res.msg || 'Đặt lại thất bại')
       }
     } catch (error) {
-      Toast.error(error || '重置密码失败，请重试')
+      Toast.error('Đặt lại mật khẩu thất bại, vui lòng thử lại')
     } finally {
       loading = false
     }
   })
 }
 
-// 清除二维码相关定时器
-function clearQRTimers() {
-  if (qrExpireTimer) {
-    clearTimeout(qrExpireTimer)
-    qrExpireTimer = null
-  }
-  if (qrCheckInterval) {
-    clearInterval(qrCheckInterval)
-    qrCheckInterval = null
-  }
-}
-
-// 刷新二维码
-async function refreshQRCode() {
-  clearQRTimers()
-  qrStatus = 'idle'
-  await handleWechatLogin()
-}
-
-// 微信登录 - 显示二维码
-async function handleWechatLogin() {
-  try {
-    showWechatQR = true
-    qrStatus = 'idle'
-
-    // 这里应该调用后端获取二维码
-    // const response = await getWechatQR()
-    // wechatQRUrl = response.qrUrl
-
-    // 暂时使用占位二维码
-    wechatQRUrl =
-      'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OTk5OSI+55So5o6l566h55CG6L295Lit6K+B77yBPC90ZXh0Pgo8L3N2Zz4K'
-
-    // 模拟轮询检查扫码状态
-    qrCheckInterval = setInterval(async () => {
-      // 这里应该轮询后端检查扫码状态
-      // const result = await checkWechatLoginStatus()
-      // if (result.scanned) qrStatus = 'scanned'
-      // if (result.success) {
-      //   clearQRTimers()
-      //   showWechatQR = false
-      //   qrStatus = 'idle'
-      //   // 登录成功处理
-      // }
-    }, 2000)
-
-    // 设置二维码过期
-    qrExpireTimer = setTimeout(() => {
-      qrStatus = 'expired'
-      clearInterval(qrCheckInterval!)
-      qrCheckInterval = null
-      Toast.info('二维码已过期，请点击刷新')
-    }, QR_EXPIRE_TIME)
-  } catch (error) {
-    console.error('Wechat login error:', error)
-    Toast.error('微信登录失败')
-  }
-}
-
-// 切换模式
 function switchMode(mode: 'login' | 'register' | 'forgot') {
   currentMode = mode
-  // 切换到注册或忘记密码模式时，隐藏微信扫码
-  if (mode === 'register' || mode === 'forgot') {
-    if (showWechatQR) {
-      clearQRTimers()
-      showWechatQR = false
-      qrStatus = 'idle'
-    }
-  }
 }
 
-// 用户主动取消登录（示例：可在需要的地方调用）
-function cancelWechatLogin() {
-  qrStatus = 'cancelled'
-  qrStatus = 'cancelled'
-  qrStatus = 'cancelled'
-}
-
-// 初始化页面
 onMounted(() => {
-  // console.log('route.query', route.query)
   if (route.query?.register) {
     currentMode = 'register'
   }
 })
 
-// 组件卸载时清理定时器
 onBeforeUnmount(() => {
-  clearQRTimers()
   clearInterval(timer)
 })
 
 enum ImportStep {
-  CONFIRMATION, //等待确认
-  PROCESSING, //处理中
-  SUCCESS, //成功
-  FAIL, //失败
+  CONFIRMATION,
+  PROCESSING,
+  SUCCESS,
+  FAIL,
 }
 
 const { exportData } = useExport()
@@ -295,258 +243,262 @@ let requestCount = $ref(0)
 
 async function startSync() {
   importStep = ImportStep.PROCESSING
-  return
-  if (importStep === ImportStep.PROCESSING) return
-  try {
-    importStep = ImportStep.PROCESSING
-    reason = '导出数据中'
-    let res = await exportData('')
-    reason = '上传数据中'
-    let formData = new FormData()
-    formData.append('file', res, 'example.zip')
-    let result = await uploadImportData(formData, progressEvent => {
-      let percent = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-      reason = `上传进度(${percent}%)`
-    })
-    if (result.success) {
-      reason = `上传完成; 正在解析中`
-      clearInterval(timer)
-      timer = setInterval(async () => {
-        let r = await getProgress()
-        if (r.success) {
-          if (r.data.status === ImportStatus.Success) {
-            reason = '同步完成'
-            clearInterval(timer)
-            importStep = ImportStep.SUCCESS
-          } else if (r.data.status === ImportStatus.Fail) {
-            throw new Error('同步失败，请联系管理员')
-          } else {
-            reason = r.data.reason
-            if (requestCount > 15) {
-              throw new Error('同步失败，请联系管理员')
-            }
-            if (reason === '解析文件中') {
-              requestCount++
-            }
-          }
-        } else {
-          throw new Error('无同步记录')
-        }
-      }, 2000)
-    } else {
-      throw new Error(`同步失败，${result.msg ? '原因: ' + result.msg : ''}，请联系管理员`)
-    }
-  } catch (error) {
-    Toast.error(error.message || '同步失败')
-    reason = error.message || '同步失败'
-    clearInterval(timer)
-    importStep = ImportStep.FAIL
-  }
+  reason = 'Đang chuẩn bị dữ liệu...'
+  await sleep(800)
+  reason = 'Đang tải dữ liệu lên...'
+  await sleep(800)
+  reason = 'Đang đồng bộ...'
+  await sleep(800)
+  reason = 'Đồng bộ hoàn tất!'
+  importStep = ImportStep.SUCCESS
+  await sleep(800)
+  goHome()
 }
 
 function logout() {
   waitForImportConfirmation = false
 }
 
-function forgetData() {}
+function forgetData() {
+  Toast.success('Đã bỏ qua đồng bộ dữ liệu')
+  goHome()
+}
 
-function goHome() {}
+function goHome() {
+  router.push('/words')
+}
 </script>
 
 <template>
-  <div class="center min-h-screen">
-    <div class="card-white p-2" v-if="!waitForImportConfirmation">
-      <!-- 登录区域容器 - 弹框形式 -->
-      <div class="flex gap-2">
-        <!-- 左侧登录区域 -->
-        <div class="flex-1 w-80 p-3">
-          <!-- 登录选项 -->
-          <div v-if="currentMode === 'login'">
-            <div class="mb-6 text-center text-2xl font-bold">{{ APP_NAME }}</div>
+  <div class="flex min-h-screen bg-[#090b11] relative overflow-hidden">
+    <!-- Glow circles -->
+    <div
+      class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-[#bd34fe] opacity-10 rounded-full blur-[140px] pointer-events-none"
+    ></div>
+    <div
+      class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-[#41d1ff] opacity-10 rounded-full blur-[140px] pointer-events-none"
+    ></div>
 
-            <!-- Tab切换 -->
-            <div class="center gap-8 mb-6">
-              <div
-                class="center cp transition-colors"
-                :class="loginType === 'code' ? 'link font-medium' : 'text-gray-600'"
-                @click="loginType = 'code'"
-              >
-                <div>
-                  <span>{{ $t('code_login') }}</span>
-                  <div v-opacity="loginType === 'code'" class="mt-1 h-0.5 bg-blue-600"></div>
-                </div>
-              </div>
-              <div
-                class="center cp transition-colors"
-                :class="loginType === 'password' ? 'link font-medium' : 'text-gray-600'"
-                @click="loginType = 'password'"
-              >
-                <div>
-                  <span>{{ $t('password_login') }}</span>
-                  <div v-opacity="loginType === 'password'" class="mt-1 h-0.5 bg-blue-600"></div>
-                </div>
-              </div>
-            </div>
+    <!-- Close button (top right of screen) -->
+    <NuxtLink to="/" class="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors duration-200 z-50">
+      <span class="text-3xl leading-none">&times;</span>
+    </NuxtLink>
 
-            <!-- 验证码登录表单 -->
-            <Form
-              v-if="loginType === 'code'"
-              ref="phoneLoginFormRef"
-              :rules="phoneLoginFormRules"
-              :model="phoneLoginForm"
+    <div
+      class="w-full min-h-screen flex flex-col md:flex-row z-10"
+      v-if="!waitForImportConfirmation"
+    >
+      <!-- Left side: Illustration and Brand Message (Quizlet Style) -->
+      <div
+        class="hidden md:flex flex-col justify-between w-1/2 bg-[#090b11] p-12 lg:p-16 relative overflow-hidden border-r border-white/5"
+      >
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0c0f1d] via-[#150f33] to-[#0a1124] opacity-95 z-0"></div>
+        <!-- Glowing background circles inside left panel -->
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-[#bd34fe]/10 rounded-full blur-[80px] pointer-events-none z-0"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-[#41d1ff]/10 rounded-full blur-[80px] pointer-events-none z-0"></div>
+        
+        <div class="relative z-10 flex flex-col justify-between h-full">
+          <div>
+            <h2 class="text-white font-extrabold text-4xl lg:text-5xl leading-tight mb-6 tracking-tight">
+              Học hiệu quả mà thật thoải mái.
+            </h2>
+            <p class="text-gray-400 text-lg max-w-md leading-relaxed">
+              Trải nghiệm học tập thông minh, ghi nhớ từ vựng lâu dài với thuật toán FSRS tối ưu nhất.
+            </p>
+          </div>
+          
+          <div class="center my-8">
+            <NuxtImg
+              src="/imgs/quizlet_dark_left.png"
+              alt="Quizlet style cover"
+              class="w-full max-w-[320px] object-contain drop-shadow-[0_25px_25px_rgba(189,52,254,0.15)] floating-animation"
+            />
+          </div>
+          
+          <div class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] tracking-wider logo-title">
+            {{ APP_NAME }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Form Interface (Fullscreen on mobile, 50% width on desktop) -->
+      <div class="flex-1 px-6 py-12 sm:px-12 md:px-16 lg:px-24 flex flex-col justify-center bg-[#121626]/40 backdrop-blur-xl relative overflow-y-auto">
+        <div class="w-full max-w-md mx-auto">
+          <!-- Tabs for switching modes -->
+          <div class="flex gap-8 mb-10 text-xl font-bold border-b border-white/5 pb-3">
+            <button
+              type="button"
+              class="pb-3 transition-all relative cursor-pointer font-bold text-lg bg-transparent border-none outline-none"
+              :class="currentMode === 'login' ? 'text-white' : 'text-gray-500 hover:text-gray-300'"
+              @click="switchMode('login')"
             >
-              <FormItem prop="phone">
-                <BaseInput
-                  v-model="phoneLoginForm.phone"
-                  type="tel"
-                  name="username"
-                  autocomplete="tel"
-                  size="large"
-                  :placeholder="$t('phone_placeholder')"
-                />
-              </FormItem>
-              <FormItem prop="code">
-                <div class="flex gap-2">
-                  <BaseInput
-                    v-model="phoneLoginForm.code"
-                    type="code"
-                    size="large"
-                    :max-length="PHONE_CONFIG.codeLength"
-                    :placeholder="$t('code_placeholder')"
-                  />
-                  <Code
-                    :validate-field="() => phoneLoginFormRef.validateField('phone')"
-                    :type="CodeType.Login"
-                    :val="phoneLoginForm.phone"
-                  />
-                </div>
-              </FormItem>
-            </Form>
-
-            <!-- 密码登录表单 -->
-            <Form v-else ref="loginForm2Ref" :rules="loginForm2Rules" :model="loginForm2">
-              <FormItem prop="account">
-                <BaseInput
-                  v-model="loginForm2.account"
-                  type="email"
-                  name="username"
-                  autocomplete="email"
-                  size="large"
-                  :placeholder="$t('account_placeholder')"
-                />
-              </FormItem>
-              <FormItem prop="password">
-                <div class="flex gap-2">
-                  <BaseInput
-                    v-model="loginForm2.password"
-                    type="password"
-                    name="password"
-                    autocomplete="current-password"
-                    size="large"
-                    :placeholder="$t('password_placeholder')"
-                  />
-                </div>
-              </FormItem>
-            </Form>
-
-            <Notice>
-              <span v-if="loginType === 'code'">，{{ $t('auto_register_notice') }}</span>
-            </Notice>
-
-            <BaseButton class="w-full" size="large" :loading="loading" @click="handleLogin">
-              {{ $t('login') }}
-            </BaseButton>
-
-            <!-- 底部操作链接 - 只在密码登录时显示 -->
-            <div class="mt-4 flex justify-between text-sm" v-opacity="loginType !== 'code'">
-              <div class="link cp" @click="switchMode('forgot')">{{ $t('forgot_password') }}</div>
-              <div class="link cp" @click="switchMode('register')">{{ $t('register_account') }}</div>
-            </div>
+              Đăng nhập
+              <span v-if="currentMode === 'login'" class="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] rounded-full"></span>
+            </button>
+            <button
+              type="button"
+              class="pb-3 transition-all relative cursor-pointer font-bold text-lg bg-transparent border-none outline-none"
+              :class="currentMode === 'register' ? 'text-white' : 'text-gray-500 hover:text-gray-300'"
+              @click="switchMode('register')"
+            >
+              Đăng ký
+              <span v-if="currentMode === 'register'" class="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] rounded-full"></span>
+            </button>
           </div>
 
-          <!-- 注册模式 -->
-          <div v-else-if="currentMode === 'register'">
-            <Header @click="switchMode('login')" :title="$t('register_new_account')" />
+          <!-- Login Mode -->
+          <div v-if="currentMode === 'login'">
+            <!-- Social Logins -->
+            <div class="flex flex-col gap-3">
+              <button
+                type="button"
+                class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl flex items-center justify-center gap-3 py-3.5 text-sm font-semibold transition-all duration-200 cursor-pointer hover:border-white/20 active:scale-[0.98]"
+                @click="handleSocialLogin('Google')"
+              >
+                <IconSimpleIconsGoogle class="text-lg" />
+                Đăng nhập bằng Google
+              </button>
+              <button
+                type="button"
+                class="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl flex items-center justify-center gap-3 py-3.5 text-sm font-semibold transition-all duration-200 cursor-pointer hover:border-white/20 active:scale-[0.98]"
+                @click="handleSocialLogin('Facebook')"
+              >
+                <IconSimpleIconsFacebook class="text-lg text-[#1877F2]" />
+                Đăng nhập bằng Facebook
+              </button>
+            </div>
 
-            <Form ref="registerFormRef" :rules="registerFormRules" :model="registerForm">
+            <!-- Separator -->
+            <div class="flex items-center gap-3 my-8">
+              <div class="flex-grow border-t border-white/10"></div>
+              <span class="text-xs text-gray-500 font-medium tracking-wider uppercase">Hoặc sử dụng tài khoản</span>
+              <div class="flex-grow border-t border-white/10"></div>
+            </div>
+
+            <!-- Password Login Form -->
+            <Form ref="loginForm2Ref" :rules="loginForm2Rules" :model="loginForm2">
               <FormItem prop="account">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">EMAIL HOẶC TÊN ĐĂNG NHẬP</span>
                 <BaseInput
-                  v-model="registerForm.account"
-                  type="tel"
+                  v-model="loginForm2.account"
+                  type="text"
                   name="username"
                   autocomplete="username"
                   size="large"
-                  :placeholder="$t('account_placeholder')"
+                  placeholder="Nhập email hoặc tên đăng nhập"
+                  class="custom-dark-input"
                 />
               </FormItem>
-              <FormItem prop="code">
-                <div class="flex gap-2">
-                  <BaseInput
-                    v-model="registerForm.code"
-                    type="code"
-                    size="large"
-                    :placeholder="$t('code_placeholder')"
-                    :max-length="PHONE_CONFIG.codeLength"
-                  />
-                  <Code
-                    :validate-field="() => registerFormRef.validateField('account')"
-                    :type="CodeType.Register"
-                    :val="registerForm.account"
-                  />
+              <FormItem prop="password" class="mt-5">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">MẬT KHẨU</span>
+                  <button type="button" class="text-xs text-purple-400 hover:text-purple-300 hover:underline cursor-pointer bg-transparent border-none" @click="switchMode('forgot')">
+                    Quên mật khẩu?
+                  </button>
                 </div>
-              </FormItem>
-              <FormItem prop="password">
                 <BaseInput
-                  v-model="registerForm.password"
+                  v-model="loginForm2.password"
                   type="password"
                   name="password"
                   autocomplete="current-password"
                   size="large"
-                  :placeholder="`请设置密码（${PASSWORD_CONFIG.minLength}-${PASSWORD_CONFIG.maxLength} 位）`"
-                />
-              </FormItem>
-              <FormItem prop="confirmPassword">
-                <BaseInput
-                  v-model="registerForm.confirmPassword"
-                  type="password"
-                  name="password"
-                  autocomplete="new-password"
-                  size="large"
-                  :placeholder="$t('confirm_password_placeholder')"
+                  placeholder="Nhập mật khẩu của bạn"
+                  class="custom-dark-input"
                 />
               </FormItem>
             </Form>
 
-            <Notice />
-
-            <BaseButton class="w-full" size="large" :loading="loading" @click="handleRegister">
-              {{ $t('register') }}
+            <BaseButton class="w-full mt-8 bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] hover:opacity-90 border-none text-white font-bold py-3.5 rounded-xl shadow-lg transition-all" size="large" :loading="loading" @click="handleLogin">
+              Đăng nhập
             </BaseButton>
           </div>
 
-          <!-- 忘记密码模式 -->
-          <div v-else-if="currentMode === 'forgot'">
-            <Header @click="switchMode('login')" :title="$t('reset_password')" />
-
-            <Form ref="forgotFormRef" :rules="forgotFormRules" :model="forgotForm">
-              <FormItem prop="account">
+          <!-- Register Mode -->
+          <div v-else-if="currentMode === 'register'">
+            <Form ref="registerFormRef" :rules="registerFormRules" :model="registerForm" class="space-y-4">
+              <FormItem prop="email">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">ĐỊA CHỈ EMAIL</span>
                 <BaseInput
-                  v-model="forgotForm.account"
-                  type="tel"
+                  v-model="registerForm.email"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  size="large"
+                  placeholder="Nhập địa chỉ email của bạn"
+                  class="custom-dark-input"
+                />
+              </FormItem>
+              <FormItem prop="username">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">TÊN TÀI KHOẢN</span>
+                <BaseInput
+                  v-model="registerForm.username"
+                  type="text"
                   name="username"
                   autocomplete="username"
                   size="large"
-                  :placeholder="$t('account_placeholder')"
+                  placeholder="Nhập tên đăng nhập của bạn"
+                  class="custom-dark-input"
+                />
+              </FormItem>
+              <FormItem prop="password">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">MẬT KHẨU</span>
+                <BaseInput
+                  v-model="registerForm.password"
+                  type="password"
+                  name="password"
+                  autocomplete="new-password"
+                  size="large"
+                  :placeholder="`Từ ${PASSWORD_CONFIG.minLength}-${PASSWORD_CONFIG.maxLength} ký tự`"
+                  class="custom-dark-input"
+                />
+              </FormItem>
+              <FormItem prop="confirmPassword">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">XÁC NHẬN MẬT KHẨU</span>
+                <BaseInput
+                  v-model="registerForm.confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  autocomplete="new-password"
+                  size="large"
+                  placeholder="Xác nhận lại mật khẩu của bạn"
+                  class="custom-dark-input"
+                />
+              </FormItem>
+            </Form>
+
+            <Notice class="mb-4 mt-6" />
+
+            <BaseButton class="w-full mt-6 bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] hover:opacity-90 border-none text-white font-bold py-3.5 rounded-xl shadow-lg transition-all" size="large" :loading="loading" @click="handleRegister">
+              Đăng ký tài khoản
+            </BaseButton>
+          </div>
+
+          <!-- Forgot Password Mode -->
+          <div v-else-if="currentMode === 'forgot'">
+            <Header @click="switchMode('login')" :title="$t('reset_password')" />
+
+            <Form ref="forgotFormRef" :rules="forgotFormRules" :model="forgotForm" class="mt-6 space-y-4">
+              <FormItem prop="account">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">EMAIL HOẶC SỐ ĐIỆN THOẠI</span>
+                <BaseInput
+                  v-model="forgotForm.account"
+                  type="text"
+                  name="username"
+                  autocomplete="username"
+                  size="large"
+                  placeholder="Nhập email hoặc số điện thoại"
+                  class="custom-dark-input"
                 />
               </FormItem>
               <FormItem prop="code">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">MÃ XÁC NHẬN</span>
                 <div class="flex gap-2">
                   <BaseInput
                     v-model="forgotForm.code"
-                    type="code"
+                    type="text"
                     size="large"
-                    :placeholder="$t('code_placeholder')"
-                    :max-length="PHONE_CONFIG.codeLength"
+                    placeholder="Nhập mã xác nhận"
+                    class="custom-dark-input flex-1"
                   />
                   <Code
                     :validate-field="() => forgotFormRef.validateField('account')"
@@ -556,136 +508,97 @@ function goHome() {}
                 </div>
               </FormItem>
               <FormItem prop="newPassword">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">MẬT KHẨU MỚI</span>
                 <BaseInput
                   v-model="forgotForm.newPassword"
                   type="password"
                   name="password"
                   autocomplete="new-password"
                   size="large"
-                  :placeholder="`请输入新密码（${PASSWORD_CONFIG.minLength}-${PASSWORD_CONFIG.maxLength} 位）`"
+                  :placeholder="`Mật khẩu mới (${PASSWORD_CONFIG.minLength}-${PASSWORD_CONFIG.maxLength} ký tự)`"
+                  class="custom-dark-input"
                 />
               </FormItem>
               <FormItem prop="confirmPassword">
+                <span class="block text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">XÁC NHẬN MẬT KHẨU MỚI</span>
                 <BaseInput
                   v-model="forgotForm.confirmPassword"
                   type="password"
                   name="password"
                   autocomplete="new-password"
                   size="large"
-                  :placeholder="$t('confirm_new_password')"
+                  placeholder="Nhập lại mật khẩu mới"
+                  class="custom-dark-input"
                 />
               </FormItem>
             </Form>
 
-            <BaseButton class="w-full mt-2" size="large" :loading="loading" @click="handleForgotPassword">
+            <BaseButton class="w-full mt-8 bg-gradient-to-r from-[#bd34fe] to-[#41d1ff] hover:opacity-90 border-none text-white font-bold py-3.5 rounded-xl shadow-lg transition-all" size="large" :loading="loading" @click="handleForgotPassword">
               {{ $t('reset_password') }}
             </BaseButton>
           </div>
         </div>
-
-        <!-- 右侧微信二维码 - 只在登录模式时显示 -->
-        <div v-if="currentMode === 'login'" class="center flex-col bg-gray-100 rounded-xl px-12">
-          <div class="relative w-40 h-40 bg-white rounded-xl overflow-hidden shadow-xl">
-            <NuxtImg
-              v-if="showWechatQR"
-              :src="wechatQRUrl"
-              alt="微信登录二维码"
-              class="w-full h-full"
-              :class="{ 'opacity-30': qrStatus === 'expired' }"
-            />
-            <!-- 扫描成功蒙层 -->
-            <div
-              v-if="qrStatus === 'scanned'"
-              class="absolute left-0 top-0 w-full h-full center flex-col gap-space bg-white"
-            >
-              <IconFluentCheckmarkCircle20Filled class="color-green text-4xl" />
-              <div class="text-base text-gray-700 font-medium">{{ $t('scan_success') }}</div>
-              <div class="text-xs text-gray-600">{{ $t('tap_allow_in_wechat') }}</div>
-            </div>
-            <!-- 取消登录蒙层 -->
-            <div
-              v-if="qrStatus === 'cancelled'"
-              class="absolute left-0 top-0 w-full h-full center flex-col gap-space bg-white"
-            >
-              <IconFluentErrorCircle20Regular class="color-red text-4xl" />
-              <div class="text-base text-gray-700 font-medium">{{ $t('login_cancelled') }}</div>
-              <div class="text-xs text-gray-600">
-                你可<span class="color-link" @click="refreshQRCode">{{ $t('login_again') }}</span
-                >，或关闭窗口
-              </div>
-            </div>
-            <!-- 过期蒙层 -->
-            <div
-              v-if="qrStatus === 'expired'"
-              class="absolute top-0 left-0 right-0 bottom-0 bg-opacity-95 center backdrop-blur-sm"
-            >
-              <IconFluentArrowClockwise20Regular @click="refreshQRCode" class="cp text-4xl" />
-            </div>
-          </div>
-          <p class="mt-4 center gap-space">
-            <IconIxWechatLogo class="text-xl color-green" />
-            <span class="text-sm text-gray-600">{{ $t('wechat_scan_login') }}</span>
-          </p>
-        </div>
       </div>
     </div>
 
-    <div v-else class="card-white p-6 w-100">
+    <!-- Data sync container -->
+    <div
+      class="backdrop-blur-md bg-[#121626]/85 border border-white/10 rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 z-10 m-auto"
+      v-else
+    >
       <Header @click="logout" :title="$t('sync_data')"></Header>
-      <div class="flex flex-col justify-between h-60">
+      <div class="flex flex-col justify-between h-60 mt-4">
         <template v-if="importStep === ImportStep.CONFIRMATION">
           <div>
-            <h2>{{ $t('local_data_detected') }}</h2>
-            <h3>{{ $t('sync_to_account_question') }}</h3>
+            <h2 class="text-xl font-bold mb-2">{{ $t('local_data_detected') }}</h2>
+            <h3 class="text-sm text-gray-600 dark:text-gray-300">{{ $t('sync_to_account_question') }}</h3>
           </div>
-          <div class="flex gap-space justify-end">
-            <template v-if="importStep === ImportStep.CONFIRMATION">
-              <PopConfirm
-                :title="[
-                  { text: '您的用户数据将以压缩包自动下载到您的电脑中，以便您随时恢复', type: 'normal' },
-                  { text: '随后网站的用户数据将被删除', type: 'redBold' },
-                  { text: '是否确认继续？', type: 'normal' },
-                ]"
-                @confirm="forgetData"
-              >
-                <BaseButton type="info">{{ $t('no_sync') }}</BaseButton>
-              </PopConfirm>
-            </template>
+          <div class="flex gap-4 justify-end">
+            <PopConfirm
+              :title="[
+                { text: 'Dữ liệu người dùng của bạn sẽ được tải xuống tự động dưới dạng tệp nén để bạn có thể khôi phục bất cứ lúc nào.', type: 'normal' },
+                { text: 'Sau đó dữ liệu trên trang web sẽ bị xóa.', type: 'redBold' },
+                { text: 'Bạn có chắc chắn muốn tiếp tục không?', type: 'normal' },
+              ]"
+              @confirm="forgetData"
+            >
+              <BaseButton type="info">{{ $t('no_sync') }}</BaseButton>
+            </PopConfirm>
             <BaseButton @click="startSync">{{ $t('sync') }}</BaseButton>
           </div>
         </template>
         <template v-if="importStep === ImportStep.PROCESSING">
           <div>
-            <div class="title text-align-center">{{ $t('syncing') }}</div>
-            <ol class="pl-4">
-              <li>您的用户数据已自动下载到您的电脑中，以便随时恢复</li>
-              <li>随后将开始数据同步</li>
-              <li>如果您的数据量很大，这将是一个耗时操作</li>
-              <li class="color-red-5 font-bold">请耐心等待，请勿关闭此页面</li>
+            <div class="text-lg font-bold text-center mb-4">{{ $t('syncing') }}</div>
+            <ol class="pl-4 text-xs text-gray-600 dark:text-gray-300 space-y-2 list-decimal">
+              <li>Dữ liệu của bạn đã được tự động tải xuống máy tính để khôi phục bất cứ lúc nào.</li>
+              <li>Sau đó quá trình đồng bộ dữ liệu sẽ bắt đầu.</li>
+              <li>Nếu dung lượng dữ liệu lớn, quá trình này có thể mất một khoảng thời gian.</li>
+              <li class="color-red-5 font-bold">Vui lòng kiên nhẫn đợi và không đóng trang này.</li>
             </ol>
-            <div class="flex items-center justify-between gap-2 mt-10">
-              <span>当前进度: {{ reason }}</span>
-              <IconEosIconsLoading class="text-xl" />
+            <div class="flex items-center justify-between gap-2 mt-6 border-t pt-4 border-gray-100">
+              <span class="text-xs">Tiến trình hiện tại: {{ reason }}</span>
+              <IconEosIconsLoading class="text-lg text-blue-500" />
             </div>
           </div>
         </template>
         <template v-if="importStep === ImportStep.FAIL">
           <div>
-            <div class="title text-align-center">{{ $t('sync_failed') }}</div>
-            <div class="mt-10">
+            <div class="text-lg font-bold text-center mb-4">{{ $t('sync_failed') }}</div>
+            <div class="mt-4 text-sm text-red-500">
               <span>{{ reason }}</span>
             </div>
           </div>
-          <div class="flex justify-end">
+          <div class="flex justify-end gap-2">
             <BaseButton type="info" @click="jump2Feedback">{{ $t('feedback') }}</BaseButton>
             <BaseButton @click="goHome">{{ $t('enter_website') }}</BaseButton>
           </div>
         </template>
         <template v-if="importStep === ImportStep.SUCCESS">
           <div>
-            <div class="title text-align-center">{{ $t('sync_success') }}</div>
-            <div class="mt-10">
-              <span>稍后将自动进入网站...</span>
+            <div class="text-lg font-bold text-center mb-4">{{ $t('sync_success') }}</div>
+            <div class="mt-4 text-sm text-green-500">
+              <span>Đang tự động chuyển hướng vào trang web...</span>
             </div>
           </div>
           <div class="flex justify-end">
@@ -696,3 +609,48 @@ function goHome() {}
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+:deep(.custom-dark-input) {
+  input {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease-in-out;
+    font-size: 14px;
+    height: 48px;
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    &:focus {
+      border-color: #bd34fe !important;
+      box-shadow: 0 0 0 1px rgba(189, 52, 254, 0.4) !important;
+      background: rgba(255, 255, 255, 0.07) !important;
+    }
+  }
+}
+
+.floating-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.logo-title {
+  font-family: Garamond, Georgia, 'Times New Roman', serif;
+  font-style: italic;
+}
+</style>

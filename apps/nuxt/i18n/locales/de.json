@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "Englisch lernen, ein Tastendruck nach dem anderen, Open-Source-Übungstool",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "Wortübung starten",
 	"start_article_practice": "Artikelübung starten",
 	"home_word_practice": "Wortübung",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "WeChat-Gruppe QR-Code",
 	"github_project": "GitHub-Projekt",
 	"ie_not_supported": "IE-Browser wird nicht unterstützt",
-	"ie_use_modern_browser": "Type Words wurde mit moderner Technologie erstellt, bitte verwenden Sie Chrome, Edge, Firefox oder andere moderne Browser",
+	"ie_use_modern_browser": "Quiz Words wurde mit moderner Technologie erstellt, bitte verwenden Sie Chrome, Edge, Firefox oder andere moderne Browser",
 	"download_chrome": "Chrome herunterladen",
 	"i_understand": "Ich verstehe",
 	"ignore_case": "Groß-/Kleinschreibung ignorieren",
@@ -472,7 +472,7 @@
 	"qa1_q2": "Das Projekt ist Open Source, Sie können es selbst bereitstellen.",
 	"qa2_a": "Kann nicht tippen, Tastatur reagiert nicht?",
 	"qa3_a": "Wo sind die Daten? Wie benutzt man es auf mehreren Computern/Geräten?",
-	"qa3_q1": "Alle Benutzerdaten werden im lokalen Browser gespeichert. Wenn Sie Type Words auf verschiedenen Geräten oder Browsern verwenden möchten, müssen Sie Daten manuell exportieren und importieren.",
+	"qa3_q1": "Alle Benutzerdaten werden im lokalen Browser gespeichert. Wenn Sie Quiz Words auf verschiedenen Geräten oder Browsern verwenden möchten, müssen Sie Daten manuell exportieren und importieren.",
 	"qa3_q2": "Einstellungen -> Dateneinstellungen -> Daten auf dem Originalcomputer exportieren -> Über soziale Software an neuen Computer senden -> Auf neuem Computer importieren",
 	"qa3_q3": "Das Kontosystem ist in Entwicklung.",
 	"qa4_a": "Die Website plant automatisch zu viele Wörter, wie ändern?",

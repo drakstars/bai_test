@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode'
 
-// WebviewPanel 管理类
+
 class ChatPanel {
   public static currentPanel: ChatPanel | undefined
   public static readonly viewType = 'typewordsChat'
@@ -12,13 +12,13 @@ class ChatPanel {
   private _disposables: vscode.Disposable[] = []
 
   public static createOrShow(extensionUri: vscode.Uri) {
-    // 如果已经有面板，直接显示
+
     if (ChatPanel.currentPanel) {
       ChatPanel.currentPanel._panel.reveal(vscode.ViewColumn.Beside)
       return
     }
 
-    // 创建新面板，放在右侧（使用 ViewColumn.Beside 确保在右侧）
+
     const panel = vscode.window.createWebviewPanel(ChatPanel.viewType, 'New Agent', vscode.ViewColumn.Beside, {
       enableScripts: true,
       localResourceRoots: [],
@@ -32,17 +32,17 @@ class ChatPanel {
     this._panel = panel
     this._extensionUri = extensionUri
 
-    // 设置初始 HTML
+
     this._update()
 
-    // 监听面板关闭事件
+
     this._panel.onDidDispose(() => this.dispose(), null, this._disposables)
   }
 
   public dispose() {
     ChatPanel.currentPanel = undefined
 
-    // 清理资源
+
     this._panel.dispose()
 
     while (this._disposables.length) {
@@ -65,10 +65,10 @@ class ChatPanel {
     let s = await fetch(`${cdnUrl}/vs.json`)
     let r:any = await s.json()
 
-    // 生成 nonce 用于 CSP
+
     const nonce = Buffer.from(Date.now().toString()).toString('base64')
 
-    // CSP 配置：允许内联脚本（使用 nonce）和外部资源
+
     const csp = [
       `default-src ${ALLURL}`,
       `script-src 'nonce-${nonce}' ${ALLURL} 'unsafe-inline'`,

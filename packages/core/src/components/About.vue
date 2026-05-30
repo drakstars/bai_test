@@ -28,4 +28,14 @@ import WeChat from '../components/channel-icons/WeChat.vue'
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+h1 {
+  font-family: Garamond, Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  background: linear-gradient(to right, #bd34fe, #41d1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+</style>

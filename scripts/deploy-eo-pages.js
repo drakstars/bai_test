@@ -1,11 +1,11 @@
 /**
- * 通用 EO Pages 部署脚本
- * 用法: node scripts/deploy-eo-pages.js --dir <dist目录> --name <EO项目名>
- * 示例:
+ * Universal EO Pages deployment script
+ * Usage: node scripts/deploy-eo-pages.js --dir <dist_dir> --name <EO_project_name>
+ * Example:
  *   node scripts/deploy-eo-pages.js --dir dist --name type-words-deploy
  *   node scripts/deploy-eo-pages.js -d dist -n vscode-web-deploy
  *
- * 环境变量: EO_PAGES_TOKEN（必填）
+ * Environment variables: EO_PAGES_TOKEN (required)
  */
 
 const { spawn } = require('child_process')
@@ -24,13 +24,13 @@ const dir = getArg('--dir', '-d') || 'dist'
 const name = getArg('--name', '-n')
 
 if (!name) {
-  console.error('❌ 缺少 EO Pages 项目名，请使用 --name 或 -n 指定')
+  console.error('❌ Missing EO Pages project name, please specify with --name or -n')
   process.exit(1)
 }
 
 const { EO_PAGES_TOKEN } = process.env
 if (!EO_PAGES_TOKEN) {
-  console.error('❌ 缺少必要的环境变量 EO_PAGES_TOKEN，请检查 GitHub Secrets 配置')
+  console.error('❌ Missing required environment variable EO_PAGES_TOKEN, please check GitHub Secrets configuration')
   process.exit(1)
 }
 

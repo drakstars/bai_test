@@ -13,11 +13,7 @@ import dayjs from 'dayjs'
 
 type DayGroup = { firstStart: number; totalSpend: number; daySegments: [number, number][] }
 
-/**
- * 将进行中的练习统计（PracticeState）落库到 store.sdict.statistics。
- * 用于切换词典或修改练习设置前调用，避免学习记录丢失。
- * @param st - 来自缓存或内存的 PracticeState，为 null / spend=0 时直接返回
- */
+
 export function flushStatToStore(st: PracticeState | null | undefined): void {
   if (!st?.spend) return
   const store = useBaseStore()

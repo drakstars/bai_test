@@ -17,7 +17,7 @@ axiosInstance.interceptors.request.use(
 )
 
 axiosInstance.interceptors.response.use(
-  // 响应正常的处理
+
   response => {
     // console.log(response.data)
     const { data } = response
@@ -42,7 +42,7 @@ axiosInstance.interceptors.response.use(
     }
     return Promise.resolve(data)
   },
-  // 请求出错的处理
+
   error => {
     if (error.response === undefined && error.status === undefined) {
       return Promise.resolve({

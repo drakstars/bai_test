@@ -93,22 +93,16 @@ export interface Article {
 }
 
 export interface Statistics {
-  startDate: number //开始日期
-  spend: number //花费时间
-  total: number //单词数量
-  new: number //新学单词数量
-  review: number //复习单词数量
-  wrong: number //错误数
-  title?: string //文章标题
-  /** 本日实际学习的时间片段列表，每项为 [startMs, endMs] */
+  startDate: number
+  spend: number
+  total: number
+  new: number
+  review: number
+  wrong: number
+  title?: string
+  
   segments?: [number, number][]
-  /**
-   * 本条记录在整次练习中的角色（仅跨天练习时有意义）：
-   * - 'single'：整次练习仅一天（含老数据默认情况）
-   * - 'start'  ：多天练习的第一天
-   * - 'middle' ：多天练习的中间日
-   * - 'end'    ：多天练习的最后一天
-   */
+  
   sessionRole?: 'single' | 'start' | 'middle' | 'end'
 }
 
@@ -121,7 +115,7 @@ export type DictResource = {
   category: string
   tags: string[]
   translateLanguage: TranslateLanguageType
-  //todo 可以考虑删除了
+
   type?: DictType
   version?: number
   language: LanguageType
@@ -133,9 +127,9 @@ export interface Dict extends DictResource {
   words: Word[]
   articles: Article[]
   statistics: Statistics[]
-  custom: boolean //是否是自定义词典
-  complete: boolean //是否学习完成，学完了设为true，然后lastLearnIndex重置
-  //后端字段
+  custom: boolean
+  complete: boolean
+
   en_name?: string
   createdBy?: string
   category_id?: number
@@ -158,7 +152,7 @@ export interface PracticeData {
   excludeWords: string[]
   allWrongWords: string[]
   isTypingWrongWord: boolean
-  // word -> wrongTimes 用以评级
+
   wrongTimesMap: Record<string, number>
   wrongTimes: number
   ratingMap: Record<string, Rating>
@@ -208,7 +202,7 @@ export type Question = {
   candidates: Candidate[]
   correctIndex: number
 }
-// 类型定义
+
 export interface Resource {
   name?: string
   description?: string

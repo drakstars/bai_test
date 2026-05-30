@@ -33,6 +33,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { nanoid } from 'nanoid'
 import { DictType, PracticeArticleWordType, ShortcutKey } from '@typewords/core/types/enum.ts'
 
+const { t } = useI18n()
 const store = useBaseStore()
 const runtimeStore = useRuntimeStore()
 const settingStore = useSettingStore()
@@ -54,7 +55,7 @@ let audioRef = $ref<HTMLAudioElement>()
 let timer = $ref<ReturnType<typeof setInterval> | number>(0)
 let isFocus = true
 let isTyped = $ref(false)
-//用于解决 手动改文章时改了lastLearnIndex，同时又监听了store.sbook.lastLearnIndex，会冲突
+
 let lock = false
 
 function write() {
@@ -63,8 +64,8 @@ function write() {
   repeat()
 }
 
-//TODO 需要判断是否已忽略
-//todo 使用场景是？
+
+
 function repeat() {
   // console.log('repeat')
   getCurrentPractice()
@@ -73,7 +74,7 @@ function repeat() {
 function prev() {
   // console.log('next')
   if (store.sbook.lastLearnIndex === 0) {
-    Toast.warning('已经在第一章了~')
+    Toast.warning(t('already_first_chapter'))
   } else {
     store.sbook.lastLearnIndex--
     getCurrentPractice()
@@ -97,7 +98,7 @@ function next() {
   if (store.sbook.lastLearnIndex >= articleData.list.length - 1) {
     store.sbook.complete = true
     store.sbook.lastLearnIndex = 0
-    //todo 这里应该弹窗
+
   } else store.sbook.lastLearnIndex++
   getCurrentPractice()
 }
@@ -106,21 +107,21 @@ const router = useRouter()
 const route = useRoute()
 
 async function init() {
-  // console.log('load好了开始加载')
+
   let dict = getDefaultDict()
   let dictId = route.params.id
   if (dictId) {
-    //先在自己的词典列表里面找，如果没有再在资源列表里面找
+
     dict = store.article.bookList.find(v => v.id == dictId)
     let r = await fetch(resourceWrap(DICT_LIST.ARTICLE.ALL))
     let book_list = await r.json()
     if (!dict) dict = book_list.find(v => v.id === dictId) as Dict
     if (dict && dict.id) {
-      //如果是不是自定义词典，就请求数据
+
       if (!dict.custom) dict = await _getDictDataByUrl(dict, DictType.article)
       if (!dict.articles.length) {
         router.push('/articles')
-        return Toast.warning('没有文章可学习！')
+        return Toast.warning(t('no_articles_to_learn'))
       }
       await store.changeBook(dict)
       articleData.list = cloneDeep(store.sbook.articles)
@@ -166,7 +167,7 @@ watch(
   { immediate: true, deep: true }
 )
 
-//用于远程拉了新数据，被动更新当前文章
+
 watch(
   () => store.sbook.lastLearnIndex,
   n => {
@@ -202,7 +203,7 @@ async function unmount() {
   console.log('onUnmounted')
   runtimeStore.disableEventListener = false
   const cache = await getPracticeArticleCacheLocal()
-  //如果有缓存，则更新花费的时间；因为用户不输入不会保存数据
+
   if (cache) {
     if (runtimeStore.globalLoading) return
     runtimeStore.globalLoading = true
@@ -269,12 +270,12 @@ function setArticle(val: Article) {
 
 async function complete() {
   clearInterval(timer)
-  //延时删除缓存，因为可能还有输入，需要保存
+
   setTimeout(() => {
     articlePersistence.clear()
   }, 1500)
 
-  //todo 有空了改成实时保存
+
   let data: Partial<Statistics> & { title: string; articleId: number } = {
     articleId: Number(articleData.article.id),
     title: articleData.article.title,
@@ -312,7 +313,7 @@ async function complete() {
 
   store.sbook.statistics.push(data as any)
 
-  //重置
+
   statStore.wrong = 0
   statStore.startDate = Date.now()
 }
@@ -351,7 +352,7 @@ function edit(val: Article = articleData.article) {
 
 function wrong(word: Word) {
   let temp = word.word.toLowerCase()
-  //过滤简单词
+
   if (settingStore.ignoreSimpleWord) {
     if (store.simpleWords.includes(temp)) return
   }
@@ -514,15 +515,15 @@ provide('currentPractice', currentPractice)
           <div class="flex justify-between items-center gap-2">
             <div class="stat">
               <div class="row">
-                <div class="num">{{ currentPractice.length }}次/{{ msToMinute(total(currentPractice, 'spend')) }}</div>
+                <div class="num">{{ currentPractice.length }} {{ $t('times').toLowerCase() }}/{{ msToMinute(total(currentPractice, 'spend')) }}</div>
                 <div class="line"></div>
-                <div class="name">记录</div>
+                <div class="name">{{ $t('record') }}</div>
               </div>
               <div class="row">
-                <!--                <div class="num">{{statStore.spend }}分钟</div>-->
-                <div class="num">{{ Math.floor(statStore.spend / 1000 / 60) }}分钟</div>
+                
+                <div class="num">{{ Math.floor(statStore.spend / 1000 / 60) }} {{ $t('minutes') }}</div>
                 <div class="line"></div>
-                <div class="name">时间</div>
+                <div class="name">{{ $t('time') }}</div>
               </div>
               <div class="row">
                 <div class="num center gap-1">
@@ -531,14 +532,14 @@ provide('currentPractice', currentPractice)
                     <IconFluentQuestionCircle20Regular width="18" />
                     <template #reference>
                       <div>
-                        统计词数{{ settingStore.ignoreSimpleWord ? '不包含' : '包含' }}简单词，不包含已掌握
-                        <div>简单词可在设置 -> 练习设置 -> 简单词过滤中修改</div>
+                        {{ $t('stat_words_count_tooltip_1', { op: settingStore.ignoreSimpleWord ? $t('not_include') : $t('include') }) }}
+                        <div>{{ $t('stat_words_count_tooltip_2') }}</div>
                       </div>
                     </template>
                   </Tooltip>
                 </div>
                 <div class="line"></div>
-                <div class="name">单词总数</div>
+                <div class="name">{{ $t('total_words') }}</div>
               </div>
             </div>
             <ArticleAudio
@@ -551,25 +552,25 @@ provide('currentPractice', currentPractice)
               <div class="flex gap-2 center">
                 <SettingDialog type="article" />
 
-                <BaseIcon :title="`下一句(${settingStore.shortcutKeyMap[ShortcutKey.Next]})`" @click="skip">
+                <BaseIcon :title="`${$t('next_sentence')}(${settingStore.shortcutKeyMap[ShortcutKey.Next]})`" @click="skip">
                   <IconFluentArrowBounce20Regular class="transform-rotate-180" />
                 </BaseIcon>
                 <BaseIcon
-                  :title="`播放当前句子(${settingStore.shortcutKeyMap[ShortcutKey.PlayWordPronunciation]})`"
+                  :title="`${$t('play_current_sentence')}(${settingStore.shortcutKeyMap[ShortcutKey.PlayWordPronunciation]})`"
                   @click="play"
                 >
                   <IconFluentReplay20Regular />
                 </BaseIcon>
                 <BaseIcon
                   @click="settingStore.dictation = !settingStore.dictation"
-                  :title="`开关默写模式(${settingStore.shortcutKeyMap[ShortcutKey.ToggleDictation]})`"
+                  :title="`${$t('toggle_dictation_mode')}(${settingStore.shortcutKeyMap[ShortcutKey.ToggleDictation]})`"
                 >
                   <IconFluentEyeOff16Regular v-if="settingStore.dictation" />
                   <IconFluentEye16Regular v-else />
                 </BaseIcon>
 
                 <BaseIcon
-                  :title="`开关释义显示(${settingStore.shortcutKeyMap[ShortcutKey.ToggleShowTranslate]})`"
+                  :title="`${$t('toggle_translation')}(${settingStore.shortcutKeyMap[ShortcutKey.ToggleShowTranslate]})`"
                   @click="settingStore.translate = !settingStore.translate"
                 >
                   <IconPhTranslate v-if="settingStore.translate" />
@@ -577,13 +578,13 @@ provide('currentPractice', currentPractice)
                 </BaseIcon>
 
                 <!--              <BaseIcon-->
-                <!--                  :title="`编辑(${settingStore.shortcutKeyMap[ShortcutKey.EditArticle]})`"-->
+                
                 <!--                  icon="tabler:edit"-->
                 <!--                  @click="emitter.emit(ShortcutKey.EditArticle)"-->
                 <!--              />-->
                 <BaseIcon
                   @click="settingStore.showPanel = !settingStore.showPanel"
-                  :title="`面板(${settingStore.shortcutKeyMap[ShortcutKey.TogglePanel]})`"
+                  :title="`${$t('panel')}(${settingStore.shortcutKeyMap[ShortcutKey.TogglePanel]})`"
                 >
                   <IconFluentTextListAbcUppercaseLtr20Regular />
                 </BaseIcon>
@@ -647,18 +648,18 @@ provide('currentPractice', currentPractice)
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
-  // 优化练习区域布局
+
   .practice-article {
-    padding-top: 3rem; // 为固定标题留出空间
+    padding-top: 3rem;
   }
 
-  // 优化标题区域
+
   .typing-article {
     header {
       position: fixed;
-      top: 4.5rem; // 避开顶部导航栏
+      top: 4.5rem;
       left: 0;
       right: 0;
       z-index: 100;
@@ -685,7 +686,7 @@ provide('currentPractice', currentPractice)
     }
 
     .article-content {
-      margin-top: 2rem; // 为固定标题留出空间
+      margin-top: 2rem;
     }
   }
 

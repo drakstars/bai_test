@@ -62,25 +62,25 @@ export enum PracticeArticleWordType {
   Word,
 }
 
-//练习模式
-//新增模式，记得测试正常流程
+
+
 export enum WordPracticeMode {
   // practice-words
   System = 0,
   Free = 1,
-  IdentifyOnly = 2, // 独立自测模式
-  DictationOnly = 3, // 独立默写模式
-  ListenOnly = 4, // 独立听写模式
-  Shuffle = 5, // 随机复习模式
-  Review = 6, // 复习模式
+  IdentifyOnly = 2,
+  DictationOnly = 3,
+  ListenOnly = 4,
+  Shuffle = 5,
+  Review = 6,
   // words-test
-  ShuffleWordsTest = 7, // 单词测试模式
-  ReviewWordsTest = 8, // 单词测试模式
+  ShuffleWordsTest = 7,
+  ReviewWordsTest = 8,
 }
 
-//练习类型
+
 export enum WordPracticeType {
-  FollowWrite, //跟写
+  FollowWrite,
   Spell,
   Identify,
   Listen,
@@ -102,7 +102,7 @@ export enum ImportStatus {
   Fail = 2,
 }
 
-//练习阶段
+
 export enum WordPracticeStage {
   FollowWriteNewWord = 0,
   IdentifyNewWord = 1,
@@ -118,13 +118,13 @@ export enum WordPracticeStage {
   Complete = 13,
 }
 
-// 自测方法
+
 export enum IdentifyMethod {
-  // 自我评估
+
   SelfAssessment = 0,
-  // 单词测试
+
   WordTest = 1,
-  // 快速自测
+
   QuickIdentify = 2,
 }
 

@@ -19,7 +19,7 @@ const emit = defineEmits(['update:modelValue', 'toggle'])
 
 const isOpen = ref(false)
 const isReverse = ref(false)
-const dropdownStyle = ref({}) // Teleport 用的样式
+const dropdownStyle = ref({})
 const selectedOption = ref<Option | null>(null)
 const selectRef = ref<HTMLDivElement | null>(null)
 const dropdownRef = ref<HTMLDivElement | null>(null)
@@ -32,7 +32,7 @@ const displayValue = computed(() => {
 const updateDropdownPosition = async () => {
   if (!selectRef.value || !dropdownRef.value) return
 
-  // 等待 DOM 完全渲染（尤其是下拉框高度）
+
   await nextTick()
   await new Promise(requestAnimationFrame)
 
@@ -224,7 +224,7 @@ onBeforeUnmount(() => {
   @apply shadow-xl rounded-lg border border-gray-300 border-solid;
 }
 
-/* 往下展开的动画 */
+
 .zoom-in-top-enter-active,
 .zoom-in-top-leave-active {
   transition:
@@ -239,7 +239,7 @@ onBeforeUnmount(() => {
   transform: scaleY(0);
 }
 
-/* 往上展开的动画 */
+
 .zoom-in-bottom-enter-active,
 .zoom-in-bottom-leave-active {
   transition:

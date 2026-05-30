@@ -17,7 +17,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const groupValue = ref(props.modelValue)
 
-// 提供给子组件
+
 provide('radioGroupSize', props.size)
 provide('radioGroupValue', groupValue)
 provide('radioGroupDisabled', props.disabled)
@@ -27,7 +27,7 @@ provide('updateRadioGroupValue', (val: string | number | boolean) => {
   emit('update:modelValue', val)
 })
 
-// 外部 v-model 更新同步
+
 watch(() => props.modelValue, (val) => {
   groupValue.value = val
 })

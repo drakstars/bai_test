@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "英語を学ぶ、一打一進歩、オープンソースの単語と文章練習ツール",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "単語練習を開始",
 	"start_article_practice": "文章練習を開始",
 	"home_word_practice": "単語練習",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "WeChatグループQRコード",
 	"github_project": "GitHubプロジェクト",
 	"ie_not_supported": "IEブラウザはサポートされていません",
-	"ie_use_modern_browser": "Type Wordsは最新技術で構築されています。Chrome、Edge、Firefoxなどのモダンブラウザをご利用ください",
+	"ie_use_modern_browser": "Quiz Wordsは最新技術で構築されています。Chrome、Edge、Firefoxなどのモダンブラウザをご利用ください",
 	"download_chrome": "Chromeをダウンロード",
 	"i_understand": "理解しました",
 	"ignore_case": "大文字小文字を無視",
@@ -472,7 +472,7 @@
 	"qa1_q2": "プロジェクトはオープンソースで、自分でデプロイできます。",
 	"qa2_a": "入力できない、キーボードが反応しない？",
 	"qa3_a": "データはどこに保存されますか？複数のデバイス間で使用するには？",
-	"qa3_q1": "すべてのユーザーデータはローカルブラウザに保存されます。異なるデバイスやブラウザでType Wordsを使用する場合は、手動でデータのエクスポートとインポートが必要です。",
+	"qa3_q1": "すべてのユーザーデータはローカルブラウザに保存されます。異なるデバイスやブラウザでQuiz Wordsを使用する場合は、手動でデータのエクスポートとインポートが必要です。",
 	"qa3_q2": "設定 -> データ設定 -> 元のコンピューターでデータをエクスポート -> SNSで新しいコンピューターに送信 -> 新しいコンピューターでインポート",
 	"qa3_q3": "アカウントシステムは開発中です。",
 	"qa4_a": "ウェブサイトが自動計画する単語数が多すぎます。どう変更しますか？",

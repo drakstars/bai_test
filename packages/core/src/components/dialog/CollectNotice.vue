@@ -44,9 +44,9 @@ watch(
   <transition name="right">
     <div class="CollectNotice card" :class="{ mobile }" v-if="show">
       <div class="notice">
-        坚持练习，提高外语能力。将
-        <span class="active">「{{ APP_NAME }}」</span>
-        保存为书签，永不迷失！
+        Kiên trì luyện tập, nâng cao tiếng Anh. Lưu
+        <span class="active">«{{ APP_NAME }}»</span>
+        vào thanh dấu trang, không bao giờ bị lạc!
       </div>
       <div class="collect">
         <div class="href-wrapper">
@@ -57,16 +57,16 @@ watch(
           <div class="right">
             👈
             <IconMdiStar />
-            点亮它!
+            Đánh dấu nó!
           </div>
         </div>
       </div>
-      <BaseButton size="large" @click="toggleNotice" v-if="!showNotice">我已收藏</BaseButton>
+      <BaseButton size="large" @click="toggleNotice" v-if="!showNotice">Tôi đã lưu dấu trang</BaseButton>
       <div class="close-wrapper">
         <span v-show="showNotice"
-          ><span class="active">{{ num }}s</span> 后自动关闭</span
+          ><span class="active">{{ num }}s</span> sẽ tự đóng</span
         >
-        <Close @click="close" title="关闭" />
+        <Close @click="close" title="Đóng" />
       </div>
     </div>
   </transition>

@@ -35,7 +35,7 @@ provide(
   @apply shadow-lg flex flex-col h-full rounded-xl;
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .panel {
     width: 90vw;
@@ -58,7 +58,7 @@ provide(
   }
 }
 
-// 超小屏幕适配
+
 @media (max-width: 480px) {
   .panel {
     width: 95vw;

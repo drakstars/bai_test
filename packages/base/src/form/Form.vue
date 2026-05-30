@@ -19,7 +19,7 @@ const registerField = (field: Field) => {
   fields.value.push(field)
 }
 
-// 校验整个表单
+
 function validate(cb) {
   let valid = true
   fields.value.forEach(f => {
@@ -30,7 +30,7 @@ function validate(cb) {
   cb(valid)
 }
 
-// 校验指定字段
+
 function validateField(fieldName: string, cb?: (valid: boolean) => void): boolean {
   const field = fields.value.find(f => f.prop === fieldName)
   if (field) {

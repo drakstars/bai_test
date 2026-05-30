@@ -7,16 +7,16 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
-// 通过inject获取ElSelect提供的数据和方法
+
 const selectValue = inject('selectValue', null);
 const selectHandler = inject('selectHandler', null);
 
-// 计算当前选项是否被选中
+
 const isSelected = computed(() => {
   return selectValue.value === props.value;
 });
 
-// 点击选项时调用ElSelect提供的方法
+
 const handleClick = () => {
   if (props.disabled) return;
   if (selectHandler) {
@@ -24,7 +24,7 @@ const handleClick = () => {
   }
 };
 
-// 监听props变化，确保在props更新时重新计算isSelected
+
 watch(() => props.value, () => {}, { immediate: true });
 </script>
 

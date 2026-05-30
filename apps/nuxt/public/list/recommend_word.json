@@ -1,184 +1,158 @@
 [
   {
-    "id": "cet4",
-    "name": "CET-4",
-    "description": "大学英语四级词库",
-    "category": "中国考试",
+    "id": "tienganh10",
+    "name": "Tiếng Anh Lớp 10",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 10 mới",
+    "category": "Tiếng Anh Phổ thông",
     "tags": [
-      "大学英语"
+      "Lớp 10"
     ],
-    "url": "CET4_T.json",
-    "length": 2607,
+    "url": "tienganh10.json",
+    "length": 30,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
-    "id": "cet6",
-    "name": "CET-6",
-    "description": "大学英语六级词库",
-    "category": "中国考试",
+    "id": "tienganh11",
+    "name": "Tiếng Anh Lớp 11",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 11 mới",
+    "category": "Tiếng Anh Phổ thông",
     "tags": [
-      "大学英语"
+      "Lớp 11"
     ],
-    "url": "CET6_T.json",
-    "length": 2345,
+    "url": "tienganh11.json",
+    "length": 30,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
-    "id": "level4",
-    "name": "专四",
-    "description": "英语专业四级词库",
-    "category": "中国考试",
+    "id": "tienganh12",
+    "name": "Tiếng Anh Lớp 12",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 12 mới",
+    "category": "Tiếng Anh Phổ thông",
     "tags": [
-      "大学英语"
+      "Lớp 12"
     ],
-    "url": "Level4luan_2_T.json",
-    "length": 4025,
+    "url": "tienganh12.json",
+    "length": 30,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
-    "id": "level8",
-    "name": "专八",
-    "description": "英语专业八级词库",
-    "category": "中国考试",
+    "id": "thpt_quocgia",
+    "name": "Ôn Thi THPT Quốc Gia",
+    "description": "Từ vựng tiếng Anh trọng tâm cho kỳ thi Tốt nghiệp THPT và Đại học",
+    "category": "Luyện thi Đại học",
     "tags": [
-      "大学英语"
+      "THPT QG"
     ],
-    "url": "Level8luan_2_T.json",
-    "length": 12197,
+    "url": "thpt_quocgia.json",
+    "length": 50,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
-    "id": "kaoyan",
-    "name": "考研",
-    "description": "研究生英语入学考试词库",
-    "category": "中国考试",
+    "id": "ielts_vi",
+    "name": "IELTS Core Vocabulary",
+    "description": "Từ vựng học thuật cốt lõi thường gặp nhất trong kỳ thi IELTS",
+    "category": "Chứng chỉ Quốc tế",
     "tags": [
-      "考研"
+      "IELTS"
     ],
-    "url": "KaoYan_3_T.json",
-    "length": 3728,
+    "url": "ielts_vi.json",
+    "length": 30,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "toeic_vi",
+    "name": "TOEIC Common Vocabulary",
+    "description": "Từ vựng tiếng Anh giao tiếp và công sở thông dụng cho kỳ thi TOEIC",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "TOEIC"
+    ],
+    "url": "toeic_vi.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "toefl_vi",
+    "name": "TOEFL Academic Vocabulary",
+    "description": "Từ vựng học thuật chuyên sâu phục vụ cho kỳ thi TOEFL",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "TOEFL"
+    ],
+    "url": "toefl_vi.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "coder_vi",
+    "name": "English for Coders",
+    "description": "Từ vựng tiếng Anh chuyên ngành công nghệ thông tin và lập trình viên",
+    "category": "Lập trình & IT",
+    "tags": [
+      "IT"
+    ],
+    "url": "coder_vi.json",
+    "length": 158,
+    "language": "en",
+    "translateLanguage": "vi-VN"
   },
   {
     "id": "toefl",
-    "name": "TOEFL",
-    "description": "托福考试常见词",
-    "category": "国际考试",
+    "name": "TOEFL (Bản đầy đủ)",
+    "description": "Bộ từ vựng học thuật chuẩn hóa đầy đủ nhất cho kỳ thi TOEFL",
+    "category": "Chứng chỉ Quốc tế",
     "tags": [
       "TOEFL"
     ],
     "url": "TOEFL_3_T.json",
     "length": 4264,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
     "id": "ielts",
-    "name": "IELTS",
-    "description": "雅思词库",
-    "category": "国际考试",
+    "name": "IELTS (Bản đầy đủ)",
+    "description": "Bộ từ vựng học thuật cốt lõi đầy đủ nhất cho kỳ thi IELTS",
+    "category": "Chứng chỉ Quốc tế",
     "tags": [
       "IELTS"
     ],
     "url": "IELTS_3_T.json",
     "length": 3575,
     "language": "en",
-    "translateLanguage": "zh-CN"
-  },
-  {
-    "id": "gaokao3500",
-    "name": "高考 3500 词",
-    "description": "高考常见词 3500",
-    "category": "青少年英语",
-    "tags": [
-      "通用"
-    ],
-    "url": "GaoKao_3500.json",
-    "length": 3893,
-    "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
     "id": "coder",
-    "name": "Coder Dict",
-    "description": "程序员常见单词词库",
-    "category": "代码练习",
+    "name": "Coder Dict (Đầy đủ)",
+    "description": "Từ vựng tiếng Anh chuyên ngành lập trình và Khoa học máy tính đầy đủ",
+    "category": "Lập trình & IT",
     "tags": [
-      "通用"
+      "Lập trình"
     ],
     "url": "it-words.json",
     "length": 1700,
     "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   },
   {
     "id": "itVocabulary",
-    "name": "计算机专用英语",
-    "description": "大学计算机专业英语词汇",
-    "category": "代码练习",
+    "name": "Computer English",
+    "description": "Từ vựng tiếng Anh kỹ thuật chuyên sâu về máy tính và hệ thống",
+    "category": "Lập trình & IT",
     "tags": [
-      "通用"
+      "IT"
     ],
     "url": "itVocabulary.json",
     "length": 1665,
     "language": "en",
-    "translateLanguage": "zh-CN"
-  },
-  {
-    "id": "nce-new-1",
-    "name": "新概念英语-1",
-    "description": "新概念英语第一册",
-    "category": "青少年英语",
-    "tags": [
-      "新概念英语"
-    ],
-    "url": "nce-new-1.json",
-    "length": 908,
-    "language": "en",
-    "translateLanguage": "zh-CN"
-  },
-  {
-    "id": "nce-new-2",
-    "name": "新概念英语-2",
-    "description": "新概念英语第二册",
-    "category": "青少年英语",
-    "tags": [
-      "新概念英语"
-    ],
-    "url": "nce-new-2.json",
-    "length": 862,
-    "language": "en",
-    "translateLanguage": "zh-CN"
-  },
-  {
-    "id": "nce-new-3",
-    "name": "新概念英语-3",
-    "description": "新概念英语第三册",
-    "category": "青少年英语",
-    "tags": [
-      "新概念英语"
-    ],
-    "url": "nce-new-3.json",
-    "length": 1062,
-    "language": "en",
-    "translateLanguage": "zh-CN"
-  },
-  {
-    "id": "nce-new-4",
-    "name": "新概念英语-4",
-    "description": "新概念英语第四册",
-    "category": "青少年英语",
-    "tags": [
-      "新概念英语"
-    ],
-    "url": "nce-new-4.json",
-    "length": 793,
-    "language": "en",
-    "translateLanguage": "zh-CN"
+    "translateLanguage": "vi-VN"
   }
 ]

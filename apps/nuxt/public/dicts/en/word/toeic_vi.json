@@ -1,0 +1,782 @@
+[
+  {
+    "custom": false,
+    "id": 0,
+    "word": "negotiate",
+    "phonetic0": "/nɪˈɡəʊʃieɪt/",
+    "phonetic1": "/nɪˈɡəʊʃieɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "đàm phán, thương lượng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They negotiated a new contract with the supplier.",
+        "cn": "Ví dụ: They negotiated a new contract with the supplier."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 1,
+    "word": "agreement",
+    "phonetic0": "/əˈɡriːmənt/",
+    "phonetic1": "/əˈɡriːmənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hợp đồng, thỏa thuận"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The parties reached a mutual agreement.",
+        "cn": "Ví dụ: The parties reached a mutual agreement."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 2,
+    "word": "merchandise",
+    "phonetic0": "/ˈmɜːtʃəndaɪs/",
+    "phonetic1": "/ˈmɜːtʃəndaɪs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàng hóa kinh doanh thương mại"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The store displays fresh merchandise on the shelves.",
+        "cn": "Ví dụ: The store displays fresh merchandise on the shelves."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 3,
+    "word": "inventory",
+    "phonetic0": "/ˈɪnvəntri/",
+    "phonetic1": "/ˈɪnvəntri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hàng tồn kho, sự kiểm kê"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We need to check the store inventory tonight.",
+        "cn": "Ví dụ: We need to check the store inventory tonight."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 4,
+    "word": "reimburse",
+    "phonetic0": "/ˌriːɪmˈbɜːs/",
+    "phonetic1": "/ˌriːɪmˈbɜːs/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "hoàn trả tiền, bồi hoàn chi phí"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The company will reimburse your travel expenses.",
+        "cn": "Ví dụ: The company will reimburse your travel expenses."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 5,
+    "word": "promotion",
+    "phonetic0": "/prəˈməʊʃn/",
+    "phonetic1": "/prəˈməʊʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự thăng tiến, chiến dịch khuyến mãi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Congratulations on your promotion to manager.",
+        "cn": "Ví dụ: Congratulations on your promotion to manager."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 6,
+    "word": "invoice",
+    "phonetic0": "/ˈɪnvɔɪ/",
+    "phonetic1": "/ˈɪnvɔɪ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hóa đơn thanh toán chi tiết"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Please pay the invoice within 30 days.",
+        "cn": "Ví dụ: Please pay the invoice within 30 days."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 7,
+    "word": "client",
+    "phonetic0": "/ˈklaɪənt/",
+    "phonetic1": "/ˈklaɪənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "khách hàng đối tác doanh nghiệp"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We are meeting an important client this afternoon.",
+        "cn": "Ví dụ: We are meeting an important client this afternoon."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 8,
+    "word": "corporate",
+    "phonetic0": "/ˈkɔːpərət/",
+    "phonetic1": "/ˈkɔːpərət/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thuộc doanh nghiệp, tập đoàn lớn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Corporate culture encourages collaboration.",
+        "cn": "Ví dụ: Corporate culture encourages collaboration."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 9,
+    "word": "advertising",
+    "phonetic0": "/ˈædvətaɪzɪŋ/",
+    "phonetic1": "/ˈædvətaɪzɪŋ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hoạt động quảng cáo thương mại"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The marketing team increased the advertising budget.",
+        "cn": "Ví dụ: The marketing team increased the advertising budget."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 10,
+    "word": "personnel",
+    "phonetic0": "/ˌpɜːsəˈnel/",
+    "phonetic1": "/ˌpɜːsəˈnel/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nhân viên, phòng nhân sự"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "All personnel must wear identification badges.",
+        "cn": "Ví dụ: All personnel must wear identification badges."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 11,
+    "word": "colleague",
+    "phonetic0": "/ˈkɒliːɡ/",
+    "phonetic1": "/ˈkɒliːɡ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đồng nghiệp tại nơi làm việc"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She discussed the project with a colleague.",
+        "cn": "Ví dụ: She discussed the project with a colleague."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 12,
+    "word": "benefit",
+    "phonetic0": "/ˈbenɪfɪt/",
+    "phonetic1": "/ˈbenɪfɪt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lợi ích, phúc lợi nhân viên"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Employees receive medical benefits in this company.",
+        "cn": "Ví dụ: Employees receive medical benefits in this company."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 13,
+    "word": "compensation",
+    "phonetic0": "/ˌkɒmpenˈseɪʃn/",
+    "phonetic1": "/ˌkɒmpenˈseɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tiền đền bù, thù lao lương bổng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The company offers competitive compensation packages.",
+        "cn": "Ví dụ: The company offers competitive compensation packages."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 14,
+    "word": "executive",
+    "phonetic0": "/ɪɡˈzekjətɪv/",
+    "phonetic1": "/ɪɡˈzekjətɪv/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giám đốc điều hành, người quản lý"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The chief executive officer signed the agreement.",
+        "cn": "Ví dụ: The chief executive officer signed the agreement."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 15,
+    "word": "marketing",
+    "phonetic0": "/ˈmɑːkɪtɪŋ/",
+    "phonetic1": "/ˈmɑːkɪtɪŋ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tiếp thị thương mại tiếp cận thị trường"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The marketing campaign generated high sales.",
+        "cn": "Ví dụ: The marketing campaign generated high sales."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 16,
+    "word": "performance",
+    "phonetic0": "/pəˈfɔːməns/",
+    "phonetic1": "/pəˈfɔːməns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hiệu suất làm việc, buổi trình diễn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His performance review was excellent.",
+        "cn": "Ví dụ: His performance review was excellent."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 17,
+    "word": "signature",
+    "phonetic0": "/ˈsɪɡnətʃə(r)/",
+    "phonetic1": "/ˈsɪɡnətʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chữ ký cá nhân xác thực văn bản"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We need your signature on the registration form.",
+        "cn": "Ví dụ: We need your signature on the registration form."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 18,
+    "word": "strategy",
+    "phonetic0": "/ˈstrætədʒi/",
+    "phonetic1": "/ˈstrætədʒi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chiến lược kế hoạch hành động dài hạn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The company developed a new business strategy.",
+        "cn": "Ví dụ: The company developed a new business strategy."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 19,
+    "word": "warranty",
+    "phonetic0": "/ˈwɒrənti/",
+    "phonetic1": "/ˈwɒrənti/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giấy bảo hành, sự cam kết chất lượng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The television comes with a one-year warranty.",
+        "cn": "Ví dụ: The television comes with a one-year warranty."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 20,
+    "word": "manufacturer",
+    "phonetic0": "/ˌmænjuˈfæktʃərə(r)/",
+    "phonetic1": "/ˌmænjuˈfæktʃərə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nhà sản xuất, hãng chế tạo"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He contacted the car manufacturer for a replacement part.",
+        "cn": "Ví dụ: He contacted the car manufacturer for a replacement part."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 21,
+    "word": "presentation",
+    "phonetic0": "/ˌpreznˈteɪʃn/",
+    "phonetic1": "/ˌpreznˈteɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "buổi thuyết trình, trình bày ý kiến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She gave an impressive presentation on sales data.",
+        "cn": "Ví dụ: She gave an impressive presentation on sales data."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 22,
+    "word": "feedback",
+    "phonetic0": "/ˈfiːdbæk/",
+    "phonetic1": "/ˈfiːdbæk/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "phản hồi ý kiến từ khách hàng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We appreciate customer feedback on our service.",
+        "cn": "Ví dụ: We appreciate customer feedback on our service."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 23,
+    "word": "headquarters",
+    "phonetic0": "/ˈhedkwɔːtəz/",
+    "phonetic1": "/ˈhedkwɔːtəz/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "trụ sở chính của tập đoàn doanh nghiệp"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The company headquarters is located in Tokyo.",
+        "cn": "Ví dụ: The company headquarters is located in Tokyo."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 24,
+    "word": "schedule",
+    "phonetic0": "/ˈʃedjuːl/",
+    "phonetic1": "/ˈʃedjuːl/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "lịch trình công việc, sắp xếp thời gian"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The project is running ahead of schedule.",
+        "cn": "Ví dụ: The project is running ahead of schedule."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 25,
+    "word": "consultant",
+    "phonetic0": "/kənˈsʌltənt/",
+    "phonetic1": "/kənˈsʌltənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cố vấn, chuyên gia tư vấn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They hired a financial consultant to review books.",
+        "cn": "Ví dụ: They hired a financial consultant to review books."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 26,
+    "word": "supervisor",
+    "phonetic0": "/ˈsuːpəvaɪzə(r)/",
+    "phonetic1": "/ˈsuːpəvaɪzə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "người giám sát, tổ trưởng quản lý"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Discuss the issue with your supervisor.",
+        "cn": "Ví dụ: Discuss the issue with your supervisor."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 27,
+    "word": "consumer",
+    "phonetic0": "/kənˈsjuːmə(r)/",
+    "phonetic1": "/kənˈsjuːmə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "người tiêu dùng trên thị trường"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Consumer spending increased in the holiday season.",
+        "cn": "Ví dụ: Consumer spending increased in the holiday season."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 28,
+    "word": "contract",
+    "phonetic0": "/ˈkɒntrækt/",
+    "phonetic1": "/ˈkɒntrækt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hợp đồng pháp lý ký kết"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The legal team is drafting the final contract.",
+        "cn": "Ví dụ: The legal team is drafting the final contract."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 29,
+    "word": "industry",
+    "phonetic0": "/ˈɪndəstri/",
+    "phonetic1": "/ˈɪndəstri/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "ngành công nghiệp, hoạt động sản xuất"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The tech industry is growing rapidly worldwide.",
+        "cn": "Ví dụ: The tech industry is growing rapidly worldwide."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]

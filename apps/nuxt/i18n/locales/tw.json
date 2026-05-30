@@ -1,6 +1,6 @@
 {
 	"app_desc": "學習英語，一次敲擊，一點進步，開源單詞與文章練習工具",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "開始單詞練習",
 	"start_article_practice": "開始文章練習",
 	"home_word_practice": "單詞練習",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "微信群二维碼",
 	"github_project": "GITHUB 项目地址",
 	"ie_not_supported": "不支持 IE 瀏覽器",
-	"ie_use_modern_browser": "Type Words 使用現代技术構建，請使用 Chrome、Edge、Firefox 或 Safari 等現代瀏覽器访問。",
+	"ie_use_modern_browser": "Quiz Words 使用現代技术構建，請使用 Chrome、Edge、Firefox 或 Safari 等現代瀏覽器访問。",
 	"download_chrome": "下載 Chrome",
 	"i_understand": "我知道了",
 	"ignore_case": "忽略大小寫",
@@ -472,7 +472,7 @@
 	"qa1_q2": "項目是開源的，可自行部署",
 	"qa2_a": "无法輸入，按下鍵盤没有反應？",
 	"qa3_a": "數據在哪？怎么在多台電腦/設備之間使用？",
-	"qa3_q1": "所有用戶數據 保存在本地瀏覽器中。如果您需要在不同的設備、瀏覽器上使用 Type Words， 您需要手动進行數據導出和導入",
+	"qa3_q1": "所有用戶數據 保存在本地瀏覽器中。如果您需要在不同的設備、瀏覽器上使用 Quiz Words， 您需要手动進行數據導出和導入",
 	"qa3_q2": "設置 -> 數據設置 -> 在原電腦上導出數據 -> 通過社交软件發送给新電腦 -> 在新電腦上導入",
 	"qa3_q3": "正在開發帳戶体繫",
 	"qa4_a": "網站自动規划的單詞數量太多了，怎么修改？",
@@ -530,5 +530,13 @@
 	"import_json": "导入json文件",
 	"self_assessment": "自我评估",
 	"word_test": "单词测试",
-	"identify_method": "自测方式"
+	"identify_method": "自測方式",
+	"on": "開",
+	"off": "關",
+	"continue_test": "繼續測試",
+	"end_practice": "結束",
+	"no_words_to_test": "沒有單詞可測試！",
+	"test_shortcut_tip": "可以按快捷鍵進行選擇,例如按快捷鍵[{key}]選擇A",
+	"question_stem": "題目：",
+	"articles_count": "篇"
 }

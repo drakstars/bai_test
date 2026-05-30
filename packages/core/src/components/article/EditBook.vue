@@ -50,7 +50,7 @@ async function onSubmit() {
       let data: Dict = getDefaultDict(dictForm)
       data.type = props.isBook ? DictType.article : DictType.word
       let source = [store.article, store.word][props.isBook ? 0 : 1]
-      //todo 可以检查的更准确些，比如json对比
+
       if (props.isAdd) {
         data.id = 'custom-dict-' + Date.now()
         data.custom = true
@@ -75,7 +75,7 @@ async function onSubmit() {
         }
       } else {
         let rIndex = source.bookList.findIndex(v => v.id === data.id)
-        //任意修改，都将其变为自定义词典
+
         if (
           !data.custom &&
           ![DictId.wordKnown, DictId.wordWrong, DictId.wordCollect, DictId.articleCollect].includes(

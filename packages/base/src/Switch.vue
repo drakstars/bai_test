@@ -4,9 +4,9 @@ import {ref, computed, watch} from 'vue';
 interface IProps {
   modelValue: boolean;
   disabled?: boolean;
-  width?: number;       // 开关宽度，默认 40px
-  activeText?: string;  // 开启状态显示文字
-  inactiveText?: string;// 关闭状态显示文字
+  width?: number;
+  activeText?: string;
+  inactiveText?: string;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
@@ -53,7 +53,7 @@ const ballSize = computed(() => switchHeight.value - 4);
       :style="{ width: switchWidth + 'px', height: switchHeight + 'px' ,borderRadius: switchHeight + 'px'}"
   >
     <transition name="fade">
-      <span class="text left" v-if="isChecked && activeText">{{ activeText }}</span>
+      <span class="text left" v-if="isChecked && activeText">{{ activeText === '开' && $t ? $t('on') : activeText }}</span>
     </transition>
     <div
         class="ball"
@@ -64,7 +64,7 @@ const ballSize = computed(() => switchHeight.value - 4);
         }"
     ></div>
     <transition name="fade">
-      <span class="text right" v-if="!isChecked && inactiveText">{{ inactiveText }}</span>
+      <span class="text right" v-if="!isChecked && inactiveText">{{ inactiveText === '关' && $t ? $t('off') : inactiveText }}</span>
     </transition>
   </div>
 </template>

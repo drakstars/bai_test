@@ -2,25 +2,25 @@
 import { App, inject } from 'vue'
 import { createI18n } from 'vue-i18n'
 
-// 模拟 Nuxt 中的 useI18n
+
 export function useI18n() {
-  const i18n = inject('i18n') // 获取全局注入的 i18n 实例
+  const i18n = inject('i18n')
   if (!i18n) {
-    throw new Error('i18n instance is required') // 确保有 i18n 实例
+    throw new Error('i18n instance is required')
   }
 
   const locale = i18n.global.locale
   const setLocale = (lang: string) => {
-    locale.value = lang // 设置语言
+    locale.value = lang
   }
 
   return { locale, setLocale }
 }
 
-// Vue 插件用于提供全局 i18n 实例
+
 export default {
   install(app: App) {
-    // 关键：Vite 的 glob
+
     const modules = import.meta.glob('../../../nuxt/i18n/locales/*.json', {
       eager: true,
     })
@@ -39,7 +39,7 @@ export default {
       messages,
     })
 
-    // 全局注入 i18n 实例
+
     app.provide('i18n', i18n)
     app.use(i18n)
     ;(window as any).useI18n = useI18n

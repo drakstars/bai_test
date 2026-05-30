@@ -32,10 +32,10 @@ export default defineConfig({
     'cp': 'cursor-pointer',
   },
   presets: [presetWind3()],
-  // 自定义断点
+
   theme: {
     breakpoints: {
-      xs: '480px', // 自定义小断点
+      xs: '480px',
       sm: '640px',
       md: '768px',
       lg: '1024px',

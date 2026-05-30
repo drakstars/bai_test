@@ -44,12 +44,12 @@ const emit = defineEmits<{
 let input = $ref('')
 let wrong = $ref('')
 let showFullWord = $ref(false)
-//错误次数
+
 let wrongTimes = ref(0)
-//输入锁定，因为跳转到下一个单词有延时，如果重复在延时期间内重复输入，导致会跳转N次
+
 let inputLock = false
 let wordRepeatCount = 0
-// 记录单词完成的时间戳，用于防止同时按下最后一个字母和空格键时跳过单词
+
 let wordCompletedTime = 0
 let jumpTimer: ReturnType<typeof setTimeout> | null = null
 let cursor = $ref({
@@ -92,7 +92,7 @@ let isWordTest = $computed(() => {
   )
 })
 
-// 在全局对象中存储当前单词信息，以便其他模块可以访问
+
 function updateCurrentWordInfo() {
   window.__CURRENT_WORD_INFO__ = {
     word: props.word.word,
@@ -110,19 +110,19 @@ function reset() {
   wordRepeatCount = 0
   showWordResult.value = inputLock = completeSelect = showAllCandidates = false
   currentPracticeSentenceIndex = -1
-  wordCompletedTime = 0 // 重置时间戳
+  wordCompletedTime = 0
   wrongTimes.value = 0
   if (settingStore.wordSound) {
     if (settingStore.wordPracticeType !== WordPracticeType.Dictation) {
       volumeIconRef?.play(400, true)
     }
   }
-  // 更新当前单词信息
+
   updateCurrentWordInfo()
   checkCursorPosition()
 }
 
-// 监听输入变化，更新当前单词信息
+
 watch(
   () => input,
   () => {
@@ -131,7 +131,7 @@ watch(
 )
 
 onMounted(() => {
-  // 初始化当前单词信息
+
   updateCurrentWordInfo()
 
   emitter.on(EventKey.resetWord, reset)
@@ -268,14 +268,14 @@ async function onTyping(e: KeyboardEvent) {
     target = props.word.word
     targetVolumeIcon = volumeIconRef
   }
-  // 输入完成会锁死不能再输入
+
   if (inputLock) {
-    //判断是否是空格键以便切换到下一个
+
     if (e.code === 'Space') {
-      //正确时就切换到下一个
+
       if (right) {
         clearJumpTimer()
-        // 如果单词刚完成（300ms内），忽略空格键，避免同时按下最后一个字母和空格键时跳过
+
         if (wordCompletedTime && Date.now() - wordCompletedTime < 300) {
           return
         }
@@ -283,7 +283,7 @@ async function onTyping(e: KeyboardEvent) {
         showWordResult.value = inputLock = false
       } else {
         if (showWordResult.value) {
-          // 错误时，提示用户按删除键，仅默写需要提示
+
           pressNumber++
           if (pressNumber >= 3) {
             Toast.info($t('press_delete_reinput'), { duration: 2000 })
@@ -292,7 +292,7 @@ async function onTyping(e: KeyboardEvent) {
         }
       }
     } else {
-      //当正确时，提醒用户按空格键切下一个
+
       if (right) {
         pressNumber++
         if (pressNumber >= 3) {
@@ -300,7 +300,7 @@ async function onTyping(e: KeyboardEvent) {
           pressNumber = 0
         }
       } else {
-        //当错误时，按任意键重新输入
+
         showWordResult.value = inputLock = false
         input = wrong = ''
         onTyping(e)
@@ -311,24 +311,24 @@ async function onTyping(e: KeyboardEvent) {
   inputLock = true
   let letter = e.key
   // console.log('letter',letter)
-  //默写特殊逻辑
+
   if (settingStore.wordPracticeType === WordPracticeType.Dictation) {
     if (e.code === 'Space') {
-      //如果输入长度大于单词长度/单词不包含空格，并且输入不为空（开始直接输入空格不行），则显示单词；
-      // 这里inputLock 不设为 false，不能再输入了，只能删除（删除会重置 inputLock）或按空格切下一格
+
+
       if (input.length && (input.length >= target.length || !target.includes(' '))) {
-        //比对是否一致
+
         if (input.toLowerCase() === target.toLowerCase()) {
-          //如果已显示单词，则发射完成事件，并 return
+
           if (showWordResult.value) {
             return emit('complete')
           } else {
-            //未显示单词，则播放正确音乐，并在后面设置为 showWordResult.value 为 true 来显示单词
+
             playCorrect()
             if (settingStore.wordSound) targetVolumeIcon?.play()
           }
         } else {
-          //错误处理
+
           playBeep()
           if (settingStore.wordSound) targetVolumeIcon?.play()
           typo()
@@ -337,14 +337,14 @@ async function onTyping(e: KeyboardEvent) {
         return
       }
     }
-    //默写途中不判断是否正确，在按空格再判断
+
     input += letter
     wrong = ''
     playKeyboardAudio()
     updateCurrentWordInfo()
     inputLock = false
   } else if (settingStore.wordPracticeType === WordPracticeType.Identify && !showWordResult.value) {
-    //当自测模式下，按其他键则自动默认为不认识
+
     showWordResult.value = true
     typo()
     if (settingStore.wordSound) targetVolumeIcon?.play()
@@ -357,7 +357,7 @@ async function onTyping(e: KeyboardEvent) {
     } else {
       right = letter === target[input.length]
     }
-    //针对中文的特殊判断
+
     if (
       e.shiftKey &&
       (('！' === target[input.length] && e.code === 'Digit1') ||
@@ -406,11 +406,11 @@ async function onTyping(e: KeyboardEvent) {
         wrong = ''
       }, 500)
     }
-    // 更新当前单词信息
+
     updateCurrentWordInfo()
-    //不需要把inputLock设为false，输入完成不能再输入了，只能删除，删除会打开锁
+
     if (input.toLowerCase() === target.toLowerCase()) {
-      wordCompletedTime = Date.now() // 记录单词完成的时间戳
+      wordCompletedTime = Date.now()
       playCorrect()
       if (
         [WordPracticeType.Listen, WordPracticeType.Identify].includes(settingStore.wordPracticeType) &&
@@ -449,7 +449,7 @@ function completeTypeWord(delay: boolean) {
   if (settingStore.wordPracticeType === WordPracticeType.FollowWrite && settingStore.practiceSentence) {
     currentPracticeSentenceIndex++
     if (currentPracticeSentenceIndex < props.word.sentences.length) {
-      // 还有下一个句子
+
       inputLock = false
       wrong = input = ''
       return
@@ -473,7 +473,7 @@ function del() {
   if (showWordResult.value) {
     input = ''
     showWordResult.value = false
-    //如果是自测阶段，按删除键代码弄错了，需要标记为错词，同时从excludeWords里排除
+
     if (settingStore.wordPracticeType === WordPracticeType.Identify) {
       typo()
       if (settingStore.wordSound) volumeIconRef?.play()
@@ -485,13 +485,13 @@ function del() {
       input = input.slice(0, -1)
     }
   }
-  // 更新当前单词信息
+
   updateCurrentWordInfo()
 }
 
 function showWord() {
   if (settingStore.allowWordTip) {
-    //如果不是跟写模式，查看单词一律标记为错词
+
     if (settingStore.wordPracticeType !== WordPracticeType.FollowWrite || settingStore.dictation) {
       typo()
     }
@@ -519,7 +519,7 @@ function typo() {
 function play() {
   if (settingStore.wordPracticeType === WordPracticeType.Dictation || settingStore.dictation) {
     if (!showWordResult.value && !right) {
-      //输入完成，或者已显示的情况下，不记入错误
+
       typo()
     }
   }
@@ -536,7 +536,7 @@ function mouseleave() {
 
 watch([() => input, () => showFullWord, () => settingStore.dictation], checkCursorPosition)
 
-//检测光标位置
+
 function checkCursorPosition() {
   _nextTick(() => {
     let cursorOffset
@@ -545,7 +545,7 @@ function checkCursorPosition() {
     } else {
       cursorOffset = { top: 0, left: -3 }
     }
-    // 选中目标元素
+
     const cursorEl = document.querySelector(`.cursor`)
     const inputList = document.querySelectorAll(`.l`)
     if (!typingWordRef || !cursorEl) return

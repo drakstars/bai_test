@@ -4,10 +4,7 @@ import { ref } from 'vue'
 
 import { ENV, PronunciationApi, SoundFileOptions } from '../config/env'
 
-/**
- * 获取当前浏览器的 OS+浏览器 组合 key，用于 ttsVoiceMap 的索引
- * 返回如 "mac+chrome" / "windows+edge" / "ios+safari" 等固定组合
- */
+
 export function getBrowserKey(): string {
   if (typeof navigator === 'undefined') return 'unknown+unknown'
   const ua = navigator.userAgent
@@ -50,7 +47,7 @@ export function useSound(audioSrcList?: string[], audioFileLength?: number) {
     if (audioSrcList) setAudio(audioSrcList, audioFileLength)
   })
 
-  //这里同一个音频弄好几份是为了快速打字是，可同时发音
+
   function setAudio(audioSrcList2: string[], audioFileLength2?: number) {
     //@ts-ignore
     if (import.meta.server) return
@@ -170,14 +167,14 @@ export function useTTsPlayAudio() {
   const settingStore = useSettingStore()
 
   function play(text: string) {
-    speechSynthesis.cancel() // 防止 Chrome 队列卡死
+    speechSynthesis.cancel()
     let msg = new SpeechSynthesisUtterance(text)
     msg.rate = settingStore.wordSoundSpeed
     msg.volume = settingStore.wordSoundVolume / 100
     msg.pitch = 1
     msg.lang = 'en-US'
     getVoicesAsync().then((voices: any[]) => {
-      // 优先使用用户在当前浏览器配置的声色
+
       const browserKey = getBrowserKey()
       const savedVoiceName = settingStore?.ttsVoiceMap?.find(v => v.key === browserKey)?.voice
       if (savedVoiceName) {
@@ -188,7 +185,7 @@ export function useTTsPlayAudio() {
           return
         }
       }
-      // 回退：优先找 Emma / US，否则取第一个英文声色
+
       let voiceList = voices.filter(v => v.lang === 'en-US')
       if (voiceList && voiceList.length) {
         msg.voice = voiceList.find(v => v.name.includes('US') || v.name.includes('Emma')) ?? voiceList[0]

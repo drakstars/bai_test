@@ -1,6 +1,6 @@
-{
+﻿{
 	"app_desc": "영어 학습, 한 번의 타이핑으로 한 걸음씩, 오픈소스 단어 및 문장 연습 도구",
-	"app_name": "Type Words",
+	"app_name": "Quiz Words",
 	"start_word_practice": "단어 연습 시작",
 	"start_article_practice": "문장 연습 시작",
 	"home_word_practice": "단어 연습",
@@ -223,7 +223,7 @@
 	"wechat_qrcode": "WeChat 그룹 QR 코드",
 	"github_project": "GitHub 프로젝트",
 	"ie_not_supported": "IE 브라우저는 지원되지 않습니다",
-	"ie_use_modern_browser": "Type Words는 현대 기술로 구축되었습니다. Chrome, Edge, Firefox 또는 기타 최신 브라우저를 사용하세요",
+	"ie_use_modern_browser": "Quiz Words는 현대 기술로 구축되었습니다. Chrome, Edge, Firefox 또는 기타 최신 브라우저를 사용하세요",
 	"download_chrome": "Chrome 다운로드",
 	"i_understand": "이해했습니다",
 	"ignore_case": "대소문자 무시",
@@ -472,7 +472,7 @@
 	"qa1_q2": "프로젝트는 오픈소스이며 직접 배포할 수 있습니다.",
 	"qa2_a": "입력할 수 없고 키보드가 반응하지 않나요?",
 	"qa3_a": "데이터는 어디에 있나요? 여러 컴퓨터/기기에서 어떻게 사용하나요?",
-	"qa3_q1": "모든 사용자 데이터는 로컬 브라우저에 저장됩니다. 다른 기기나 브라우저에서 Type Words를 사용하려면 수동으로 데이터를 내보내고 가져와야 합니다.",
+	"qa3_q1": "모든 사용자 데이터는 로컬 브라우저에 저장됩니다. 다른 기기나 브라우저에서 Quiz Words를 사용하려면 수동으로 데이터를 내보내고 가져와야 합니다.",
 	"qa3_q2": "설정 -> 데이터 설정 -> 원래 컴퓨터에서 데이터 내보내기 -> 소셜 소프트웨어로 새 컴퓨터에 전송 -> 새 컴퓨터에서 가져오기",
 	"qa3_q3": "계정 시스템 개발 중입니다.",
 	"qa4_a": "웹사이트가 자동으로 계획하는 단어 수가 너무 많습니다. 어떻게 수정하나요?",

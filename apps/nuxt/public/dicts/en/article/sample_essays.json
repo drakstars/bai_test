@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "title": "The Art of Reading",
+    "titleTranslate": "Nghệ thuật Đọc sách",
+    "text": "Reading is not just a way to pass time.\nIt is a journey into different worlds and minds.\n\nThrough books, we can learn from the greatest thinkers.\nWe can understand history and imagine the future.",
+    "textTranslate": "Đọc sách không chỉ là một cách để giết thời gian.\nNó là một chuyến hành trình đi vào những thế giới và tâm trí khác nhau.\n\nThông qua những cuốn sách, chúng ta có thể học hỏi từ những nhà tư tưởng vĩ đại nhất.\nChúng ta có thể hiểu được lịch sử và tưởng tượng ra tương lai.",
+    "newWords": [],
+    "sections": [],
+    "audioSrc": "",
+    "audioFileId": "",
+    "lrcPosition": [],
+    "nameList": []
+  },
+  {
+    "id": 2,
+    "title": "The Power of Typing",
+    "titleTranslate": "Sức mạnh của việc Luyện gõ phím",
+    "text": "Typing is a critical skill in the digital age.\nIt connects our thoughts directly to the screen.\n\nWith practice, typing becomes a natural extension of our hands.\nYour muscle memory will guide your fingers without effort.",
+    "textTranslate": "Gõ phím là một kỹ năng quan trọng trong thời đại kỹ thuật số.\nNó kết nối suy nghĩ của chúng ta trực tiếp với màn hình máy tính.\n\nNhờ luyện tập, việc gõ phím trở thành một phần mở rộng tự nhiên của đôi bàn tay.\nTrí nhớ cơ bắp của bạn sẽ tự động dẫn đường cho những ngón tay mà không cần nỗ lực.",
+    "newWords": [],
+    "sections": [],
+    "audioSrc": "",
+    "audioFileId": "",
+    "lrcPosition": [],
+    "nameList": []
+  },
+  {
+    "id": 3,
+    "title": "Continuous Learning",
+    "titleTranslate": "Học tập Không ngừng",
+    "text": "Learning is a lifelong process that never ends.\nEvery day is an opportunity to acquire new knowledge.\n\nEmbrace mistakes as they are steps toward improvement.\nConsistency is the key to mastering any new skill.",
+    "textTranslate": "Học tập là một quá trình suốt đời không bao giờ kết thúc.\nMỗi ngày là một cơ hội để tích lũy thêm kiến thức mới.\n\nHãy đón nhận những lỗi sai vì chúng là những bước tiến giúp bạn tiến bộ.\nSự kiên trì đều đặn chính là chìa khóa để thành thạo bất kỳ kỹ năng mới nào.",
+    "newWords": [],
+    "sections": [],
+    "audioSrc": "",
+    "audioFileId": "",
+    "lrcPosition": [],
+    "nameList": []
+  }
+]

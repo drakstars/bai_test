@@ -85,7 +85,7 @@ watch(
           <BaseInput class="target-number" v-model="tempPerDayStudyNumber" />
         </div>
         <span>{{ $t('new_words_count2') }}</span>
-        <span>，最多复习</span>
+        <span>{{ $t('max_review') || '，ôn tập tối đa' }}</span>
         <div class="target-number mx-2">
           {{ tempPerDayStudyNumber * tempWordReviewRatio || '-' }}
         </div>
@@ -155,14 +155,14 @@ watch(
   }
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .target-modal {
     width: 90vw !important;
     max-width: 400px;
     padding: 0 1rem;
 
-    // 模式选择
+
     .center .flex.gap-4 {
       width: 100%;
       flex-direction: column;
@@ -184,7 +184,7 @@ watch(
       }
     }
 
-    // 统计显示
+
     .text-center {
       font-size: 0.9rem;
 
@@ -193,7 +193,7 @@ watch(
       }
     }
 
-    // 滑块控件
+
     .flex.mb-4,
     .flex.mb-6 {
       flex-direction: column;
@@ -209,7 +209,7 @@ watch(
       }
     }
 
-    // 按钮
+
     .base-button {
       width: 100%;
       min-height: 44px;

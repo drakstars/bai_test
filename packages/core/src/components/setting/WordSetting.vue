@@ -43,11 +43,11 @@ const settingStore = useSettingStore()
       <RadioGroup v-model="settingStore.identifyMethod">
         <Radio :value="IdentifyMethod.SelfAssessment" size="default">{{ $t('self_assessment') }}</Radio>
         <Radio :value="IdentifyMethod.WordTest" size="default">{{ $t('word_test') }}</Radio>
-        <Radio :value="IdentifyMethod.QuickIdentify" size="default">快速自测</Radio>
+        <Radio :value="IdentifyMethod.QuickIdentify" size="default">{{ $t('quick_identify') || 'Tự kiểm tra nhanh' }}</Radio>
       </RadioGroup>
     </SettingItem>
 
-    <!--          自动切换-->
+    
     <div class="line"></div>
     <SettingItem :mainTitle="$t('auto_switch')" />
     <SettingItem :title="$t('auto_next_word')" :desc="$t('auto_next_word_desc')">
@@ -66,7 +66,7 @@ const settingStore = useSettingStore()
       <span class="ml-4">{{ $t('milliseconds') }}</span>
     </SettingItem>
 
-    <!--          字体设置-->
+    
     <div class="line"></div>
     <SettingItem :mainTitle="$t('font_setting')" />
     <SettingItem :title="$t('foreign_font')">

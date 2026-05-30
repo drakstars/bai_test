@@ -8,7 +8,7 @@ definePageMeta({ layout: 'empty' })
 
 const route = useRoute()
 
-// 未携带 rrweb=1 参数，直接 403
+
 const isAuthorized = route.query.rrweb === '1'
 
 const sessions = ref<RrwebSession[]>([])
@@ -18,7 +18,7 @@ const loading = ref(false)
 const exportLoading = ref(false)
 const playerInstance = ref<any>(null)
 
-// 从 IndexedDB 加载
+
 async function loadFromIndexedDB() {
   loading.value = true
   try {
@@ -31,7 +31,7 @@ async function loadFromIndexedDB() {
   }
 }
 
-// 导出所有会话
+
 async function handleExport() {
   if (exportLoading.value) return
   exportLoading.value = true
@@ -42,7 +42,7 @@ async function handleExport() {
   }
 }
 
-// 计算会话占用空间（JSON 序列化后的字节数）
+
 function calcSessionSize(session: RrwebSession): string {
   try {
     const bytes = new TextEncoder().encode(JSON.stringify(session)).length
@@ -54,7 +54,7 @@ function calcSessionSize(session: RrwebSession): string {
   }
 }
 
-// 从上传的 JSON 文件加载
+
 function handleFileUpload(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
   if (!file) return
@@ -76,7 +76,7 @@ function handleFileUpload(e: Event) {
   reader.readAsText(file)
 }
 
-// 销毁播放器实例
+
 function destroyPlayer() {
   if (playerInstance.value) {
     try { playerInstance.value.$destroy() } catch {}
@@ -87,7 +87,7 @@ function destroyPlayer() {
   }
 }
 
-// 开始回放选中的会话
+
 async function startReplay() {
   if (!playerContainer.value || !selectedSessionId.value) return
 
@@ -99,7 +99,7 @@ async function startReplay() {
 
   destroyPlayer()
 
-  // 等 DOM 清空后再初始化播放器
+
   await nextTick()
 
   const RrwebPlayer = (await import('rrweb-player')).default
@@ -112,7 +112,7 @@ async function startReplay() {
     props: {
       events: session.events,
       width: containerW,
-      height: containerH - 80, // 留出底部控制栏高度
+      height: containerH - 80,
     //   autoPlay: true,
     //   showController: true,
     //   skipInactive: true,
@@ -120,7 +120,7 @@ async function startReplay() {
   })
 }
 
-// 删除指定会话
+
 async function removeSession(id: string) {
   await deleteRrwebSession(id)
   sessions.value = sessions.value.filter(s => s.id !== id)
@@ -144,13 +144,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <!-- 未授权 -->
+  
   <div v-if="!isAuthorized" class="forbidden">
     403 Forbidden
   </div>
 
   <div v-else class="rrweb-replay-page">
-    <!-- 左侧边栏 -->
+    
     <div class="sidebar">
       <div class="sidebar-header">
         <h2>rrweb 回放</h2>
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
         </button>
       </div>
 
-      <!-- 从文件导入 -->
+      
       <div class="section">
         <div class="section-title">从文件导入</div>
         <label class="upload-btn">
@@ -168,7 +168,7 @@ onBeforeUnmount(() => {
         </label>
       </div>
 
-      <!-- 本地 IndexedDB 会话 -->
+      
       <div class="section">
         <div class="section-title">
           本地会话
@@ -197,7 +197,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <!-- 底部操作按钮 -->
+      
       <div class="bottom-actions">
         <button
           class="play-btn"
@@ -207,7 +207,7 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <!-- 回放区域 -->
+    
     <div class="replay-area">
       <div v-if="!playerInstance" class="placeholder">
         选择左侧会话后点击「开始回放」
@@ -236,7 +236,7 @@ onBeforeUnmount(() => {
   font-size: 14px;
 }
 
-/* ── 侧边栏 ── */
+
 .sidebar {
   width: 260px;
   flex-shrink: 0;
@@ -367,7 +367,7 @@ onBeforeUnmount(() => {
 .session-item:hover .delete-btn { opacity: 1; }
 .delete-btn:hover { background: #5f1a1a; border-color: #c0392b; color: #ff6b6b; }
 
-/* ── 底部操作区 ── */
+
 .bottom-actions {
   margin-top: auto;
   display: flex;
@@ -389,7 +389,7 @@ onBeforeUnmount(() => {
 .play-btn:hover:not(:disabled) { background: #6d28d9; }
 .play-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ── 回放区域 ── */
+
 .replay-area {
   flex: 1;
   position: relative;
@@ -416,7 +416,7 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-/* 覆盖 rrweb-player 默认样式以适应深色主题 */
+
 :deep(.rr-player) {
   width: 100% !important;
   height: 100% !important;

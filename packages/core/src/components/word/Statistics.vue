@@ -30,22 +30,22 @@ let list = $ref([])
 let practiceData = inject<PracticeData>('practiceData')
 
 function calcWeekList() {
-  // 获取本周的起止时间
-  const startOfWeek = dayjs().startOf('isoWeek') // 周一
-  const endOfWeek = dayjs().endOf('isoWeek') // 周日
-  // 初始化 7 天的数组，默认 false
+
+  const startOfWeek = dayjs().startOf('isoWeek')
+  const endOfWeek = dayjs().endOf('isoWeek')
+
   const weekList = Array(7).fill(false)
 
   store.sdict.statistics.forEach(item => {
     const date = dayjs(item.startDate)
     if (date.isBetween(startOfWeek, endOfWeek, null, '[]')) {
       let idx = date.day()
-      // dayjs().day() 0=周日, 1=周一, ..., 6=周六
-      // 需要转换为 0=周一, ..., 6=周日
+
+
       if (idx === 0) {
-        idx = 6 // 周日放到最后
+        idx = 6
       } else {
-        idx = idx - 1 // 其余前移一位
+        idx = idx - 1
       }
       weekList[idx] = true
     }
@@ -53,18 +53,18 @@ function calcWeekList() {
   list = weekList
 }
 
-// 监听 model 弹窗打开时重新计算
+
 watch([model, () => props.loading], async newVal => {
   if (newVal && !props.loading) {
     console.log('计算本周学习记录')
-    calcWeekList() // 计算本周学习记录
+    calcWeekList()
   }
 })
 
 const close = () => (model.value = false)
 
 useEvents([
-  //特意注释掉，因为在练习界面用快捷键下一组时，需要判断是否在结算界面
+
   // [ShortcutKey.NextChapter, close],
   [ShortcutKey.RepeatChapter, close],
   [ShortcutKey.DictationChapter, close],
@@ -75,19 +75,19 @@ function options(emitType: string) {
   close()
 }
 
-// 计算学习进度百分比
+
 const studyProgress = $computed(() => {
   if (!store.sdict.length) return 0
   return Math.round((store.sdict.lastLearnIndex / store.sdict.length) * 100)
 })
 
-// 计算正确率
+
 const accuracyRate = $computed(() => {
   if (statStore.total === 0) return 100
   return Math.round(((statStore.total - statStore.wrong) / statStore.total) * 100)
 })
 
-// 获取鼓励文案
+
 const encouragementText = $computed(() => {
   const rate = accuracyRate
   if (rate >= 95) return '🎉 ' + $t('encouragement_95')
@@ -232,22 +232,22 @@ const encouragementText = $computed(() => {
   </Dialog>
 </template>
 <style scoped lang="scss">
-// 移动端适配
+
 @media (max-width: 768px) {
-  // 弹窗容器优化
+
   .w-140 {
     width: 90vw !important;
     max-width: 500px;
     padding: 1.5rem !important;
   }
 
-  // 标题优化
+
   .center.text-2xl {
     font-size: 1.3rem;
     margin-bottom: 1rem;
   }
 
-  // 统计数据布局
+
   .flex .flex-1 {
     .text-sm {
       font-size: 0.8rem;
@@ -258,7 +258,7 @@ const encouragementText = $computed(() => {
     }
   }
 
-  // 时间显示
+
   .text-xl {
     font-size: 1rem;
 
@@ -267,7 +267,7 @@ const encouragementText = $computed(() => {
     }
   }
 
-  // 错词/正确统计卡片
+
   .flex.justify-center.gap-10 {
     gap: 1rem;
     flex-wrap: wrap;
@@ -281,7 +281,7 @@ const encouragementText = $computed(() => {
     }
   }
 
-  // 本周学习记录
+
   .flex.gap-4 {
     gap: 0.5rem;
 
@@ -292,7 +292,7 @@ const encouragementText = $computed(() => {
     }
   }
 
-  // 按钮组
+
   .flex.justify-center.gap-4 {
     flex-direction: column;
     gap: 0.5rem;

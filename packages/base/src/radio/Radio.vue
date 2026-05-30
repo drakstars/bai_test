@@ -25,7 +25,7 @@ const props = defineProps({
   disabled: {type: Boolean, default: false}
 })
 
-// 注入父组状态
+
 const radioGroupValue = inject<any>('radioGroupValue', null)
 const radioGroupSize = inject('radioGroupSize', 'default')
 const radioGroupDisabled = inject<boolean>('radioGroupDisabled', false)
@@ -33,13 +33,13 @@ const updateRadioGroupValue = inject<Function>('updateRadioGroupValue', null)
 
 const sizeClass = computed(() => `radio--${radioGroupSize}`)
 
-// 是否禁用
+
 const isDisabled = computed(() => props.disabled || radioGroupDisabled)
 
-// 是否选中
+
 const isChecked = computed(() => radioGroupValue?.value === props.value)
 
-// 选中时通知父组件
+
 function onClick() {
   if (isDisabled.value) return
   updateRadioGroupValue?.(props.value)

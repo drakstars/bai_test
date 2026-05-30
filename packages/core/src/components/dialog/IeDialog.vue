@@ -2,7 +2,7 @@
 let showIEDialog = $ref(false)
 
 onMounted(() => {
-  // 检测 IE 浏览器
+
   const ua = navigator.userAgent || ''
   const isIE = !!(document as any).documentMode || /MSIE|Trident/i.test(ua)
   if (isIE) {
@@ -15,7 +15,7 @@ function closeIEDialog() {
 </script>
 
 <template>
-  <!-- IE 浏览器提示对话框 -->
+  
   <Teleport to="body">
     <div v-if="showIEDialog" class="ie-mask" @click="closeIEDialog">
       <div class="ie-dialog space-y-4" @click.stop>

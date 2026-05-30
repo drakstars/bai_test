@@ -5,7 +5,7 @@ import BaseButton from './BaseButton.vue'
 const props = withDefaults(
   defineProps<{
     highlightedDates: string[]
-    /** 周模式标题（无 weekHeader 插槽时使用） */
+    
     weekHeaderTitle?: string
   }>(),
   { weekHeaderTitle: '' }
@@ -32,7 +32,7 @@ function toDateKey(d: Date) {
   return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`
 }
 
-/** ISO 周：周一为一周开始 */
+
 function startOfIsoWeek(d: Date): Date {
   const x = new Date(d.getFullYear(), d.getMonth(), d.getDate())
   const dow = (x.getDay() + 6) % 7
@@ -44,7 +44,17 @@ const highlightSet = computed(() => new Set(props.highlightedDates))
 
 const todayKey = computed(() => toDateKey(new Date()))
 
-const weekdayLabels = ['一', '二', '三', '四', '五', '六', '日']
+const weekdayLabels = computed(() => {
+  if (typeof window !== 'undefined') {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      return ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
+    } else if (htmlLang.startsWith('en')) {
+      return ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+    }
+  }
+  return ['一', '二', '三', '四', '五', '六', '日']
+})
 
 type Cell = {
   dateKey: string
@@ -102,11 +112,46 @@ const cells = computed((): Cell[] => {
   return out
 })
 
-const monthTitle = computed(() => `${viewYear.value}年${pad2(viewMonth.value + 1)}月`)
+const monthTitle = computed(() => {
+  if (typeof window !== 'undefined') {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      return `Tháng ${pad2(viewMonth.value + 1)} năm ${viewYear.value}`
+    } else if (htmlLang.startsWith('en')) {
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      return `${monthNames[viewMonth.value]} ${viewYear.value}`
+    }
+  }
+  return `${viewYear.value}年${pad2(viewMonth.value + 1)}月`
+})
+
+const toggleButtonTitle = computed(() => {
+  if (typeof window !== 'undefined') {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      return viewMode.value === 'week' ? 'Mở rộng xem tháng' : 'Quay lại xem tuần'
+    } else if (htmlLang.startsWith('en')) {
+      return viewMode.value === 'week' ? 'Expand month view' : 'Back to week view'
+    }
+  }
+  return viewMode.value === 'week' ? '展开月视图' : '回到周视图'
+})
+
+const toggleButtonText = computed(() => {
+  if (typeof window !== 'undefined') {
+    const htmlLang = document.documentElement.lang || ''
+    if (htmlLang.startsWith('vi') || localStorage.getItem('i18n_redirected') === 'vi') {
+      return viewMode.value === 'week' ? 'Tháng' : 'Tuần'
+    } else if (htmlLang.startsWith('en')) {
+      return viewMode.value === 'week' ? 'Month' : 'Week'
+    }
+  }
+  return viewMode.value === 'week' ? '月' : '周'
+})
 
 const displayCells = computed(() => (viewMode.value === 'week' ? weekCells.value : cells.value))
 
-/** 从月模式回到周模式：始终定位到「今天」所在周 */
+
 function applyAnchorWhenLeavingMonthView() {
   const calNow = new Date()
   viewWeekAnchor.value = new Date(calNow.getFullYear(), calNow.getMonth(), calNow.getDate())
@@ -167,10 +212,10 @@ function onSelectCell(cell: Cell) {
           type="info"
           size="small"
           class="cal-toggle"
-          :title="viewMode === 'week' ? '展开月视图' : '回到周视图'"
+          :title="toggleButtonTitle"
           @click="toggleViewMode"
         >
-          {{ viewMode === 'week' ? '月' : '周' }}
+          {{ toggleButtonText }}
         </BaseButton>
         <BaseButton v-if="viewMode === 'month'" type="info" size="small" @click="nextMonth" aria-label="下月">
           ›

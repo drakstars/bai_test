@@ -82,7 +82,7 @@ let studyLoading = $ref(false)
 
 function syncDictInMyStudyList(study = false) {
   _nextTick(() => {
-    //这里不能移，一定要先找到对应的词典，再去改id。不然先改id，就找不到对应的词典了
+
     let rIndex = base.word.bookList.findIndex(v => v.id === runtimeStore.editDict.id)
 
     runtimeStore.editDict.words = allList
@@ -109,14 +109,14 @@ async function onSubmitWord() {
   await wordFormRef.validate(valid => {
     if (valid) {
       let data: any = convertToWord(wordForm)
-      //todo 可以检查的更准确些，比如json对比
+
       if (data.id) {
         let r = allList.find(v => v.id === data.id)
         if (r) {
           Object.assign(r, data)
-          Toast.success('修改成功')
+          Toast.success($t('edit_success'))
         } else {
-          Toast.success('修改失败，未找到单词')
+          Toast.success($t('edit_failed_word_not_found'))
           return
         }
       } else {
@@ -124,15 +124,15 @@ async function onSubmitWord() {
         data.checked = false
         let r = allList.find(v => v.word === wordForm.word)
         if (r) {
-          Toast.warning('已有相同名称单词！')
+          Toast.warning($t('word_already_exists'))
           return
         } else allList.push(data)
-        Toast.success('添加成功')
+        Toast.success($t('add_success'))
         wordForm = getDefaultFormWord()
       }
       syncDictInMyStudyList()
     } else {
-      Toast.warning('请填写完整')
+      Toast.warning($t('please_fill_complete'))
     }
   })
 }
@@ -160,7 +160,7 @@ async function batchDel(ids: string[]) {
     if (res.success) {
       tableRef.value.getData()
     } else {
-      return Toast.error(res.msg ?? '删除失败')
+      return Toast.error(res.msg ?? $t('delete_failed'))
     }
   }
 
@@ -177,7 +177,7 @@ async function batchDel(ids: string[]) {
         await cloudHandle(r.data.id)
         getDetail(r.data.id)
       } else {
-        //todo 权限判断，能否复制
+
         return Toast.error(r.msg)
       }
     }
@@ -186,7 +186,7 @@ async function batchDel(ids: string[]) {
   }
 }
 
-//把word对象的字段全转成字符串
+
 function word2Str(word) {
   let res = getDefaultFormWord()
   res.id = word.id
@@ -230,7 +230,7 @@ function closeWordForm() {
 
 let isEdit = $ref(false)
 let isAdd = $ref(false)
-let activeTab = $ref<'list' | 'edit'>('list') // 移动端标签页状态
+let activeTab = $ref<'list' | 'edit'>('list')
 
 const showBookDetail = computed(() => {
   return !(isAdd || isEdit)
@@ -269,7 +269,7 @@ onMounted(async () => {
 })
 
 async function getDetail(id) {
-  //todo 优化：这里只返回详情
+
   let res = await detail({ id })
   if (res.success) {
     runtimeStore.editDict = res.data
@@ -287,14 +287,14 @@ const store = useBaseStore()
 const settingStore = useSettingStore()
 const { nav } = useNav()
 
-//todo 可以和首页合并
+
 async function startPractice(query = {}) {
   // debugger
-  //这里重置一下，因为下面切换词典后，导致学习进度为0，而切换前的模式有可能需要有进度才可以用
+
   if (![WordPracticeMode.Free, WordPracticeMode.System].includes(settingStore.wordPracticeMode)) {
     settingStore.wordPracticeMode = WordPracticeMode.System
   }
-  // 切换词典前，先将进行中的练习统计落库，避免学习记录丢失
+
   const cache = await getPracticeWordCacheLocal()
   if (cache) {
     flushStatToStore((cache as any)?.statStoreData)
@@ -322,7 +322,7 @@ async function addMyStudyList() {
 
 async function startTest() {
   loading = true
-  //这里重置一下，因为下面切换词典后，导致学习进度为0，而切换前的模式有可能需要有进度才可以用
+
   if (![WordPracticeMode.Free, WordPracticeMode.System].includes(settingStore.wordPracticeMode)) {
     settingStore.wordPracticeMode = WordPracticeMode.System
   }
@@ -352,23 +352,24 @@ function importXlsxData(e) {
       if (res.length) {
         let words = res
           .map(v => {
-            if (v['单词']) {
+            let wordKey = v['单词'] ?? v['word'] ?? v['Từ'] ?? v['Từ vựng']
+            if (wordKey) {
               let data = null
               try {
                 data = convertToWord({
                   id: nanoid(6),
-                  word: v['单词'],
-                  phonetic0: v['音标①'] ?? '',
-                  phonetic1: v['音标②'] ?? '',
-                  trans: v['翻译'] ?? '',
-                  sentences: v['例句'] ?? '',
-                  phrases: v['短语'] ?? '',
-                  synos: v['近义词'] ?? '',
-                  relWords: v['同根词'] ?? '',
-                  etymology: v['词源'] ?? '',
+                  word: wordKey,
+                  phonetic0: v['音标①'] ?? v['phonetic0'] ?? v['Phiên âm 1'] ?? v['Phiên âm ①'] ?? '',
+                  phonetic1: v['音标②'] ?? v['phonetic1'] ?? v['Phiên âm 2'] ?? v['Phiên âm ②'] ?? '',
+                  trans: v['翻译'] ?? v['translation'] ?? v['Dịch'] ?? v['Dịch nghĩa'] ?? '',
+                  sentences: v['例句'] ?? v['sentences'] ?? v['Ví dụ'] ?? v['Câu ví dụ'] ?? '',
+                  phrases: v['短语'] ?? v['phrases'] ?? v['Cụm từ'] ?? '',
+                  synos: v['近义词'] ?? v['synonyms'] ?? v['Từ đồng nghĩa'] ?? '',
+                  relWords: v['同根词'] ?? v['related_words'] ?? v['Từ liên quan'] ?? v['Từ cùng gốc'] ?? '',
+                  etymology: v['词源'] ?? v['etymology'] ?? v['Từ nguyên'] ?? '',
                 })
               } catch (e) {
-                console.error('导入单词报错' + v['单词'], e.message)
+                console.error('导入单词报错' + wordKey, e.message)
               }
               return data
             }
@@ -391,8 +392,8 @@ function importXlsxData(e) {
 
           if (repeat.length) {
             MessageBox.confirm(
-              '单词"' + repeat.map(v => v.word).join(', ') + '" 已存在，是否覆盖原单词？',
-              '检测到重复单词',
+              $t('word_exists_overwrite_confirm', { words: repeat.map(v => v.word).join(', ') }),
+              $t('duplicate_word_detected'),
               () => {
                 repeat.map(v => {
                   runtimeStore.editDict.words[v.index] = v
@@ -407,7 +408,7 @@ function importXlsxData(e) {
                 allList = runtimeStore.editDict.words
                 tableRef.value.getData()
                 syncDictInMyStudyList()
-                Toast.success('导入成功！')
+                Toast.success($t('import_success'))
               },
               { t: $t }
             )
@@ -418,13 +419,13 @@ function importXlsxData(e) {
             allList = runtimeStore.editDict.words
             tableRef.value.getData()
             syncDictInMyStudyList()
-            Toast.success('导入成功！')
+            Toast.success($t('import_success'))
           }
         } else {
-          Toast.warning('导入失败！原因：没有数据/未认别到数据')
+          Toast.warning($t('import_failed_no_data'))
         }
       } else {
-        Toast.warning('导入失败！原因：没有数据')
+        Toast.warning($t('import_failed_empty'))
       }
       e.target.value = ''
       importLoading = false
@@ -466,8 +467,8 @@ function importJsonData(e) {
 
         if (repeat.length) {
           MessageBox.confirm(
-            '单词"' + repeat.map(v => v.word).join(', ') + '" 已存在，是否覆盖原单词？',
-            '检测到重复单词',
+            $t('word_exists_overwrite_confirm', { words: repeat.map(v => v.word).join(', ') }),
+            $t('duplicate_word_detected'),
             () => {
               repeat.map(v => {
                 runtimeStore.editDict.words[v.index] = v
@@ -482,7 +483,7 @@ function importJsonData(e) {
               allList = runtimeStore.editDict.words
               tableRef.value.getData()
               syncDictInMyStudyList()
-              Toast.success('导入成功！')
+              Toast.success($t('import_success'))
             },
             { t: $t }
           )
@@ -493,10 +494,10 @@ function importJsonData(e) {
           allList = runtimeStore.editDict.words
           tableRef.value.getData()
           syncDictInMyStudyList()
-          Toast.success('导入成功！')
+          Toast.success($t('import_success'))
         }
       } else {
-        Toast.warning('导入失败！原因：没有数据/未认别到数据')
+        Toast.warning($t('import_failed_no_data'))
       }
     }
     reader.readAsText(file)
@@ -513,21 +514,21 @@ async function exportXlsxData() {
   let sheetData = list.map(v => {
     let t = word2Str(v)
     return {
-      单词: t.word,
-      '音标①': t.phonetic0,
-      '音标②': t.phonetic1,
-      翻译: t.trans,
-      例句: t.sentences,
-      短语: t.phrases,
-      近义词: t.synos,
-      同根词: t.relWords,
-      词源: t.etymology,
+      [$t('word')]: t.word,
+      [$t('uk_phonetic')]: t.phonetic0,
+      [$t('us_phonetic')]: t.phonetic1,
+      [$t('translation')]: t.trans,
+      [$t('example_sentence')]: t.sentences,
+      [$t('phrase')]: t.phrases,
+      [$t('synonym')]: t.synos,
+      [$t('related_words')]: t.relWords,
+      [$t('etymology')]: t.etymology,
     }
   })
   wb.Sheets['Sheet1'] = XLSX.utils.json_to_sheet(sheetData)
   wb.SheetNames = ['Sheet1']
   XLSX.writeFile(wb, `${filename}.xlsx`)
-  Toast.success(filename + ' 导出成功！')
+  Toast.success($t('export_success', { name: filename }))
   exportXlsxLoading = false
 }
 
@@ -556,11 +557,11 @@ watch(
       })
       tour.addStep({
         id: 'step3',
-        text: '点击这里开始学习',
+        text: $t('tour_step3_text'),
         attachTo: { element: '#study', on: 'bottom' },
         buttons: [
           {
-            text: `下一步（3/${TourConfig.total}）`,
+            text: $t('tour_next_step', { step: 3, total: TourConfig.total }),
             action() {
               tour.next()
               addMyStudyList()
@@ -571,7 +572,7 @@ watch(
 
       tour.addStep({
         id: 'step4',
-        text: '这里可以选择学习模式、设置学习数量、修改学习进度',
+        text: $t('tour_step4_text'),
         attachTo: { element: '#mode', on: 'bottom' },
         beforeShowPromise() {
           return new Promise(resolve => {
@@ -585,7 +586,7 @@ watch(
         },
         buttons: [
           {
-            text: `下一步（4/${TourConfig.total}）`,
+            text: $t('tour_next_step', { step: 4, total: TourConfig.total }),
             action: async () => {
               tour.next()
               await startPractice({ guide: 1 })
@@ -604,7 +605,7 @@ watch(
 
 const dict = $computed(() => runtimeStore.editDict)
 
-//获取本地单词列表
+
 function getLocalList({ pageNo, pageSize, searchKey }) {
   let list = allList
   let total = allList.length
@@ -618,22 +619,22 @@ function getLocalList({ pageNo, pageSize, searchKey }) {
 
 async function requestList({ pageNo, pageSize, searchKey }) {
   if (!dict.custom && ![DictId.wordCollect, DictId.wordWrong, DictId.wordKnown].includes(dict.en_name || dict.id)) {
-    // 非自定义词典，直接请求json
 
-    //如果没数据则请求
+
+
     if (!allList.length) {
       let r = await _getDictDataByUrl(dict)
       allList = r.words
     }
     return getLocalList({ pageNo, pageSize, searchKey })
   } else {
-    // 自定义词典
 
-    //如果登录了,则请求后端数据
+
+
     if (AppEnv.CAN_REQUEST) {
-      //todo 加上sync标记
+
       if (dict.sync || true) {
-        //todo 优化：这里应该只返回列表
+
         let res = await detail({ id: dict.id, pageNo, pageSize })
         if (res.success) {
           return { list: res.data.words, total: res.data.length }
@@ -641,7 +642,7 @@ async function requestList({ pageNo, pageSize, searchKey }) {
         return { list: [], total: 0 }
       }
     } else {
-      //未登录则用本地保存的数据
+
       allList = dict.words
     }
     return getLocalList({ pageNo, pageSize, searchKey })
@@ -697,7 +698,7 @@ defineRender(() => {
             </>
           )}
 
-          {/* 移动端标签页导航 */}
+          {}
           {isMob && isOperate && (
             <div class="tab-navigation mb-3">
               <div class={`tab-item ${activeTab === 'list' ? 'active' : ''}`} onClick={() => (activeTab = 'list')}>
@@ -740,11 +741,11 @@ defineRender(() => {
                       prefix: () => val.checkbox(val.item),
                       suffix: () => (
                         <div class="flex flex-col">
-                          <BaseIcon class="option-icon" onClick={() => editWord(val.item)} title="编辑">
+                          <BaseIcon class="option-icon" onClick={() => editWord(val.item)} title={$t('edit')}>
                             <IconFluentTextEditStyle20Regular />
                           </BaseIcon>
-                          <PopConfirm title="确认删除？" onConfirm={() => batchDel([val.item.id])}>
-                            <BaseIcon class="option-icon" title="删除">
+                          <PopConfirm title={$t('confirm_delete')} onConfirm={() => batchDel([val.item.id])}>
+                            <BaseIcon class="option-icon" title={$t('delete')}>
                               <DeleteIcon />
                             </BaseIcon>
                           </PopConfirm>
@@ -768,60 +769,60 @@ defineRender(() => {
                   model={wordForm}
                   label-width="7rem"
                 >
-                  <FormItem label="单词" prop="word">
+                  <FormItem label={$t('word')} prop="word">
                     <BaseInput modelValue={wordForm.word} onUpdate:modelValue={e => (wordForm.word = e)}></BaseInput>
                   </FormItem>
-                  <FormItem label="英音音标">
+                  <FormItem label={$t('uk_phonetic')}>
                     <BaseInput modelValue={wordForm.phonetic0} onUpdate:modelValue={e => (wordForm.phonetic0 = e)} />
                   </FormItem>
-                  <FormItem label="美音音标">
+                  <FormItem label={$t('us_phonetic')}>
                     <BaseInput modelValue={wordForm.phonetic1} onUpdate:modelValue={e => (wordForm.phonetic1 = e)} />
                   </FormItem>
-                  <FormItem label="翻译">
+                  <FormItem label={$t('translation')}>
                     <Textarea
                       modelValue={wordForm.trans}
                       onUpdate:modelValue={e => (wordForm.trans = e)}
-                      placeholder="一行一个翻译，前面词性，后面内容（如n.取消）；多个翻译请换行"
+                      placeholder={$t('dict_placeholder_trans')}
                       autosize={{ minRows: 6, maxRows: 10 }}
                     />
                   </FormItem>
-                  <FormItem label="例句">
+                  <FormItem label={$t('example_sentence')}>
                     <Textarea
                       modelValue={wordForm.sentences}
                       onUpdate:modelValue={e => (wordForm.sentences = e)}
-                      placeholder="一行原文，一行译文；多个请换两行"
+                      placeholder={$t('dict_placeholder_sentences')}
                       autosize={{ minRows: 6, maxRows: 10 }}
                     />
                   </FormItem>
-                  <FormItem label="短语">
+                  <FormItem label={$t('phrase')}>
                     <Textarea
                       modelValue={wordForm.phrases}
                       onUpdate:modelValue={e => (wordForm.phrases = e)}
-                      placeholder="一行原文，一行译文；多个请换两行"
+                      placeholder={$t('dict_placeholder_phrases')}
                       autosize={{ minRows: 6, maxRows: 10 }}
                     />
                   </FormItem>
-                  <FormItem label="同义词">
+                  <FormItem label={$t('synonym')}>
                     <Textarea
                       modelValue={wordForm.synos}
                       onUpdate:modelValue={e => (wordForm.synos = e)}
-                      placeholder="请参考已有单词格式"
+                      placeholder={$t('dict_placeholder_other')}
                       autosize={{ minRows: 6, maxRows: 20 }}
                     />
                   </FormItem>
-                  <FormItem label="同根词">
+                  <FormItem label={$t('related_words')}>
                     <Textarea
                       modelValue={wordForm.relWords}
                       onUpdate:modelValue={e => (wordForm.relWords = e)}
-                      placeholder="请参考已有单词格式"
+                      placeholder={$t('dict_placeholder_other')}
                       autosize={{ minRows: 6, maxRows: 20 }}
                     />
                   </FormItem>
-                  <FormItem label="词源">
+                  <FormItem label={$t('etymology')}>
                     <Textarea
                       modelValue={wordForm.etymology}
                       onUpdate:modelValue={e => (wordForm.etymology = e)}
-                      placeholder="请参考已有单词格式"
+                      placeholder={$t('dict_placeholder_other')}
                       autosize={{ minRows: 6, maxRows: 10 }}
                     />
                   </FormItem>
@@ -894,14 +895,14 @@ defineRender(() => {
 }
 
 .tab-navigation {
-  display: none; // 默认隐藏，移动端显示
+  display: none;
 }
 
 .mobile-hidden {
   display: none;
 }
 
-// 移动端适配
+
 @media (max-width: 768px) {
   .dict-detail-card {
     height: unset;
@@ -979,7 +980,7 @@ defineRender(() => {
   }
 }
 
-// 超小屏幕适配
+
 @media (max-width: 480px) {
   .dict-detail-card {
     height: unset;

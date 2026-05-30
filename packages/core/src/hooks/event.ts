@@ -258,17 +258,17 @@ export function useStartKeyboardEventListener() {
   const settingStore = useSettingStore()
 
   useEventListener('keydown', (e: KeyboardEvent) => {
-    //解决无法复制、全选的问题
+
     if ((e.ctrlKey || e.metaKey) && ['KeyC', 'KeyA'].includes(e.code)) return
     if (window?.disableEventListener) return
     if (!runtimeStore.disableEventListener) {
-      // 检查当前单词是否包含空格，如果包含，则空格键应该被视为输入
+
       if (e.code === 'Space') {
-        // 获取当前正在输入的单词信息
+
         const currentWord = window.__CURRENT_WORD_INFO__
 
-        // 如果当前单词包含空格，且下一个字符应该是空格，则将空格键视为输入
-        // 或者如果当前处于输入锁定状态（等待空格输入），也将空格键视为输入
+
+
         if (
           currentWord &&
           ((currentWord.word && currentWord.word.includes(' ') && currentWord.word[currentWord.input.length] === ' ') ||
@@ -285,9 +285,9 @@ export function useStartKeyboardEventListener() {
       let shortcutEvent = []
       for (let [k, v] of Object.entries(settingStore.shortcutKeyMap)) {
         if (v === shortcutKey) {
-          // console.log('快捷键', k)
-          //必须是已监听的事件，才拦截并触发
-          //因为在自测时，才会监听 1234 四个键，平时如果也拦截会导致无法输入1234
+
+
+
           if (emitter.all.has(k) && emitter.all.get(k)?.length) {
             shortcutEvent.push(k)
           }
@@ -297,8 +297,8 @@ export function useStartKeyboardEventListener() {
         e.preventDefault()
         shortcutEvent.map(s => emitter.emit(s, e))
       } else {
-        //非英文模式下，输入区域的 keyCode 均为 229时，
-        // 空格键始终应该被转发到onTyping函数，由它来决定是作为输入还是切换单词
+
+
         if (e.code === 'Space') {
           e.preventDefault()
           return emitter.emit(EventKey.onTyping, e)
@@ -308,7 +308,7 @@ export function useStartKeyboardEventListener() {
           ((e.keyCode >= 65 && e.keyCode <= 90) ||
             (e.keyCode >= 48 && e.keyCode <= 57) ||
             (e.keyCode >= 96 && e.keyCode <= 105) ||
-            // 空格键已经在上面处理过了
+
             e.code === 'Slash' ||
             e.code === 'Quote' ||
             e.code === 'Comma' ||
@@ -320,12 +320,12 @@ export function useStartKeyboardEventListener() {
             e.code === 'Semicolon' ||
             // || e.code === 'Backquote'
             e.keyCode === 229) &&
-          //当按下功能键时，不阻止事件传播
+
           !e.ctrlKey &&
           !e.altKey
         ) {
           if (isMobile() && e.keyCode === 229 && e.key === 'Unidentified') {
-            // 安卓软键盘在keydown阶段不会提供字符，等待input/composition事件来派发实际输入
+
             return
           }
           e.preventDefault()
@@ -359,7 +359,7 @@ export function useOnKeyboardEventListener(onKeyDown: (e: KeyboardEvent) => void
   onDeactivated(remove)
 }
 
-//因为如果用useStartKeyboardEventListener局部变量控制，当出现多个hooks时就不行了，所以用全局变量来控制
+
 export function useDisableEventListener(watchVal: any) {
   const runtimeStore = useRuntimeStore()
   watch(watchVal, (n: any) => {

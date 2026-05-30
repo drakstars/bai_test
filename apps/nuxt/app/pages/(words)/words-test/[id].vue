@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { BaseButton, BasePage, Toast, VolumeIcon } from '@typewords/base'
 import { useRoute, useRouter } from 'vue-router'
 import { useBaseStore } from '@typewords/core/stores/base.ts'
@@ -21,6 +22,7 @@ const runtimeStore = useRuntimeStore()
 const playBeep = usePlayBeep()
 const playCorrect = usePlayCorrect()
 const playWordAudio = usePlayWordAudio()
+const { t } = useI18n()
 
 let loading = $ref(false)
 let dict = $ref<Dict>()
@@ -50,7 +52,7 @@ async function init() {
     loading = false
   }
   if (!dict.words.length) {
-    return Toast.warning('没有单词可测试！')
+    return Toast.warning(t('no_words_to_test'))
   }
   if (runtimeStore.routeData.taskWords) {
     let currentStudy: TaskWords = runtimeStore.routeData.taskWords
@@ -66,7 +68,7 @@ async function init() {
   console.log('questions', questions)
   index = 0
 
-  Toast.info('可以按快捷键进行选择,例如按快捷键[' + aShortcutKey + ']选择A', { duration: 3000 })
+  Toast.info(t('test_shortcut_tip', { key: aShortcutKey }), { duration: 3000 })
 }
 
 let submitted = $ref(false)
@@ -134,7 +136,7 @@ onMounted(init)
   <BasePage>
     <div class="card flex flex-col text-xl">
       <div class="flex items-center justify-between">
-        <div class="page-title">测试：{{ dict?.name }}</div>
+        <div class="page-title">{{ $t('test') }}: {{ dict?.name }}</div>
         <div class="text-base">{{ no }} / {{ Math.min(total, testWords.length) }}</div>
       </div>
       <div class="line my-2"></div>
@@ -142,7 +144,7 @@ onMounted(init)
       <div v-if="questions.length" class="flex flex-col gap-4">
         <div class="text-4xl en-article-family flex items-center gap-2">
           <span>{{ questions[index].candidates[questions[index].correctIndex].word.word }}</span>
-          <VolumeIcon :simple="true" :title="'发音'" :cb="() => playWordAudio(questions[index].candidates[questions[index].correctIndex].word.word)" />
+          <VolumeIcon :simple="true" :title="$t('word_pronunciation')" :cb="() => playWordAudio(questions[index].candidates[questions[index].correctIndex].word.word)" />
         </div>
         <div class="grid gap-6">
           <div
@@ -168,8 +170,8 @@ onMounted(init)
         </div>
 
         <div class="mt-6 flex">
-          <BaseButton type="primary" @click="next">继续测试[{{ nextShortcutKey }}]</BaseButton>
-          <BaseButton type="info" @click="end">结束</BaseButton>
+          <BaseButton type="primary" @click="next">{{ $t('continue_test') }}[{{ nextShortcutKey }}]</BaseButton>
+          <BaseButton type="info" @click="end">{{ $t('end_practice') }}</BaseButton>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ const props = withDefaults(
   defineProps<{
     word: Word
     showFull: boolean
-    posSpace?: boolean // 词性是否需要固定占位
+    posSpace?: boolean
   }>(),
   {
     posSpace: true,

@@ -18,8 +18,8 @@ export default {
     let val = null, reg = null
     if ("getComputedStyle" in window) {
       val = window.getComputedStyle(curEle, null)[attr]
-    } else {   //ie6~8不支持上面属性
-      //不兼容
+    } else {
+
       if (attr === "opacity") {
         val = curEle.currentStyle["filter"]   //'alpha(opacity=12,345)'
         reg = /^alphaopacity=(\d+(?:\.\d+)?)opacity=(\d+(?:\.\d+)?)$/i
@@ -35,7 +35,7 @@ export default {
   $setCss(el, key, value) {
     // console.log(value)
     if (key === 'transform') {
-      //直接设置不生效
+
       el.style.webkitTransform = el.style.MsTransform = el.style.msTransform = el.style.MozTransform = el.style.OTransform = el.style.transform = value;
     } else {
       el.style[key] = value

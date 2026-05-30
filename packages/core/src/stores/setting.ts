@@ -12,7 +12,7 @@ export interface SettingState {
   wordSound: boolean
   wordSoundVolume: number
   wordSoundSpeed: number
-  wordReviewRatio: number // 单词复习比例
+  wordReviewRatio: number
 
   articleSound: boolean
   articleAutoPlayNext: boolean
@@ -26,49 +26,49 @@ export interface SettingState {
   effectSound: boolean
   effectSoundVolume: number
 
-  repeatCount: number // 重复次数
-  repeatCustomCount?: number // 自定义重复次数
-  dictation: boolean // 显示默写
-  translate: boolean // 显示翻译
-  showNearWord: boolean // 显示上/下一个词
-  ignoreCase: boolean // 忽略大小写
-  allowWordTip: boolean // 默写时时否允许查看提示
-  waitTimeForChangeWord: number // 切下一个词的等待时间
+  repeatCount: number
+  repeatCustomCount?: number
+  dictation: boolean
+  translate: boolean
+  showNearWord: boolean
+  ignoreCase: boolean
+  allowWordTip: boolean
+  waitTimeForChangeWord: number
   fontSize: {
     articleForeignFontSize: number
     articleTranslateFontSize: number
     wordForeignFontSize: number
     wordTranslateFontSize: number
   }
-  showToolbar: boolean //收起/展开工具栏
-  showPanel: boolean // 收起/展开面板
-  sideExpand: boolean // 收起/展开左侧侧边栏
+  showToolbar: boolean
+  showPanel: boolean
+  sideExpand: boolean
   theme: string
   shortcutKeyMap: Record<string, string>
   first: boolean
   firstTime: number
   webAppVersion: number
   load: boolean
-  conflictNotice: boolean // 其他脚本/插件冲突提示
-  showConflictNotice2: boolean // 其他脚本/插件冲突提示
-  showUsageTips: boolean //  显示使用提示
-  ignoreSimpleWord: boolean // 忽略简单词
-  wordPracticeMode: WordPracticeMode // 单词练习模式
-  wordPracticeType: WordPracticeType // 单词练习类型
-  autoNextWord: boolean // 自动切换下一个单词
-  inputWrongClear: boolean // 单词输入错误，清空已输入内容
-  mobileNavCollapsed: boolean // 移动端底部导航栏收缩状态
-  ignoreSymbol: boolean // 过滤符号
-  practiceSentence: boolean // 练习例句
+  conflictNotice: boolean
+  showConflictNotice2: boolean
+  showUsageTips: boolean
+  ignoreSimpleWord: boolean
+  wordPracticeMode: WordPracticeMode
+  wordPracticeType: WordPracticeType
+  autoNextWord: boolean
+  inputWrongClear: boolean
+  mobileNavCollapsed: boolean
+  ignoreSymbol: boolean
+  practiceSentence: boolean
 
-  fsrsEasyLimit: number // 小于等于fsrsEasyLimit的卡片会评估为Easy
-  fsrsGoodLimit: number // 小于等于fsrsEasyLimit且小于等于fsrsHardLimit的卡片会评估为Good
-  fsrsHardLimit: number // 小于等于fsrsHardLimit的卡片会评估为Hard
+  fsrsEasyLimit: number
+  fsrsGoodLimit: number
+  fsrsHardLimit: number
   fsrsParameters: FSRSParameters
 
   identifyMethod: IdentifyMethod
-  _ignoreWatch: boolean //忽略监听，避免重复保存和上传
-  ttsVoiceMap: { key: string; voice: string }[] // 浏览器 TTS 声色映射，key 为 OS+浏览器组合（如 mac+chrome）
+  _ignoreWatch: boolean
+  ttsVoiceMap: { key: string; voice: string }[]
 }
 
 export const getDefaultSettingState = (): SettingState => ({
@@ -163,7 +163,7 @@ export const useSettingStore = defineStore('setting', {
           if (jsonStr) {
             let result = await parseJsonStr(jsonStr, checkAndUpgradeSaveSetting)
 
-            //如果升级了，那么要保持本地比线上新，不然会被覆盖
+
             const shouldRefreshUpdatedAt = (result.val as any)?.__updateLocalData ?? false
             delete (result.val as any)?.__updateLocalData
             if (shouldRefreshUpdatedAt) {
