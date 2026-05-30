@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sample_essays",
+    "name": "Đoạn văn tiếng Anh mẫu",
+    "description": "Tuyển tập những đoạn văn tiếng Anh mẫu truyền cảm hứng và hữu ích để bạn luyện gõ bàn phím và nâng cao vốn từ.",
+    "category": "Luyện viết",
+    "tags": [
+      "Đoạn văn mẫu"
+    ],
+    "url": "sample_essays.json",
+    "length": 3,
+    "translateLanguage": "common",
+    "language": "en",
+    "cover": "/imgs/covers/sample_essays.png"
+  }
+]

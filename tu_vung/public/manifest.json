@@ -1,0 +1,16 @@
+{
+  "name": "Quiz Words - Luyện gõ từ vựng · Luyện gõ bài viết",
+  "short_name": "",
+  "start_url": ".",
+  "description": "Nền tảng luyện tiếng Anh trực tuyến, hỗ trợ luyện gõ từ vựng và bài viết, nâng cao hiệu quả học tiếng Anh.",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "800x800",
+      "type": "image/png"
+    }
+  ]
+}

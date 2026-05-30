@@ -1,0 +1,782 @@
+[
+  {
+    "custom": false,
+    "id": 0,
+    "word": "academic",
+    "phonetic0": "/ˌækəˈdemɪk/",
+    "phonetic1": "/ˌækəˈdemɪk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thuộc học thuật"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Academic research is essential for university.",
+        "cn": "Ví dụ: Academic research is essential for university."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 1,
+    "word": "aesthetic",
+    "phonetic0": "/iːsˈθetɪk/",
+    "phonetic1": "/iːsˈθetɪk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thuộc mỹ học, nghệ thuật"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The building design has high aesthetic value.",
+        "cn": "Ví dụ: The building design has high aesthetic value."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 2,
+    "word": "ambiguous",
+    "phonetic0": "/æmˈbɪɡjuəs/",
+    "phonetic1": "/æmˈbɪɡjuəs/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "mơ hồ, nhập nhằng khó hiểu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His reply was ambiguous and unclear.",
+        "cn": "Ví dụ: His reply was ambiguous and unclear."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 3,
+    "word": "benevolent",
+    "phonetic0": "/bəˈnevələnt/",
+    "phonetic1": "/bəˈnevələnt/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "nhân từ, rộng lượng, hay làm thiện nguyện"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A benevolent institution provided food and shelter.",
+        "cn": "Ví dụ: A benevolent institution provided food and shelter."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 4,
+    "word": "catastrophe",
+    "phonetic0": "/kəˈtæstrəfi/",
+    "phonetic1": "/kəˈtæstrəfi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tai họa lớn, thảm họa khốc liệt"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The earthquake was a terrible catastrophe.",
+        "cn": "Ví dụ: The earthquake was a terrible catastrophe."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 5,
+    "word": "cognitive",
+    "phonetic0": "/ˈkɒɡnətɪv/",
+    "phonetic1": "/ˈkɒɡnətɪv/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thuộc nhận thức và tư duy"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Cognitive development in early childhood is fast.",
+        "cn": "Ví dụ: Cognitive development in early childhood is fast."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 6,
+    "word": "collaborate",
+    "phonetic0": "/kəˈlæbəreɪt/",
+    "phonetic1": "/kəˈlæbəreɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "hợp tác làm việc cùng nhau"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We will collaborate on the new project.",
+        "cn": "Ví dụ: We will collaborate on the new project."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 7,
+    "word": "comprehensive",
+    "phonetic0": "/ˌkɒmprɪˈhensɪv/",
+    "phonetic1": "/ˌkɒmprɪˈhensɪv/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "toàn diện, bao quát toàn bộ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A comprehensive guide is available for download.",
+        "cn": "Ví dụ: A comprehensive guide is available for download."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 8,
+    "word": "consequence",
+    "phonetic0": "/ˈkɒnsɪkwəns/",
+    "phonetic1": "/ˈkɒnsɪkwəns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hệ quả, hậu quả của hành động"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Action has its consequences in life.",
+        "cn": "Ví dụ: Action has its consequences in life."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 9,
+    "word": "contradict",
+    "phonetic0": "/ˌkɒntrəˈdɪkt/",
+    "phonetic1": "/ˌkɒntrəˈdɪkt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "mâu thuẫn, phản bác ý kiến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His actions contradict his promises.",
+        "cn": "Ví dụ: His actions contradict his promises."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 10,
+    "word": "controversial",
+    "phonetic0": "/ˌkɒntrəˈvɜːʃl/",
+    "phonetic1": "/ˌkɒntrəˈvɜːʃl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "gây tranh cãi, chưa thống nhất"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The government decision was controversial.",
+        "cn": "Ví dụ: The government decision was controversial."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 11,
+    "word": "crucial",
+    "phonetic0": "/ˈkruːʃl/",
+    "phonetic1": "/ˈkruːʃl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "quan trọng, cốt cốt, quyết định"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Regular practice is crucial for success.",
+        "cn": "Ví dụ: Regular practice is crucial for success."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 12,
+    "word": "depict",
+    "phonetic0": "/dɪˈpɪkt/",
+    "phonetic1": "/dɪˈpɪkt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "miêu tả, khắc họa lại"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The painting depicts a beautiful sunset.",
+        "cn": "Ví dụ: The painting depicts a beautiful sunset."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 13,
+    "word": "diversity",
+    "phonetic0": "/daɪˈvɜːsəti/",
+    "phonetic1": "/daɪˈvɜːsəti/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự đa dạng, phong phú nhiều loại"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Cultural diversity enrich local community.",
+        "cn": "Ví dụ: Cultural diversity enrich local community."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 14,
+    "word": "elicit",
+    "phonetic0": "/iˈlɪsɪt/",
+    "phonetic1": "/iˈlɪsɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "khơi ra, gợi ra câu trả lời"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Her question elicited a quiet response.",
+        "cn": "Ví dụ: Her question elicited a quiet response."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 15,
+    "word": "empirical",
+    "phonetic0": "/ɪmˈpɪrɪkl/",
+    "phonetic1": "/ɪmˈpɪrɪkl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thực nghiệm, dựa trên quan sát"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We need empirical evidence to support this claim.",
+        "cn": "Ví dụ: We need empirical evidence to support this claim."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 16,
+    "word": "equivalent",
+    "phonetic0": "/ɪˈkwɪvələnt/",
+    "phonetic1": "/ɪˈkwɪvələnt/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "tương đương, ngang giá trị"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Eight kilometers is equivalent to five miles.",
+        "cn": "Ví dụ: Eight kilometers is equivalent to five miles."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 17,
+    "word": "evaluate",
+    "phonetic0": "/ɪˈvæljueɪt/",
+    "phonetic1": "/ɪˈvæljueɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "đánh giá, định mức chất lượng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The teacher evaluated the student essays.",
+        "cn": "Ví dụ: The teacher evaluated the student essays."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 18,
+    "word": "fluctuate",
+    "phonetic0": "/ˈflʌktʃueɪt/",
+    "phonetic1": "/ˈflʌktʃueɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "dao động, biến động bất thường"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Prices fluctuate throughout the week.",
+        "cn": "Ví dụ: Prices fluctuate throughout the week."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 19,
+    "word": "hypothesis",
+    "phonetic0": "/haɪˈpɒθəsɪs/",
+    "phonetic1": "/haɪˈpɒθəsɪs/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giả thuyết khoa học"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The scientist tested the hypothesis through experiments.",
+        "cn": "Ví dụ: The scientist tested the hypothesis through experiments."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 20,
+    "word": "inevitable",
+    "phonetic0": "/ɪnˈevɪtəbl/",
+    "phonetic1": "/ɪnˈevɪtəbl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "không thể tránh khỏi, chắc chắn xảy ra"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Change is an inevitable part of development.",
+        "cn": "Ví dụ: Change is an inevitable part of development."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 21,
+    "word": "innovative",
+    "phonetic0": "/ˈɪnəveɪtɪv/",
+    "phonetic1": "/ˈɪnəveɪtɪv/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "mang tính đổi mới, sáng tạo sáng kiến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The startup designed an innovative mobile app.",
+        "cn": "Ví dụ: The startup designed an innovative mobile app."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 22,
+    "word": "integrate",
+    "phonetic0": "/ˈɪntɪɡreɪt/",
+    "phonetic1": "/ˈɪntɪɡreɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "tích hợp, hòa nhập hệ thống"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Integrate the code with the database systems.",
+        "cn": "Ví dụ: Integrate the code with the database systems."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 23,
+    "word": "interpret",
+    "phonetic0": "/ɪnˈtɜːprət/",
+    "phonetic1": "/ɪnˈtɜːprət/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "giải thích, thông dịch phiên dịch"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "How do you interpret the survey results?",
+        "cn": "Ví dụ: How do you interpret the survey results?"
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 24,
+    "word": "investigate",
+    "phonetic0": "/ɪnˈvestɪɡeɪt/",
+    "phonetic1": "/ɪnˈvestɪɡeɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "điều tra, nghiên cứu tìm hiểu nguồn gốc"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Police are investigating the robbery.",
+        "cn": "Ví dụ: Police are investigating the robbery."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 25,
+    "word": "justify",
+    "phonetic0": "/ˈdʒʌstɪfaɪ/",
+    "phonetic1": "/ˈdʒʌstɪfaɪ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "biện minh, chứng minh là đúng đắn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "You must justify your decisions with logic.",
+        "cn": "Ví dụ: You must justify your decisions with logic."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 26,
+    "word": "magnitude",
+    "phonetic0": "/ˈmæɡnɪtjuːd/",
+    "phonetic1": "/ˈmæɡnɪtjuːd/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "độ lớn, tầm quan trọng tầm cỡ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They realized the magnitude of the problem.",
+        "cn": "Ví dụ: They realized the magnitude of the problem."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 27,
+    "word": "objective",
+    "phonetic0": "/əbˈdʒektɪv/",
+    "phonetic1": "/əbˈdʒektɪv/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "khách quan, hoặc mục tiêu hướng tới"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Remaining objective is key to journalism.",
+        "cn": "Ví dụ: Remaining objective is key to journalism."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 28,
+    "word": "paradox",
+    "phonetic0": "/ˈpærədɒks/",
+    "phonetic1": "/ˈpærədɒks/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nghịch lý, sự tự mâu thuẫn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It is a paradox that light is both a wave and particle.",
+        "cn": "Ví dụ: It is a paradox that light is both a wave and particle."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 29,
+    "word": "pragmatic",
+    "phonetic0": "/præɡˈmætɪk/",
+    "phonetic1": "/præɡˈmætɪk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thực dụng, thực tế giải quyết vấn đề"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We took a pragmatic approach to the budget crisis.",
+        "cn": "Ví dụ: We took a pragmatic approach to the budget crisis."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]

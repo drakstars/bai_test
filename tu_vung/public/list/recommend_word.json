@@ -1,0 +1,158 @@
+[
+  {
+    "id": "tienganh10",
+    "name": "Tiếng Anh Lớp 10",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 10 mới",
+    "category": "Tiếng Anh Phổ thông",
+    "tags": [
+      "Lớp 10"
+    ],
+    "url": "tienganh10.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "tienganh11",
+    "name": "Tiếng Anh Lớp 11",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 11 mới",
+    "category": "Tiếng Anh Phổ thông",
+    "tags": [
+      "Lớp 11"
+    ],
+    "url": "tienganh11.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "tienganh12",
+    "name": "Tiếng Anh Lớp 12",
+    "description": "Từ vựng tiếng Anh theo chương trình phổ thông Lớp 12 mới",
+    "category": "Tiếng Anh Phổ thông",
+    "tags": [
+      "Lớp 12"
+    ],
+    "url": "tienganh12.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "thpt_quocgia",
+    "name": "Ôn Thi THPT Quốc Gia",
+    "description": "Từ vựng tiếng Anh trọng tâm cho kỳ thi Tốt nghiệp THPT và Đại học",
+    "category": "Luyện thi Đại học",
+    "tags": [
+      "THPT QG"
+    ],
+    "url": "thpt_quocgia.json",
+    "length": 50,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "ielts_vi",
+    "name": "IELTS Core Vocabulary",
+    "description": "Từ vựng học thuật cốt lõi thường gặp nhất trong kỳ thi IELTS",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "IELTS"
+    ],
+    "url": "ielts_vi.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "toeic_vi",
+    "name": "TOEIC Common Vocabulary",
+    "description": "Từ vựng tiếng Anh giao tiếp và công sở thông dụng cho kỳ thi TOEIC",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "TOEIC"
+    ],
+    "url": "toeic_vi.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "toefl_vi",
+    "name": "TOEFL Academic Vocabulary",
+    "description": "Từ vựng học thuật chuyên sâu phục vụ cho kỳ thi TOEFL",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "TOEFL"
+    ],
+    "url": "toefl_vi.json",
+    "length": 30,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "coder_vi",
+    "name": "English for Coders",
+    "description": "Từ vựng tiếng Anh chuyên ngành công nghệ thông tin và lập trình viên",
+    "category": "Lập trình & IT",
+    "tags": [
+      "IT"
+    ],
+    "url": "coder_vi.json",
+    "length": 158,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "toefl",
+    "name": "TOEFL (Bản đầy đủ)",
+    "description": "Bộ từ vựng học thuật chuẩn hóa đầy đủ nhất cho kỳ thi TOEFL",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "TOEFL"
+    ],
+    "url": "TOEFL_3_T.json",
+    "length": 4264,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "ielts",
+    "name": "IELTS (Bản đầy đủ)",
+    "description": "Bộ từ vựng học thuật cốt lõi đầy đủ nhất cho kỳ thi IELTS",
+    "category": "Chứng chỉ Quốc tế",
+    "tags": [
+      "IELTS"
+    ],
+    "url": "IELTS_3_T.json",
+    "length": 3575,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "coder",
+    "name": "Coder Dict (Đầy đủ)",
+    "description": "Từ vựng tiếng Anh chuyên ngành lập trình và Khoa học máy tính đầy đủ",
+    "category": "Lập trình & IT",
+    "tags": [
+      "Lập trình"
+    ],
+    "url": "it-words.json",
+    "length": 1700,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  },
+  {
+    "id": "itVocabulary",
+    "name": "Computer English",
+    "description": "Từ vựng tiếng Anh kỹ thuật chuyên sâu về máy tính và hệ thống",
+    "category": "Lập trình & IT",
+    "tags": [
+      "IT"
+    ],
+    "url": "itVocabulary.json",
+    "length": 1665,
+    "language": "en",
+    "translateLanguage": "vi-VN"
+  }
+]

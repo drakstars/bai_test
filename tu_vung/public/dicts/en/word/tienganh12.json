@@ -1,0 +1,782 @@
+[
+  {
+    "custom": false,
+    "id": 0,
+    "word": "advance",
+    "phonetic0": "/ədˈvɑːns/",
+    "phonetic1": "/ədˈvɑːns/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "tiến bộ, phát triển, tiến lên"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Scientific advances improve our lives.",
+        "cn": "Ví dụ: Scientific advances improve our lives."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 1,
+    "word": "advantage",
+    "phonetic0": "/ədˈvɑːntɪdʒ/",
+    "phonetic1": "/ədˈvɑːntɪdʒ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lợi thế, điểm mạnh, ưu điểm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Speaking English is a major advantage.",
+        "cn": "Ví dụ: Speaking English is a major advantage."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 2,
+    "word": "adventure",
+    "phonetic0": "/ədˈventʃə(r)/",
+    "phonetic1": "/ədˈventʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cuộc phiêu lưu, mạo hiểm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They went on an adventure in the jungle.",
+        "cn": "Ví dụ: They went on an adventure in the jungle."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 3,
+    "word": "advertise",
+    "phonetic0": "/ˈædvətaɪz/",
+    "phonetic1": "/ˈædvətaɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "quảng cáo, thông báo rộng rãi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They advertise their products on television.",
+        "cn": "Ví dụ: They advertise their products on television."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 4,
+    "word": "advocate",
+    "phonetic0": "/ˈædvəkeɪt/",
+    "phonetic1": "/ˈædvəkeɪt/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "ủng hộ, bào chữa, người ủng hộ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She advocates for children's rights.",
+        "cn": "Ví dụ: She advocates for children's rights."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 5,
+    "word": "affect",
+    "phonetic0": "/əˈfekt/",
+    "phonetic1": "/əˈfekt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "ảnh hưởng, tác động xấu đến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The climate affect crop yields.",
+        "cn": "Ví dụ: The climate affect crop yields."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 6,
+    "word": "afford",
+    "phonetic0": "/əˈfɔːd/",
+    "phonetic1": "/əˈfɔːd/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "có đủ khả năng chi trả, có thể"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We cannot afford a new car right now.",
+        "cn": "Ví dụ: We cannot afford a new car right now."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 7,
+    "word": "against",
+    "phonetic0": "/əˈɡeɪnst/",
+    "phonetic1": "/əˈɡeɪnst/",
+    "trans": [
+      {
+        "pos": "prep.",
+        "cn": "chống lại, phản đối, dựa vào"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They are playing against the champions.",
+        "cn": "Ví dụ: They are playing against the champions."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 8,
+    "word": "agency",
+    "phonetic0": "/ˈeɪdʒənsi/",
+    "phonetic1": "/ˈeɪdʒənsi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đại lý, hãng, cơ quan hành chính"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She works for a travel agency.",
+        "cn": "Ví dụ: She works for a travel agency."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 9,
+    "word": "agenda",
+    "phonetic0": "/əˈdʒendə/",
+    "phonetic1": "/əˈdʒendə/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chương trình nghị sự, lịch trình"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The next item on the agenda is finance.",
+        "cn": "Ví dụ: The next item on the agenda is finance."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 10,
+    "word": "aggression",
+    "phonetic0": "/əˈɡreʃn/",
+    "phonetic1": "/əˈɡreʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự gây hấn, hung hăng, xâm lược"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He showed signs of aggression toward his dog.",
+        "cn": "Ví dụ: He showed signs of aggression toward his dog."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 11,
+    "word": "agreement",
+    "phonetic0": "/əˈɡriːmənt/",
+    "phonetic1": "/əˈɡriːmənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự đồng ý, thỏa thuận hiệp định"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They signed a trade agreement yesterday.",
+        "cn": "Ví dụ: They signed a trade agreement yesterday."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 12,
+    "word": "agriculture",
+    "phonetic0": "/ˈæɡrɪkʌltʃə(r)/",
+    "phonetic1": "/ˈæɡrɪkʌltʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "nông nghiệp, trồng trọt chăn nuôi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Modern agriculture uses technology for farming.",
+        "cn": "Ví dụ: Modern agriculture uses technology for farming."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 13,
+    "word": "ahead",
+    "phonetic0": "/əˈhed/",
+    "phonetic1": "/əˈhed/",
+    "trans": [
+      {
+        "pos": "adv.",
+        "cn": "phía trước, dẫn trước, vượt lên"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Go ahead and start the presentation.",
+        "cn": "Ví dụ: Go ahead and start the presentation."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 14,
+    "word": "alarm",
+    "phonetic0": "/əˈlɑːm/",
+    "phonetic1": "/əˈlɑːm/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "báo động, sự lo ngại, đồng hồ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The smoke alarm went off in the kitchen.",
+        "cn": "Ví dụ: The smoke alarm went off in the kitchen."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 15,
+    "word": "allocate",
+    "phonetic0": "/ˈæləkeɪt/",
+    "phonetic1": "/ˈæləkeɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "phân bổ, chia phần kinh phí"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The government allocated money for schools.",
+        "cn": "Ví dụ: The government allocated money for schools."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 16,
+    "word": "allowance",
+    "phonetic0": "/əˈlaʊəns/",
+    "phonetic1": "/əˈlaʊəns/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tiền trợ cấp, tiền tiêu vặt"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She gets a monthly allowance from parents.",
+        "cn": "Ví dụ: She gets a monthly allowance from parents."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 17,
+    "word": "alter",
+    "phonetic0": "/ˈɔːltə(r)/",
+    "phonetic1": "/ˈɔːltə(r)/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "thay đổi, sửa đổi, biến đổi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We had to alter our travel plans.",
+        "cn": "Ví dụ: We had to alter our travel plans."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 18,
+    "word": "alternative",
+    "phonetic0": "/ɔːlˈtɜːnətɪv/",
+    "phonetic1": "/ɔːlˈtɜːnətɪv/",
+    "trans": [
+      {
+        "pos": "adj./n.",
+        "cn": "thay thế, lựa chọn khác"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "There is no alternative but to wait.",
+        "cn": "Ví dụ: There is no alternative but to wait."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 19,
+    "word": "amaze",
+    "phonetic0": "/əˈmeɪz/",
+    "phonetic1": "/əˈmeɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "làm ngạc nhiên, làm sửng sốt"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Her performance amazed the audience.",
+        "cn": "Ví dụ: Her performance amazed the audience."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 20,
+    "word": "ambition",
+    "phonetic0": "/æmˈbɪʃn/",
+    "phonetic1": "/æmˈbɪʃn/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "hoài bão, khát vọng, tham vọng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "His ambition is to become a doctor.",
+        "cn": "Ví dụ: His ambition is to become a doctor."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 21,
+    "word": "amount",
+    "phonetic0": "/əˈmaʊnt/",
+    "phonetic1": "/əˈmaʊnt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lượng, số lượng lớn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "A large amount of money was spent.",
+        "cn": "Ví dụ: A large amount of money was spent."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 22,
+    "word": "analyze",
+    "phonetic0": "/ˈænəlaɪz/",
+    "phonetic1": "/ˈænəlaɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "phân tích nghiên cứu chi tiết"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The scientists analyzed the blood sample.",
+        "cn": "Ví dụ: The scientists analyzed the blood sample."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 23,
+    "word": "ancestor",
+    "phonetic0": "/ˈænsestə(r)/",
+    "phonetic1": "/ˈænsestə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tổ tiên, ông bà ngày xưa"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Her ancestors came from Scotland.",
+        "cn": "Ví dụ: Her ancestors came from Scotland."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 24,
+    "word": "ancient",
+    "phonetic0": "/ˈeɪnʃənt/",
+    "phonetic1": "/ˈeɪnʃənt/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "cổ xưa, thời thượng cổ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They visited the ancient temple.",
+        "cn": "Ví dụ: They visited the ancient temple."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 25,
+    "word": "annoy",
+    "phonetic0": "/əˈnɔɪ/",
+    "phonetic1": "/əˈnɔɪ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "làm bực mình, làm phiền lòng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The noise annoyed the neighbors.",
+        "cn": "Ví dụ: The noise annoyed the neighbors."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 26,
+    "word": "annual",
+    "phonetic0": "/ˈænjuəl/",
+    "phonetic1": "/ˈænjuəl/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "hằng năm, định kỳ mỗi năm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The school holds an annual sports day.",
+        "cn": "Ví dụ: The school holds an annual sports day."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 27,
+    "word": "anticipate",
+    "phonetic0": "/ænˈtɪsɪpeɪt/",
+    "phonetic1": "/ænˈtɪsɪpeɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "tiên đoán, mong đợi, đón trước"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We anticipate a large crowd tonight.",
+        "cn": "Ví dụ: We anticipate a large crowd tonight."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 28,
+    "word": "anxiety",
+    "phonetic0": "/æŋˈzaɪəti/",
+    "phonetic1": "/æŋˈzaɪəti/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "sự lo lắng, bồn chồn bấp bênh"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Exam results cause a lot of anxiety.",
+        "cn": "Ví dụ: Exam results cause a lot of anxiety."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 29,
+    "word": "apologize",
+    "phonetic0": "/əˈpɒlədʒaɪz/",
+    "phonetic1": "/əˈpɒlədʒaɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "tỏ ý xin lỗi, tạ lỗi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He apologized for arriving late.",
+        "cn": "Ví dụ: He apologized for arriving late."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]

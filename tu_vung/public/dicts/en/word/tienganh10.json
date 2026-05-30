@@ -1,0 +1,782 @@
+[
+  {
+    "custom": false,
+    "id": 0,
+    "word": "abandon",
+    "phonetic0": "/əˈbændən/",
+    "phonetic1": "/əˈbændən/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "từ bỏ, ruồng bỏ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He abandoned his car in the snow.",
+        "cn": "Ví dụ: He abandoned his car in the snow."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 1,
+    "word": "academic",
+    "phonetic0": "/ˌækəˈdemɪk/",
+    "phonetic1": "/ˌækəˈdemɪk/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "thuộc về học thuật, viện hàn lâm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She has a brilliant academic career.",
+        "cn": "Ví dụ: She has a brilliant academic career."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 2,
+    "word": "accent",
+    "phonetic0": "/ˈæksent/",
+    "phonetic1": "/ˈæksent/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "giọng điệu, trọng âm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She speaks English with a French accent.",
+        "cn": "Ví dụ: She speaks English with a French accent."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 3,
+    "word": "accept",
+    "phonetic0": "/əkˈsept/",
+    "phonetic1": "/əkˈsept/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "chấp nhận, thừa nhận"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Please accept this small gift.",
+        "cn": "Ví dụ: Please accept this small gift."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 4,
+    "word": "access",
+    "phonetic0": "/ˈækses/",
+    "phonetic1": "/ˈækses/",
+    "trans": [
+      {
+        "pos": "n./v.",
+        "cn": "lối vào, cơ hội tiếp cận"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We have internet access in the classroom.",
+        "cn": "Ví dụ: We have internet access in the classroom."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 5,
+    "word": "accident",
+    "phonetic0": "/ˈæksɪdənt/",
+    "phonetic1": "/ˈæksɪdənt/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "tai nạn, rủi ro ngoài ý muốn"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She was injured in a car accident.",
+        "cn": "Ví dụ: She was injured in a car accident."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 6,
+    "word": "accompany",
+    "phonetic0": "/əˈkʌmpəni/",
+    "phonetic1": "/əˈkʌmpəni/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "đi kèm, đồng hành cùng ai"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He accompanied his sister to the cinema.",
+        "cn": "Ví dụ: He accompanied his sister to the cinema."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 7,
+    "word": "accomplish",
+    "phonetic0": "/əˈkʌmplɪʃ/",
+    "phonetic1": "/əˈkʌmplɪʃ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "hoàn thành, đạt được mục tiêu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We accomplished our mission successfully.",
+        "cn": "Ví dụ: We accomplished our mission successfully."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 8,
+    "word": "accurate",
+    "phonetic0": "/ˈækjərət/",
+    "phonetic1": "/ˈækjərət/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "chính xác, xác thực"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The weather forecast was accurate.",
+        "cn": "Ví dụ: The weather forecast was accurate."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 9,
+    "word": "accuse",
+    "phonetic0": "/əˈkjuːz/",
+    "phonetic1": "/əˈkjuːz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "buộc tội, tố cáo cáo buộc"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He was accused of stealing the money.",
+        "cn": "Ví dụ: He was accused of stealing the money."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 10,
+    "word": "achieve",
+    "phonetic0": "/əˈtʃiːv/",
+    "phonetic1": "/əˈtʃiːv/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "đạt được thành tựu, giành được"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She achieved high grades in the exam.",
+        "cn": "Ví dụ: She achieved high grades in the exam."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 11,
+    "word": "acknowledge",
+    "phonetic0": "/əkˈnɒlɪdʒ/",
+    "phonetic1": "/əkˈnɒlɪdʒ/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "công nhận, thừa nhận sự thật"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He acknowledged that he made a mistake.",
+        "cn": "Ví dụ: He acknowledged that he made a mistake."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 12,
+    "word": "acquire",
+    "phonetic0": "/əˈkwaɪə(r)/",
+    "phonetic1": "/əˈkwaɪə(r)/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "thu được, giành được kỹ năng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She acquired a love of reading from her father.",
+        "cn": "Ví dụ: She acquired a love of reading from her father."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 13,
+    "word": "activate",
+    "phonetic0": "/ˈæktɪveɪt/",
+    "phonetic1": "/ˈæktɪveɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "kích hoạt hoạt động của cái gì"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The alarm is activated by motion.",
+        "cn": "Ví dụ: The alarm is activated by motion."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 14,
+    "word": "adapt",
+    "phonetic0": "/əˈdæpt/",
+    "phonetic1": "/əˈdæpt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "thích nghi, điều chỉnh cho phù hợp"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "It took him time to adapt to the new school.",
+        "cn": "Ví dụ: It took him time to adapt to the new school."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 15,
+    "word": "adequate",
+    "phonetic0": "/ˈædɪkwət/",
+    "phonetic1": "/ˈædɪkwət/",
+    "trans": [
+      {
+        "pos": "adj.",
+        "cn": "đầy đủ, đáp ứng yêu cầu"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The water supply is adequate for the town.",
+        "cn": "Ví dụ: The water supply is adequate for the town."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 16,
+    "word": "adjust",
+    "phonetic0": "/əˈdʒʌst/",
+    "phonetic1": "/əˈdʒʌst/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "điều chỉnh, sửa lại cho đúng"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Adjust your seatbelt before driving.",
+        "cn": "Ví dụ: Adjust your seatbelt before driving."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 17,
+    "word": "admire",
+    "phonetic0": "/ədˈmaɪə(r)/",
+    "phonetic1": "/ədˈmaɪə(r)/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "ngưỡng mộ, khâm phục quý mến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "I admire her courage and dedication.",
+        "cn": "Ví dụ: I admire her courage and dedication."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 18,
+    "word": "admit",
+    "phonetic0": "/ədˈmɪt/",
+    "phonetic1": "/ədˈmɪt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "thừa nhận, cho phép đi vào"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "He admitted that he was wrong.",
+        "cn": "Ví dụ: He admitted that he was wrong."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 19,
+    "word": "adopt",
+    "phonetic0": "/əˈdɒpt/",
+    "phonetic1": "/əˈdɒpt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "nhận nuôi, thông qua đề án mới"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They decided to adopt a child.",
+        "cn": "Ví dụ: They decided to adopt a child."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 20,
+    "word": "advance",
+    "phonetic0": "/ədˈvɑːns/",
+    "phonetic1": "/ədˈvɑːns/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "tiến bộ, phát triển, tiến lên"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Scientific advances improve our lives.",
+        "cn": "Ví dụ: Scientific advances improve our lives."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 21,
+    "word": "advantage",
+    "phonetic0": "/ədˈvɑːntɪdʒ/",
+    "phonetic1": "/ədˈvɑːntɪdʒ/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "lợi thế, điểm mạnh, ưu điểm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "Speaking English is a major advantage.",
+        "cn": "Ví dụ: Speaking English is a major advantage."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 22,
+    "word": "adventure",
+    "phonetic0": "/ədˈventʃə(r)/",
+    "phonetic1": "/ədˈventʃə(r)/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "cuộc phiêu lưu, mạo hiểm"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They went on an adventure in the jungle.",
+        "cn": "Ví dụ: They went on an adventure in the jungle."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 23,
+    "word": "advertise",
+    "phonetic0": "/ˈædvətaɪz/",
+    "phonetic1": "/ˈædvətaɪz/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "quảng cáo, thông báo rộng rãi"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They advertise their products on television.",
+        "cn": "Ví dụ: They advertise their products on television."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 24,
+    "word": "advocate",
+    "phonetic0": "/ˈædvəkeɪt/",
+    "phonetic1": "/ˈædvəkeɪt/",
+    "trans": [
+      {
+        "pos": "v./n.",
+        "cn": "ủng hộ, bào chữa, người ủng hộ"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She advocates for children's rights.",
+        "cn": "Ví dụ: She advocates for children's rights."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 25,
+    "word": "affect",
+    "phonetic0": "/əˈfekt/",
+    "phonetic1": "/əˈfekt/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "ảnh hưởng, tác động xấu đến"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The climate affect crop yields.",
+        "cn": "Ví dụ: The climate affect crop yields."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 26,
+    "word": "afford",
+    "phonetic0": "/əˈfɔːd/",
+    "phonetic1": "/əˈfɔːd/",
+    "trans": [
+      {
+        "pos": "v.",
+        "cn": "có đủ khả năng chi trả, có thể"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "We cannot afford a new car right now.",
+        "cn": "Ví dụ: We cannot afford a new car right now."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 27,
+    "word": "against",
+    "phonetic0": "/əˈɡeɪnst/",
+    "phonetic1": "/əˈɡeɪnst/",
+    "trans": [
+      {
+        "pos": "prep.",
+        "cn": "chống lại, phản đối, dựa vào"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "They are playing against the champions.",
+        "cn": "Ví dụ: They are playing against the champions."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 28,
+    "word": "agency",
+    "phonetic0": "/ˈeɪdʒənsi/",
+    "phonetic1": "/ˈeɪdʒənsi/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "đại lý, hãng, cơ quan hành chính"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "She works for a travel agency.",
+        "cn": "Ví dụ: She works for a travel agency."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  },
+  {
+    "custom": false,
+    "id": 29,
+    "word": "agenda",
+    "phonetic0": "/əˈdʒendə/",
+    "phonetic1": "/əˈdʒendə/",
+    "trans": [
+      {
+        "pos": "n.",
+        "cn": "chương trình nghị sự, lịch trình"
+      }
+    ],
+    "sentences": [
+      {
+        "c": "The next item on the agenda is finance.",
+        "cn": "Ví dụ: The next item on the agenda is finance."
+      }
+    ],
+    "phrases": [],
+    "synos": [],
+    "relWords": {
+      "root": "",
+      "rels": []
+    },
+    "etymology": []
+  }
+]
