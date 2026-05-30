@@ -1,0 +1,859 @@
+<script setup lang="ts">
+import { useBaseStore } from '@typewords/core/stores/base.ts'
+import { useRouter } from 'vue-router'
+import {
+  BaseButton,
+  BaseIcon,
+  BasePage,
+  Calendar,
+  Dialog,
+  OptionButton,
+  PopConfirm,
+  Progress,
+  Toast,
+} from '@typewords/base'
+import {
+  _getAccomplishDate,
+  _getDictDataByUrl,
+  _nextTick,
+  debounce,
+  isMobile,
+  loadJsLib,
+  msToHourMinute,
+  resourceWrap,
+  shuffle,
+  total,
+  useNav,
+} from '@typewords/core/utils'
+import type { DictResource, Statistics } from '@typewords/core/types/types.ts'
+import { watch } from 'vue'
+import { getCurrentStudyWord } from '@typewords/core/hooks/dict.ts'
+import { useRuntimeStore } from '@typewords/core/stores/runtime.ts'
+import Book from '@typewords/core/components/Book.vue'
+import { getDefaultDict } from '@typewords/core/types/func.ts'
+import { DeleteIcon } from '@typewords/base'
+import PracticeSettingDialog from '@typewords/core/components/word/PracticeSettingDialog.vue'
+import ChangeLastPracticeIndexDialog from '@typewords/core/components/word/ChangeLastPracticeIndexDialog.vue'
+import { useSettingStore } from '@typewords/core/stores/setting.ts'
+import { useFetch } from '@vueuse/core'
+import {
+  APP_NAME,
+  AppEnv,
+  DICT_LIST,
+  DictId,
+  LIB_JS_URL,
+  Old_Host,
+  Origin,
+  TourConfig,
+  WordPracticeModeNameMap,
+  WordPracticeModeUrlMap,
+} from '@typewords/core/config/env.ts'
+import { myDictList } from '@typewords/core/apis'
+import PracticeWordListDialog from '@typewords/core/components/word/PracticeWordListDialog.vue'
+import ShufflePracticeSettingDialog from '@typewords/core/components/word/ShufflePracticeSettingDialog.vue'
+import { deleteDict } from '@typewords/core/apis/dict.ts'
+import { flushStatToStore, usePracticeWordPersistence } from '@typewords/core/composables/usePracticePersistence'
+import { useDataSyncPersistence } from '@typewords/core/composables/useDataSyncPersistence'
+import { WordPracticeMode } from '@typewords/core/types/enum.ts'
+import type { PracticeWordCache } from '@typewords/core/utils/cache.ts'
+import dayjs from 'dayjs'
+import { useI18n } from 'vue-i18n'
+
+const store = useBaseStore()
+const settingStore = useSettingStore()
+const wordPersistence = usePracticeWordPersistence()
+const dataSync = useDataSyncPersistence()
+const router = useRouter()
+const { nav } = useNav()
+const runtimeStore = useRuntimeStore()
+const { t } = useI18n()
+let loading = $ref(true)
+let isSaveData = $ref(false)
+
+const shouldShowDialogPracticeMode = [WordPracticeMode.Shuffle, WordPracticeMode.ShuffleWordsTest]
+
+useHead({
+  title: APP_NAME + ' - Từ vựng',
+})
+
+let practiceData = $ref<PracticeWordCache>({
+  taskWords: {
+    new: [],
+    review: [],
+  },
+  practiceData: null,
+  statStoreData: null,
+} as any)
+
+async function resetCacheData() {
+  isSaveData && flushStatToStore(practiceData.statStoreData)
+  isSaveData = false
+  practiceData.practiceData = null
+  practiceData.statStoreData = null
+  await wordPersistence.clear()
+}
+
+
+
+watch(
+  [() => store.load, () => runtimeStore.globalLoading],
+  debounce(([a, b]) => {
+    if (a && !b) {
+      init()
+      _nextTick(async () => {
+        const Shepherd = await loadJsLib('Shepherd', LIB_JS_URL.SHEPHERD)
+        const tour = new Shepherd.Tour(TourConfig)
+        tour.on('cancel', () => {
+          localStorage.setItem('tour-guide', '1')
+        })
+        tour.addStep({
+          id: 'step1',
+          text: 'Nhấn vào đây để chọn một bộ từ điển và bắt đầu học',
+          attachTo: {
+            element: '#step1',
+            on: 'bottom',
+          },
+          buttons: [
+            {
+              text: `Tiếp theo (1/${TourConfig.total})`,
+              action() {
+                tour.next()
+                router.push('/dict-list')
+              },
+            },
+          ],
+        })
+        const r = localStorage.getItem('tour-guide')
+        if (settingStore.first && !r && !isMobile()) tour.start()
+      }, 500)
+    }
+  }),
+  { immediate: true }
+)
+
+async function onvisibilitychange() {
+  if (!document.hidden) {
+
+    const d = await wordPersistence.fetch()
+    if (d) {
+      practiceData = d
+      isSaveData = true
+    }
+  }
+}
+
+async function init() {
+  if (AppEnv.CAN_REQUEST) {
+    let res = await myDictList({ type: 'word' })
+    if (res.success) {
+      store.setState(Object.assign(store.$state, res.data))
+    }
+  }
+
+  document.removeEventListener('visibilitychange', onvisibilitychange)
+  document.addEventListener('visibilitychange', onvisibilitychange)
+
+  if (store.word.studyIndex >= 3) {
+    if (!store.sdict.custom && !store.sdict.words.length) {
+      store.word.bookList[store.word.studyIndex] = await _getDictDataByUrl(store.sdict)
+    }
+  }
+
+  if (!practiceData?.taskWords.new.length && store.sdict.words.length) {
+    const d = await wordPersistence.load()
+    if (d) {
+      practiceData = d
+      isSaveData = true
+    } else {
+      practiceData.taskWords = getCurrentStudyWord()
+    }
+  }
+  loading = false
+}
+
+async function startPractice(practiceMode: WordPracticeMode, resetCache: boolean = false): void {
+  if (resetCache) await resetCacheData()
+
+  if (shouldShowDialogPracticeMode.includes(practiceMode) && !isSaveData) {
+    editingWordPracticeMode = practiceMode
+    showShufflePracticeSettingDialog = true
+    return
+  }
+
+  if (store.sdict.id) {
+    if (!store.sdict.words.length) {
+      Toast.warning('Không có từ nào để học!')
+      return
+    }
+
+    settingStore.wordPracticeMode = practiceMode
+
+    window.umami?.track('startStudyWord', {
+      name: store.sdict.name,
+      index: store.sdict.lastLearnIndex,
+      perDayStudyNumber: store.sdict.perDayStudyNumber,
+      custom: store.sdict.custom,
+      complete: store.sdict.complete,
+      wordPracticeMode: settingStore.wordPracticeMode,
+    })
+
+    if (settingStore.first) settingStore.first = false
+    nav(WordPracticeModeUrlMap[practiceMode] + '/' + store.sdict.id, {}, practiceData)
+  } else {
+    window.umami?.track('no-dict')
+    Toast.warning('Vui lòng chọn một bộ từ điển trước')
+  }
+}
+
+function freePractice() {
+  startPractice(WordPracticeMode.Free, settingStore.wordPracticeMode !== WordPracticeMode.Free)
+}
+function systemPractice() {
+  startPractice(
+    settingStore.wordPracticeMode === WordPracticeMode.Free ? WordPracticeMode.System : settingStore.wordPracticeMode,
+    settingStore.wordPracticeMode === WordPracticeMode.Free
+  )
+}
+
+let editingWordPracticeMode = $ref(0)
+
+let showPracticeSettingDialog = $ref(false)
+let showShufflePracticeSettingDialog = $ref(false)
+let showChangeLastPracticeIndexDialog = $ref(false)
+let showPracticeWordListDialog = $ref(false)
+
+type StudyDayRow = Statistics & { dictName: string }
+
+let showStudyDayDialog = $ref(false)
+let selectedStudyDateKey = $ref('')
+let studyDayRecords = $ref<StudyDayRow[]>([])
+
+const allWordStatistics = $computed(() => store.word.bookList.flatMap(book => book.statistics ?? []))
+
+const filteredBookList = $computed(() => {
+  return store.word.bookList.filter(
+    (item) => ![DictId.wordCollect, DictId.wordWrong, DictId.wordKnown].includes(item.id)
+  )
+})
+
+const cacheSpendMs = $computed(() => practiceData.statStoreData?.spend ?? 0)
+
+const todayDateKey = $computed(() => dayjs().format('YYYY-MM-DD'))
+
+
+const cacheDaySpendMap = $computed((): Map<string, number> => {
+  const st = practiceData.statStoreData
+  const map = new Map<string, number>()
+  if (!st?.spend) return map
+  if (Array.isArray(st.segments) && st.segments.length > 0) {
+    for (const [segStart, segEnd] of st.segments) {
+      const key = dayjs(segStart).format('YYYY-MM-DD')
+      map.set(key, (map.get(key) ?? 0) + (segEnd - segStart))
+    }
+  } else {
+
+    map.set(dayjs(st.startDate).format('YYYY-MM-DD'), st.spend)
+  }
+  // console.log('map',map,practiceData.statStoreData)
+  return map
+})
+
+const todayCacheMs = $computed(() => cacheDaySpendMap.get(todayDateKey) ?? 0)
+
+const calendarHighlightDates = $computed(() => {
+  const set = new Set<string>()
+  for (const s of allWordStatistics) {
+    set.add(dayjs(s.startDate).format('YYYY-MM-DD'))
+  }
+
+  for (const key of cacheDaySpendMap.keys()) {
+    set.add(key)
+  }
+  return [...set]
+})
+
+
+const persistedTotalMs = $computed(() => total(allWordStatistics, 'spend'))
+
+const totalSpend = $computed(() => {
+  const sum = persistedTotalMs + cacheSpendMs
+  if (!sum) return 0
+  return msToHourMinute(sum)
+})
+
+const todayTotalSpend = $computed(() => {
+  const todayPersistedMs = total(
+    allWordStatistics.filter(v => dayjs(v.startDate).isSame(dayjs(), 'day')),
+    'spend'
+  )
+  const sum = todayPersistedMs + todayCacheMs
+  if (!sum) return 0
+  return msToHourMinute(sum)
+})
+
+const totalDay = $computed(() => {
+  const set = new Set(allWordStatistics.map(v => dayjs(v.startDate).format('YYYY-MM-DD')))
+
+  for (const key of cacheDaySpendMap.keys()) {
+    set.add(key)
+  }
+  return set.size
+})
+
+const studyDayDialogTitle = $computed(() =>
+  selectedStudyDateKey ? `Lịch sử học ngày ${dayjs(selectedStudyDateKey).format('DD/MM/YYYY')}` : ''
+)
+
+function isStudyDayKeyToday(dateKey: string) {
+  return dateKey === dayjs().format('YYYY-MM-DD')
+}
+
+function onSelectCalendarDate(dateKey: string) {
+  selectedStudyDateKey = dateKey
+  const rows: StudyDayRow[] = []
+  for (const book of store.word.bookList) {
+    for (const stat of book.statistics ?? []) {
+      if (dayjs(stat.startDate).format('YYYY-MM-DD') === dateKey) {
+        rows.push({ ...stat, dictName: book.name })
+      }
+    }
+  }
+  const st = practiceData.statStoreData
+
+  if (st?.spend && cacheDaySpendMap.has(dateKey)) {
+    const daySpend = cacheDaySpendMap.get(dateKey)!
+    const cacheKeys = [...cacheDaySpendMap.keys()]
+    const keyIdx = cacheKeys.indexOf(dateKey)
+    const isMultiDay = cacheKeys.length > 1
+
+    let sessionRole: StudyDayRow['sessionRole']
+    if (!isMultiDay) {
+      sessionRole = 'single'
+    } else if (keyIdx === 0) {
+      sessionRole = 'start'
+    } else if (keyIdx === cacheKeys.length - 1) {
+      sessionRole = 'middle'
+    } else {
+      sessionRole = 'middle'
+    }
+    rows.push({
+      ...st,
+      spend: daySpend,
+      new: st.newWordNumber,
+      review: st.reviewWordNumber,
+      dictName: store.sdict.name,
+      sessionRole,
+    })
+  }
+  if (!rows.length) return Toast.info('Không có bản ghi học tập')
+  studyDayRecords = rows
+  showStudyDayDialog = true
+}
+
+async function goDictDetail(val: DictResource) {
+  if (!val.id) return nav('dict-list')
+  runtimeStore.editDict = getDefaultDict(val)
+  nav('/dict', {})
+}
+
+let isManageDict = $ref(false)
+let selectIds = $ref([])
+
+async function handleBatchDel() {
+  if (AppEnv.CAN_REQUEST) {
+    let res = await deleteDict(null, selectIds)
+    if (res.success) {
+      init()
+    } else {
+      Toast.error(res.msg)
+    }
+  } else {
+    selectIds.forEach(id => {
+      let r = store.word.bookList.findIndex(v => v.id === id)
+      if (r !== -1) {
+        if (store.word.studyIndex === r) {
+          store.word.studyIndex = -1
+        }
+        if (store.word.studyIndex > r) {
+          store.word.studyIndex--
+        }
+        store.word.bookList.splice(r, 1)
+      }
+    })
+    selectIds = []
+    Toast.success('Xóa thành công!')
+  }
+}
+
+function toggleSelect(item) {
+  let rIndex = selectIds.findIndex(v => v === item.id)
+  if (rIndex > -1) {
+    selectIds.splice(rIndex, 1)
+  } else {
+    selectIds.push(item.id)
+  }
+}
+
+const progressTextLeft = $computed(() => {
+  if (store.sdict.complete) return 'Đã hoàn thành, chuyển sang giai đoạn ôn tập tổng hợp'
+  return 'Tiến độ: Đã học ' + store.currentStudyProgress + '%'
+})
+
+function check(cb: Function) {
+  if (!store.sdict.id) {
+    Toast.warning('Vui lòng chọn một bộ từ điển trước')
+  } else {
+    runtimeStore.editDict = getDefaultDict(store.sdict)
+    cb()
+  }
+}
+
+async function savePracticeSetting() {
+  await resetCacheData()
+  await store.changeDict(runtimeStore.editDict)
+  practiceData.taskWords = getCurrentStudyWord()
+  Toast.success('Cập nhật thành công')
+}
+
+async function onShufflePracticeSettingOk(total: number) {
+  await dataSync.saveDictState()
+  await resetCacheData()
+  settingStore.wordPracticeMode = editingWordPracticeMode
+
+  window.umami?.track('startStudyWord', {
+    name: store.sdict.name,
+    index: store.sdict.lastLearnIndex,
+    perDayStudyNumber: store.sdict.perDayStudyNumber,
+    custom: store.sdict.custom,
+    complete: store.sdict.complete,
+    wordPracticeMode: settingStore.wordPracticeMode,
+  })
+
+  let ignoreSet = [store.allIgnoreWordsSet, store.knownWordsSet][settingStore.ignoreSimpleWord ? 0 : 1]
+  practiceData.taskWords.review = shuffle(
+    store.sdict.words
+      .slice(0, store.sdict.lastLearnIndex)
+      .filter(v => !ignoreSet.has(v.word))
+  ).slice(0, total)
+  nav(
+    WordPracticeModeUrlMap[editingWordPracticeMode] + '/' + store.sdict.id,
+    {},
+    {
+      ...practiceData,
+      total,
+    }
+  )
+}
+
+async function saveLastPracticeIndex(e) {
+  runtimeStore.editDict.lastLearnIndex = e
+  // runtimeStore.editDict.complete = e >= runtimeStore.editDict.length - 1
+  showChangeLastPracticeIndexDialog = false
+  await resetCacheData()
+  await store.changeDict(runtimeStore.editDict)
+  practiceData.taskWords = getCurrentStudyWord()
+  Toast.success('Cập nhật thành công')
+}
+
+const { data: recommendDictList, isFetching } = useFetch(resourceWrap(DICT_LIST.WORD.RECOMMENDED)).json()
+
+const systemPracticeText = $computed(() => {
+  if (settingStore.wordPracticeMode === WordPracticeMode.Free) {
+    return t('start_learning')
+  } else {
+    const action = isSaveData ? t('continue_learning') : t('start_learning')
+    const modeName = WordPracticeModeNameMap[settingStore.wordPracticeMode]
+    const htmlLang = typeof document !== 'undefined' ? document.documentElement.lang : ''
+    const needSpace = htmlLang.startsWith('vi') || htmlLang.startsWith('en')
+    return action + (needSpace ? ' ' : '') + modeName
+  }
+})
+
+let isOldHost = $ref(false)
+onMounted(() => {
+  isOldHost = window.location.host === Old_Host
+})
+
+onUnmounted(() => {
+  document.removeEventListener('visibilitychange', onvisibilitychange)
+})
+</script>
+
+<template>
+  <BasePage>
+    <div class="my-30 text-2xl text-red" v-if="isOldHost">
+      Đã kích hoạt tên miền mới
+      <a class="mr-4" :href="`${Origin}/words?from_old_site=1`">{{ Origin }}</a
+      >Tên miền 2study.top hiện tại sẽ ngừng hoạt động trong thời gian tới
+    </div>
+
+    <div class="card flex flex-col md:flex-row gap-4">
+      <div class="flex-1 flex flex-col justify-between">
+        <div class="flex gap-3">
+          <div class="p-1 center rounded-full bg-white">
+            <IconFluentBookNumber20Filled class="text-xl color-link" />
+          </div>
+          <div @click="goDictDetail(store.sdict)" class="text-2xl font-bold cursor-pointer">
+            {{ store.sdict.name || $t('no_dict_selected') }}
+          </div>
+        </div>
+
+        <template v-if="store.sdict.id">
+          <div class="mt-4 space-y-2">
+            <div class="text-sm flex justify-between">
+              <span v-opacity="store.sdict.id && store.sdict.lastLearnIndex < store.sdict.length">
+                {{ $t('estimated_completion') }}：{{
+                  _getAccomplishDate(
+                    store.sdict.words.length - store.sdict.lastLearnIndex,
+                    store.sdict.perDayStudyNumber
+                  )
+                }}
+              </span>
+            </div>
+            <Progress size="large" :percentage="store.currentStudyProgress" :show-text="false"></Progress>
+
+            <div class="text-sm flex justify-between">
+              <span>{{ progressTextLeft }}</span>
+              <span> {{ store.sdict?.lastLearnIndex }} / {{ store.sdict.length }} {{ $t('words_count') }}</span>
+            </div>
+          </div>
+          <div class="flex items-center mt-4 gap-4">
+            <BaseButton type="info" size="small" @click="router.push('/dict-list')">
+              <div class="center gap-1">
+                <IconFluentArrowSwap20Regular />
+                <span>{{ $t('select_dict') }}</span>
+              </div>
+            </BaseButton>
+            <PopConfirm
+              :disabled="!isSaveData"
+              :title="$t('change_progress_confirm')"
+              @confirm="check(() => (showChangeLastPracticeIndexDialog = true))"
+            >
+              <BaseButton type="info" size="small" v-if="store.sdict.id">
+                <div class="center gap-1">
+                  <IconFluentSlideTextTitleEdit20Regular />
+                  <span>{{ $t('change_progress') }}</span>
+                </div>
+              </BaseButton>
+            </PopConfirm>
+
+            <BaseButton type="info" size="small" @click="router.push('/fsrs')"> Lịch sử học </BaseButton>
+          </div>
+        </template>
+
+        <div class="flex items-center gap-4 mt-2 flex-1" v-else>
+          <div class="title">{{ $t('select_dict_to_start') }}</div>
+          <BaseButton id="step1" type="primary" size="large" @click="router.push('/dict-list')">
+            <div class="center gap-1">
+              <IconFluentAdd16Regular />
+              <span>{{ $t('select_dict') }}</span>
+            </div>
+          </BaseButton>
+        </div>
+      </div>
+      <div class="flex-1 mt-4 md:mt-0" :class="!store.sdict.id && 'opacity-30 cursor-not-allowed'">
+        <div class="flex justify-between">
+          <div class="flex items-center gap-2">
+            <div class="p-2 center rounded-full bg-white">
+              <IconFluentStar20Filled class="text-lg color-amber" />
+            </div>
+            <div class="text-xl font-bold">
+              {{ isSaveData ? $t('last_task') : $t('today_task') }}
+            </div>
+            <span class="color-link cursor-pointer" v-if="store.sdict.id" @click="showPracticeWordListDialog = true">{{
+              $t('word_list')
+            }}</span>
+          </div>
+          <div class="flex gap-1 items-center" v-if="store.sdict.id">
+            {{ $t('daily_goal') }}
+            <div style="color: #ac6ed1" class="bg-third px-2 h-10 flex center text-2xl rounded">
+              {{ store.sdict.id ? store.sdict.perDayStudyNumber : 0 }}
+            </div>
+            {{ $t('words_count') }}
+            <PopConfirm
+              :disabled="!isSaveData"
+              :title="$t('change_progress_confirm')"
+              @confirm="check(() => (showPracticeSettingDialog = true))"
+            >
+              <BaseButton type="info" size="small">{{ $t('change') }} </BaseButton>
+            </PopConfirm>
+          </div>
+        </div>
+        <div class="flex mt-4 justify-between">
+          <div class="stat">
+            <div class="num">{{ practiceData?.taskWords?.new?.length }}</div>
+            <div class="txt">{{ $t('new_words') }}</div>
+          </div>
+          <div class="stat">
+            <div class="num">{{ practiceData?.taskWords?.review?.length }}</div>
+            <div class="txt">{{ $t('review') }}</div>
+          </div>
+        </div>
+        <div class="flex items-end mt-4 gap-4 btn-no-margin">
+          <OptionButton
+            :class="settingStore.wordPracticeMode !== WordPracticeMode.Free ? 'flex-1 orange-btn' : 'primary-btn'"
+          >
+            <BaseButton
+              size="large"
+              :type="settingStore.wordPracticeMode !== WordPracticeMode.Free ? 'orange' : 'primary'"
+              :disabled="!store.sdict.id"
+              :loading="loading"
+              @click="systemPractice"
+            >
+              <div class="flex items-center gap-2">
+                <span class="line-height-[2]">{{ systemPracticeText }}</span>
+                <IconFluentArrowCircleRight16Regular class="text-xl" />
+              </div>
+            </BaseButton>
+            <template #options>
+              <BaseButton
+                class="w-full"
+                v-if="
+                  settingStore.wordPracticeMode !== WordPracticeMode.System &&
+                  settingStore.wordPracticeMode !== WordPracticeMode.Free
+                "
+                @click="startPractice(WordPracticeMode.System, true)"
+              >
+                {{ $t('smart_learning') }}
+              </BaseButton>
+
+              <BaseButton
+                class="w-full"
+                v-if="settingStore.wordPracticeMode !== WordPracticeMode.Review"
+                :disabled="!practiceData?.taskWords?.review?.length"
+                @click="startPractice(WordPracticeMode.Review, true)"
+              >
+                {{ $t('review') }}
+              </BaseButton>
+              <BaseButton
+                class="w-full"
+                v-if="settingStore.wordPracticeMode !== WordPracticeMode.Shuffle"
+                :disabled="store.sdict.lastLearnIndex < 10 && !store.sdict.complete"
+                @click="startPractice(WordPracticeMode.Shuffle, true)"
+              >
+                {{ $t('random_review') }}
+              </BaseButton>
+              <BaseButton
+                class="w-full"
+                v-if="settingStore.wordPracticeMode !== WordPracticeMode.ReviewWordsTest"
+                :disabled="store.sdict.lastLearnIndex < 10 && !store.sdict.complete"
+                @click="startPractice(WordPracticeMode.ReviewWordsTest, true)"
+              >
+                {{ $t('words') }}{{ $t('test') }}
+              </BaseButton>
+              <BaseButton
+                class="w-full"
+                v-if="settingStore.wordPracticeMode !== WordPracticeMode.ShuffleWordsTest"
+                :disabled="store.sdict.lastLearnIndex < 10 && !store.sdict.complete"
+                @click="startPractice(WordPracticeMode.ShuffleWordsTest, true)"
+              >
+                {{ $t('random_words_test') }}
+              </BaseButton>
+
+              <!--              <BaseButton-->
+              <!--                class="w-full"-->
+              <!--                v-if="settingStore.wordPracticeMode !== WordPracticeMode.IdentifyOnly"-->
+              <!--                @click="startPractice(WordPracticeMode.IdentifyOnly, true)"-->
+              <!--              >-->
+              <!--                {{ WordPracticeModeNameMap[WordPracticeMode.IdentifyOnly] }}-->
+              <!--              </BaseButton>-->
+              <!--              <BaseButton-->
+              <!--                class="w-full"-->
+              <!--                v-if="settingStore.wordPracticeMode !== WordPracticeMode.ListenOnly"-->
+              <!--                @click="startPractice(WordPracticeMode.ListenOnly, true)"-->
+              <!--              >-->
+              <!--                {{ WordPracticeModeNameMap[WordPracticeMode.ListenOnly] }}-->
+              <!--              </BaseButton>-->
+              <!--              <BaseButton-->
+              <!--                class="w-full"-->
+              <!--                v-if="settingStore.wordPracticeMode !== WordPracticeMode.DictationOnly"-->
+              <!--                @click="startPractice(WordPracticeMode.DictationOnly, true)"-->
+              <!--              >-->
+              <!--                {{ WordPracticeModeNameMap[WordPracticeMode.DictationOnly] }}-->
+              <!--              </BaseButton>-->
+            </template>
+          </OptionButton>
+
+          <BaseButton
+            :class="settingStore.wordPracticeMode === WordPracticeMode.Free ? 'flex-1' : ''"
+            :type="settingStore.wordPracticeMode === WordPracticeMode.Free ? 'orange' : 'primary'"
+            size="large"
+            :loading="loading"
+            @click="freePractice()"
+          >
+            <div class="flex items-center gap-2">
+              <span class="line-height-[2]">
+                {{
+                  settingStore.wordPracticeMode === WordPracticeMode.Free && isSaveData
+                    ? $t('continue_free_practice')
+                    : $t('free_practice')
+                }}
+              </span>
+              <IconStreamlineColorPenDrawFlat class="text-xl" />
+            </div>
+          </BaseButton>
+        </div>
+      </div>
+    </div>
+
+    <div class="card flex flex-col md:flex-row gap-4 xl:gap-20 p-4 md:p-6">
+      <div class="flex-1 flex flex-col gap-3 min-w-0">
+        <div class="title">{{ $t('statistics') }}</div>
+        <div class="flex gap-3 items-center w-full">
+          <div class="stat2">
+            <div class="num">{{ todayTotalSpend }}</div>
+            <div class="txt">{{ $t('today_study_time') }}</div>
+          </div>
+          <div class="stat2">
+            <div class="num">{{ totalDay }}</div>
+            <div class="txt">{{ $t('total_study_days') }}</div>
+          </div>
+          <div class="stat2">
+            <div class="num">{{ totalSpend }}</div>
+            <div class="txt">{{ $t('total_study_time') }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="shrink-0 flex items-center">
+        <Calendar
+          :highlighted-dates="calendarHighlightDates"
+          @select-date="onSelectCalendarDate"
+          :weekHeaderTitle="$t('this_week_record')"
+        >
+        </Calendar>
+      </div>
+    </div>
+
+    <div class="card flex flex-col">
+      <div class="flex justify-between">
+        <div class="title">{{ $t('my_dictionaries') }}</div>
+        <div class="flex gap-4 items-center">
+          <PopConfirm :title="$t('delete_dict_confirm')" @confirm="handleBatchDel" v-if="selectIds.length">
+            <BaseIcon class="del" :title="$t('delete')">
+              <DeleteIcon />
+            </BaseIcon>
+          </PopConfirm>
+
+          <div
+            class="color-link cursor-pointer"
+            v-if="filteredBookList.length"
+            @click="
+              () => {
+                isManageDict = !isManageDict
+                selectIds = []
+              }
+            "
+          >
+            {{ isManageDict ? $t('cancel') : $t('manage_dict') }}
+          </div>
+          <div class="color-link cursor-pointer" @click="nav('/dict', { isAdd: true })">
+            {{ $t('create_personal_dict') }}
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-4 flex-wrap mt-4">
+        <Book
+          :is-add="false"
+          :quantifier="$t('words_count')"
+          :item="item"
+          :checked="selectIds.includes(item.id)"
+          @check="() => toggleSelect(item)"
+          :show-checkbox="isManageDict"
+          v-for="(item, j) in filteredBookList"
+          @click="goDictDetail(item)"
+        />
+        <Book :is-add="true" @click="router.push('/dict-list')" />
+      </div>
+    </div>
+
+    <div class="card flex flex-col overflow-hidden" v-loading="isFetching">
+      <div class="flex justify-between">
+        <div class="title">{{ $t('recommend') }}</div>
+        <div class="flex gap-4 items-center">
+          <div class="color-link cursor-pointer" @click="router.push('/dict-list')">{{ $t('more') }}</div>
+        </div>
+      </div>
+
+      <div class="flex gap-4 flex-wrap mt-4 min-h-50">
+        <Book
+          :is-add="false"
+          :quantifier="$t('words_count')"
+          :item="item as any"
+          v-for="(item, j) in recommendDictList"
+          @click="goDictDetail(item as any)"
+        />
+      </div>
+    </div>
+  </BasePage>
+
+  <PracticeSettingDialog
+    :show-left-option="false"
+    v-model="showPracticeSettingDialog"
+    :onConfirm="savePracticeSetting"
+  />
+
+  <ChangeLastPracticeIndexDialog v-model="showChangeLastPracticeIndexDialog" @ok="saveLastPracticeIndex" />
+
+  <PracticeWordListDialog :data="practiceData?.taskWords" v-model="showPracticeWordListDialog" />
+
+  <ShufflePracticeSettingDialog
+    v-model="showShufflePracticeSettingDialog"
+    :onConfirm="onShufflePracticeSettingOk"
+    :wordPracticeMode="editingWordPracticeMode"
+  />
+
+  <Dialog v-model="showStudyDayDialog" :title="studyDayDialogTitle" :footer="false" :padding="true">
+    <div
+      v-if="!studyDayRecords.length && !(isStudyDayKeyToday(selectedStudyDateKey) && todayCacheMs > 0)"
+      class="text-gray-500 py-6 text-center"
+    >
+      {{ $t('no_study_records_today') }}
+    </div>
+    <ul v-if="studyDayRecords.length" class="study-day-list max-h-70vh overflow-y-auto space-y-3">
+      <li v-for="(row, idx) in studyDayRecords" :key="idx" class="border-b border-gray-200 pb-3 last:border-0">
+        <div class="flex items-center gap-2">
+          <span class="font-medium">{{ row.dictName }}</span>
+          <span
+            v-if="row.sessionRole && row.sessionRole !== 'single'"
+            class="text-xs px-1.5 py-0.5 rounded-full"
+            :class="{
+              'bg-green-100 text-green-700': row.sessionRole === 'start',
+              'bg-blue-100 text-blue-700': row.sessionRole === 'middle',
+              'bg-orange-100 text-orange-700': row.sessionRole === 'end',
+            }"
+          >
+            {{ { start: $t('study_start'), middle: $t('study_middle'), end: $t('study_end') }[row.sessionRole] }}
+          </span>
+        </div>
+        <div class="text-sm text-gray-600 mt-1">
+          {{ $t('time') }} {{ msToHourMinute(row.spend) }} · {{ $t('new_words_count2') }} {{ row.new }} · {{ $t('review') }} {{ row.review }} · {{ $t('wrong') }} {{ row.wrong }}
+          <template v-if="row.total"> · {{ $t('total') }} {{ row.total }} {{ $t('words_count') }}</template>
+        </div>
+      </li>
+    </ul>
+  </Dialog>
+</template>
+
+<style scoped lang="scss">
+.stat {
+  @apply w-49% box-border flex flex-col items-center justify-center rounded-xl p-2 bg-[var(--bg-history)];
+  border: 1px solid gainsboro;
+
+  .num {
+    @apply color-[#409eff] text-4xl font-bold;
+  }
+
+  .txt {
+    @apply color-gray-500;
+  }
+}
+
+.stat2 {
+  @extend .stat;
+  @apply py-4 flex-1;
+  width: unset;
+  .num {
+    @apply text-2xl break-keep;
+  }
+}
+</style>
