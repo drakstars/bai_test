@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       { code: 'vi', language: 'vi-VN', file: 'vi.json', name: 'Tiếng Việt' },
     ],
     defaultLocale: 'vi',
-    langDir: 'locales/',
+    langDir: 'i18n/locales/',
     strategy: 'no_prefix',
   },
   css: ['~/assets/css/main.scss'],
